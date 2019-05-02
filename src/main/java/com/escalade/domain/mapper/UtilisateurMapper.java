@@ -1,6 +1,6 @@
-package com.escalade.mapper;
+package com.escalade.domain.mapper;
 
-import com.escalade.model.Utilisateur;
+import com.escalade.domain.model.Utilisateur;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

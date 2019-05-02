@@ -1,4 +1,4 @@
-package com.escalade.model;
+package com.escalade.domain.model;
 
 public class Commentaire {
 
@@ -38,5 +38,13 @@ public class Commentaire {
 
 	public void setId(int commentaire_id) {
 		this.commentaire_id = commentaire_id;
+	}
+
+	@Override
+	public String toString() {
+		return "Commentaire{" +
+				"content='" + content + '\'' +
+				", userName='" + userName + '\'' +
+				'}';
 	}
 }

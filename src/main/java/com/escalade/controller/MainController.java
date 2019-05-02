@@ -1,15 +1,19 @@
 package com.escalade.controller;
 
-import com.escalade.dao.imp.CommentaireDao;
-import com.escalade.dao.imp.TopoDao;
-import com.escalade.dao.imp.UtilisateurDao;
-import com.escalade.model.Commentaire;
-import com.escalade.model.Utilisateur;
+import com.escalade.domain.dao.service.impl.CommentaireDao;
+import com.escalade.domain.dao.service.impl.TopoDao;
+import com.escalade.domain.dao.service.impl.UtilisateurDao;
+
+
+import com.escalade.domain.model.Commentaire;
+import com.escalade.domain.model.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
 import java.text.DateFormat;
@@ -140,5 +144,23 @@ public class MainController {
                     "You do not have permission to access this page!");
         }
         return "403Page";
+    }
+
+    @RequestMapping(value = "/cmt", method = RequestMethod.GET)
+    public ModelAndView showFormComment() {
+        //System.out.println("cmt");
+        return new ModelAndView("addcmt", "commentaire", new Commentaire());
+    }
+
+
+    @RequestMapping(value = "/addcmt", method = RequestMethod.POST)
+    public String postComment(@ModelAttribute("Commentaire") Commentaire commentaire) {
+        //System.out.println("addcmt");
+        //System.out.println(commentaire);
+
+        commentaireDao.saveCommentaire(100, commentaire.getUserName(), commentaire.getContent());
+
+
+        return "addcmt";
     }
 }

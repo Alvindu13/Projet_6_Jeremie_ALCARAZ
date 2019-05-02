@@ -20,7 +20,7 @@
         <property name="password" value="$(db.password)"/>
     </bean>
 
-    <bean id="utilisateurDao" class="com.escalade.dao.imp.UtilisateurDao">
+    <bean id="utilisateurDao" class="com.escalade.domain.model.dao.imp.UtilisateurDao">
         <property name="jdbcTemplate" ref="jdbcTemplate">
         </property>
     </bean>

@@ -1,4 +1,5 @@
-package com.escalade.model;
+package com.escalade.domain.model;
+
 public class Voie extends Secteur {
 
 	private String name;

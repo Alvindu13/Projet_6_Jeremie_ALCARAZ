@@ -1,6 +1,4 @@
-package com.escalade.model;
-
-import org.springframework.stereotype.Component;
+package com.escalade.domain.model;
 
 public class Utilisateur {
 

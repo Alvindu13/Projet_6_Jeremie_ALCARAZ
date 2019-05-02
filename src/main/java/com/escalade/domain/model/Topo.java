@@ -1,4 +1,4 @@
-package com.escalade.model;
+package com.escalade.domain.model;
 
 public class Topo {
 

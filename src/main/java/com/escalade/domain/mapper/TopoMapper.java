@@ -1,6 +1,6 @@
-package com.escalade.mapper;
+package com.escalade.domain.mapper;
 
-import com.escalade.model.Topo;
+import com.escalade.domain.model.Topo;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
