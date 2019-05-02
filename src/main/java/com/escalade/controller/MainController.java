@@ -2,6 +2,7 @@ package com.escalade.controller;
 
 import com.escalade.dao.UtilisateurDao;
 import com.escalade.model.Utilisateur;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,8 @@ public class MainController {
     //private EmployeDao2 dao2;
 
     private Utilisateur utilisateur;
+
+    @Autowired
     private UtilisateurDao utilisateurDao;
 
 
@@ -37,11 +40,11 @@ public class MainController {
     public String index( Model model)
     {
 
-        appContext = new ClassPathXmlApplicationContext("spring-data.xml");
-        utilisateurDao = (UtilisateurDao) appContext.getBean("utilisateurDao"); // RECUPERATION DAO !!!
+        //appContext = new ClassPathXmlApplicationContext("spring-data.xml");
+        //utilisateurDao = (UtilisateurDao) appContext.getBean("utilisateurDao"); // RECUPERATION DAO !!!
 
-        utilisateur = utilisateurDao.getEmployeByUserName(("Alvindu15"));
-        String login = utilisateur.getFirstName();
+        utilisateur = utilisateurDao.getEmployeByUserName(("Alvindu16"));
+        String login = utilisateur.getusername();
         model.addAttribute("prenom", login);
 
         return "emp";

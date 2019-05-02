@@ -1,7 +1,8 @@
 package com.escalade.model;
 
-import javax.sql.DataSource;
+import org.springframework.stereotype.Component;
 
+//@Component
 public class Utilisateur {
 
 	private String firstName;

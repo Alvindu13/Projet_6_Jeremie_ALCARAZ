@@ -4,43 +4,49 @@ package com.escalade.dao;
 import com.escalade.mapper.UtilisateurMapper;
 import com.escalade.model.Utilisateur;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.dao.support.DaoSupport;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.sql.DataSource;
 import java.util.List;
 
-public class UtilisateurDao implements IUtilisateurDao {
+
+@Repository
+@Transactional
+public class UtilisateurDao extends JdbcDaoSupport implements IUtilisateurDao {
 
 
     private Utilisateur utilisateur;
     private UtilisateurDao utilisateurDao;
-    private ClassPathXmlApplicationContext appContext;
 
 
-    private JdbcTemplate jdbcTemplate;
 
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
+    @Autowired
+    public UtilisateurDao(DataSource datasource1) {
+        this.setDataSource(datasource1);
     }
-
-
 
     public void create(String username, String firstName, String lastName, String password, Integer nbTopo) {
         String SQL = "insert into Utilisateur (username, firstName, lastName, password, nbTopo ) values (?, ?, ?, ?, ?)";
-        jdbcTemplate.update( SQL, username, firstName, lastName, password, nbTopo);
-        System.out.println("Enregistrement des utilisateurs :  \n" + "-" + "username : " + username + ", Firstname = " + firstName + ", Lastname = " + lastName + ", Password = " + password + ", nbTopo = " + nbTopo);
+        this.getJdbcTemplate().update( SQL, username, firstName, lastName, password, nbTopo);
         return;
     }
 
     public Utilisateur getUtilisateur(String username) {
         String SQL = "select * from Utilisateur where username = ?";
-        Utilisateur utilisateur = jdbcTemplate.queryForObject(SQL, new Object[]{username}, new UtilisateurMapper());
+        Utilisateur utilisateur = this.getJdbcTemplate().queryForObject(SQL, new Object[]{username}, new UtilisateurMapper());
         return utilisateur;
     }
 
     public List<Utilisateur> listUtilisateur() {
         String SQL = "select * from Utilisateur";
-        List<Utilisateur> utilisateurs = jdbcTemplate.query(SQL, new UtilisateurMapper());
+        List<Utilisateur> utilisateurs = this.getJdbcTemplate().query(SQL, new UtilisateurMapper());
         return utilisateurs;
     }
 
@@ -53,7 +59,7 @@ public class UtilisateurDao implements IUtilisateurDao {
     public Utilisateur getEmployeByUserName(String username) {
 
         String SQL = "select * from Utilisateur where username = ?";
-        Utilisateur utilisateur = jdbcTemplate.queryForObject(SQL, new Object[]{username}, new UtilisateurMapper());
+        Utilisateur utilisateur = this.getJdbcTemplate().queryForObject(SQL, new Object[]{username}, new UtilisateurMapper());
         return utilisateur;
     }
 
