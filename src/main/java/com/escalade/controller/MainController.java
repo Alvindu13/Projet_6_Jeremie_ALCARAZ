@@ -1,5 +1,7 @@
 package com.escalade.controller;
 
+import com.escalade.dao.imp.CommentaireDao;
+import com.escalade.dao.imp.TopoDao;
 import com.escalade.dao.imp.UtilisateurDao;
 import com.escalade.model.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,13 @@ public class MainController {
 
     @Autowired
     private UtilisateurDao utilisateurDao;
-    //private ClassPathXmlApplicationContext appContext;
+
+    @Autowired
+    private CommentaireDao commentaireDao;
+
+    @Autowired
+    private TopoDao topoDao;
+
 
     @RequestMapping(value = "/emp", method = RequestMethod.GET)
     public String index( Model model)
@@ -29,8 +37,11 @@ public class MainController {
         //appContext = new ClassPathXmlApplicationContext("spring-data.xml");
         //utilisateurDao = (UtilisateurDao) appContext.getBean("utilisateurDao"); // RECUPERATION DAO !!!
 
-        utilisateur = utilisateurDao.getEmployeByUserName(("Alvindu16"));
+        utilisateur = utilisateurDao.getUserbyUserName(("Alvindu16"));
         String login = utilisateur.getLastName();
+
+
+
         model.addAttribute("prenom", login);
 
         return "emp";

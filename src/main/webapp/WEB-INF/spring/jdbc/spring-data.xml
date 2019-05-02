@@ -20,16 +20,6 @@
         <property name="password" value="$(db.password)"/>
     </bean>
 
-    <!--  -->
-    <bean id="employeDao" class="com.escalade.AUTRES.EmployeDao">
-        <property name="dataSource" ref="datasource1">
-        </property>
-    </bean>
-
-    <bean id="employeDao2" class="com.escalade.AUTRES.EmployeDao2">
-        <property name="jdbcTemplate" ref="jdbcTemplate">
-        </property>
-    </bean>
 
     <!-- Bean JDBCtemplate -->
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">

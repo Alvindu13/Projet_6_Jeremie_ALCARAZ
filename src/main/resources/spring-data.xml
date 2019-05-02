@@ -20,12 +20,6 @@
         <property name="password" value="$(db.password)"/>
     </bean>
 
-    <!--
-    <bean id="employeDao" class="com.escaladeS.EmployeDao">
-        <property name="dataSource" ref="datasource1">
-        </property>
-    </bean>-->
-
     <bean id="utilisateurDao" class="com.escalade.dao.imp.UtilisateurDao">
         <property name="jdbcTemplate" ref="jdbcTemplate">
         </property>
