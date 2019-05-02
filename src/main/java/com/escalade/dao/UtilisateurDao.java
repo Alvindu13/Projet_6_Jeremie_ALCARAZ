@@ -21,12 +21,6 @@ import java.util.List;
 @Transactional
 public class UtilisateurDao extends JdbcDaoSupport implements IUtilisateurDao {
 
-
-    private Utilisateur utilisateur;
-    private UtilisateurDao utilisateurDao;
-
-
-
     @Autowired
     public UtilisateurDao(DataSource datasource1) {
         this.setDataSource(datasource1);
