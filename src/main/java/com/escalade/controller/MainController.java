@@ -1,14 +1,12 @@
 package com.escalade.controller;
 
-import com.escalade.dao.UtilisateurDao;
+import com.escalade.dao.imp.UtilisateurDao;
 import com.escalade.model.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
 import java.text.DateFormat;
@@ -18,23 +16,11 @@ import java.util.Locale;
 @Controller
 public class MainController {
 
-    //private Employe emp;
-    //private EmployeDao2 dao2;
-
     private Utilisateur utilisateur;
 
     @Autowired
     private UtilisateurDao utilisateurDao;
-
-
-    private ClassPathXmlApplicationContext appContext;
-
-    /*@Before
-    public void setUp() throws Exception {
-        appContext = new ClassPathXmlApplicationContext("spring-data.xml");
-        dao2 = (EmployeDao2)appContext.getBean("employeDao2"); // RECUPERATION DAO !!!
-        emp = dao2.getEmployeById(2);
-    }*/
+    //private ClassPathXmlApplicationContext appContext;
 
     @RequestMapping(value = "/emp", method = RequestMethod.GET)
     public String index( Model model)
@@ -44,7 +30,7 @@ public class MainController {
         //utilisateurDao = (UtilisateurDao) appContext.getBean("utilisateurDao"); // RECUPERATION DAO !!!
 
         utilisateur = utilisateurDao.getEmployeByUserName(("Alvindu16"));
-        String login = utilisateur.getusername();
+        String login = utilisateur.getLastName();
         model.addAttribute("prenom", login);
 
         return "emp";

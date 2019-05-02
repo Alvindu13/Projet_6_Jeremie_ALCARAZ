@@ -1,15 +1,12 @@
-package com.escalade.dao;
+package com.escalade.dao.imp;
 
 
+import com.escalade.dao.contract.IUtilisateurDao;
 import com.escalade.mapper.UtilisateurMapper;
 import com.escalade.model.Utilisateur;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.dao.support.DaoSupport;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,19 +23,19 @@ public class UtilisateurDao extends JdbcDaoSupport implements IUtilisateurDao {
         this.setDataSource(datasource1);
     }
 
-    public void create(String username, String firstName, String lastName, String password, Integer nbTopo) {
+    public void createUser(String username, String firstName, String lastName, String password, Integer nbTopo) {
         String SQL = "insert into Utilisateur (username, firstName, lastName, password, nbTopo ) values (?, ?, ?, ?, ?)";
         this.getJdbcTemplate().update( SQL, username, firstName, lastName, password, nbTopo);
         return;
     }
 
-    public Utilisateur getUtilisateur(String username) {
+    public Utilisateur getUser(String username) {
         String SQL = "select * from Utilisateur where username = ?";
         Utilisateur utilisateur = this.getJdbcTemplate().queryForObject(SQL, new Object[]{username}, new UtilisateurMapper());
         return utilisateur;
     }
 
-    public List<Utilisateur> listUtilisateur() {
+    public List<Utilisateur> listUser() {
         String SQL = "select * from Utilisateur";
         List<Utilisateur> utilisateurs = this.getJdbcTemplate().query(SQL, new UtilisateurMapper());
         return utilisateurs;
@@ -50,7 +47,7 @@ public class UtilisateurDao extends JdbcDaoSupport implements IUtilisateurDao {
      *
      * @see com.objis.dao.com.escalade.AUTRES.EmployeDao#findEmploye(long)
      */
-    public Utilisateur getEmployeByUserName(String username) {
+    public Utilisateur getUserbyUserName(String username) {
 
         String SQL = "select * from Utilisateur where username = ?";
         Utilisateur utilisateur = this.getJdbcTemplate().queryForObject(SQL, new Object[]{username}, new UtilisateurMapper());

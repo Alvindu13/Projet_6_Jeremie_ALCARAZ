@@ -26,7 +26,7 @@
         </property>
     </bean>-->
 
-    <bean id="utilisateurDao" class="com.escalade.dao.UtilisateurDao">
+    <bean id="utilisateurDao" class="com.escalade.dao.imp.UtilisateurDao">
         <property name="jdbcTemplate" ref="jdbcTemplate">
         </property>
     </bean>
