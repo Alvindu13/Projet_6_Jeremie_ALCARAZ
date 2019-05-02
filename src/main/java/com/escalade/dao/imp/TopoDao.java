@@ -1,8 +1,12 @@
 package com.escalade.dao.imp;
 
 import com.escalade.dao.contract.ITopoDao;
+import com.escalade.mapper.TopoMapper;
+import com.escalade.mapper.UtilisateurMapper;
 import com.escalade.model.Topo;
+import com.escalade.model.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,7 +33,9 @@ public class TopoDao extends JdbcDaoSupport implements ITopoDao {
     }
 
     public Topo getTopo(String name) {
-        return null;
+        String SQL = "select * from Topo where name = ?";
+        Topo topo = this.getJdbcTemplate().queryForObject(SQL, new Object[]{name}, new TopoMapper());
+        return topo;
     }
 
     public List<Topo> listTopo() {

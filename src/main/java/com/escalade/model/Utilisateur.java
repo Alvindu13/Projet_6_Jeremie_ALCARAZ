@@ -2,7 +2,6 @@ package com.escalade.model;
 
 import org.springframework.stereotype.Component;
 
-//@Component
 public class Utilisateur {
 
 	private String firstName;

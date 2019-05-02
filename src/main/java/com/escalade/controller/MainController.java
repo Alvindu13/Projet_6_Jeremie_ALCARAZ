@@ -3,6 +3,7 @@ package com.escalade.controller;
 import com.escalade.dao.imp.CommentaireDao;
 import com.escalade.dao.imp.TopoDao;
 import com.escalade.dao.imp.UtilisateurDao;
+import com.escalade.model.Commentaire;
 import com.escalade.model.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import java.util.Locale;
 public class MainController {
 
     private Utilisateur utilisateur;
+    private Commentaire commentaire;
 
     @Autowired
     private UtilisateurDao utilisateurDao;
@@ -37,12 +39,13 @@ public class MainController {
         //appContext = new ClassPathXmlApplicationContext("spring-data.xml");
         //utilisateurDao = (UtilisateurDao) appContext.getBean("utilisateurDao"); // RECUPERATION DAO !!!
 
-        utilisateur = utilisateurDao.getUserbyUserName(("Alvindu16"));
-        String login = utilisateur.getLastName();
+        /*utilisateur = utilisateurDao.getUserbyUserName(("Alvindu16"));
+        String login = utilisateur.getLastName();*/
 
+        commentaire = commentaireDao.getCommentaireById(1);
+        String content = commentaire.getContent();
 
-
-        model.addAttribute("prenom", login);
+        model.addAttribute("commentaire", content);
 
         return "emp";
     }

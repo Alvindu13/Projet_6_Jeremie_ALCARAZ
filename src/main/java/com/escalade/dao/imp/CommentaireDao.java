@@ -1,8 +1,12 @@
 package com.escalade.dao.imp;
 
 import com.escalade.dao.contract.ICommentaireDao;
+import com.escalade.mapper.CommentaireMapper;
+import com.escalade.mapper.UtilisateurMapper;
+import com.escalade.model.Commentaire;
 import com.escalade.model.Topo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +28,9 @@ public class CommentaireDao extends JdbcDaoSupport implements ICommentaireDao {
         return;
     }
 
-    public Topo getCommentaire(int id) {
-        return null;
+    public Commentaire getCommentaireById(Integer commentaire_id) {
+        String SQL = "select * from Commentaire where commentaire_id = ?";
+        Commentaire cmt = this.getJdbcTemplate().queryForObject(SQL, new Object[]{commentaire_id}, new CommentaireMapper());
+        return cmt;
     }
 }
