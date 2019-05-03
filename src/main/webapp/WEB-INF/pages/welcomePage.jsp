@@ -38,14 +38,14 @@
 <header class="masthead">
     <div class="container d-flex h-100 align-items-center">
         <div class="mx-auto text-center">
-            <h1 class="mx-auto my-0 text-uppercase">Grayscale</h1>
-            <h2 class="text-white-50 mx-auto mt-2 mb-5">A free, responsive, one page Bootstrap theme created by Start Bootstrap.</h2>
-            <a href="#about" class="btn btn-primary js-scroll-trigger">Get Started</a>
+            <h1 class="mx-auto my-0 text-uppercase">GRAYSCALAD</h1>
+            <h2 class="text-white-50 mx-auto mt-2 mb-5">Le site des grimpeeurs chevronnés.</h2>
+            <a href="#about" class="btn btn-primary js-scroll-trigger">Découvrir les TOPOS</a>
         </div>
     </div>
 </header>
 
-<!-- About Section -->
+<!-- About Section
 <section id="about" class="about-section text-center">
     <div class="container">
         <div class="row">
@@ -57,13 +57,13 @@
         </div>
         <img src="resources/img/homePage/ipad.png" class="img-fluid" alt="">
     </div>
-</section>
+</section>-->
 
-<!-- Projects Section -->
+<!-- Projects Section
 <section id="projects" class="projects-section bg-light">
-    <div class="container">
+    <div class="container">-->
 
-        <!-- Featured Project Row -->
+        <!-- Featured Project Row
         <div class="row align-items-center no-gutters mb-4 mb-lg-5">
             <div class="col-xl-8 col-lg-7">
                 <img class="img-fluid mb-3 mb-lg-0" src="resources/img/homePage/bg-masthead.jpg" alt="">
@@ -74,9 +74,9 @@
                     <p class="text-black-50 mb-0">Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!</p>
                 </div>
             </div>
-        </div>
+        </div>-->
 
-        <!-- Project One Row -->
+        <!-- Project One Row
         <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
             <div class="col-lg-6">
                 <img class="img-fluid" src="resources/img/homePage/demo-image-01.jpg" alt="">
@@ -92,9 +92,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
-        <!-- Project Two Row -->
+        <!-- Project Two Row
         <div class="row justify-content-center no-gutters">
             <div class="col-lg-6">
                 <img class="img-fluid" src="resources/img/homePage/demo-image-02.jpg" alt="">
@@ -113,9 +113,9 @@
         </div>
 
     </div>
-</section>
+</section>-->
 
-<!-- Signup Section -->
+<!-- Signup Section
 <section id="signup" class="signup-section">
     <div class="container">
         <div class="row">
@@ -132,9 +132,9 @@
             </div>
         </div>
     </div>
-</section>
+</section>-->
 
-<!-- Contact Section -->
+<!-- Contact Section
 <section class="contact-section bg-black">
     <div class="container">
 
@@ -189,7 +189,7 @@
         </div>
 
     </div>
-</section>
+</section>-->
 
 <!-- Footer -->
 <footer class="bg-black small text-center text-white-50">

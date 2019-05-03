@@ -8,7 +8,6 @@
     <meta charset="utf-8">
     <spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
     <link href="${bootstrap}" rel="stylesheet" />
-
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -45,8 +44,6 @@
                     Admin
                 </a>
             </li>
-
-
             <li class="nav-item">
                 <c:if test="${pageContext.request.userPrincipal.name != null}">
                     <a class="nav-link disabled" href="${pageContext.request.contextPath}/logout">
