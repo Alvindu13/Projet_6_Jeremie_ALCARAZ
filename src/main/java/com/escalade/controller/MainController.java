@@ -148,19 +148,24 @@ public class MainController {
 
     @RequestMapping(value = "/cmt", method = RequestMethod.GET)
     public ModelAndView showFormComment() {
-        //System.out.println("cmt");
+        System.out.println("cmt");
         return new ModelAndView("addcmt", "commentaire", new Commentaire());
     }
 
 
     @RequestMapping(value = "/addcmt", method = RequestMethod.POST)
     public String postComment(@ModelAttribute("Commentaire") Commentaire commentaire) {
-        //System.out.println("addcmt");
-        //System.out.println(commentaire);
+        System.out.println("addcmt");
+        System.out.println(commentaire);
 
-        commentaireDao.saveCommentaire(100, commentaire.getUserName(), commentaire.getContent());
+        commentaireDao.saveCommentaire(1, commentaire.getContent(), commentaire.getUserName());
 
 
         return "addcmt";
+    }
+
+    @RequestMapping(value = "/topo", method = RequestMethod.GET)
+    public String displayTopo(Model model) {
+        return "galeryTopo";
     }
 }
