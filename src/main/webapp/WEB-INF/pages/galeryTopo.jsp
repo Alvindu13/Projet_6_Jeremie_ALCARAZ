@@ -52,7 +52,7 @@
                     <th>Nombre de Site</th>
                     <th>Nombre de Secteurs</th>
                     <th>Propriétaire</th>
-                    <!--<th>Disponibilité</th>-->
+                    <th>Disponibilité</th>
 
                 </tr>
                 </thead>
@@ -63,8 +63,9 @@
                             <td><a class="nav-link" href="${pageContext.request.contextPath}/userInfo">${t.name}</td>
                             <td>${t.nbSector}</td>
                             <td>${t.nbSite}</td>
-                            <!--<td>$.available</td>-->
                             <td>${t.userName}</td>
+                            <td>${t.available}</td>
+
                         </tr>
                     <c:set var="i" value="${i+1}" />
                     </c:forEach>
@@ -92,19 +93,7 @@
             <form class = "well">
                 <h4>Souhaitez-vous ajouter votre propre Topo ?</h4>
                 <fieldset>
-                    <div class="radio">
-                        <label for="oui" class="radio">
-                            <input type="radio" name="response" value="oui" id="oui">
-                            Oui
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label for="non" class="radio">
-                            <input type="radio" name="response" value="non" id="non">
-                            Non
-                        </label>
-                    </div>
-                    <button class="btn btn-primary" type="submit">Afficher le formulaire d'ajout</button>
+                    <a href="${pageContext.request.contextPath}/atopo" class="btn btn-primary js-scroll-trigger">Afficher le formulaire</a>
                 </fieldset>
             </form>
         </section>

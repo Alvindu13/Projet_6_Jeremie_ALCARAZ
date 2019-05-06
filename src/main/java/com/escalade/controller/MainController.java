@@ -149,6 +149,10 @@ public class MainController {
         return "403Page";
     }
 
+    /**
+     * Get request to show form comment
+     * @return ModelAndView with view addcmt and commentaire model
+     */
     @RequestMapping(value = "/cmt", method = RequestMethod.GET)
     public ModelAndView showFormComment() {
         System.out.println("cmt");
@@ -166,14 +170,27 @@ public class MainController {
 
     @RequestMapping(value = "/topo", method = RequestMethod.GET)
     public String displayTopo(Model model) {
-
         List<Topo> topos = topoDao.listTopo();
-
         System.out.println(topos.size());
-
         model.addAttribute("topos", topos);
         return "galeryTopo";
     }
+    @RequestMapping(value = "/atopo", method = RequestMethod.GET)
+    public ModelAndView showFormTopo() {
+        System.out.println("topo");
+        return new ModelAndView("addtopo", "atopo", new Topo());
+    }
+
+
+    @RequestMapping(value = "/addtopo", method = RequestMethod.POST)
+    public String saveTopo(@ModelAttribute("atopo") Topo topo) {
+        System.out.println("addTopo");
+        System.out.println(topo);
+        topoDao.createTopo(topo.getUserName(), topo.getName(), topo.getNbSite(), topo.getNbSector(), topo.isAvailable());
+        return "addtopo";
+    }
+
+
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String displayList(Model model) {

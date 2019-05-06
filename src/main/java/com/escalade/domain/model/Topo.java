@@ -50,7 +50,7 @@ public class Topo {
 		this.nbSector = nbSector;
 	}
 
-	public boolean isAvailable(boolean available) {
+	public boolean isAvailable() {
 		return this.available;
 	}
 
@@ -58,14 +58,6 @@ public class Topo {
 		this.available = available;
 	}
 
-	@Override
-	public String toString() {
-		return "Topo{" +
-				"userName='" + userName + '\'' +
-				", name='" + name + '\'' +
-				", nbSite=" + nbSite +
-				", nbSector=" + nbSector +
-				", available=" + available +
-				'}';
-	}
+
+
 }

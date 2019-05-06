@@ -16,7 +16,7 @@ public class TopoMapper implements RowMapper<Topo> {
         topo.setUserName(rs.getString("utilisateur_username"));
         topo.setNbSite(rs.getInt("nbsite"));
         topo.setNbSector(rs.getInt("nbsector"));
-        topo.isAvailable(rs.getBoolean("available"));
+        topo.setAvailable(rs.getBoolean("available"));
 
         return topo;
     }
