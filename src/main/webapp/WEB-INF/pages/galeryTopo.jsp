@@ -22,6 +22,9 @@
 
 <body>
 <jsp:include page="_menu.jsp" />
+<section id = "test" class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12"><img src="resources/img/topo/aside.jpg" alt="AsideEscalade"></div>
+</section>
 <div class="container">
     <header class="page-header">
         <h1>Les topos du coin</h1>
@@ -36,65 +39,45 @@
             </p>
         </div>
     </section>
-    <section id = "test" class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12"><img src="resources/img/topo/aside.jpg" alt="AsideEscalade"></div>
-    </section>
-    <div class="row">
-        <section class="col-sm-4">
-            <h5>Voici les sous-espèces des tigres :</h5>
-            <br>
-            <ul>
-                <li>Tigre de Sibérie</li>
-                <li>Tigre de Chine méridionale</li>
-                <li>Tigre de Bali</li>
-                <li>Tigre de d'Indochine</li>
-                <li>Tigre de Malaisie</li>
-                <li>Tigre de Java</li>
-                <li>Tigre de Sumatra</li>
-                <li>Tigre du Bengale</li>
-                <li>Tigre de la Caspienne</li>
-            </ul>
-        </section>
-    </div>
+
     <div class="row">
         <section class="col-sm-12">
+
+
             <table class="table table-bordered table-striped table-condensed">
+
                 <caption>
-                    <h4>Les menaces pour les tigres</h4>
+                    <h4>Tous les topos présents</h4>
                 </caption>
+
                 <thead>
                 <tr>
-                    <th>Lieu</th>
-                    <th>Menace</th>
+                    <th>Nom</th>
+                    <th>Nombre de Site</th>
+                    <th>Nombre de Secteurs</th>
+                    <th>Propriétaire</th>
+                    <!--<th>Disponibilité</th>-->
+
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>Grand Mekong</td>
-                    <td>Demande croissante de certaines parties de l’animal pour la médecine chinoise traditionnelle et fragmentation des habitats du fait du développement non durable d’infrastructures</td>
-                </tr>
-                <tr>
-                    <td>Île de Sumatra</td>
-                    <td>Production d’huile de palme et de pâtes à papiers</td>
-                </tr>
-                <tr>
-                    <td>Indonésie et Malaisie</td>
-                    <td>Pâte à papier, l’huile de palme et le caoutchouc</td>
-                </tr>
-                <tr>
-                    <td>États-Unis</td>
-                    <td>Les tigres captifs représentent un danger pour les tigres sauvages</td>
-                </tr>
-                <tr>
-                    <td>Europe</td>
-                    <td>Gros appétit pour l’huile de palme</td>
-                </tr>
-                <tr>
-                    <td>Népal</td>
-                    <td>Commerce illégal de produits dérivés de tigres</td>
-                </tr>
+                    <c:set var="i" value="1" />
+                    <c:forEach items="${topos}" var="t">
+                        <tr>
+                            <td>${t.name}</td>
+                            <td>${t.nbSector}</td>
+                            <td>${t.nbSite}</td>
+                            <!--<td>$.available</td>-->
+                            <td>${t.userName}</td>
+                        </tr>
+                    <c:set var="i" value="${i+1}" />
+                    </c:forEach>
                 </tbody>
+
             </table>
+
+
+
         </section>
     </div>
     <div class="row">
@@ -134,14 +117,7 @@
                 </fieldset>
             </form>
         </section>
-        <section class="col-sm-4">
-            <address>
-                <p>Vous pouvez me contacter à cette adresse :</p>
-                <strong>Tigrou Alfred</strong><br>
-                Allée des fauves<br>
-                28645 Félins-sur-Loire<br>
-            </address>
-        </section>
+
     </div>
 </div>
 </body>

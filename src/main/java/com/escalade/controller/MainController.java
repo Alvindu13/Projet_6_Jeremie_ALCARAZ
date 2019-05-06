@@ -6,6 +6,7 @@ import com.escalade.domain.dao.service.impl.UtilisateurDao;
 
 
 import com.escalade.domain.model.Commentaire;
+import com.escalade.domain.model.Topo;
 import com.escalade.domain.model.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.security.Principal;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 @Controller
@@ -25,6 +27,7 @@ public class MainController {
 
     private Utilisateur utilisateur;
     private Commentaire commentaire;
+    private Topo topo;
 
     @Autowired
     private UtilisateurDao utilisateurDao;
@@ -157,15 +160,30 @@ public class MainController {
     public String postComment(@ModelAttribute("Commentaire") Commentaire commentaire) {
         System.out.println("addcmt");
         System.out.println(commentaire);
-
         commentaireDao.saveCommentaire(1, commentaire.getContent(), commentaire.getUserName());
-
-
         return "addcmt";
     }
 
     @RequestMapping(value = "/topo", method = RequestMethod.GET)
     public String displayTopo(Model model) {
+
+        List<Topo> topos = topoDao.listTopo();
+
+        System.out.println(topos.size());
+
+        model.addAttribute("topos", topos);
         return "galeryTopo";
+    }
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public String displayList(Model model) {
+
+        List<Topo> list = topoDao.listTopo();
+
+        System.out.println(list.size());
+
+
+        model.addAttribute("list", list);
+        return "testList";
     }
 }

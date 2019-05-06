@@ -57,4 +57,15 @@ public class Topo {
 	public void setAvailable(boolean available) {
 		this.available = available;
 	}
+
+	@Override
+	public String toString() {
+		return "Topo{" +
+				"userName='" + userName + '\'' +
+				", name='" + name + '\'' +
+				", nbSite=" + nbSite +
+				", nbSector=" + nbSector +
+				", available=" + available +
+				'}';
+	}
 }
