@@ -46,10 +46,6 @@
 
             <table class="table table-bordered table-striped table-condensed">
 
-                <caption>
-                    <h4>Tous les topos présents</h4>
-                </caption>
-
                 <thead>
                 <tr>
                     <th>Nom</th>
@@ -64,7 +60,7 @@
                     <c:set var="i" value="1" />
                     <c:forEach items="${topos}" var="t">
                         <tr>
-                            <td>${t.name}</td>
+                            <td><a class="nav-link" href="${pageContext.request.contextPath}/userInfo">${t.name}</td>
                             <td>${t.nbSector}</td>
                             <td>${t.nbSite}</td>
                             <!--<td>$.available</td>-->
@@ -80,7 +76,30 @@
 
         </section>
     </div>
-    <div class="row">
+
+    <div class ="row">
+        <section class = "col-sm-8">
+
+            <label for="textarea">Votre message :</label>
+            <textarea id="textarea" class="form-control" rows="4"></textarea>
+            <p class="help-block">Vous pouvez agrandir la fenêtre</p>
+            <button class="btn btn-primary" type="submit">Envoyer</button>
+        </section>
+    </div>
+
+    <div class ="row">
+        <section class = "col-sm-8">
+
+            <label for="textarea">Votre message :</label>
+            <textarea id="textarea" class="form-control" rows="4"></textarea>
+            <p class="help-block">Vous pouvez agrandir la fenêtre</p>
+            <button class="btn btn-primary" type="submit">Envoyer</button>
+        </section>
+    </div>
+
+
+
+    <!--<div class="row">
         <section class="col-sm-8">
             <form class="well">
                 <legend>Si vous voulez me laisser un message</legend>
@@ -118,7 +137,7 @@
             </form>
         </section>
 
-    </div>
+    </div>-->
 </div>
 </body>
 </html>
