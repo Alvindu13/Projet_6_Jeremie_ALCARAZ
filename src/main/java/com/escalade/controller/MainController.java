@@ -54,7 +54,7 @@ public class MainController {
 
         model.addAttribute("commentaire", content);
 
-        return "emp";
+        return "autres/emp";
     }
 
 

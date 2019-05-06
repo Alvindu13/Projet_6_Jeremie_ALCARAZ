@@ -16,8 +16,8 @@
 
     <title>Grayscale - Start Bootstrap Theme</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="${bootstrap}" rel="stylesheet" />
+    <!-- Bootstrap core CSS
+    <link href="${bootstrap}" rel="stylesheet" />-->
 
     <!-- Custom fonts for this template -->
     <link href="${all}" rel="stylesheet" />

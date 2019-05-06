@@ -5,19 +5,28 @@
 <html>
 
 <head>
+    <title>Nos Topos</title>
+
     <meta charset="utf-8">
     <spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
+
     <link href="${bootstrap}" rel="stylesheet" />
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="${bootstrap}" rel="stylesheet" />
+
+
     <style type="text/css">
-        body { background-color:#DDD; }
+        body { background-color: #1c7430  ; }
         [class*="col"] { margin-bottom: 20px; }
         img { width: 100%; }
         .well {
             background-color:#CCC;
             padding: 20px;
         }
-        #test{}
     </style>
+
 </head>
 
 <body>
@@ -52,7 +61,7 @@
                     <th>Nombre de Site</th>
                     <th>Nombre de Secteurs</th>
                     <th>Propriétaire</th>
-                    <th>Disponibilité</th>
+                    <!-- <th>Disponibilité</th>-->
 
                 </tr>
                 </thead>
@@ -61,10 +70,10 @@
                     <c:forEach items="${topos}" var="t">
                         <tr>
                             <td><a class="nav-link" href="${pageContext.request.contextPath}/userInfo">${t.name}</td>
-                            <td>${t.nbSector}</td>
                             <td>${t.nbSite}</td>
+                            <td>${t.nbSector}</td>
                             <td>${t.userName}</td>
-                            <td>${t.available}</td>
+                            <!--<td>{t.available}</td>-->
 
                         </tr>
                     <c:set var="i" value="${i+1}" />
