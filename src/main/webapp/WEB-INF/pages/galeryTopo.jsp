@@ -89,11 +89,24 @@
 
     <div class ="row">
         <section class = "col-sm-8">
-
-            <label for="textarea">Votre message :</label>
-            <textarea id="textarea" class="form-control" rows="4"></textarea>
-            <p class="help-block">Vous pouvez agrandir la fenêtre</p>
-            <button class="btn btn-primary" type="submit">Envoyer</button>
+            <form class = "well">
+                <h4>Souhaitez-vous ajouter votre propre Topo ?</h4>
+                <fieldset>
+                    <div class="radio">
+                        <label for="oui" class="radio">
+                            <input type="radio" name="response" value="oui" id="oui">
+                            Oui
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label for="non" class="radio">
+                            <input type="radio" name="response" value="non" id="non">
+                            Non
+                        </label>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Afficher le formulaire d'ajout</button>
+                </fieldset>
+            </form>
         </section>
     </div>
 
