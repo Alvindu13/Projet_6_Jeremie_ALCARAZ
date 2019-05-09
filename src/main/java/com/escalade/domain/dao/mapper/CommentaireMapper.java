@@ -1,4 +1,4 @@
-package com.escalade.domain.mapper;
+package com.escalade.domain.dao.mapper;
 
 import com.escalade.domain.model.Commentaire;
 import org.springframework.jdbc.core.RowMapper;

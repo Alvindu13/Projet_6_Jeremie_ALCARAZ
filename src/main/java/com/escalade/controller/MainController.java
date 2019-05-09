@@ -8,6 +8,7 @@ import com.escalade.domain.model.Commentaire;
 import com.escalade.domain.model.Topo;
 import com.escalade.domain.model.Utilisateur;
 import com.escalade.domain.service.impl.CommentaireServiceImpl;
+import com.escalade.domain.service.impl.SiteServiceImpl;
 import com.escalade.domain.service.impl.TopoServiceImpl;
 import com.escalade.domain.service.impl.UtilisateurServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +31,6 @@ public class MainController {
     private Commentaire commentaire;
     private Topo topo;
 
-    @Autowired
-    private CommentaireDao commentaireDao;
-
-    @Autowired
-    private CommentaireServiceImpl commentaireService;
 
     @Autowired
     private TopoServiceImpl topoServiceImpl;
@@ -42,6 +38,11 @@ public class MainController {
     @Autowired
     private UtilisateurServiceImpl utilisateurServiceImpl;
 
+    @Autowired
+    private CommentaireServiceImpl commentaireService;
+
+    @Autowired
+    private SiteServiceImpl siteServiceImpl;
 
     @RequestMapping(value = "/emp", method = RequestMethod.GET)
     public String index(Model model) {
@@ -183,9 +184,10 @@ public class MainController {
      * @param model
      * @return la page sites
      */
-    @RequestMapping(value = "/sites", method = RequestMethod.GET)
+    @RequestMapping(value = "/site", method = RequestMethod.GET)
     public String displaySites(Model model) {
-        model.addAttribute("topos", topoServiceImpl.listTopo());
-        return "sites";
+        System.out.println(siteServiceImpl.listSite().size());
+        model.addAttribute("sites", siteServiceImpl.listSite());
+        return "site";
     }
 }

@@ -1,4 +1,4 @@
-package com.escalade.domain.mapper;
+package com.escalade.domain.dao.mapper;
 
 import com.escalade.domain.model.Topo;
 import org.springframework.jdbc.core.RowMapper;
@@ -17,6 +17,7 @@ public class TopoMapper implements RowMapper<Topo> {
         topo.setNbSite(rs.getInt("nbsite"));
         topo.setNbSector(rs.getInt("nbsector"));
         topo.setAvailable(rs.getBoolean("available"));
+
 
         return topo;
     }

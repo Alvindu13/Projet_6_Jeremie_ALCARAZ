@@ -43,7 +43,7 @@
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="${pageContext.request.contextPath}/sites">
+                <a class="nav-link" href="${pageContext.request.contextPath}/site">
                     <!-- <i class="fa fa-envelope-o">
                          <span class="badge badge-warning">11</span>
                     </i>-->

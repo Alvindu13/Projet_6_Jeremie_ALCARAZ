@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 
 @Service("commentaireService")
-
 public class CommentaireServiceImpl implements CommentaireService {
 
     @Autowired
