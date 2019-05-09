@@ -1,4 +1,4 @@
-package com.escalade.domain.service;
+package com.escalade.domain.service.contract;
 
 import com.escalade.domain.model.Topo;
 

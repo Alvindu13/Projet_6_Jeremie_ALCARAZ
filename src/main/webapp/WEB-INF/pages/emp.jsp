@@ -7,7 +7,7 @@
 
 <ul>
 
-    <h1>Test commentaire : ${commentaire} </h1>
+    <h1>Test commentaire : ${user.firstName} </h1>
 
 
 </ul>

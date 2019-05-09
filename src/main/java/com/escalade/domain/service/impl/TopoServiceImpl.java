@@ -1,15 +1,15 @@
-package com.escalade.domain.service;
+package com.escalade.domain.service.impl;
 
-import com.escalade.domain.dao.service.impl.TopoDao;
+import com.escalade.domain.dao.impl.TopoDao;
 import com.escalade.domain.model.Topo;
+import com.escalade.domain.service.contract.TopoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.annotation.WebServlet;
 import java.util.List;
 
 @Service("topoService")
-public class TopoServiceImpl implements TopoService{
+public class TopoServiceImpl implements TopoService {
 
     @Autowired
     private TopoDao topoDao;
@@ -24,7 +24,10 @@ public class TopoServiceImpl implements TopoService{
     }
 
     public List<Topo> listTopo() {
-        return null;
+
+        List<Topo> topos = topoDao.listTopo();
+
+        return topos;
     }
 }
 

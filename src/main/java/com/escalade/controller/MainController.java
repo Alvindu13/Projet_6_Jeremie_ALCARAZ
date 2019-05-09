@@ -1,15 +1,15 @@
 package com.escalade.controller;
 
-import com.escalade.domain.dao.service.impl.CommentaireDao;
-import com.escalade.domain.dao.service.impl.TopoDao;
-import com.escalade.domain.dao.service.impl.UtilisateurDao;
+import com.escalade.domain.dao.impl.CommentaireDao;
+import com.escalade.domain.dao.impl.UtilisateurDao;
 
 
 import com.escalade.domain.model.Commentaire;
 import com.escalade.domain.model.Topo;
 import com.escalade.domain.model.Utilisateur;
-import com.escalade.domain.service.TopoService;
-import com.escalade.domain.service.TopoServiceImpl;
+import com.escalade.domain.service.impl.CommentaireServiceImpl;
+import com.escalade.domain.service.impl.TopoServiceImpl;
+import com.escalade.domain.service.impl.UtilisateurServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.security.Principal;
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 @Controller
@@ -32,33 +31,22 @@ public class MainController {
     private Topo topo;
 
     @Autowired
-    private UtilisateurDao utilisateurDao;
-
-    @Autowired
     private CommentaireDao commentaireDao;
 
     @Autowired
-    private TopoDao topoDao;
+    private CommentaireServiceImpl commentaireService;
 
     @Autowired
     private TopoServiceImpl topoServiceImpl;
 
+    @Autowired
+    private UtilisateurServiceImpl utilisateurServiceImpl;
+
 
     @RequestMapping(value = "/emp", method = RequestMethod.GET)
     public String index(Model model) {
-
-        //appContext = new ClassPathXmlApplicationContext("spring-data.xml");
-        //utilisateurDao = (UtilisateurDao) appContext.getBean("utilisateurDao"); // RECUPERATION DAO !!!
-
-        /*utilisateur = utilisateurDao.getUserbyUserName(("Alvindu16"));
-        String login = utilisateur.getLastName();*/
-
-        commentaire = commentaireDao.getCommentaireById(1);
-        String content = commentaire.getContent();
-
-        model.addAttribute("commentaire", content);
-
-        return "autres/emp";
+        model.addAttribute("user", utilisateurServiceImpl.getUserbyUserName("Alvindu13"));
+        return "emp";
     }
 
 
@@ -77,34 +65,6 @@ public class MainController {
         return "test/home";
     }
 
-
-    /**
-     * Test spring security
-     */
-
-
-    /*@RequestMapping(value = {"/", "/welcome**"} , method = RequestMethod.GET)
-    public ModelAndView welcomePage() {
-
-        ModelAndView model = new ModelAndView();
-        model.addObject("title", "Spring Security Hello World");
-        model.addObject("message", "This is welcome page!");
-        model.setViewName("hello");
-        return model;
-
-    }
-
-    @RequestMapping(value ={"/admin**"}, method = RequestMethod.GET)
-    public ModelAndView adminPage() {
-
-        ModelAndView model = new ModelAndView();
-        model.addObject("title", "Spring Security Hello World");
-        model.addObject("message", "This is protected page!");
-        model.setViewName("admin");
-
-        return model;
-
-    }*/
     @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
     public String welcomePage(Model model) {
         model.addAttribute("title", "Welcome");
@@ -163,20 +123,32 @@ public class MainController {
         return new ModelAndView("addcmt", "commentaire", new Commentaire());
     }
 
-
+    /**
+     * Ajoute une commentaire dans la db
+     * @param commentaire
+     * @return
+     */
     @RequestMapping(value = "/addcmt", method = RequestMethod.POST)
     public String postComment(@ModelAttribute("Commentaire") Commentaire commentaire) {
         System.out.println("addcmt");
         System.out.println(commentaire);
-        commentaireDao.saveCommentaire(1, commentaire.getContent(), commentaire.getUserName());
+
+        commentaireService.saveCommentaire(commentaire);
+        //commentaireDao.saveCommentaire(1, commentaire.getContent(), commentaire.getUserName());
         return "addcmt";
     }
 
+    /**
+     * Affiche la page des topos
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/topo", method = RequestMethod.GET)
     public String displayTopo(Model model) {
-        List<Topo> topos = topoDao.listTopo();
-        System.out.println(topos.size());
-        model.addAttribute("topos", topos);
+        //List<Topo> topos = topoDao.listTopo();
+        //System.out.println(topos.size());
+        //model.addAttribute("topos", topos);
+        model.addAttribute("topos", topoServiceImpl.listTopo());
         return "galeryTopo";
     }
 
@@ -200,8 +172,6 @@ public class MainController {
      */
     @RequestMapping(value = "/addtopo", method = RequestMethod.POST)
     public String saveTopo(@ModelAttribute("atopo") Topo topo) {
-        System.out.println("addTopo");
-        System.out.println(topo);
         topoServiceImpl.createTopo(topo);
         return "addtopo";
     }
@@ -215,9 +185,7 @@ public class MainController {
      */
     @RequestMapping(value = "/sites", method = RequestMethod.GET)
     public String displaySites(Model model) {
-        List<Topo> topos = topoDao.listTopo();
-        System.out.println(topos.size());
-        model.addAttribute("topos", topos);
+        model.addAttribute("topos", topoServiceImpl.listTopo());
         return "sites";
     }
 }

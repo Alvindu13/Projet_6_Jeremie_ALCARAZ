@@ -1,4 +1,4 @@
-package com.escalade.domain.dao.service.impl;
+package com.escalade.domain.dao.impl;
 
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
