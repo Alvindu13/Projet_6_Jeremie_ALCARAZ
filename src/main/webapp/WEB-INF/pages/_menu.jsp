@@ -8,9 +8,6 @@
     <meta charset="utf-8">
     <spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
     <link href="${bootstrap}" rel="stylesheet" />
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
@@ -23,33 +20,43 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="nav-link" href="${pageContext.request.contextPath}/welcome">
-                    <i class="fa fa-home"></i>
+                    <!--<i class="fa fa-home"></i>-->
                     Home
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="${pageContext.request.contextPath}/userInfo">
-                    <i class="fa fa-user">
-                        <!--<span class="badge badge-danger">11</span>-->
-                    </i>
+                    <!--<i class="fa fa-user">
+                        <span class="badge badge-danger">11</span
+                    </i>-->
                     User Info
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="${pageContext.request.contextPath}/admin">
-                    <i class="fa fa-envelope-o">
-                        <!--<span class="badge badge-warning">11</span>-->
-                    </i>
+            <li class="nav-item active">
+                <a class="nav-link" href="${pageContext.request.contextPath}/admin">
+                    <!--<i class="fa fa-envelope-o">
+                      <span class="badge badge-warning">11</span>
+                    </i>-->
                     Admin
                 </a>
             </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="${pageContext.request.contextPath}/sites">
+                    <!-- <i class="fa fa-envelope-o">
+                         <span class="badge badge-warning">11</span>
+                    </i>-->
+                    Sites D'escalade
+                </a>
+            </li>
+
             <li class="nav-item">
                 <c:if test="${pageContext.request.userPrincipal.name != null}">
-                    <a class="nav-link disabled" href="${pageContext.request.contextPath}/logout">
-                        <i class="fa fa-envelope-o">
-                            <!--<span class="badge badge-warning">11</span>-->
-                        </i>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/logout">
+                        <!--<i class="fa fa-envelope-o">
+                            <span class="badge badge-warning">11</span>
+                        </i>-->
                         Logout
                     </a>
                 </c:if>

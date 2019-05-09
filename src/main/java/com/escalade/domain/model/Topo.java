@@ -59,5 +59,14 @@ public class Topo {
 	}
 
 
-
+	@Override
+	public String toString() {
+		return "Topo{" +
+				"userName='" + userName + '\'' +
+				", name='" + name + '\'' +
+				", nbSite=" + nbSite +
+				", nbSector=" + nbSector +
+				", available=" + available +
+				'}';
+	}
 }

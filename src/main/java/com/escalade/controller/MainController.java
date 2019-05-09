@@ -8,6 +8,8 @@ import com.escalade.domain.dao.service.impl.UtilisateurDao;
 import com.escalade.domain.model.Commentaire;
 import com.escalade.domain.model.Topo;
 import com.escalade.domain.model.Utilisateur;
+import com.escalade.domain.service.TopoService;
+import com.escalade.domain.service.TopoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,10 +40,12 @@ public class MainController {
     @Autowired
     private TopoDao topoDao;
 
+    @Autowired
+    private TopoServiceImpl topoServiceImpl;
+
 
     @RequestMapping(value = "/emp", method = RequestMethod.GET)
-    public String index( Model model)
-    {
+    public String index(Model model) {
 
         //appContext = new ClassPathXmlApplicationContext("spring-data.xml");
         //utilisateurDao = (UtilisateurDao) appContext.getBean("utilisateurDao"); // RECUPERATION DAO !!!
@@ -101,8 +105,7 @@ public class MainController {
         return model;
 
     }*/
-
-    @RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
     public String welcomePage(Model model) {
         model.addAttribute("title", "Welcome");
         model.addAttribute("message", "This is welcome page!");
@@ -115,7 +118,7 @@ public class MainController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginPage(Model model ) {
+    public String loginPage(Model model) {
         return "loginPage";
     }
 
@@ -131,7 +134,7 @@ public class MainController {
         // After user login successfully.
         String userName = principal.getName();
 
-        System.out.println("User Name: "+ userName);
+        System.out.println("User Name: " + userName);
 
         return "userInfoPage";
     }
@@ -151,6 +154,7 @@ public class MainController {
 
     /**
      * Get request to show form comment
+     *
      * @return ModelAndView with view addcmt and commentaire model
      */
     @RequestMapping(value = "/cmt", method = RequestMethod.GET)
@@ -175,6 +179,12 @@ public class MainController {
         model.addAttribute("topos", topos);
         return "galeryTopo";
     }
+
+    /**
+     * Affiche le formulaire d'ajout de Topo
+     *
+     * @return
+     */
     @RequestMapping(value = "/atopo", method = RequestMethod.GET)
     public ModelAndView showFormTopo() {
         System.out.println("topo");
@@ -182,25 +192,32 @@ public class MainController {
     }
 
 
+    /**
+     * Permet d'ajouter un Topo
+     *
+     * @param topo
+     * @return la page en cours
+     */
     @RequestMapping(value = "/addtopo", method = RequestMethod.POST)
     public String saveTopo(@ModelAttribute("atopo") Topo topo) {
         System.out.println("addTopo");
         System.out.println(topo);
-        topoDao.createTopo(topo.getUserName(), topo.getName(), topo.getNbSite(), topo.getNbSector(), topo.isAvailable());
+        topoServiceImpl.createTopo(topo);
         return "addtopo";
     }
 
 
-
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String displayList(Model model) {
-
-        List<Topo> list = topoDao.listTopo();
-
-        System.out.println(list.size());
-
-
-        model.addAttribute("list", list);
-        return "testList";
+    /**
+     * afficher tous les sites d'escalade
+     *
+     * @param model
+     * @return la page sites
+     */
+    @RequestMapping(value = "/sites", method = RequestMethod.GET)
+    public String displaySites(Model model) {
+        List<Topo> topos = topoDao.listTopo();
+        System.out.println(topos.size());
+        model.addAttribute("topos", topos);
+        return "sites";
     }
 }
