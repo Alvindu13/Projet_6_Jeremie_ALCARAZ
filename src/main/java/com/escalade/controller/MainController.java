@@ -1,28 +1,33 @@
 package com.escalade.controller;
 
-import com.escalade.domain.dao.impl.CommentaireDao;
-import com.escalade.domain.dao.impl.UtilisateurDao;
-
 
 import com.escalade.domain.model.Commentaire;
 import com.escalade.domain.model.Topo;
 import com.escalade.domain.model.Utilisateur;
-import com.escalade.domain.service.impl.CommentaireServiceImpl;
-import com.escalade.domain.service.impl.SiteServiceImpl;
-import com.escalade.domain.service.impl.TopoServiceImpl;
-import com.escalade.domain.service.impl.UtilisateurServiceImpl;
+import com.escalade.domain.model.image.Image;
+import com.escalade.domain.service.impl.*;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.CacheControl;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.codec.Base64;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.security.Principal;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.io.InputStream;
 
 @Controller
 public class MainController {
@@ -44,10 +49,14 @@ public class MainController {
     @Autowired
     private SiteServiceImpl siteServiceImpl;
 
+
+    @Autowired
+    private ImageServiceImpl imgServ;
+
     @RequestMapping(value = "/emp", method = RequestMethod.GET)
     public String index(Model model) {
         model.addAttribute("user", utilisateurServiceImpl.getUserbyUserName("Alvindu13"));
-        return "emp";
+        return "autres/emp";
     }
 
 
@@ -110,7 +119,7 @@ public class MainController {
             model.addAttribute("msg",
                     "You do not have permission to access this page!");
         }
-        return "403Page";
+        return "autres/403Page";
     }
 
     /**
@@ -189,5 +198,20 @@ public class MainController {
         System.out.println(siteServiceImpl.listSite().size());
         model.addAttribute("sites", siteServiceImpl.listSite());
         return "site";
+    }
+
+    /**
+     * afficher les noms des images
+     *
+     * @return la page img
+     */
+    @RequestMapping(value = "/img", method = RequestMethod.GET)
+    public String imgTest(Model model) {
+        Image image = imgServ.getImageById(6);//obtain Image instance by id somehow from DAO/Hibernate
+        byte[] encoded = Base64.encode(image.getImage());
+        String encodedString = new String(encoded);
+        model.addAttribute("image", encodedString);
+
+        return "img";
     }
 }
