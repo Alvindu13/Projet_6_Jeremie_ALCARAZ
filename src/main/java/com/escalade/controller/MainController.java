@@ -26,6 +26,7 @@ import java.io.*;
 import java.security.Principal;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.io.InputStream;
 
@@ -207,11 +208,9 @@ public class MainController {
      */
     @RequestMapping(value = "/img", method = RequestMethod.GET)
     public String imgTest(Model model) {
-        Image image = imgServ.getImageById(6);//obtain Image instance by id somehow from DAO/Hibernate
-        byte[] encoded = Base64.encode(image.getImage());
-        String encodedString = new String(encoded);
-        model.addAttribute("image", encodedString);
+        //Image image = imgServ.getImageById(6);//obtain Image instance by id somehow from DAO/Hibernate
 
+        model.addAttribute("images", imgServ.getAllImage());
         return "img";
     }
 }
