@@ -198,6 +198,7 @@ public class MainController {
     public String displaySites(Model model) {
         System.out.println(siteServiceImpl.listSite().size());
         model.addAttribute("sites", siteServiceImpl.listSite());
+        model.addAttribute("images", imgServ.getAllImage());
         return "site";
     }
 

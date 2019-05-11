@@ -22,34 +22,43 @@
     </div>-->
 
         <div class = "row">
-                    <c:set var="i" value="1" />
-                    <c:forEach items="${sites}" var="s">
-                        <div class="col-xs-4">
-                            <ul>
-                                <li class="resultats-listeStations even first">
-                                    <div class="localisationStationListe">
-                                        <h3 class="nomStationListe"><a ref="#" href="site-escalade-ablon">${s.name}</a></h3>
-                                        <div class="massifListe">${s.location}</div>
-                                        <!--<div class="massifListe">Haute-Savoie</div>-->
+                <c:set var="i" value="1" />
+                <c:forEach items="${sites}" var="s">
+                    <div class="col-xs-4">
+                        <ul>
+                            <li class="resultats-listeStations even first">
+                                <div class="localisationStationListe">
+                                    <h3 class="nomStationListe">
+                                        <a ref="#" href="site-escalade-ablon">
+                                                <c:out value="${s.name}"/>
+                                    </h3>
+                                    <div class="massifListe">
+                                        <c:out value="${s.location}"/>
                                     </div>
+                                        <!--<div class="massifListe">Haute-Savoie</div>-->
+                                </div>
+
+                                <c:forEach items="${images}" var = "img" begin="${i}" end="${i}">
                                     <div class="thumbs-stations">
                                         <a ref="#" href="site-escalade-ablon">
-                                            <img src="media/guide_falaises/sites/marc_daviet_ablon__crop_315x200.jpg" alt="marc daviet ablon" title="marc daviet ablon" width="315" height="200"/>
+                                            <img src="data:image/jpeg;base64,${img.imgDataS}" alt="marc daviet ablon" title="marc daviet ablon" width="315" height="200"/>
                                         </a>
                                     </div>
-                                    <div class="results-right">
-                                        <div class="infosStations">
-                                            <span class="value"><span>80 m</span> de hauteur</span>
-                                            <span><span class="value">Orientation <span>Sud-Est</span></span></span>
-                                            <span class="value"><span>400 voies</span> de <span>4b</span> à <span>8b</span> </span>
-                                        </div>
-                                        <!-- <div class="btn-compListeStations"><a href="#" class="multiPageViewerAddToCartButton" data-mpv-id="falaises">Je compare</a></div>-->
+                                </c:forEach>
+
+                                <div class="results-right">
+                                    <div class="infosStations">
+                                        <span class="value"><span>80 m</span> de hauteur</span>
+                                        <span><span class="value">Orientation <span>Sud-Est</span></span></span>
+                                        <span class="value"><span>400 voies</span> de <span>4b</span> à <span>8b</span> </span>
                                     </div>
-                                </li>
-                            </ul>
-                        </div>
-                    <c:set var="i" value="${i+1}" />
-                    </c:forEach>
+                                        <!-- <div class="btn-compListeStations"><a href="#" class="multiPageViewerAddToCartButton" data-mpv-id="falaises">Je compare</a></div>-->
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                <c:set var="i" value="${i+1}" />
+                </c:forEach>
             </section>
         </div>
 
