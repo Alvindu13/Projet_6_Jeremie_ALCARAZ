@@ -6,7 +6,9 @@ import com.escalade.domain.service.contract.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.codec.Base64;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,8 +19,9 @@ public class ImageServiceImpl implements ImageService {
     @Autowired
     private ImageDao dao;
 
-    public void saveImage() {
-
+    public void saveImage(MultipartFile img) throws IOException {
+        byte[] imgBytes = img.getBytes();
+        dao.saveImage(img.getName(), imgBytes);
     }
 
     public Image getImageByName(String name) {

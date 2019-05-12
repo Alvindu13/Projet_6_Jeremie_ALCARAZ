@@ -11,12 +11,10 @@ import org.springframework.jdbc.support.lob.DefaultLobHandler;
 import org.springframework.jdbc.support.lob.LobHandler;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.sql.DataSource;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.io.*;
 import java.sql.Types;
 import java.util.List;
 import java.util.Vector;
@@ -33,9 +31,9 @@ public class ImageDao extends JdbcDaoSupport implements IImageDao {
     }
 
 
-    public void saveImage(String name, byte[] content) {
+    public void saveImage(String name, byte[] imgBytes) {
         String SQL = "INSERT INTO image (nom, content) VALUES (?, ?)";
-        this.getJdbcTemplate().update(SQL, name, content);
+        this.getJdbcTemplate().update(SQL, name, imgBytes);
         return;
     }
 

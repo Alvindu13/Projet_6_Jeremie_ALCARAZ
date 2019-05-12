@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
@@ -201,16 +202,35 @@ public class MainController {
 
 
 
-    @RequestMapping(value = "/addsite", method = RequestMethod.POST)
+    /*@RequestMapping(value = "/addsite", method = RequestMethod.POST)
     public String submit(@ModelAttribute("site") Site site) {
         System.out.println(site);
         siteServiceImpl.createSite(site);
         System.out.println(site.getComment());
         System.out.println(site.getLocation());
         System.out.println(site.getName());
-
-
         return "addsite";
+    }*/
+
+
+    @RequestMapping(value = "/addsite", method = RequestMethod.POST)
+    public ModelAndView submit(@ModelAttribute("site") Site site, @RequestParam("photo") MultipartFile photo) {
+        System.out.println(site);
+
+        siteServiceImpl.createSite(site);
+
+        System.out.println(site.getComment());
+        System.out.println(site.getLocation());
+        System.out.println(site.getName());
+
+        try {
+            imgServ.saveImage(photo);
+
+            return new ModelAndView("addsite", "msg", "Records succesfully inserted into database.");
+
+        } catch (Exception e) {
+            return new ModelAndView("addsite", "msg", "Error: " + e.getMessage());
+        }
 
 
     }

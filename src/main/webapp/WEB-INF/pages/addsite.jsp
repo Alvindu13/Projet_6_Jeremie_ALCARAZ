@@ -26,7 +26,7 @@
 <div class = "container-fluid">
     <div class = "row">
         <div class = "col-lg-5 align-self-center">
-                <form class="login-form" name ="f" action="addsite" method='POST' modelAttribute="site">
+                <form class="login-form" name ="f" action="addsite" method='POST' modelAttribute="site" enctype="multipart/form-data">
                     <h3>Créer Site : </h3>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Le nom de votre Site : </label>
@@ -43,7 +43,7 @@
                     </div>
 
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="hFichier" name="hFichier" lang="fr" accept=".jpg,.jpeg,.gif,.png" />
+                        <input type="file" class="custom-file-input" id="hFichier" name="photo" lang="fr" accept=".jpg,.jpeg,.gif,.png" />
                         <label class="custom-file-label" for="hFichier">Sélectionner un fichier</label>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
