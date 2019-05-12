@@ -9,17 +9,47 @@
         <spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
 
         <link href="${bootstrap}" rel="stylesheet" />
+
+
+        <style type="text/css">
+            body { background-color: #1c7430  ; }
+            [class*="col"] { margin-bottom: 20px; }
+            img { width: 100%; }
+            .well {
+                background-color:#CCC;
+                padding: 20px;
+            }
+
+            #ok{
+                background: #b8daff;
+                padding-top: 20px;
+                padding-bottom: 15px;
+            }
+
+            #try{
+                display: block;
+                margin: auto;
+            }
+
+            .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+                background-color: #8064A2 !important;
+            }
+
+
+
+        </style>
+
+
     </head>
 
     <body>
     <jsp:include page="_menu.jsp" />
 
-   <!-- <div class="container">
-        <header class="page-header">
-            <h1>Tous les sites d'escalade</h1>
-            <div id = "search"></div>
-        </header>
-    </div>-->
+        <div id = "ok" class = "row">
+            <div id = "try" class="col-ls-8">
+                <a class="btn btn-primary" href="${pageContext.request.contextPath}/formsite" role="button">Ajouter votre Site</a>
+            </div>
+        </div>
 
         <div class = "row">
                 <c:set var="i" value="1" />
@@ -40,9 +70,7 @@
 
                                 <c:forEach items="${images}" var = "img" begin="${i}" end="${i}">
                                     <div class="thumbs-stations">
-                                        <a ref="#" href="site-escalade-ablon">
-                                            <img src="data:image/jpeg;base64,${img.imgDataS}" alt="marc daviet ablon" title="marc daviet ablon" width="315" height="200"/>
-                                        </a>
+                                            <img src="data:image/jpeg;base64,${img.imgDataS}" alt="marc daviet ablon" title="marc daviet ablon" width="315" height="200"/></a>
                                     </div>
                                 </c:forEach>
 

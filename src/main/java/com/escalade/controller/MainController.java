@@ -2,27 +2,20 @@ package com.escalade.controller;
 
 
 import com.escalade.domain.model.Commentaire;
+import com.escalade.domain.model.Site;
 import com.escalade.domain.model.Topo;
 import com.escalade.domain.model.Utilisateur;
 import com.escalade.domain.model.image.Image;
 import com.escalade.domain.service.impl.*;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.CacheControl;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.codec.Base64;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.*;
 import java.security.Principal;
 import java.text.DateFormat;
 import java.util.Date;
@@ -130,7 +123,6 @@ public class MainController {
      */
     @RequestMapping(value = "/cmt", method = RequestMethod.GET)
     public ModelAndView showFormComment() {
-        System.out.println("cmt");
         return new ModelAndView("addcmt", "commentaire", new Commentaire());
     }
 
@@ -141,11 +133,7 @@ public class MainController {
      */
     @RequestMapping(value = "/addcmt", method = RequestMethod.POST)
     public String postComment(@ModelAttribute("Commentaire") Commentaire commentaire) {
-        System.out.println("addcmt");
-        System.out.println(commentaire);
-
         commentaireService.saveCommentaire(commentaire);
-        //commentaireDao.saveCommentaire(1, commentaire.getContent(), commentaire.getUserName());
         return "addcmt";
     }
 
@@ -170,7 +158,6 @@ public class MainController {
      */
     @RequestMapping(value = "/atopo", method = RequestMethod.GET)
     public ModelAndView showFormTopo() {
-        System.out.println("topo");
         return new ModelAndView("addtopo", "atopo", new Topo());
     }
 
@@ -203,15 +190,30 @@ public class MainController {
     }
 
     /**
-     * afficher les noms des images
+     * Affiche le formulaire d'ajout de site
      *
-     * @return la page img
+     * @return
      */
-    @RequestMapping(value = "/img", method = RequestMethod.GET)
-    public String imgTest(Model model) {
-        //Image image = imgServ.getImageById(6);//obtain Image instance by id somehow from DAO/Hibernate
-
-        model.addAttribute("images", imgServ.getAllImage());
-        return "img";
+    @RequestMapping(value = "/formsite", method = RequestMethod.GET)
+    public ModelAndView showFormSite() {
+        return new ModelAndView("addsite", "formsite", new Site());
     }
+
+
+
+    @RequestMapping(value = "/addsite", method = RequestMethod.POST)
+    public String submit(@ModelAttribute("site") Site site) {
+        System.out.println(site);
+        siteServiceImpl.createSite(site);
+        System.out.println(site.getComment());
+        System.out.println(site.getLocation());
+        System.out.println(site.getName());
+
+
+        return "addsite";
+
+
+    }
+
+
 }

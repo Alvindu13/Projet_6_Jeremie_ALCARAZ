@@ -23,8 +23,10 @@ public class SiteDao extends JdbcDaoSupport implements ISiteDao {
     }
 
 
-    public void createSite(String name, String location, String comment) {
-
+    public void createSite(String name, int topo_id, String location, String comment) {
+        String SQL = "insert into Site (comment, topo_id, name, location ) values (?, ?, ?, ?)";
+        this.getJdbcTemplate().update( SQL, comment, 2, name, location);
+        return;
     }
 
     public Site getSite(String name) {

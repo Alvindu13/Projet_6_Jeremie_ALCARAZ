@@ -27,7 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 public class UploadController {
 
-    private static String UPLOAD_LOCATION="/Users/jeremie/Documents/Projets/Projet_OP/Projet_6/Projet_en_cours/Code/P6_V2/src/main/resources/";
+    private static String UPLOAD_LOCATION="/Users/jeremie/Documents/Projets/Projet_OP/Projet_6/Projet_en_cours/Code/P6_V2/src/main/webapp/resources/img/";
 
     @Autowired
     FileValidator fileValidator;

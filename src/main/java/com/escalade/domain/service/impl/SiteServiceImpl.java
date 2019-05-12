@@ -15,8 +15,8 @@ public class SiteServiceImpl implements SiteService {
     @Autowired
     private SiteDao dao;
 
-    public void createSite(String name, String location, String comment) {
-
+    public void createSite(Site s) {
+        dao.createSite(s.getName(), s.getTopo_id(),s.getLocation(), s.getComment());
     }
 
     public Site getSite(String name) {
