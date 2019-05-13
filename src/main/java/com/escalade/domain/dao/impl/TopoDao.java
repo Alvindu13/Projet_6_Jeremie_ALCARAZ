@@ -30,10 +30,16 @@ public class TopoDao extends JdbcDaoSupport implements ITopoDao {
         return;
     }
 
-    public Topo getTopo(String name) {
+    public Topo getTopoByName(String name) {
         String SQL = "select * from Topo where name = ?";
         Topo topo = this.getJdbcTemplate().queryForObject(SQL, new Object[]{name}, new TopoMapper());
         return topo;
+    }
+
+    public Topo getTopoById(int topo_id) {
+        String SQL = "select * from Topo where topo_id = ?";
+        Topo t = this.getJdbcTemplate().queryForObject(SQL, new Object[]{topo_id}, new TopoMapper());
+        return t;
     }
 
 

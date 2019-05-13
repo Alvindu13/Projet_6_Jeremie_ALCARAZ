@@ -50,15 +50,23 @@
                         <label class="custom-file-label" for="hFichier">Sélectionner un fichier</label>
                     </div>
 
+
+
+
                     <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Topo lié à ce site : </label>
                     <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" required="true">
-                        <option selected>Choose...</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <option selected>Choose...</option>
+                        <c:set var="i" value="1" />
+                        <c:forEach items="${topos}" var="t">
+                            <option value="i">${t.name}</option>
+                            <c:set var="i" value="${i+1}" />
+                        </c:forEach>
                     </select>
 
+                    <p>Le Topo n'existe pas encore ? Alors vous pouvez le créer ici : <a href="${pageContext.request.contextPath}/atopo">Créer topo</a> <br />
+
                     <button type="submit" class="btn btn-primary">Submit</button>
+
                 </form>
         </div>
     </div>

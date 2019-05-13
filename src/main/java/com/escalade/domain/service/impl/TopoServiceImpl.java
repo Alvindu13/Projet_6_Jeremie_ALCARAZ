@@ -12,20 +12,24 @@ import java.util.List;
 public class TopoServiceImpl implements TopoService {
 
     @Autowired
-    private TopoDao topoDao;
+    private TopoDao dao;
 
     public void createTopo(Topo t) {
-        topoDao.createTopo(t.getUserName(), t.getName(), t.getNbSite(), t.getNbSector(), t.isAvailable());
+        dao.createTopo(t.getUserName(), t.getName(), t.getNbSite(), t.getNbSector(), t.isAvailable());
     }
 
-
-    public Topo getTopo(String name) {
+    public Topo getTopoByName(String name) {
         return null;
+    }
+
+    public Topo getTopoById(int topo_id) {
+        Topo topo = dao.getTopoById(topo_id);
+        return topo;
     }
 
     public List<Topo> listTopo() {
 
-        List<Topo> topos = topoDao.listTopo();
+        List<Topo> topos = dao.listTopo();
 
         return topos;
     }
