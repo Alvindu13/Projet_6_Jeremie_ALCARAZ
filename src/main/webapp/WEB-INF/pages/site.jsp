@@ -35,6 +35,13 @@
                 background-color: #8064A2 !important;
             }
 
+            #conteneur
+            {
+                display: flex;
+                justify-content: center;
+            }
+
+
 
 
         </style>
@@ -45,16 +52,18 @@
     <body>
     <jsp:include page="_menu.jsp" />
 
-        <div id = "ok" class = "row">
-            <div id = "try" class="col-ls-8">
-                <a class="btn btn-primary" href="${pageContext.request.contextPath}/formsite" role="button">Ajouter votre Site</a>
-            </div>
+    <div id = "ok" class = "row">
+        <div id = "try" class="col-ls-8">
+            <a class="btn btn-primary" href="${pageContext.request.contextPath}/formsite" role="button">Ajouter votre Site</a>
         </div>
+    </div>
+
+    <div id = "conteneur" class = "container-fluid">
 
         <div class = "row">
                 <c:set var="i" value="1" />
                 <c:forEach items="${sites}" var="s">
-                    <div class="col-xs-4">
+                    <div class="col-lg-4 col-md-6 col-sm-6 align-self-center">
                         <ul>
                             <li class="resultats-listeStations even first">
                                 <div class="localisationStationListe">
@@ -65,6 +74,7 @@
                                     <div class="massifListe">
                                         <c:out value="${s.location}"/>
                                     </div>
+
                                         <!--<div class="massifListe">Haute-Savoie</div>-->
                                 </div>
 
@@ -82,6 +92,9 @@
                                     </div>
                                         <!-- <div class="btn-compListeStations"><a href="#" class="multiPageViewerAddToCartButton" data-mpv-id="falaises">Je compare</a></div>-->
                                 </div>
+                                <p>
+                                    <strong>Description du site :</strong>  <c:out value="${s.comment}"/>
+                                </p>
                             </li>
                         </ul>
                     </div>
@@ -89,6 +102,7 @@
                 </c:forEach>
             </section>
         </div>
+    </div>
 
     </body>
 </html>
