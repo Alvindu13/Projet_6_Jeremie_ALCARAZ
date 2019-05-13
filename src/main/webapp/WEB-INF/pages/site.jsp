@@ -63,7 +63,7 @@
         <div class = "row">
                 <c:set var="i" value="1" />
                 <c:forEach items="${sites}" var="s">
-                    <div class="col-lg-4 col-md-6 col-sm-6 align-self-center">
+                    <div class="col-lg-5 col-lg-offset-2 col-md-6 col-sm-6 align-self-center">
                         <ul>
                             <li class="resultats-listeStations even first">
                                 <div class="localisationStationListe">

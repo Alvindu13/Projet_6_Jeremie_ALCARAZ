@@ -14,7 +14,8 @@
 
     <style type="text/css">
         [class*="col"] { padding-bottom: 20px; }
-
+        h4{
+        }
     </style>
 
 </head>
@@ -30,22 +31,33 @@
                     <h3>Créer Site : </h3>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Le nom de votre Site : </label>
-                        <input type='text' placeholder='Nom du Site' name='name' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                        <input type='text' placeholder='Nom du Site' name='name' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required="true"/>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">La ville où se trouve votre site : </label>
-                        <input type='text' placeholder='Ville où se trouve le Site' name='location' class="form-control" id="exampleInputPassword1">
+                        <input type='text' placeholder='Ville où se trouve le Site' name='location' class="form-control" id="exampleInputPassword1" required="true"/>
                     </div>
 
                     <div class="form-group">
                         <label for="comment">Description:</label>
-                        <textarea class="form-control" rows="5" id="comment" placeholder='Description du site' name='comment' ></textarea>
+                        <textarea class="form-control" rows="5" id="comment" placeholder='Description du site' name='comment' required='true' ></textarea>
                     </div>
 
+
+                    <h4>Veuillez choisir une image de présentation (dimension de 200x300px) :</h4>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="hFichier" name="photo" lang="fr" accept=".jpg,.jpeg,.gif,.png" />
+                        <input type="file" class="custom-file-input" id="hFichier" name="photo" lang="fr" accept=".jpg,.jpeg,.gif,.png" required="true" />
                         <label class="custom-file-label" for="hFichier">Sélectionner un fichier</label>
                     </div>
+
+                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Topo lié à ce site : </label>
+                    <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" required="true">
+                        <option selected>Choose...</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
         </div>
