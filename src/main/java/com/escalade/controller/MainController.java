@@ -183,44 +183,18 @@ public class MainController {
      * @param model
      * @return la page sites
      */
-   /* @RequestMapping(value = "/site", method = RequestMethod.GET)
+   @RequestMapping(value = "/site", method = RequestMethod.GET)
     public String displaySites(Model model) {
         model.addAttribute("sites", siteServiceImpl.listSite());
         model.addAttribute("images", imgServ.getAllImage());
         return "site";
-    }*/
+    }
 
     /**
      * Affiche le formulaire d'ajout de site
      *
      * @return
      */
-    /*@RequestMapping(value = "/formsite", method = RequestMethod.GET)
-    public ModelAndView showFormSite(Model model) {
-        return new ModelAndView("addsite", "formsite", new Site());
-    }
-
-
-
-    @RequestMapping(value = "/addsite", method = RequestMethod.POST)
-    public ModelAndView submit(@ModelAttribute("site") Site site, @ModelAttribute("topo") Topo topo, @RequestParam("photo") MultipartFile photo, Model model) {
-
-        siteServiceImpl.createSite(site);
-
-        try {
-            imgServ.saveImage(photo);
-
-            return new ModelAndView("addsite", "msg", "Records succesfully inserted into database.");
-
-        } catch (Exception e) {
-            return new ModelAndView("addsite", "msg", "Error: " + e.getMessage());
-        }
-
-
-    }*/
-
-
-
     @RequestMapping(value = "/addsite", method = RequestMethod.GET)
     public String submit(Model model) {
         model.addAttribute("topos", topoServiceImpl.listTopo());
@@ -231,7 +205,8 @@ public class MainController {
 
 
     @RequestMapping(value = "/addsite", method = RequestMethod.POST)
-    public ModelAndView submit(@ModelAttribute("site") Site site, @RequestParam("photo") MultipartFile photo, Model model) {
+    public ModelAndView submit(@ModelAttribute("site") Site site, @ModelAttribute("topo") Topo topo, @RequestParam("photo") MultipartFile photo) {
+
 
         siteServiceImpl.createSite(site);
 

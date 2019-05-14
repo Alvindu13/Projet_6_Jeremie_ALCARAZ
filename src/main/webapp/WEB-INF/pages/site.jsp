@@ -54,7 +54,7 @@
 
     <div id = "ok" class = "row">
         <div id = "try" class="col-ls-8">
-            <a class="btn btn-primary" href="${pageContext.request.contextPath}/formsite" role="button">Ajouter votre Site</a>
+            <a class="btn btn-primary" href="${pageContext.request.contextPath}/addsite" role="button">Ajouter votre Site</a>
         </div>
     </div>
 
