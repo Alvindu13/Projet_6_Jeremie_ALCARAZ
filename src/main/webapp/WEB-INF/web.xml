@@ -19,6 +19,10 @@
             WEB-INF/spring/jdbc/spring-data.xml,
         </param-value>
     </context-param>
+    <context-param>
+        <param-name>webAppRootKey</param-name>
+        <param-value>Project6</param-value>
+    </context-param>
 
 
     <!-- Spring MVC -->

@@ -90,7 +90,7 @@
                                         <span><span class="value">Orientation <span>Sud-Est</span></span></span>
                                         <span class="value"><span>400 voies</span> de <span>4b</span> à <span>8b</span> </span>
                                     </div>
-                                        <!-- <div class="btn-compListeStations"><a href="#" class="multiPageViewerAddToCartButton" data-mpv-id="falaises">Je compare</a></div>-->
+                                        <!-- <div class="btn-compListeStations"><a href="#" class="multiPageViewerAddToCartButton" dataOLD-mpv-id="falaises">Je compare</a></div>-->
                                 </div>
                                 <p>
                                     <strong>Description du site :</strong>  <c:out value="${s.comment}"/>

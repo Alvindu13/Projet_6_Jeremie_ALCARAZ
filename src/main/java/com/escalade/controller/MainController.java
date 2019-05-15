@@ -1,29 +1,22 @@
 package com.escalade.controller;
 
 
-import com.escalade.domain.model.Commentaire;
-import com.escalade.domain.model.Site;
-import com.escalade.domain.model.Topo;
-import com.escalade.domain.model.Utilisateur;
-import com.escalade.domain.model.image.Image;
-import com.escalade.domain.service.impl.*;
-import org.apache.commons.io.IOUtils;
+import com.escalade.data.model.Commentaire;
+import com.escalade.data.model.Site;
+import com.escalade.data.model.Topo;
+import com.escalade.data.model.Utilisateur;
+import com.escalade.svc.implementation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.io.IOException;
 import java.security.Principal;
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
-import java.io.InputStream;
 
 @Controller
 public class MainController {
@@ -56,11 +49,6 @@ public class MainController {
     }
 
 
-    @RequestMapping("/test")
-    public String test() {
-
-        return "test";
-    }
 
     @RequestMapping("/hello")
     public String home(Locale locale, Model model) {
@@ -205,21 +193,17 @@ public class MainController {
 
 
     @RequestMapping(value = "/addsite", method = RequestMethod.POST)
-    public ModelAndView submit(@ModelAttribute("site") Site site, @ModelAttribute("topo") Topo topo, @RequestParam("photo") MultipartFile photo) {
-
+    public ModelAndView submit(@ModelAttribute("site") Site site, @RequestParam("photo") MultipartFile photo) {
 
         siteServiceImpl.createSite(site);
 
         try {
             imgServ.saveImage(photo);
-
-            return new ModelAndView("addsite", "msg", "Records succesfully inserted into database.");
+            return new ModelAndView("site", "msg", "Records succesfully inserted into database.");
 
         } catch (Exception e) {
-            return new ModelAndView("addsite", "msg", "Error: " + e.getMessage());
+            return new ModelAndView("site", "msg", "Error: " + e.getMessage());
         }
-
-
     }
 
 
