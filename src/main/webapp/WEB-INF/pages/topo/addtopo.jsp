@@ -21,39 +21,7 @@
 
 </head>
 <body>
-<jsp:include page="_menu.jsp" />
-
-
-    <!--<form name='f' action="addtopo" method='POST' modelAttribute="topo">
-        <table>
-
-
-            <tr>
-                <td>Propriétaire:</td>
-                <td><input type='text' name='userName' value=''></td>
-            </tr>
-            <tr>
-                <td>Nom du TOPO:</td>
-                <td><input type='text' name='name' value=''></td>
-            </tr>
-
-            <tr>
-                <td>Nombre de Site(s):</td>
-                <td><input type='text' name='nbSite' value=''></td>
-            </tr>
-
-            <tr>
-                <td>Nombre de Secteur(s):</td>
-                <td><input type='text' name='nbSecteur' value=''></td>
-            </tr>
-
-            <tr>
-                   <td><input name="submit" type="submit" value="submit" /></td>
-            </tr>
-        </table>
-    </form>-->
-
-
+<jsp:include page="../_menu.jsp" />
 
     <div class="login-page">
         <div class="form">

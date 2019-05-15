@@ -59,52 +59,6 @@ public class MainController {
         return "test/home";
     }
 
-    @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
-    public String welcomePage(Model model) {
-        model.addAttribute("title", "Welcome");
-        model.addAttribute("message", "This is welcome page!");
-        return "welcomePage";
-    }
-
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public String adminPage(Model model) {
-        return "adminPage";
-    }
-
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginPage(Model model) {
-        return "loginPage";
-    }
-
-    @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
-    public String logoutSuccessfulPage(Model model) {
-        model.addAttribute("title", "Logout");
-        return "logoutSuccessfulPage";
-    }
-
-    @RequestMapping(value = "/userInfo", method = RequestMethod.GET)
-    public String userInfo(Model model, Principal principal) {
-
-        // After user login successfully.
-        String userName = principal.getName();
-
-        System.out.println("User Name: " + userName);
-
-        return "userInfoPage";
-    }
-
-    @RequestMapping(value = "/403", method = RequestMethod.GET)
-    public String accessDenied(Model model, Principal principal) {
-
-        if (principal != null) {
-            model.addAttribute("message", "Hi " + principal.getName()
-                    + "<br> You do not have permission to access this page!");
-        } else {
-            model.addAttribute("msg",
-                    "You do not have permission to access this page!");
-        }
-        return "autres/403Page";
-    }
 
     /**
      * Get request to show form comment
@@ -127,42 +81,7 @@ public class MainController {
         return "addcmt";
     }
 
-    /**
-     * Affiche la page des topos
-     * @param model
-     * @return
-     */
-    @RequestMapping(value = "/topo", method = RequestMethod.GET)
-    public String displayTopo(Model model) {
-        //List<Topo> topos = topoDao.listTopo();
-        //System.out.println(topos.size());
-        //model.addAttribute("topos", topos);
-        model.addAttribute("topos", topoServiceImpl.listTopo());
-        return "galeryTopo";
-    }
 
-    /**
-     * Affiche le formulaire d'ajout de Topo
-     *
-     * @return
-     */
-    @RequestMapping(value = "/atopo", method = RequestMethod.GET)
-    public ModelAndView showFormTopo() {
-        return new ModelAndView("addtopo", "atopo", new Topo());
-    }
-
-
-    /**
-     * Permet d'ajouter un Topo
-     *
-     * @param topo
-     * @return la page en cours
-     */
-    @RequestMapping(value = "/addtopo", method = RequestMethod.POST)
-    public String saveTopo(@ModelAttribute("atopo") Topo topo) {
-        topoServiceImpl.createTopo(topo);
-        return "addtopo";
-    }
 
 
     /**

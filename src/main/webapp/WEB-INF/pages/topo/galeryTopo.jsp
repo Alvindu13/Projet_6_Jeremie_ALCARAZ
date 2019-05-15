@@ -29,7 +29,7 @@
 </head>
 
 <body>
-<jsp:include page="_menu.jsp" />
+<jsp:include page="../_menu.jsp" />
 <section id = "test" class="row">
     <div class="col-xs-12 col-sm-12 col-md-12"><img src="resources/img/topo/aside.jpg" alt="AsideEscalade"></div>
 </section>

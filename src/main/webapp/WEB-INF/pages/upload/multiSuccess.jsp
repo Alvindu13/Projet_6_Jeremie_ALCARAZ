@@ -4,13 +4,16 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>File Upload Success</title>
-    <link href="<c:url value='/resources/css/bootstrap.min.css' />"  rel="stylesheet" type="text/css"></link>
+    <link href="<c:url value='/resources/css/bootstrap.min.css' />" rel="stylesheet" type="text/css"></link>
     <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 </head>
 <body>
 <div class="success">
-    File  <strong>${fileName}</strong> uploaded successfully.
-    <br/><br/>
+    <c:forEach var="fileName" items="${fileNames}">
+        File  <strong>${fileName}</strong> uploaded successfully<br/>
+    </c:forEach>
+    <br/>
     <a href="<c:url value='/welcome' />">Home</a>
 </div>
 </body>
+</html>

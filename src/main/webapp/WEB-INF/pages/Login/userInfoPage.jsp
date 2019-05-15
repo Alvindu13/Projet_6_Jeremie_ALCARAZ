@@ -6,7 +6,7 @@
     <title>User Info</title>
 </head>
 <body>
-<jsp:include page="_menu.jsp" />
+<jsp:include page="../_menu.jsp" />
 
 <h2>User Info Page</h2>
 
