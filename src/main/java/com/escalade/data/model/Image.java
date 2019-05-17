@@ -13,20 +13,19 @@ public class Image {
     @Column(name = "IMAGE_ID")
     private int imageId;
 
-    @Column(name = "NAME")
+    @Column(name = "NOM")
     private String name;
 
     @Column(name = "CONTENT")
     private byte[] imgDataB;
 
-    private String imgDataS;
+    //private String imgDataS;
 
     public Image() {super(); }
 
-    public Image(String name, byte[] imgDataB, String imgDataS) {
+    public Image(String name, byte[] imgDataB) {
         this.name = name;
         this.imgDataB = imgDataB;
-        this.imgDataS = imgDataS;
     }
 
     public String getName() {
@@ -45,7 +44,7 @@ public class Image {
         this.imgDataB = imgDataB;
     }
 
-    public String getImgDataS() {
+    /*public String getImgDataS() {
         byte[] encoded = Base64.encode(this.getImgDataB());
         imgDataS = new String(encoded);
         return imgDataS;
@@ -53,5 +52,5 @@ public class Image {
 
     public void setImgDataS(String imgDataS) {
         this.imgDataS = imgDataS;
-    }
+    }*/
 }

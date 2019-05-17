@@ -8,10 +8,10 @@ import java.util.List;
 
 public interface ImageService {
 
-    public void saveImage(MultipartFile img) throws IOException;
+    public void saveImage(Image img) throws IOException;
     public Image getImageByName(String name);
     public Image getImageById(int id);
-    public List<Image> getAllImage();
+    public Iterable<Image> getAllImage();
     //public List<String> getAllImgData();
 
 

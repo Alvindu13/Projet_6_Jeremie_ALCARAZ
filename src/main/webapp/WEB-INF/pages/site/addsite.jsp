@@ -20,7 +20,7 @@
 
 </head>
 <body>
-<jsp:include page="_menu.jsp" />
+<jsp:include page="../_menu.jsp" />
 
 
 
@@ -46,10 +46,9 @@
 
                     <h4>Veuillez choisir une image de présentation (dimension de 200x300px) :</h4>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="hFichier" name="photo" lang="fr" accept=".jpg,.jpeg,.gif,.png" required="true" />
+                        <input type="file" class="custom-file-input" id="hFichier" name="image" lang="fr" accept=".jpg,.jpeg,.gif,.png" required="true" />
                         <label class="custom-file-label" for="hFichier">Sélectionner un fichier</label>
                     </div>
-
 
 
 

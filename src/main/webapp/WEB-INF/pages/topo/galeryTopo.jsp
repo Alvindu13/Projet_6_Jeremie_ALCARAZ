@@ -57,10 +57,11 @@
                 <thead>
                 <tr>
                     <th>Nom</th>
-                    <th>Nombre de Site</th>
-                    <th>Nombre de Secteurs</th>
                     <th>Propriétaire</th>
-                    <!-- <th>Disponibilité</th>-->
+                    <!--<th>Nombre de Site</th>
+                   <th>Nombre de Secteurs</th>
+
+                   <th>Disponibilité</th>-->
 
                 </tr>
                 </thead>
@@ -68,9 +69,9 @@
                     <c:set var="i" value="1" />
                     <c:forEach items="${topos}" var="t">
                         <tr>
-                            <td><a class="nav-link" href="${pageContext.request.contextPath}/userInfo">${t.name}</td>
-                            <td>${t.nbSite}</td>
-                            <td>${t.nbSector}</td>
+                            <td><a class="nav-link" href="${pageContext.request.contextPath}/sites?topoId=${t.topoId}">${t.name}</td>
+                            <!--<td>{t.nbSite}</td>
+                            <td>{t.nbSector}</td>-->
                             <td>${t.userName}</td>
                             <!--<td>{t.available}</td>-->
 

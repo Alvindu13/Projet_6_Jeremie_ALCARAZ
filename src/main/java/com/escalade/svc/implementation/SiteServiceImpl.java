@@ -2,13 +2,14 @@ package com.escalade.svc.implementation;
 
 import com.escalade.data.repository.SiteRepository;
 import com.escalade.data.model.Site;
+import com.escalade.svc.contracts.SiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service("siteService")
-public class SiteServiceImpl {
+public class SiteServiceImpl implements SiteService {
 
 
     @Autowired
@@ -28,8 +29,13 @@ public class SiteServiceImpl {
         return site;
     }
 
-    public List<Site> listStiteByTopoId(int topoId){
+    public List<Site> listSiteByTopoId(int topoId){
+        return repo.findAllByTopoId(topoId);
 
-        return null;
+    }
+
+    public Site getSiteBySiteId(int siteId){
+        return repo.findOne(siteId);
+
     }
 }
