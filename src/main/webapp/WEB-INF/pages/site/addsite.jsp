@@ -25,6 +25,7 @@
 
 
 <div class = "container-fluid">
+    <h1>Vous allez ajouter un site dans la topo suivante : ${topo.name}</h1>
     <div class = "row">
         <div class = "col-lg-5 align-self-center">
                 <form class="login-form" name ="f" action="addsite" method='POST' modelAttribute="site" enctype="multipart/form-data">
@@ -44,23 +45,18 @@
                     </div>
 
 
-                    <h4>Veuillez choisir une image de présentation (dimension de 200x300px) :</h4>
+                    <!--<h4>Veuillez choisir une image de présentation (dimension de 200x300px) :</h4>
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="hFichier" name="image" lang="fr" accept=".jpg,.jpeg,.gif,.png" required="true" />
                         <label class="custom-file-label" for="hFichier">Sélectionner un fichier</label>
+                    </div>-->
+
+
+
+                    <div class="form-group">
+                        <label for="comment">Topo:</label>
+                        <p>${site.topoId}</p>
                     </div>
-
-
-
-                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Topo lié à ce site : </label>
-                    <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" required="true">
-                    <option selected>Choose...</option>
-                            <c:set var="i" value="1" />
-                            <c:forEach items="${topos}" var="t">
-                            <option value="i">${t.name}</option>
-                            <c:set var="i" value="${i+1}" />
-                            </c:forEach>
-                    </select>
 
                     <p>Le Topo n'existe pas encore ? Alors vous pouvez le créer ici : <a href="${pageContext.request.contextPath}/atopo">Créer topo</a> <br />
 

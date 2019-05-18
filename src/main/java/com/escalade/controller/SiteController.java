@@ -2,6 +2,7 @@ package com.escalade.controller;
 
 import com.escalade.data.model.Image;
 import com.escalade.data.model.Site;
+import com.escalade.data.model.Topo;
 import com.escalade.svc.contracts.ImageService;
 import com.escalade.svc.contracts.SiteService;
 import com.escalade.svc.contracts.TopoService;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
+//@RequestMapping("sites")
 public class SiteController {
 
 
@@ -24,6 +26,15 @@ public class SiteController {
 
     @Autowired
     TopoService daoTopo;
+
+    @RequestMapping("/request1")
+    @ResponseBody
+    public String handler(@RequestParam(name = "name") String name) {
+
+        return "URL parameter <br> "
+                + "name =" + name;
+    }
+
 
 
     /**
@@ -45,8 +56,10 @@ public class SiteController {
      * @param model
      * @return la page site
      */
-    @RequestMapping(value = "/site", method = RequestMethod.GET)
-    public String displaySiteAlone(@RequestParam("siteId") int siteId, Model model) {
+    @RequestMapping(value = "site", method = RequestMethod.GET)
+    public String displaySiteAlone(@RequestParam("topoId") int topoId, @RequestParam("siteId") int siteId, Model model) {
+        System.out.println(topoId);
+        model.addAttribute("topo", daoTopo.getTopoById(topoId));
         model.addAttribute("site", daoSite.getSiteBySiteId(siteId));
         return "site/site";
     }
@@ -57,24 +70,17 @@ public class SiteController {
      * @return
      */
     @RequestMapping(value = "/addsite", method = RequestMethod.GET)
-    public String submit(Model model) {
-        model.addAttribute("topos", daoTopo.listTopo());
-        return "site/addsite";
+    public ModelAndView submit(@ModelAttribute("topo") Topo topo, @RequestParam("topoId") int topoId, Model model) {
+        return new ModelAndView("site/addsite", "topo", daoTopo.getTopoById(topoId));
 
     }
 
 
 
     @RequestMapping(value = "/addsite", method = RequestMethod.POST)
-    public ModelAndView submit(@ModelAttribute("site") Site site, @RequestParam("image") Image img) {
+    public String submit(@ModelAttribute("site") Site site, @ModelAttribute("topo") Topo topo ) {
         daoSite.createSite(site);
-        try {
-            daoImg.saveImage(img);
-            return new ModelAndView("site/sites", "msg", "Records succesfully inserted into database.");
-
-        } catch (Exception e) {
-            return new ModelAndView("site/sites", "msg", "Error: " + e.getMessage());
-        }
+        return "site/addsite";
     }
 
 

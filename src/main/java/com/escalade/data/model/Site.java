@@ -8,7 +8,7 @@ public class Site {
 
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "SITE_ID")
     private int siteId;
 

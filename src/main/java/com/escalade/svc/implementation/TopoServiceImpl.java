@@ -23,7 +23,7 @@ public class TopoServiceImpl implements TopoService {
     }
 
     public Topo getTopoById(int topo_id) {//Topo topo = dao.getTopoById(topo_id);
-        return null;
+        return repo.findOne(topo_id);
     }
 
     public Iterable<Topo> listTopo() {
