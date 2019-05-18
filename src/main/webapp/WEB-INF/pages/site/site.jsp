@@ -23,15 +23,24 @@
 <div class ="container">
     <div class="row">
         <section class="col-sm-12">
+            <p>Vous êtes sur la fiche d'information du Site d'escalade : <strong> ${site.name} </strong> </p>
+            <p> Ce site se situe au lieu suivant : <strong> ${site.location} </strong> </p>
+            <p>Descriptif du site :<strong> ${site.comment} </strong> </p>
+            <p>Le site dispose de <strong> ${site.nbSector} </strong> secteurs comprenant <strong>
+                ${site.nbWay} </strong> sur une longueur de <strong> ${site.waySize} </strong> mètres </p>
+            <p>La difficulté des voies est comprise entre les cotations suivantes : <strong> ${site.cotation} </strong> </p>
+        </section>
+    </div>
 
+    <div class="row">
+        <section class="col-sm-12">
 
-                    <tr>
-                        <td>Nom du site : ${site.name}</td>
-                    </tr>
-
+            Commentaires
 
         </section>
     </div>
+
+
 </div>
 
 </body>

@@ -66,11 +66,10 @@
                 <tr>
                     <th>Nom</th>
                     <th>Localisation</th>
-                    <th>Description</th>
                     <th>Secteurs</th>
                     <th>Voies</th>
-                    <th>Longueurs</th>
-                    <th>Cotation</th>
+
+
 
                 </tr>
                 </thead>
@@ -80,13 +79,8 @@
                     <tr>
                         <td><a class="nav-link" href="${pageContext.request.contextPath}/site?siteId=${s.siteId}&topoId=${s.topoId}">${s.name}</td>
                         <td>${s.location}</td>
-                        <td>${s.comment}</td>
-                        <td>10</td>
-                        <td>34</td>
-                        <td>900 mètres</td>
-                        <td>de 4b à 8b</td>
-
-
+                        <td>${s.nbSector}</td>
+                        <td>${s.nbWay}</td>
                     </tr>
                     <c:set var="i" value="${i+1}" />
                 </c:forEach>

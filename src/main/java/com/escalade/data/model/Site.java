@@ -24,14 +24,38 @@ public class Site {
     @Column(name = "TOPO_ID")
     private int topoId;
 
+    @Column(name = "NBSECTOR")
+    private int nbSector;
+
+    @Column(name = "NBWAY")
+    private int nbWay;
+
+    @Column(name = "COTATION")
+    private String cotation;
+
+    @Column(name = "WAY_SIZE")
+    private Double waySize;
+
 
     public Site() {super(); }
 
-    public Site(String name, String location, String comment, int topoId) {
+    public Site(String name, String location, String comment, int topoId, int nbSector, int nbWay, String cotation, Double waySize) {
         this.name = name;
         this.location = location;
         this.comment = comment;
         this.topoId = topoId;
+        this.nbSector = nbSector;
+        this.nbWay = nbWay;
+        this.cotation = cotation;
+        this.waySize = waySize;
+    }
+
+    public int getSiteId() {
+        return siteId;
+    }
+
+    public void setSiteId(int siteId) {
+        this.siteId = siteId;
     }
 
     public String getName() {
@@ -66,11 +90,35 @@ public class Site {
         this.topoId = topoId;
     }
 
-    public int getSiteId() {
-        return siteId;
+    public int getNbSector() {
+        return nbSector;
     }
 
-    public void setSiteId(int siteId) {
-        this.siteId = siteId;
+    public void setNbSector(int nbSector) {
+        this.nbSector = nbSector;
+    }
+
+    public int getNbWay() {
+        return nbWay;
+    }
+
+    public void setNbWay(int nbWay) {
+        this.nbWay = nbWay;
+    }
+
+    public String getCotation() {
+        return cotation;
+    }
+
+    public void setCotation(String cotation) {
+        this.cotation = cotation;
+    }
+
+    public Double getWaySize() {
+        return waySize;
+    }
+
+    public void setWaySize(Double waySize) {
+        this.waySize = waySize;
     }
 }
