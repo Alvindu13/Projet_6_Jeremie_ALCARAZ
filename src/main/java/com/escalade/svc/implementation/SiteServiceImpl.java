@@ -16,7 +16,7 @@ public class SiteServiceImpl implements SiteService {
     private SiteRepository repo;
 
     public void createSite(Site s) {
-        repo.save(s);
+        Site site = repo.save(s);
     }
 
     public Site getSite(String name) {

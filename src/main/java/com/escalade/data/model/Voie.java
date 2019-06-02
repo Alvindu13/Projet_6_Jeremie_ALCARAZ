@@ -9,19 +9,22 @@ import javax.persistence.*;
 public class Voie {
 
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name = "VOIE_ID")
-	private int voieID;
+	private int voieId;
 
 	@Column(name = "SECTEUR_ID")
-	private int secteurID;
+	private int secteurId;
 
 	@Column(name = "SIZE")
 	private double size;
 
+	@Column(name = "NAME")
+	private String name;
+
 	//cotation, difficulté de la voie
 	@Column(name = "LEVEL")
-	private int level;
+	private String level;
 
 	@Column(name = "NBPOINTS")
 	private int nbPoints;
@@ -29,29 +32,32 @@ public class Voie {
 	@Column(name = "NBPART")
 	private int nbPart;
 
-	public Voie(int secteurID, double size, int level, int nbPoints, int nbPart) {
-		this.secteurID = secteurID;
+	public Voie() { super();};
+
+	public Voie(int secteurId, double size, String level, int nbPoints, int nbPart, String name) {
+		this.secteurId = secteurId;
 		this.size = size;
 		this.level = level;
 		this.nbPoints = nbPoints;
 		this.nbPart = nbPart;
+		this.name = name;
 	}
 
 
-	public int getSecteurID() {
-		return secteurID;
+	public int getSecteurId() {
+		return secteurId;
 	}
 
-	public void setSecteurID(int secteurID) {
-		this.secteurID = secteurID;
+	public void setSecteurId(int secteurId) {
+		this.secteurId = secteurId;
 	}
 
-	public int getVoieID() {
-		return voieID;
+	public int getVoieId() {
+		return voieId;
 	}
 
-	public void setVoieID(int voieID) {
-		this.voieID = voieID;
+	public void setVoieId(int voieId) {
+		this.voieId = voieId;
 	}
 
 
@@ -63,11 +69,11 @@ public class Voie {
 		this.size = size;
 	}
 
-	public int getLevel() {
+	public String getLevel() {
 		return level;
 	}
 
-	public void setLevel(int level) {
+	public void setLevel(String level) {
 		this.level = level;
 	}
 
@@ -85,5 +91,13 @@ public class Voie {
 
 	public void setNbPart(int nbPart) {
 		this.nbPart = nbPart;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

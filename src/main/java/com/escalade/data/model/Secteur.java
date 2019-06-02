@@ -8,12 +8,12 @@ public class Secteur {
 
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "SECTEUR_ID")
-    private String secteurID;
+    private String secteurId;
 
     @Column(name = "SITE_ID")
-    private String siteID;
+    private String siteId;
 
     @Column(name = "NAME")
     private String name;
@@ -21,26 +21,29 @@ public class Secteur {
     @Column(name = "NBWAY")
     private int nbWay;
 
-    public Secteur(String siteID, String name, int nbWay) {
-        this.siteID = siteID;
+    public Secteur() {super(); }
+
+
+    public Secteur(String siteId, String name, int nbWay) {
+        this.siteId = siteId;
         this.name = name;
         this.nbWay = nbWay;
     }
 
-    public String getSecteurID() {
-        return secteurID;
+    public String getSecteurId() {
+        return secteurId;
     }
 
-    public void setSecteurID(String secteurID) {
-        this.secteurID = secteurID;
+    public void setSecteurId(String secteurId) {
+        this.secteurId = secteurId;
     }
 
-    public String getSiteID() {
-        return siteID;
+    public String getSiteId() {
+        return siteId;
     }
 
     public void setSiteID(String siteID) {
-        this.siteID = siteID;
+        this.siteId = siteId;
     }
 
     public String getName() {

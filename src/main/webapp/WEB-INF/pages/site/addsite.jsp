@@ -28,7 +28,7 @@
     <h1>Vous allez ajouter un site dans la topo suivante : ${topo.name}</h1>
     <div class = "row">
         <div class = "col-lg-5 align-self-center">
-                <form class="login-form" name ="f" action="addsite" method='POST' modelAttribute="site" enctype="multipart/form-data">
+                <form class="login-form" name ="f" action="addsite?topoId=${topo.topoId}" method='POST' modelAttribute="site" enctype="multipart/form-data">
                     <h3>Créer Site : </h3>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Le nom de votre Site : </label>
@@ -40,9 +40,32 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="exampleInputPassword1">Nombre de secteurs : </label>
+                        <input type='text' placeholder='nb de secteurs' name='nbSector' class="form-control" required="true"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Nombre de voies: </label>
+                        <input type='text' name='nbWay' class="form-control" required="true"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Cotations : </label>
+                        <input type='text'name='cotation' class="form-control" required="true"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Longueur des voies en mètres : </label>
+                        <input type='text' name='waySize' class="form-control"  required="true"/>
+                    </div>
+
+                    <div class="form-group">
                         <label for="comment">Description:</label>
                         <textarea class="form-control" rows="5" id="comment" placeholder='Description du site' name='comment' required='true' ></textarea>
                     </div>
+
+
+
 
 
                     <!--<h4>Veuillez choisir une image de présentation (dimension de 200x300px) :</h4>
@@ -52,13 +75,7 @@
                     </div>-->
 
 
-
-                    <div class="form-group">
-                        <label for="comment">Topo:</label>
-                        <p>${site.topoId}</p>
-                    </div>
-
-                    <p>Le Topo n'existe pas encore ? Alors vous pouvez le créer ici : <a href="${pageContext.request.contextPath}/atopo">Créer topo</a> <br />
+                    <p>Vous voulez changer de Topo ? : <a href="${pageContext.request.contextPath}/topo">Voir ou créer un Topo</a> <br />
 
                     <button type="submit" class="btn btn-primary">Submit</button>
 
@@ -66,61 +83,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-       <!-- <form class="login-form" name ="f" action="addsite" method='POST' modelAttribute="site">
-            <input type='text' placeholder='Nom du Site' name='name'/>
-            <input type='text' placeholder='Ville où se trouve le Site' name='location'/>
-            <input type='text' placeholder='Description du site' name='comment'  value=''/>
-
-            <input type='text' placeholder='Pseudo de l'utilisateur (mais rencupérer en param c'mieux) -> grâce à une serssion ?' name='comment'  value=''/>
-            <input type='text' placeholder='Téléchargement d'une image' name='comment'  value=''/>
-
-
-
-
-            <button>Créer Topo</button>
-        </form>-->
-
-
-
-<!--<div class="container">
-        <div class="row">
-
-            <div class="col-md-8">
-                <form name='f' action="addtopo" method='POST' modelAttribute="topo">
-                    <div id="contact-form" class="form-container" dataOLD-form-container style="color: rgb(46, 125, 50); background: rgb(200, 230, 201);">
-                        <div class="row">
-                            <div class="form-title">
-                                <span> Create Topo </span>
-                            </div>
-                        </div>
-                        <div class="input-container">
-                            <div class="row">
-                                <span class="req-input valid" >
-                                    <span class="input-status" dataOLD-toggle="tooltip" dataOLD-placement="top" title="Input your post title."> </span>
-                                    <input type="text" dataOLD-min-length="8" placeholder="Post Title" value="testing post">
-                                </span>
-                            </div>
-
-                            <div class="row">
-                                <span class="req-input message-box valid">
-                                    <span class="input-status" dataOLD-toggle="tooltip" dataOLD-placement="top" title="Post Contents."> </span>
-                                    <textarea type="textarea" dataOLD-min-length="10" placeholder="Post Contents">Valid contents </textarea>
-                                </span>
-                            </div>
-                            <div class="row submit-row">
-                                <button type="button" class="btn btn-block submit-form valid">Submit</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>-->
 
 
 </body>

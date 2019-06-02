@@ -53,7 +53,7 @@
 
     <div id = "ok" class = "row">
         <div id = "try" class="col-ls-8">
-            <a class="btn btn-primary" href="${pageContext.request.contextPath}/addsite" role="button">Ajouter votre Site</a>
+            <a class="btn btn-primary" href="${pageContext.request.contextPath}/addsite?topoId=${site.topoId}" role="button">Ajouter votre Site</a>
         </div>
     </div>
 
@@ -66,21 +66,14 @@
                 <tr>
                     <th>Nom</th>
                     <th>Localisation</th>
-                    <th>Secteurs</th>
-                    <th>Voies</th>
-
-
-
                 </tr>
                 </thead>
                 <tbody>
                 <c:set var="i" value="1" />
                 <c:forEach items="${sites}" var="s">
                     <tr>
-                        <td><a class="nav-link" href="${pageContext.request.contextPath}/site?siteId=${s.siteId}&topoId=${s.topoId}">${s.name}</td>
+                        <td><a class="nav-link" href="${pageContext.request.contextPath}/site?siteId=${s.siteId}">${s.name}</td>
                         <td>${s.location}</td>
-                        <td>${s.nbSector}</td>
-                        <td>${s.nbWay}</td>
                     </tr>
                     <c:set var="i" value="${i+1}" />
                 </c:forEach>

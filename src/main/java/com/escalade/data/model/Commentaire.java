@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Commentaire {
 
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name = "COMMENTAIRE_ID")
 	private int commentaireId;
 
@@ -18,16 +18,17 @@ public class Commentaire {
 	@Column(name = "UTILISATEUR_USERNAME")
 	private String userName;
 
-	@Column(name = "TOPO_ID")
-	private int topoId;
+	@Column(name = "SITE_ID")
+	private int siteId;
+
 
 	public Commentaire() { super(); }
 
-	public Commentaire(String content, String userName, int commentaireId, int topoId) {
+	public Commentaire(String content, String userName, int siteId, int topoId) {
 		this.content = content;
 		this.userName = userName;
-		this.commentaireId = commentaireId;
-		this.topoId = topoId;
+		this.siteId = siteId;
+		//this.topoId = topoId;
 	}
 
 	public String getUserName() {
@@ -63,21 +64,29 @@ public class Commentaire {
 		this.commentaireId = commentaireId;
 	}
 
-	public int getTopoId() {
+	/*public int getTopoId() {
 		return topoId;
 	}
 
 	public void setTopoId(int topoId) {
 		this.topoId = topoId;
+	}*/
+
+	public int getSiteId() {
+		return siteId;
+	}
+
+	public void setSiteId(int siteId) {
+		this.siteId = siteId;
 	}
 
 	@Override
 	public String toString() {
 		return "Commentaire{" +
-				"content='" + content + '\'' +
+				"commentaireId=" + commentaireId +
+				", content='" + content + '\'' +
 				", userName='" + userName + '\'' +
-				", commentaireId=" + commentaireId +
-				", topoId=" + topoId +
+				", siteId=" + siteId +
 				'}';
 	}
 }

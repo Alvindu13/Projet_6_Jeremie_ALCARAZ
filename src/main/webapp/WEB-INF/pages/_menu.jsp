@@ -43,11 +43,11 @@
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="${pageContext.request.contextPath}/site">
+                <a class="nav-link" href="${pageContext.request.contextPath}/topo">
                     <!-- <i class="fa fa-envelope-o">
                          <span class="badge badge-warning">11</span>
                     </i>-->
-                    Sites D'escalade
+                    Topos
                 </a>
             </li>
 

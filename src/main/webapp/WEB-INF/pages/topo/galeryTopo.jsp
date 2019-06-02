@@ -70,8 +70,6 @@
                     <c:forEach items="${topos}" var="t">
                         <tr>
                             <td><a class="nav-link" href="${pageContext.request.contextPath}/sites?topoId=${t.topoId}">${t.name}</td>
-                            <!--<td>{t.nbSite}</td>
-                            <td>{t.nbSector}</td>-->
                             <td>${t.userName}</td>
                             <!--<td>{t.available}</td>-->
 
