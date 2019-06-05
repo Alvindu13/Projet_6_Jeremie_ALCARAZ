@@ -1,13 +1,15 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <!DOCTYPE HTML>
-<html>
+
 
 <head>
     <meta charset="utf-8">
-    <spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
-    <link href="${bootstrap}" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 
 <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
@@ -101,9 +103,14 @@
                 </a>
             </li>-->
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+
+
+        <form action = "search" method = "get" class="form-inline my-2 my-lg-0">
+            <label Mot clé : ></label>
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="motCle" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
+
+
     </div>
 </nav>

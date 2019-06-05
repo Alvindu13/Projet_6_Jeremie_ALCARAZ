@@ -8,6 +8,6 @@ import java.util.List;
 public interface CommentaireService {
 
     void saveCommentaire(Commentaire c);
-    Commentaire getCommentaireById(Integer commentaire_id);
+    Commentaire getCommentaireById(int commentaireId);
     public List<Commentaire> getAllCommentaireBySiteId(int siteId);
 }

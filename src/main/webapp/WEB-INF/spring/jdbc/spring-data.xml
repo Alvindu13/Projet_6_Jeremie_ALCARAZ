@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:p="http://www.springframework.org/schema/p"
@@ -15,10 +16,9 @@
        http://www.springframework.org/schema/data/jpa
        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-
     <context:property-placeholder location="resources/db.properties" />
 
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+    <bean id="DataSource" class="org.apache.commons.dbcp.BasicDataSource"
           p:driverClassName="${db.driver}" p:url="${db.url}"
           p:username="${db.username}" p:password="${db.password}" />
 
@@ -28,7 +28,7 @@
     <!-- Configure the entity manager factory bean -->
     <bean id="entityManagerFactory"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="DataSource" />
         <property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter" />
         <!-- Set JPA properties -->
         <property name="jpaProperties">
@@ -44,6 +44,7 @@
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
+
 
     <!--Package dataOLD (anciennement data)-->
     <jpa:repositories base-package="com.escalade.data" />

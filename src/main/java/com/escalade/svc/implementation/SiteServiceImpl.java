@@ -35,7 +35,7 @@ public class SiteServiceImpl implements SiteService {
     }
 
     public Site getSiteBySiteId(int siteId){
-        return repo.findOne(siteId);
+        return repo.findBySiteId(siteId);
 
     }
 }

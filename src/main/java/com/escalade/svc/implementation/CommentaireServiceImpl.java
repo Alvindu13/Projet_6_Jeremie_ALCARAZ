@@ -20,8 +20,8 @@ public class CommentaireServiceImpl implements CommentaireService {
         repo.save(c);
     }
 
-    public Commentaire getCommentaireById(Integer commentaire_id) {
-        return repo.findOne(commentaire_id);
+    public Commentaire getCommentaireById(int commentaireId) {
+        return repo.findByCommentaireId(commentaireId);
     }
 
     public List<Commentaire> getAllCommentaireBySiteId(int siteId) {

@@ -12,6 +12,6 @@ public interface CommentaireRepository extends CrudRepository<Commentaire, Integ
     @Query(value= "select * from commentaire  where site_id = ?1", nativeQuery = true)
     List<Commentaire> getAllCommentaireBySiteId(int siteId);
 
-
+    Commentaire findByCommentaireId (int commentaireId);
 
 }
