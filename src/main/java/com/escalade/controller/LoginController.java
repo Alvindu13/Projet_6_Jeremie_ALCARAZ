@@ -20,18 +20,18 @@ public class LoginController {
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String adminPage(Model model) {
-        return "Login/adminPage";
+        return "login/adminPage";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Model model) {
-        return "Login/loginPage";
+        return "login/loginPage";
     }
 
     @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
     public String logoutSuccessfulPage(Model model) {
         model.addAttribute("title", "Logout");
-        return "Login/logoutSuccessfulPage";
+        return "login/logoutSuccessfulPage";
     }
 
     @RequestMapping(value = "/userInfo", method = RequestMethod.GET)
@@ -42,7 +42,7 @@ public class LoginController {
 
         System.out.println("User Name: " + userName);
 
-        return "Login/userInfoPage";
+        return "login/userInfoPage";
     }
 
     @RequestMapping(value = "/403", method = RequestMethod.GET)

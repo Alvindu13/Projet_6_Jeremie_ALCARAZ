@@ -23,10 +23,10 @@ public interface SiteRepository extends CrudRepository<Site, Integer>, JpaSpecif
 
     Page<Site> findByLocation(String location, Pageable pageable);
 
-    /*@Query(value="SELECT s FROM Site s WHERE \n" +
+    @Query(value="SELECT s FROM Site s WHERE \n" +
             "       s.location LIKE :x OR \n" +
-            "               s.name LIKE :x", nativeQuery = true)
-    Page<Site> findAllSiteByCritera(@Param("x") String mc, Pageable pageable);*/
+            "               s.name LIKE :x")
+    Page<Site> findAllSiteByCritera(@Param("x") String mc, Pageable pageable);
 
     Site findBySiteId(int siteId);
 
