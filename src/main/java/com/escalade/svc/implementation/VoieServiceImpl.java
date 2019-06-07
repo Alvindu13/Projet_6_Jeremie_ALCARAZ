@@ -22,4 +22,9 @@ public class VoieServiceImpl implements VoieService {
     public List<Voie> listVoiesBySecId(int secteurId) {
         return repo.findAllVoiesBySecteurId(secteurId);
     }
+
+    @Override
+    public Voie getCountVoie(int secteurId) {
+        return getCountVoie(secteurId);
+    }
 }

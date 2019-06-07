@@ -32,6 +32,9 @@ public class SiteController {
     @Autowired
     SecteurService svcSect;
 
+    @Autowired
+    VoieService svcVoie;
+
     @RequestMapping("/request1")
     @ResponseBody
     public String handler(@RequestParam(name = "name") String name) {
