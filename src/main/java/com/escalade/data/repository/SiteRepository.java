@@ -6,8 +6,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 
+import java.lang.reflect.Parameter;
 import java.util.List;
 
 public interface SiteRepository extends CrudRepository<Site, Integer>, JpaSpecificationExecutor {
@@ -21,7 +23,10 @@ public interface SiteRepository extends CrudRepository<Site, Integer>, JpaSpecif
 
     Page<Site> findByLocation(String location, Pageable pageable);
 
-
+    /*@Query(value="SELECT s FROM Site s WHERE \n" +
+            "       s.location LIKE :x OR \n" +
+            "               s.name LIKE :x", nativeQuery = true)
+    Page<Site> findAllSiteByCritera(@Param("x") String mc, Pageable pageable);*/
 
     Site findBySiteId(int siteId);
 
