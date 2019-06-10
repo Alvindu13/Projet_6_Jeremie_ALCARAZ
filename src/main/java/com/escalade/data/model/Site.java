@@ -30,8 +30,12 @@ public class Site {
     @Column(name = "NBWAY")
     private int nbWay;
 
-    @Column(name = "COTATION")
-    private String cotation;
+    @Column(name = "COTATION_MINIMUM")
+    private String cotationMinimum;
+
+    @Column(name = "COTATION_MAXIMUM")
+    private String cotationMaximum;
+
 
     @Column(name = "WAY_SIZE")
     private Double waySize;
@@ -39,14 +43,15 @@ public class Site {
 
     public Site() {super(); }
 
-    public Site(String name, String location, String comment, int topoId, int nbSector, int nbWay, String cotation, Double waySize) {
+    public Site(String name, String location, String comment, int topoId, int nbSector, int nbWay, String cotationMinimum, String cotationMaximum, Double waySize) {
         this.name = name;
         this.location = location;
         this.comment = comment;
         this.topoId = topoId;
         this.nbSector = nbSector;
         this.nbWay = nbWay;
-        this.cotation = cotation;
+        this.cotationMinimum = cotationMinimum;
+        this.cotationMaximum = cotationMaximum;
         this.waySize = waySize;
     }
 
@@ -106,12 +111,20 @@ public class Site {
         this.nbWay = nbWay;
     }
 
-    public String getCotation() {
-        return cotation;
+    public String getCotationMinimum() {
+        return cotationMinimum;
     }
 
-    public void setCotation(String cotation) {
-        this.cotation = cotation;
+    public void setCotationMinimum(String cotationMinimum) {
+        this.cotationMinimum = cotationMinimum;
+    }
+
+    public String getCotationMaximum() {
+        return cotationMaximum;
+    }
+
+    public void setCotationMaximum(String cotationMaximum) {
+        this.cotationMaximum = cotationMaximum;
     }
 
     public Double getWaySize() {

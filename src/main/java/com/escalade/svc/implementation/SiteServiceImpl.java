@@ -38,4 +38,9 @@ public class SiteServiceImpl implements SiteService {
         return repo.findBySiteId(siteId);
 
     }
+
+    @Override
+    public Site getSiteByResearch(String location, String cotation, int nbSecteur) {
+        return null;
+    }
 }

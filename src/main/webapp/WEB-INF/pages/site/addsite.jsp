@@ -51,7 +51,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputPassword1">Cotations : </label>
-                        <input type='text'name='cotation' class="form-control" required="true"/>
+                        <input type='text'name='cotationMinimum' class="form-control" required="true"/>
                     </div>
 
                     <div class="form-group">

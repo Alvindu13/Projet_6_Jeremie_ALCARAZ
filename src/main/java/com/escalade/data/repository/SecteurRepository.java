@@ -14,4 +14,6 @@ public interface SecteurRepository extends CrudRepository<Secteur, Integer> {
 
     @Query(value= "select COUNT(*) from secteur  where site_id = ?1", nativeQuery = true)
     long getCountBySiteId(int site_id);
+
+
 }
