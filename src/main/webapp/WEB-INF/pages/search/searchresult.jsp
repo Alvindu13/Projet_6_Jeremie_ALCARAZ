@@ -1,6 +1,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+
 <!DOCTYPE HTML>
 <html>
 
@@ -30,6 +32,8 @@
 
 <body>
 <jsp:include page="../_menu.jsp" />
+
+
 <section id = "test" class="row">
     <div class="col-xs-12 col-sm-12 col-md-12"><img src="resources/img/topo/aside.jpg" alt="AsideEscalade"></div>
 </section>
@@ -46,11 +50,11 @@
 
                 <thead>
                 <tr>
-                    <th>Location</th>
-                    <th>cotation Minimun</th>
-                    <th>cotation Maximum</th>
+                    <th> Nom du Site </th>
 
-                    <th>nbSecteur</th>
+                    <th> Localisation </th>
+
+                    <th>nb de Secteur</th>
                     <!--<th>Nombre de Site</th>
                    <th>Nombre de Secteurs</th>
 
@@ -62,9 +66,9 @@
                 <c:set var="i" value="1" />
                 <c:forEach items="${sites}" var="s">
                     <tr>
+                        <td>${s.name}</td>
+
                         <td>${s.location}</td>
-                        <td>${s.cotationMinimum}</td>
-                        <td>${s.cotationMaximum}</td>
 
                         <td>${s.nbSector}</td>
 
@@ -80,6 +84,46 @@
 
 
         </section>
+
+        <section class="col-sm-12">
+            <table class="table table-bordered table-striped table-condensed">
+
+                <thead>
+                <tr>
+                    <th> Nom du Site </th>
+
+                    <th> Localisation </th>
+
+                    <th>nb de Secteur</th>
+                    <!--<th>Nombre de Site</th>
+                   <th>Nombre de Secteurs</th>
+
+                   <th>Disponibilité</th>-->
+
+                </tr>
+                </thead>
+                <tbody>
+                <c:set var="i" value="1" />
+                <c:forEach items="${voies}" var="v">
+                    <tr>
+                        <td>${v.name}</td>
+
+                        <td>${v.cotation}</td>
+
+
+                        <!--<td>{t.available}</td>-->
+
+                    </tr>
+                    <c:set var="i" value="${i+1}" />
+                </c:forEach>
+                </tbody>
+
+            </table>
+
+
+
+        </section>
+
     </div>
 
 </div>

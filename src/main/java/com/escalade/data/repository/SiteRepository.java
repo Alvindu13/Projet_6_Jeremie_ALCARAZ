@@ -31,15 +31,24 @@ public interface SiteRepository extends CrudRepository<Site, Integer>, JpaSpecif
     Site findBySiteId(int siteId);
 
     //List<Site> findAllByLocationAndCotationAndNbSectorIsLessThanEqual(String location, String cotation, int nbSector);
+    //List<Site> findAllByLocationAndCotationMinimumAfterAndCotationMaximumBeforeAndNbSectorIsLessThanEqual(String location, String cotationMinimum, String cotationMaxi, Integer nbSector);
 
     //@Query (value="select * from site where cotation_minimum AND cotation_maximum between ?1 and ?2", nativeQuery = true)
     //List<Site> findAllByCotationBetween(String cotation1, String cotation2);
 
 
-    @Query (value = "select s from Site s where s.location = ?1 AND (s.cotationMinimum > ?2 AND s.cotationMaximum < ?3) AND s.nbSector < ?4 ")
+    @Query (value = "select s from Site s where s.location = ?1 AND (s.cotationMinimum >= ?2 AND s.cotationMaximum <= ?3) AND s.nbSector < ?4 ")
     List<Site> test(String location, String cotationMini, String cotationMaxi, Integer nbSecteur);
 
-    //List<Site> findAllByLocationAndCotationMinimumAfterAndCotationMaximumBeforeAndNbSectorIsLessThanEqual(String location, String cotationMinimum, String cotationMaxi, Integer nbSector);
+
+    @Query (value ="SELECT  * " +
+            "FROM Site s \n" +
+            "INNER JOIN Secteur sec ON sec.site_id = s.site_id \n" +
+            "INNER JOIN voie v ON v.secteur_id = sec.secteur_id \n" +
+            "WHERE s.location = ?1 AND v.cotation BETWEEN ?2 AND ?3  AND s.nbSector <= ?4 \n", nativeQuery = true)
+    List<Site> test2(String location, String cotationMini, String cotationMaxi, Integer nbSector);
+
+
 
 
 

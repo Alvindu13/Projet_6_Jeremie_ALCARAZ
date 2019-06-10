@@ -61,7 +61,7 @@
                     <th>size</th>
                     <th>name</th>
                     <th>nbPoints</th>
-                    <th>level</th>
+                    <th>cotation</th>
                     <th>nbPart</th>
                 </tr>
                 </thead>
@@ -73,7 +73,7 @@
                         <td>${v.size}</td>
                         <td>${v.name}</td>
                         <td>${v.nbPoints}</td>
-                        <td>${v.level}</td>
+                        <td>${v.cotation}</td>
                         <td>${v.nbPart}</td>
                     </tr>
                     <c:set var="i" value="${i+1}" />

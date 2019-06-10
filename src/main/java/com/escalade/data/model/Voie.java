@@ -1,7 +1,5 @@
 package com.escalade.data.model;
 
-import com.escalade.data.model.Secteur;
-
 import javax.persistence.*;
 
 @Entity
@@ -23,8 +21,8 @@ public class Voie {
 	private String name;
 
 	//cotation, difficulté de la voie
-	@Column(name = "LEVEL")
-	private String level;
+	@Column(name = "COTATION")
+	private String cotation;
 
 	@Column(name = "NBPOINTS")
 	private int nbPoints;
@@ -37,7 +35,7 @@ public class Voie {
 	public Voie(int secteurId, double size, String level, int nbPoints, int nbPart, String name) {
 		this.secteurId = secteurId;
 		this.size = size;
-		this.level = level;
+		this.cotation = level;
 		this.nbPoints = nbPoints;
 		this.nbPart = nbPart;
 		this.name = name;
@@ -69,12 +67,12 @@ public class Voie {
 		this.size = size;
 	}
 
-	public String getLevel() {
-		return level;
+	public String getCotation() {
+		return cotation;
 	}
 
-	public void setLevel(String level) {
-		this.level = level;
+	public void setCotation(String cotation) {
+		this.cotation = cotation;
 	}
 
 	public int getNbPoints() {

@@ -1,8 +1,9 @@
 package com.escalade.controller;
 
-import com.escalade.Search;
+import com.escalade.data.util.Search;
 import com.escalade.data.model.Site;
 import com.escalade.data.repository.SiteRepository;
+import com.escalade.data.repository.VoieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,6 +17,9 @@ public class SearchController {
 
     @Autowired
     private SiteRepository svcSite;
+
+    @Autowired
+    private VoieRepository svcVoie;
 
     @GetMapping("/search")
     public String chercher(@RequestParam(name="motCle", defaultValue = "") String mc,
@@ -55,7 +59,8 @@ public class SearchController {
 
 
 
-        model.addAttribute("sites", svcSite.test(location, cotationMini, cotationMaxi, nbSecteur));
+        model.addAttribute("sites", svcSite.test2(location, cotationMini, cotationMaxi, nbSecteur));
+        model.addAttribute("voies", svcVoie.findAllByFilterSite(location, cotationMini, cotationMaxi, nbSecteur));
 
         return "search/searchresult";
     }

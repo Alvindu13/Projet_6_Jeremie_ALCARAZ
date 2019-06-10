@@ -9,7 +9,7 @@ public class Site {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name = "SITE_ID")
+    @Column(name = "site_id")
     private int siteId;
 
     @Column(name = "NAME")
