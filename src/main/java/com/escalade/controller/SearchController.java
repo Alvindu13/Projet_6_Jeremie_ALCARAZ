@@ -1,5 +1,6 @@
 package com.escalade.controller;
 
+import com.escalade.data.util.Collection;
 import com.escalade.data.util.Search;
 import com.escalade.data.model.Site;
 import com.escalade.data.repository.SiteRepository;
@@ -58,9 +59,12 @@ public class SearchController {
                                Model model) {
 
 
+        Collection collection = new Collection();
 
         model.addAttribute("sites", svcSite.test2(location, cotationMini, cotationMaxi, nbSecteur));
         model.addAttribute("voies", svcVoie.findAllByFilterSite(location, cotationMini, cotationMaxi, nbSecteur));
+
+        //model.addAttribute("objects", collection.getBoth(svcSite.test2(location, cotationMini, cotationMaxi, nbSecteur), svcVoie.findAllByFilterSite(location, cotationMini, cotationMaxi, nbSecteur)));
 
         return "search/searchresult";
     }

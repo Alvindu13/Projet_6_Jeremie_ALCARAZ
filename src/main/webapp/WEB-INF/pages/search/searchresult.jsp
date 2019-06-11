@@ -10,11 +10,8 @@
     <title>Nos Topos</title>
 
     <meta charset="utf-8">
-    <spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
 
-    <link href="${bootstrap}" rel="stylesheet" />
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 
 
@@ -25,6 +22,10 @@
         .well {
             background-color:#CCC;
             padding: 20px;
+        }
+        .tableaux{
+            display:inline-block;
+            vertical-align:top;
         }
     </style>
 
@@ -37,94 +38,56 @@
 <section id = "test" class="row">
     <div class="col-xs-12 col-sm-12 col-md-12"><img src="resources/img/topo/aside.jpg" alt="AsideEscalade"></div>
 </section>
-<div class="container">
+<div id ="containeur">
     <header class="page-header">
         <h1>Voici les résultats de votre recherche</h1>
     </header>
 
-    <div class="row">
-        <section class="col-sm-12">
-
-
-            <table class="table table-bordered table-striped table-condensed">
-
-                <thead>
+    <div class = "row">
+        <div class = col-lg-5>
+            <table class="table">
+                <thead class="thead-dark">
                 <tr>
                     <th> Nom du Site </th>
-
                     <th> Localisation </th>
-
                     <th>nb de Secteur</th>
-                    <!--<th>Nombre de Site</th>
-                   <th>Nombre de Secteurs</th>
-
-                   <th>Disponibilité</th>-->
-
                 </tr>
                 </thead>
                 <tbody>
-                <c:set var="i" value="1" />
-                <c:forEach items="${sites}" var="s">
-                    <tr>
-                        <td>${s.name}</td>
-
-                        <td>${s.location}</td>
-
-                        <td>${s.nbSector}</td>
-
-                        <!--<td>{t.available}</td>-->
-
-                    </tr>
-                    <c:set var="i" value="${i+1}" />
+                <tr>
+                    <c:forEach items="${sites}" var="s" varStatus="status">
+                <tr>
+                    <td>${s.name}</td>
+                    <td>${s.location}</td>
+                    <td>${s.nbSector}</td>
+                </tr>
                 </c:forEach>
+                </tr>
                 </tbody>
-
             </table>
+        </div>
 
+        <div class = col-lg-2>
 
-
-        </section>
-
-        <section class="col-sm-12">
-            <table class="table table-bordered table-striped table-condensed">
-
-                <thead>
+            <table class="table">
+                <thead class="thead-dark">
                 <tr>
-                    <th> Nom du Site </th>
-
-                    <th> Localisation </th>
-
-                    <th>nb de Secteur</th>
-                    <!--<th>Nombre de Site</th>
-                   <th>Nombre de Secteurs</th>
-
-                   <th>Disponibilité</th>-->
-
+                    <th scope="col">#</th>
+                    <th>Cotation</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:set var="i" value="1" />
-                <c:forEach items="${voies}" var="v">
+                <c:forEach items="${voies}" var="v" varStatus="loop">
                     <tr>
-                        <td>${v.name}</td>
-
                         <td>${v.cotation}</td>
-
-
-                        <!--<td>{t.available}</td>-->
-
                     </tr>
-                    <c:set var="i" value="${i+1}" />
                 </c:forEach>
                 </tbody>
-
             </table>
-
-
-
-        </section>
+        </div>
 
     </div>
+
 
 </div>
 </body>
