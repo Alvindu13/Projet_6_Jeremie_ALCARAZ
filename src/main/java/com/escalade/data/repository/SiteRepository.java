@@ -44,8 +44,8 @@ public interface SiteRepository extends CrudRepository<Site, Integer>, JpaSpecif
     @Query (value ="SELECT  * " +
             "FROM Site s \n" +
             "INNER JOIN Secteur sec ON sec.site_id = s.site_id \n" +
-            "INNER JOIN voie v ON v.secteur_id = sec.secteur_id \n" +
-            "WHERE s.location = ?1 AND v.cotation BETWEEN ?2 AND ?3  AND s.nbSector <= ?4 \n", nativeQuery = true)
+                "INNER JOIN voie v ON v.secteur_id = sec.secteur_id \n" +
+            "WHERE s.location = ?1 AND (v.cotation BETWEEN ?2 AND ?3)  AND s.nbSector <= ?4 \n", nativeQuery = true)
     List<Site> test2(String location, String cotationMini, String cotationMaxi, Integer nbSector);
 
 

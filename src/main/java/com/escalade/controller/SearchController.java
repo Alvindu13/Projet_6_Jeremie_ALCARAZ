@@ -1,6 +1,5 @@
 package com.escalade.controller;
 
-import com.escalade.data.util.Collection;
 import com.escalade.data.util.Search;
 import com.escalade.data.model.Site;
 import com.escalade.data.repository.SiteRepository;
@@ -48,7 +47,7 @@ public class SearchController {
     public String recupDataSearch(
             @ModelAttribute("searcher") Search search) {
         System.out.println(search.getCotationMaximum());
-        return "redirect:searchresult?location=" + search.getLocation() + "&cotation_minimum=" + search.getCotationMinimum() + "&cotation_maximum==" + search.getCotationMaximum() + "&nbsecteur=" +search.getNbSecteur();
+        return "redirect:searchresult?location=" + search.getLocation() + "&cotation_minimum=" + search.getCotationMinimum() + "&cotation_maximum=" + search.getCotationMaximum() + "&nbsecteur=" +search.getNbSecteur();
     }
 
     @GetMapping("/searchresult")
@@ -59,7 +58,6 @@ public class SearchController {
                                Model model) {
 
 
-        Collection collection = new Collection();
 
         model.addAttribute("sites", svcSite.test2(location, cotationMini, cotationMaxi, nbSecteur));
         model.addAttribute("voies", svcVoie.findAllByFilterSite(location, cotationMini, cotationMaxi, nbSecteur));
