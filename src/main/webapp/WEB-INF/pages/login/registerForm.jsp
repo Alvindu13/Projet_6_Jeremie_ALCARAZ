@@ -32,7 +32,7 @@
 
                     <input type="text" id="lastName" class="fadeIn second" name="lastName" placeholder="Nom" value =''/>
                     <input type="text" id="firstName" class="fadeIn second" name="firstName" placeholder="Prénom" value =''/>
-                    <input type="text" id="utilisateurId" class="fadeIn second" name="utilisateurId" placeholder="Choisir un nom d'utilisateur" value =''/>
+                    <input type="text" id="userName" class="fadeIn second" name="userName" placeholder="Choisir un nom d'utilisateur" value =''/>
                     <input type="password" id="password" class="fadeIn third" name="password" placeholder="Choisir un mot de passe"/>
                     <input type="hidden" id="enabled" name="enabled" value= ${1} />
 
