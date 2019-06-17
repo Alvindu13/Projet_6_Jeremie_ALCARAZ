@@ -66,4 +66,21 @@ public class TopoController {
         return "topo/addtopo";
     }
 
+
+    /**
+     * Affiche la page de réservation des topo
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/reservetopo", method = RequestMethod.GET)
+    public String displayTopoReservation(Model model) {
+        return "topo/reservetopo";
+    }
+
+
+    @RequestMapping(value = "/mytopo", method = RequestMethod.GET)
+    public String displayUserTopo(Model model) {
+        return "topo/mytopo";
+    }
+
 }

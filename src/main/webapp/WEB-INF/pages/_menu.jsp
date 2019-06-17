@@ -53,6 +53,28 @@
                 </a>
             </li>
 
+
+
+            <li class="nav-item active">
+                <a class="nav-link" href="${pageContext.request.contextPath}">
+                    <!-- <i class="fa fa-envelope-o">
+                         <span class="badge badge-warning">11</span>
+                    </i>-->
+                    Sites
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <c:if test="${pageContext.request.userPrincipal.name != null}">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/mytopo?user=${pageContext.request.userPrincipal.name}">
+                        <!--<i class="fa fa-envelope-o">
+                            <span class="badge badge-warning">11</span>
+                        </i>-->
+                        Mes topos
+                    </a>
+                </c:if>
+            </li>
+
             <li class="nav-item">
                 <c:if test="${pageContext.request.userPrincipal.name != null}">
                     <a class="nav-link" href="${pageContext.request.contextPath}/logout">
@@ -63,6 +85,7 @@
                     </a>
                 </c:if>
             </li>
+
 
 
 

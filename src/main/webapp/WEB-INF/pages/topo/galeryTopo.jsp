@@ -58,6 +58,9 @@
                 <tr>
                     <th>Nom</th>
                     <th>Propriétaire</th>
+                    <th>Descriptif ou Upload</th>
+
+
                     <!--<th>Nombre de Site</th>
                    <th>Nombre de Secteurs</th>
 
