@@ -88,15 +88,6 @@
         </section>
     </div>
 
-    <div class ="row">
-        <section class = "col-sm-8">
-
-            <label for="textarea">Votre message :</label>
-            <textarea id="textarea" class="form-control" rows="4"></textarea>
-            <p class="help-block">Vous pouvez agrandir la fenêtre</p>
-            <button class="btn btn-primary" type="submit">Envoyer</button>
-        </section>
-    </div>
 
     <div class ="row">
         <section class = "col-sm-8">
