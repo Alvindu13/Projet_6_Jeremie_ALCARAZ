@@ -77,8 +77,8 @@
                 </c:if>
             </li>
 
-            <li class="nav-item active">
-                <c:if test="${pageContext.request.userPrincipal.name == null}">
+            <li class="nav-item">
+                <c:if test="${pageContext.request.userPrincipal.name != null}">
                     <a class="nav-link" href="${pageContext.request.contextPath}/logout">
                         <!--<i class="fa fa-envelope-o">
                             <span class="badge badge-warning">11</span>
@@ -88,10 +88,13 @@
                 </c:if>
             </li>
 
-            <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/displayRegisterForm">
+            <li class="nav-item active">
+                <c:if test="${pageContext.request.userPrincipal.name == null}">
+                <a class="nav-link" href="${pageContext.request.contextPath}/displayRegisterForm">
                         S'inscrire
                     </a>
+                </c:if>
+
             </li>
 
 
