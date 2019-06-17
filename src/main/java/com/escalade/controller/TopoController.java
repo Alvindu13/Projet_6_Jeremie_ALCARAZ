@@ -6,10 +6,7 @@ import com.escalade.svc.contracts.TopoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -20,7 +17,7 @@ public class TopoController {
     CommentaireService cmt;
 
     @Autowired
-    TopoService dao;
+    TopoService topoSvc;
 
 
     @RequestMapping("/cmt1")
@@ -39,7 +36,7 @@ public class TopoController {
         //List<Topo> topos = topoDao.listTopo();
         //System.out.println(topos.size());
         //model.addAttribute("topos", topos);
-        model.addAttribute("topos", dao.listTopo());
+        model.addAttribute("topos", topoSvc.listTopo());
         return "topo/galeryTopo";
     }
 
@@ -62,7 +59,7 @@ public class TopoController {
      */
     @RequestMapping(value = "/addtopo", method = RequestMethod.POST)
     public String saveTopo(@ModelAttribute("atopo") Topo topo) {
-        dao.createTopo(topo);
+        topoSvc.createTopo(topo);
         return "topo/addtopo";
     }
 
@@ -79,7 +76,8 @@ public class TopoController {
 
 
     @RequestMapping(value = "/mytopo", method = RequestMethod.GET)
-    public String displayUserTopo(Model model) {
+    public String displayUserTopo(@RequestParam("user") String user, Model model) {
+        model.addAttribute("topos",topoSvc.listTopoByUser(user));
         return "topo/mytopo";
     }
 

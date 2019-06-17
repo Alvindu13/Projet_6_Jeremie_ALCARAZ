@@ -11,4 +11,6 @@ public interface TopoService {
     public Topo getTopoById(int topo_id);
     //public List<Topo> listTopo();
     public Iterable<Topo> listTopo();
+    public Iterable<Topo> listTopoByUser(String user);
+
 }

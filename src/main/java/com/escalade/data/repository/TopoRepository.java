@@ -7,4 +7,5 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
 
 
     Topo findByTopoId (int topoId);
+    Iterable<Topo> findAllByUserName (String user);
 }

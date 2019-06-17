@@ -43,9 +43,29 @@
         <h1>${pageContext.request.userPrincipal.name}</h1>
     </header>
 
-
-
+    <div class = "row">
+        <div class = col-lg-5>
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th> Nom du topo</th>
+                    <th> Propriétaire </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <c:forEach items="${topos}" var="t" varStatus="status">
+                <tr>
+                    <td>${t.name}</td>
+                    <td>${t.userName}</td>
+                </tr>
+                </c:forEach>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
+
 
 
 </div>

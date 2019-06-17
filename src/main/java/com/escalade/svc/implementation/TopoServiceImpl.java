@@ -28,12 +28,15 @@ public class TopoServiceImpl implements TopoService {
 
     public Iterable<Topo> listTopo() {
 
-
-
-        //List<Topo> topos = dao.listTopo();
-
         return repo.findAll();
     }
+
+    public Iterable<Topo> listTopoByUser(String user) {
+
+        return repo.findAllByUserName(user);
+    }
+
+
 
     /*public List<Topo> listTopo() {
 
