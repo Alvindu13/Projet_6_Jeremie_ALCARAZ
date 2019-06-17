@@ -27,6 +27,9 @@ public class SiteController {
     TopoService svcTopo;
 
     @Autowired
+    UtilisateurService svcUser;
+
+    @Autowired
     CommentaireService svcCmt;
 
     @Autowired
@@ -65,10 +68,19 @@ public class SiteController {
      * @return la page site
      */
     @RequestMapping(value = "site", method = RequestMethod.GET)
-    public String displaySiteAlone(@RequestParam("siteId") int siteId, Model model) {
+    public String displaySiteAlone(@RequestParam("siteId") int siteId,
+                                   @RequestParam("user") String user,
+                                   Model model) {
         model.addAttribute("site", svcSite.getSiteBySiteId(siteId));
         model.addAttribute("cmtTest", svcCmt.getAllCommentaireBySiteId(siteId));
         model.addAttribute("countSect", svcSect.getCountSecteur(siteId));
+
+
+        model.addAttribute("user", svcUser.getUserbyUserName(user));
+
+
+
+
         return "site/site";
     }
 
@@ -111,7 +123,7 @@ public class SiteController {
     @RequestMapping(value = "/addcmt", method = RequestMethod.POST)
     public ModelAndView postComment(@ModelAttribute("Commentaire") Commentaire commentaire) {
         svcCmt.saveCommentaire(commentaire);
-        return new ModelAndView("redirect:/site?siteId=" + commentaire.getSiteId());
+        return new ModelAndView("redirect:/site?siteId=" + commentaire.getSiteId() + "&user=Alvindu13");
     }
 
 

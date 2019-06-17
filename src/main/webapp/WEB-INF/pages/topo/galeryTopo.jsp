@@ -72,7 +72,7 @@
                     <c:set var="i" value="1" />
                     <c:forEach items="${topos}" var="t">
                         <tr>
-                            <td><a class="nav-link" href="${pageContext.request.contextPath}/sites?topoId=${t.topoId}">${t.name}</td>
+                            <td><a class="nav-link" href="${pageContext.request.contextPath}/sites?topoId=${t.topoId}&user=${pageContext.request.userPrincipal.name}">${t.name}</td>
                             <td>${t.utilisateurId}</td>
                             <!--<td>{t.available}</td>-->
 

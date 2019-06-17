@@ -32,7 +32,7 @@ public class TopoController {
      * @return
      */
     @RequestMapping(value = "/topo", method = RequestMethod.GET)
-    public String displayTopo(Model model) {
+    public String displayTopo(@RequestParam("user") String user, Model model) {
         //List<Topo> topos = topoDao.listTopo();
         //System.out.println(topos.size());
         //model.addAttribute("topos", topos);

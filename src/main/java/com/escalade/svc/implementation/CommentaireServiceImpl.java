@@ -28,4 +28,10 @@ public class CommentaireServiceImpl implements CommentaireService {
         return repo.getAllCommentaireBySiteId(siteId);
     }
 
+    @Override
+    public List<Commentaire> teste(String user, int siteId) {
+        return repo.findTest(user, siteId);
+    }
+
+
 }

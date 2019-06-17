@@ -57,7 +57,7 @@
                     <c:forEach items="${topos}" var="t" varStatus="status">
                 <tr>
                     <td>${t.name}</td>
-                    <td>${t.utilisateurId}</td>
+                    <td>${pageContext.request.userPrincipal.name}</td>
                 </tr>
                 </c:forEach>
                 </tr>

@@ -14,4 +14,13 @@ public interface CommentaireRepository extends CrudRepository<Commentaire, Integ
 
     Commentaire findByCommentaireId (int commentaireId);
 
+
+
+    @Query(value="SELECT * \n" +
+            "FROM commentaire c \n" +
+            "INNER JOIN Utilisateur u ON u.utilisateur_id = c.utilisateur_id \n" +
+            "INNER JOIN Site s ON s.site_id = c.site_id \n" +
+            "WHERE u.username = ?1 AND s.site_id = ?2", nativeQuery = true)
+    List<Commentaire> findTest ( String user, int siteId);
+
 }

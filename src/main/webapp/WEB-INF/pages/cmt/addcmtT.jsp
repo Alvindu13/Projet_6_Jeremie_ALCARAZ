@@ -24,10 +24,9 @@
                             <label for="comment">Description:</label>
                             <textarea class="form-control" rows="5" id="comment" placeholder='' name='content' ></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="user">Utilisateur: </label>
-                            <input type='text' placeholder='' name='utilisateurId' class="form-control" id="user"/>
-                        </div>
+
+                        <input type='hidden' placeholder='' name='userName' class="form-control" id="username" value="${pageContext.request.userPrincipal.name}"/>
+                        <input type='hidden' placeholder='' name='utilisateurId' class="form-control" id="user" value="${user.utilisateurId}"/>
                         <input type="hidden" id="siteId" name="siteId" value="${site.siteId}"/>
                         <button type="submit" class="btn btn-primary">Ajouter votre commentaire</button>
                     </form>

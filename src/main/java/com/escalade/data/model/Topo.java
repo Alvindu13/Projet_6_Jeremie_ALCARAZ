@@ -8,7 +8,6 @@ public class Topo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@SequenceGenerator(name="topo_id_seq", sequenceName="topo_id_seq", allocationSize=1)
 	@Column(name = "TOPO_ID")
 	private int topoId;
 

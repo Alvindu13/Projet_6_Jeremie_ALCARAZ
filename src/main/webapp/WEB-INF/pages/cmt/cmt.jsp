@@ -15,7 +15,7 @@
 
 <ul>
     <h1>${cmt.content} </h1>
-    <small class="float-right">${cmt.utilisateurId}</small><br>
+    <small class="float-right">${pageContext.request.userPrincipal.name}</small><br>
 </ul>
 
 </body>

@@ -21,7 +21,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
     public Utilisateur getUserbyUserName(String userName) {
         //utilisateur = utilisateurDao.getUserbyUserName((userName));
-        return null;
+        return repo.findByUserName(userName);
     }
 
     public void createUser(Utilisateur user) {

@@ -45,7 +45,7 @@
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="${pageContext.request.contextPath}/topo">
+                <a class="nav-link" href="${pageContext.request.contextPath}/topo?user=${pageContext.request.userPrincipal.name}">
                     <!-- <i class="fa fa-envelope-o">
                          <span class="badge badge-warning">11</span>
                     </i>-->
@@ -56,11 +56,11 @@
 
 
             <li class="nav-item active">
-                <a class="nav-link" href="${pageContext.request.contextPath}">
+                <a class="nav-link" href="${pageContext.request.contextPath}/multisearch">
                     <!-- <i class="fa fa-envelope-o">
                          <span class="badge badge-warning">11</span>
                     </i>-->
-                    Sites
+                    Chercher un Site
                 </a>
             </li>
 

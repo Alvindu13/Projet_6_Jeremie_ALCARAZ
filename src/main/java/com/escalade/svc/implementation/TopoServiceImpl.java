@@ -33,7 +33,7 @@ public class TopoServiceImpl implements TopoService {
 
     public Iterable<Topo> listTopoByUser(String user) {
 
-        return repo.findAllByUserName(user);
+        return repo.findTry(user);
     }
 
 

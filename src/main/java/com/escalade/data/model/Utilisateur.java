@@ -91,4 +91,12 @@ public class Utilisateur {
 	public void setEnabled(Integer enabled) {
 		this.enabled = enabled;
 	}
+
+	public int getUtilisateurId() {
+		return utilisateurId;
+	}
+
+	public void setUtilisateurId(int utilisateurId) {
+		this.utilisateurId = utilisateurId;
+	}
 }

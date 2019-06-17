@@ -9,5 +9,7 @@ public interface CommentaireService {
 
     void saveCommentaire(Commentaire c);
     Commentaire getCommentaireById(int commentaireId);
-    public List<Commentaire> getAllCommentaireBySiteId(int siteId);
+    List<Commentaire> getAllCommentaireBySiteId(int siteId);
+    List<Commentaire> teste(String user, int siteId);
+
 }
