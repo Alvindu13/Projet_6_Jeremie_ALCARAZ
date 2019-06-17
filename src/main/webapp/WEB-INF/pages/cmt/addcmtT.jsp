@@ -26,7 +26,7 @@
                         </div>
                         <div class="form-group">
                             <label for="user">Utilisateur: </label>
-                            <input type='text' placeholder='' name='userName' class="form-control" id="user"/>
+                            <input type='text' placeholder='' name='utilisateurId' class="form-control" id="user"/>
                         </div>
                         <input type="hidden" id="siteId" name="siteId" value="${site.siteId}"/>
                         <button type="submit" class="btn btn-primary">Ajouter votre commentaire</button>

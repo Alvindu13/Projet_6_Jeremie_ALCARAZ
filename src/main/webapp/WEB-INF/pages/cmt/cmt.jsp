@@ -15,7 +15,7 @@
 
 <ul>
     <h1>${cmt.content} </h1>
-    <small class="float-right">${cmt.userName}</small><br>
+    <small class="float-right">${cmt.utilisateurId}</small><br>
 </ul>
 
 </body>

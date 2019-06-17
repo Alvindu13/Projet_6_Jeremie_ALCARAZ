@@ -4,6 +4,7 @@ import com.escalade.data.repository.UtilisateurRepository;
 import com.escalade.data.model.Utilisateur;
 import com.escalade.svc.contracts.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,8 +24,8 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         return null;
     }
 
-    public void createUser(String username, String firstName, String lastName, String password, Integer nbTopo) {
-
+    public void createUser(Utilisateur user) {
+        repo.save(user);
     }
 
     public Utilisateur getUser(String username) {

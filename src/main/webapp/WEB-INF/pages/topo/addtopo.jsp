@@ -27,7 +27,7 @@
         <div class="form">
             <h4>Veuillez créer votre TOPO : </h4>
             <form class="login-form" name ="f" action="addtopo" method='POST' modelAttribute="topo">
-                <input type='text' placeholder='Nom du Propriétaire' name='userName'/>
+                <input type='text' placeholder='Nom du Propriétaire' name='utilisateurId'/>
                 <input type='text' placeholder='Nom du Topo' name='name'/>
                 <input type='text' placeholder='Nombre de Secteur' name='nbSector' value=''/>
                 <input type='text' placeholder='Nombre de Site' name='nbSite'  value=''/>

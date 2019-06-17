@@ -1,32 +1,47 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: jeremie
-  Date: 2019-05-06
-  Time: 22:31
-  To change this template use File | Settings | File Templates.
---%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE HTML>
 <html>
-<head>
-    <title>Title</title>
-</head>
-<body>
 
-<div class="login-page">
-    <div class="form">
-        <form class="register-form">
-            <input type="text" placeholder="name"/>
-            <input type="password" placeholder="password"/>
-            <input type="text" placeholder="email address"/>
-            <button>create</button>
-            <p class="message">Already registered? <a href="#">Sign In</a></p>
-        </form>
-        <form class="login-form">
-            <input type="text" placeholder="username"/>
-            <input type="password" placeholder="password"/>
-            <button>login</button>
-            <p class="message">Not registered? <a href="#">Create an account</a></p>
-        </form>
+<head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
+    <spring:url value="resources/css/loginForm.css" var="loginForm" />
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="${bootstrap}" rel="stylesheet" />
+    <link href="${loginForm}" rel="stylesheet" />
+
+</head>
+
+<body>
+<jsp:include page="../_menu.jsp" />
+
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <div class="row">
+            <section class="col-xs-12">
+
+                <!-- Register Form -->
+                <form name='f' action="${pageContext.request.contextPath}/saveUser"  method='POST' modelAttribue = "user">
+
+                    <input type="text" id="lastName" class="fadeIn second" name="lastName" placeholder="Nom" value =''/>
+                    <input type="text" id="firstName" class="fadeIn second" name="firstName" placeholder="Prénom" value =''/>
+                    <input type="text" id="utilisateurId" class="fadeIn second" name="utilisateurId" placeholder="Choisir un nom d'utilisateur" value =''/>
+                    <input type="password" id="password" class="fadeIn third" name="password" placeholder="Choisir un mot de passe"/>
+                    <input type="hidden" id="enabled" name="enabled" value= ${1} />
+
+
+                    <input type="submit" class="fadeIn fourth"  name="submit" value="submit">
+                </form>
+
+            </section>
+        </div>
     </div>
 </div>
 

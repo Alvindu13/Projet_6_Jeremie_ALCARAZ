@@ -12,8 +12,8 @@ public class Topo {
 	@Column(name = "TOPO_ID")
 	private int topoId;
 
-	@Column(name = "UTILISATEUR_USERNAME")
-	private String userName;
+	@Column(name = "UTILISATEUR_ID")
+	private String utilisateurId;
 
 	@Column(name = "NAME")
 	private String name;
@@ -29,9 +29,9 @@ public class Topo {
 
 	public Topo() {super();}
 
-	public Topo(int topoId, String userName, String name, int nbSite, int nbSector, boolean available) {
+	public Topo(int topoId, String utilisateurId, String name, int nbSite, int nbSector, boolean available) {
 		this.topoId = topoId;
-		this.userName = userName;
+		this.utilisateurId = utilisateurId;
 		this.name = name;
 		this.nbSite = nbSite;
 		this.nbSector = nbSector;
@@ -46,12 +46,12 @@ public class Topo {
 		this.name = name;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUtilisateurId() {
+		return utilisateurId;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUtilisateurId(String utilisateurId) {
+		this.utilisateurId = utilisateurId;
 	}
 
 	public int getNbSite() {
@@ -90,7 +90,7 @@ public class Topo {
 	public String toString() {
 		return "Topo{" +
 				"topoId=" + topoId +
-				", userName='" + userName + '\'' +
+				", utilisateurId='" + utilisateurId + '\'' +
 				", name='" + name + '\'' +
 				", nbSite=" + nbSite +
 				", nbSector=" + nbSector +

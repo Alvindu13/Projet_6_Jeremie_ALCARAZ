@@ -8,8 +8,12 @@ public class Utilisateur {
 
 
 	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@Column(name = "utilisateur_id")
+	private int utilisateurId;
+
 	@Column(name = "USERNAME")
-	private String username;
+	private String userName;
 
 	@Column(name = "FIRSTNAME")
 	private String firstName;
@@ -23,17 +27,22 @@ public class Utilisateur {
 	@Column(name = "PASSWORD")
 	private String password;
 
+	@Column(name = "ENABLED")
+	private Integer enabled;
+
 	public Utilisateur() {
 		super();
 	}
 
-	public Utilisateur(String firstName, String lastName, int nbTopo, String username, String password) {
+	public Utilisateur(String userName, String firstName, String lastName, int nbTopo, String password, Integer enabled) {
+		this.userName = userName;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.nbTopo = nbTopo;
-		this.username = username;
 		this.password = password;
+		this.enabled = enabled;
 	}
+
 
 	public String getFirstName() {
 		return firstName;
@@ -59,12 +68,12 @@ public class Utilisateur {
 		this.nbTopo = nbTopo;
 	}
 
-	public String getusername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setusername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPassword() {
@@ -75,4 +84,11 @@ public class Utilisateur {
 		this.password = password;
 	}
 
+	public Integer getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Integer enabled) {
+		this.enabled = enabled;
+	}
 }

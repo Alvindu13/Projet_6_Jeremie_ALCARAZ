@@ -64,6 +64,8 @@
                 </a>
             </li>
 
+
+
             <li class="nav-item">
                 <c:if test="${pageContext.request.userPrincipal.name != null}">
                     <a class="nav-link" href="${pageContext.request.contextPath}/mytopo?user=${pageContext.request.userPrincipal.name}">
@@ -84,6 +86,12 @@
                         Logout
                     </a>
                 </c:if>
+            </li>
+
+            <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/displayRegisterForm">
+                        S'inscrire
+                    </a>
             </li>
 
 

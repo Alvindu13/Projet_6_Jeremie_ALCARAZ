@@ -73,7 +73,7 @@
                     <c:forEach items="${topos}" var="t">
                         <tr>
                             <td><a class="nav-link" href="${pageContext.request.contextPath}/sites?topoId=${t.topoId}">${t.name}</td>
-                            <td>${t.userName}</td>
+                            <td>${t.utilisateurId}</td>
                             <!--<td>{t.available}</td>-->
 
                         </tr>
@@ -99,48 +99,6 @@
             </form>
         </section>
     </div>
-
-
-
-    <!--<div class="row">
-        <section class="col-sm-8">
-            <form class="well">
-                <legend>Si vous voulez me laisser un message</legend>
-                <h4>Comment m'avez-vous trouvé ?</h4>
-                <fieldset>
-                    <div class="radio">
-                        <label for="ami" class="radio">
-                            <input type="radio" name="origine" value="ami" id="ami">
-                            Par un ami
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label for="web" class="radio">
-                            <input type="radio" name="origine" value="web" id="web">
-                            Sur le web
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label for="hasard" class="radio">
-                            <input type="radio" name="origine" value="hasard" id="hasard">
-                            Par hasard
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label for="autre" class="radio">
-                            <input type="radio" name="origine" value="autre" id="autre">
-                            Autre...
-                        </label>
-                    </div>
-                    <label for="textarea">Votre message :</label>
-                    <textarea id="textarea" class="form-control" rows="4"></textarea>
-                    <p class="help-block">Vous pouvez agrandir la fenêtre</p>
-                    <button class="btn btn-primary" type="submit">Envoyer</button>
-                </fieldset>
-            </form>
-        </section>
-
-    </div>-->
 </div>
 </body>
 </html>

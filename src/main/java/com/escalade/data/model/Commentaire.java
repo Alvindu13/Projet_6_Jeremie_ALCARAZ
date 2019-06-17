@@ -15,8 +15,8 @@ public class Commentaire {
 	@Column(name = "CONTENT")
 	private String content;
 
-	@Column(name = "UTILISATEUR_USERNAME")
-	private String userName;
+	@Column(name = "UTILISATEUR_ID")
+	private String utilisateurId;
 
 	@Column(name = "SITE_ID")
 	private int siteId;
@@ -24,19 +24,19 @@ public class Commentaire {
 
 	public Commentaire() { super(); }
 
-	public Commentaire(String content, String userName, int siteId, int topoId) {
+	public Commentaire(String content, String utilisateurId, int siteId, int topoId) {
 		this.content = content;
-		this.userName = userName;
+		this.utilisateurId = utilisateurId;
 		this.siteId = siteId;
 		//this.topoId = topoId;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUtilisateurId() {
+		return utilisateurId;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUtilisateurId(String utilisateurId) {
+		this.utilisateurId = utilisateurId;
 	}
 
 	public String getContent() {
@@ -85,7 +85,7 @@ public class Commentaire {
 		return "Commentaire{" +
 				"commentaireId=" + commentaireId +
 				", content='" + content + '\'' +
-				", userName='" + userName + '\'' +
+				", utilisateurId='" + utilisateurId + '\'' +
 				", siteId=" + siteId +
 				'}';
 	}

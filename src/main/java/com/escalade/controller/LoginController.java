@@ -1,14 +1,22 @@
 package com.escalade.controller;
 
+import com.escalade.data.model.Utilisateur;
+import com.escalade.svc.contracts.UtilisateurService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
 
 @Controller
 public class LoginController {
+
+    @Autowired
+    UtilisateurService userSvc;
 
 
     @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
@@ -16,6 +24,17 @@ public class LoginController {
         model.addAttribute("title", "Welcome");
         model.addAttribute("message", "This is welcome page!");
         return "welcomePage";
+    }
+
+    @RequestMapping(value = {"/displayRegisterForm"}, method = RequestMethod.GET)
+    public ModelAndView registerForm(Model model) {
+        return new ModelAndView("login/registerForm", "user", new Utilisateur());
+    }
+
+    @RequestMapping(value = {"/saveUser"}, method = RequestMethod.POST)
+    public String saveUser(@ModelAttribute("user") Utilisateur user) {
+        userSvc.createUser(user);
+        return "redirect:/welcome";
     }
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
