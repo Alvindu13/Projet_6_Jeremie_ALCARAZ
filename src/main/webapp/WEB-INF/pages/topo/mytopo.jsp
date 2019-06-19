@@ -19,8 +19,8 @@
         body { background-color: #1c7430  ; }
         [class*="col"] { margin-bottom: 20px; }
         img { width: 100%; }
-        .well {
-            background-color:#CCC;
+        .share {
+            margin-top: 10em;
             padding: 20px;
         }
         .tableaux{
@@ -67,13 +67,19 @@
                 </tbody>
             </table>
 
+            <div>
+                <section class = share>
 
-            <h2>Souhaitez-vous partagez un topo avec d'autres utilisateurs ? </h2>
+                    <h2>Souhaitez-vous partagez un topo avec d'autres utilisateurs ? </h2>
 
-            <form class="login-form" name ="f" action="mytopo?user=${pageContext.request.userPrincipal.name}" method="POST" modelAttribue="topo" >
-                <input type="text" name='name' placeholder="nom du Topo"/>
-                <input type="submit" value="Partager"  />
-            </form>
+                    <form class="login-form" name ="f" action="mytopo?user=${pageContext.request.userPrincipal.name}" method="POST" modelAttribue="topo" >
+                        <input type="text" name='name' placeholder="nom du Topo"/>
+                        <input type="submit" value="Partager"  />
+                    </form>
+
+                </section>
+
+            </div>
 
         </div>
 
