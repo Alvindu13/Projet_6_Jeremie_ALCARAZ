@@ -81,4 +81,14 @@ public class TopoController {
         return "topo/mytopo";
     }
 
+    @RequestMapping(value = "/mytopo", method = RequestMethod.POST)
+    public String shareTopo(@RequestParam("user") String user, @ModelAttribute("topo") Topo topo) {
+        topo.setAvailable(true);
+        topoSvc.updateTopo(topo.isAvailable(), user, topo.getName());
+        return "topo/mytopo";
+    }
+
+
+
+
 }

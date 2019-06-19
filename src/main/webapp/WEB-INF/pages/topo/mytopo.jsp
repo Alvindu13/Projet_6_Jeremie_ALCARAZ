@@ -44,7 +44,7 @@
     </header>
 
     <div class = "row">
-        <div class = col-lg-5>
+        <div class = col-lg-10>
             <table class="table">
                 <thead class="thead-dark">
                 <tr>
@@ -55,15 +55,28 @@
                 <tbody>
                 <tr>
                     <c:forEach items="${topos}" var="t" varStatus="status">
-                <tr>
-                    <td>${t.name}</td>
-                    <td>${pageContext.request.userPrincipal.name}</td>
+                    <tr>
+                        <td>${t.name}</td>
+                        <td>${pageContext.request.userPrincipal.name}</td>
+
                 </tr>
-                </c:forEach>
+                    </c:forEach>
+
+
                 </tr>
                 </tbody>
             </table>
+
+
+            <h2>Souhaitez-vous partagez un topo avec d'autres utilisateurs ? </h2>
+
+            <form class="login-form" name ="f" action="mytopo?user=${pageContext.request.userPrincipal.name}" method="POST" modelAttribue="topo" >
+                <input type="text" name='name' placeholder="nom du Topo"/>
+                <input type="submit" value="Partager"  />
+            </form>
+
         </div>
+
     </div>
 
 

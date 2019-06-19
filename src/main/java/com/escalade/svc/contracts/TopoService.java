@@ -12,5 +12,6 @@ public interface TopoService {
     //public List<Topo> listTopo();
     public Iterable<Topo> listTopo();
     public Iterable<Topo> listTopoByUser(String user);
+    public void updateTopo(Boolean avalaible, String user, String name);
 
 }
