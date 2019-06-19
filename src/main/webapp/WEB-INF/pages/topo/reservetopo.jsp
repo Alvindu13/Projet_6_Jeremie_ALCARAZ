@@ -1,6 +1,8 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+
 <!DOCTYPE HTML>
 <html>
 
@@ -8,11 +10,8 @@
     <title>Nos Topos</title>
 
     <meta charset="utf-8">
-    <spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
 
-    <link href="${bootstrap}" rel="stylesheet" />
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 
 
@@ -24,27 +23,52 @@
             background-color:#CCC;
             padding: 20px;
         }
+        .tableaux{
+            display:inline-block;
+            vertical-align:top;
+        }
     </style>
 
 </head>
 
 <body>
 <jsp:include page="../_menu.jsp" />
+
+
 <section id = "test" class="row">
     <div class="col-xs-12 col-sm-12 col-md-12"><img src="resources/img/topo/aside.jpg" alt="AsideEscalade"></div>
 </section>
-<div class="container">
+<div id ="containeur">
     <header class="page-header">
-        <h1>Bonjour ${pageContext.request.userPrincipal.name}. Sur cette page vous pouvez si vous le souhaitez réserver un topo</h1>
+        <h1>Voici les résultats de votre recherche</h1>
     </header>
-    <section class="row">
-        <div class="col-xs-12">
-            <p>
 
-            </p>
+    <div class = "row">
+        <div class = col-lg-8 >
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th> Nom du Site </th>
+                    <th> Localisation </th>
+                    <th> nb de Secteur</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:set var="i" value="1" />
+                <c:forEach items="${topos}" var="t">
+                    <tr>
+                        <td>${t.name}</td>
+                        <td>${t.userName}</td>
+                    </tr>
+                    <c:set var="i" value="${i+1}" />
+                </c:forEach>
+                </tbody>
+            </table>
         </div>
-    </section>
+    </div>
+
 
 </div>
+
 </body>
 </html>

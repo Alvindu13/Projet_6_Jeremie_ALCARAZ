@@ -6,13 +6,18 @@ import javax.persistence.*;
 @Table(name = "TOPO")
 public class Topo {
 
+	@ManyToOne(optional=false)
+	@JoinColumn(name="UTILISATEUR_ID")
+	private Utilisateur utilisateur;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "TOPO_ID")
 	private int topoId;
 
-	@Column(name = "UTILISATEUR_ID")
-	private String utilisateurId;
+
+	/*@Column(nullable=false)
+	private int utilisateurId;*/
 
 	@Column(name = "NAME")
 	private String name;
@@ -26,11 +31,12 @@ public class Topo {
 	@Column(name = "AVAILABLE")
 	private boolean available;
 
+
+
 	public Topo() {super();}
 
-	public Topo(int topoId, String utilisateurId, String name, int nbSite, int nbSector, boolean available) {
-		this.topoId = topoId;
-		this.utilisateurId = utilisateurId;
+	public Topo(Utilisateur utilisateur, String name, int nbSite, int nbSector, boolean available) {
+		this.utilisateur = utilisateur;
 		this.name = name;
 		this.nbSite = nbSite;
 		this.nbSector = nbSector;
@@ -45,14 +51,12 @@ public class Topo {
 		this.name = name;
 	}
 
-	public String getUtilisateurId() {
+	/*public int getUtilisateurId() {
 		return utilisateurId;
 	}
 
-	public void setUtilisateurId(String utilisateurId) {
-		this.utilisateurId = utilisateurId;
-	}
-
+	public void setUtilisateurId(int utilisateurId) {
+		this.utilisateurId = utilisateurId;}*/
 	public int getNbSite() {
 		return nbSite;
 	}
@@ -85,11 +89,18 @@ public class Topo {
 		this.topoId = topoId;
 	}
 
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
 	@Override
 	public String toString() {
 		return "Topo{" +
 				"topoId=" + topoId +
-				", utilisateurId='" + utilisateurId + '\'' +
 				", name='" + name + '\'' +
 				", nbSite=" + nbSite +
 				", nbSector=" + nbSector +

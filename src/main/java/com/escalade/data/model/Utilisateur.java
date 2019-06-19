@@ -1,15 +1,20 @@
 package com.escalade.data.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "UTILISATEUR")
 public class Utilisateur {
 
 
+	/*@OneToMany(mappedBy = "utilisateur")
+	private List<Topo> topos = new ArrayList<Topo>();*/
+
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	@Column(name = "utilisateur_id")
+	@Column(name = "UTILISATEUR_ID")
 	private int utilisateurId;
 
 	@Column(name = "USERNAME")
@@ -34,6 +39,16 @@ public class Utilisateur {
 		super();
 	}
 
+	/*public Utilisateur(List<Topo> topos, String userName, String firstName, String lastName, int nbTopo, String password, Integer enabled) {
+		this.topos = topos;
+		this.userName = userName;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.nbTopo = nbTopo;
+		this.password = password;
+		this.enabled = enabled;
+	}*/
+
 	public Utilisateur(String userName, String firstName, String lastName, int nbTopo, String password, Integer enabled) {
 		this.userName = userName;
 		this.firstName = firstName;
@@ -42,7 +57,6 @@ public class Utilisateur {
 		this.password = password;
 		this.enabled = enabled;
 	}
-
 
 	public String getFirstName() {
 		return firstName;
@@ -99,4 +113,6 @@ public class Utilisateur {
 	public void setUtilisateurId(int utilisateurId) {
 		this.utilisateurId = utilisateurId;
 	}
+
+
 }

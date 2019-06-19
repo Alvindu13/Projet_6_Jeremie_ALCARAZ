@@ -1,6 +1,8 @@
 package com.escalade.data.repository;
 
 import com.escalade.data.model.Topo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -20,10 +22,8 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
     Iterable<Topo> findAllByUser (String user);
 
 
-    /*@Modifying
-    @Transactional
-    @Query(value = "update Topo set available = ?1 where name = ?2", nativeQuery = true)
-    void setAvalaibleTopo(Boolean avalaible, int topoId);*/
+
+    Page<Topo> findAllByAvailableIsTrue(Pageable pageable);
 
 
     @Modifying

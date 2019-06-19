@@ -4,6 +4,8 @@ import com.escalade.data.model.Topo;
 import com.escalade.svc.contracts.CommentaireService;
 import com.escalade.svc.contracts.TopoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -64,17 +66,6 @@ public class TopoController {
     }
 
 
-    /**
-     * Affiche la page de réservation des topo
-     * @param model
-     * @return
-     */
-    @RequestMapping(value = "/reservetopo", method = RequestMethod.GET)
-    public String displayTopoReservation(Model model) {
-        return "topo/reservetopo";
-    }
-
-
     @RequestMapping(value = "/mytopo", method = RequestMethod.GET)
     public String displayUserTopo(@RequestParam("user") String user, Model model) {
         model.addAttribute("topos",topoSvc.listTopoByUser(user));
@@ -86,6 +77,22 @@ public class TopoController {
         topo.setAvailable(true);
         topoSvc.updateTopo(topo.isAvailable(), user, topo.getName());
         return "topo/mytopo";
+    }
+
+    /**
+     * Affiche la page de réservation des topo
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/reservetopo", method = RequestMethod.GET)
+    public String displayTopoReservation(@RequestParam("user") String user,
+                                         @RequestParam(name="page", defaultValue = "0") int page,
+                                         Model model) {
+        Page<Topo> pagesTopo = topoSvc.findAllTopoByAvailable(PageRequest.of(page, 5));
+        model.addAttribute("topos",pagesTopo.getContent());
+        model.addAttribute("pages", new int[pagesTopo.getTotalPages()]);
+        model.addAttribute("currentPage", page);
+        return "topo/reservetopo";
     }
 
 

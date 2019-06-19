@@ -4,6 +4,8 @@ import com.escalade.data.repository.TopoRepository;
 import com.escalade.data.model.Topo;
 import com.escalade.svc.contracts.TopoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,10 +38,13 @@ public class TopoServiceImpl implements TopoService {
         return repo.findAllByUser(user);
     }
 
-
-
     public void updateTopo(Boolean avalaible, String user, String name) {
         repo.setAvalaibleTopo(avalaible, user, name);
+    }
+
+    @Override
+    public Page<Topo> findAllTopoByAvailable(Pageable pageable) {
+         return repo.findAllByAvailableIsTrue(pageable);
     }
 
 

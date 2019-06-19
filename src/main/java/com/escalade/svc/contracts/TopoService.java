@@ -1,17 +1,19 @@
 package com.escalade.svc.contracts;
 
 import com.escalade.data.model.Topo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 public interface TopoService {
 
     void createTopo(Topo t);
-    public Topo getTopoByName(String name);
-    public Topo getTopoById(int topo_id);
-    //public List<Topo> listTopo();
-    public Iterable<Topo> listTopo();
-    public Iterable<Topo> listTopoByUser(String user);
-    public void updateTopo(Boolean avalaible, String user, String name);
+    Topo getTopoByName(String name);
+    Topo getTopoById(int topo_id);
+    Iterable<Topo> listTopo();
+    Iterable<Topo> listTopoByUser(String user);
+    void updateTopo(Boolean avalaible, String user, String name);
+    Page<Topo> findAllTopoByAvailable(Pageable pageable);
 
 }
