@@ -28,6 +28,18 @@
             display:inline-block;
             vertical-align:top;
         }
+
+        .table {
+            border-radius: 5px;
+            width: 50%;
+            margin: 0px auto;
+            float: none;
+        }
+
+        td{
+            border: 1px solid #000;
+            width: 100px;
+        }
     </style>
 
 </head>
@@ -40,19 +52,22 @@
     <div class="col-xs-12 col-sm-12 col-md-12"><img src="resources/img/topo/aside.jpg" alt="AsideEscalade"></div>
 </section>
 <div id ="containeur">
-    <header class="page-header">
+
+    <header class="page-header text-center">
         <h1>Voici les résultats de votre recherche</h1>
     </header>
 
-    <div class = "row">
+    <div class="row justify-content-center">
         <div class = col-lg-8 >
-            <table class="table">
+            <table class="table table-bordered table-striped table-sm table-hover thead-dark table-active  ">
                 <thead class="thead-dark">
-                <tr>
-                    <th> Nom du Topo </th>
-                    <th> Nom du propriétaire </th>
+                <div class = "m-auto">
+                    <tr>
+                        <th> Nom du Topo </th>
+                        <th> Nom du propriétaire </th>
+                    </tr>
+                </div>
 
-                </tr>
                 </thead>
                 <tbody>
                 <c:set var="i" value="1" />

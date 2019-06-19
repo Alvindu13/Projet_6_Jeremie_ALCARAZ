@@ -90,13 +90,15 @@ public class TopoController {
      * @return
      */
     @RequestMapping(value = "/reservetopo", method = RequestMethod.GET)
-    public String displayTopoReservation(Model model) {
+    public String displayTopoReservation(@RequestParam(name="page", defaultValue = "0") int page,
+                                         @RequestParam(name="available", defaultValue = "true") Boolean available,
+                                         Model model) {
         //Page<Topo> pagesTopo = topoRepo.findAllByAvailableIsTrue(available,  PageRequest.of(page, 5));
         //model.addAttribute("topos",pagesTopo.getContent());
         //model.addAttribute("pages", new int[pagesTopo.getTotalPages()]);
         //model.addAttribute("currentPage", page);
 
-        model.addAttribute("topos", topoSvc.findAllByAvailableIsTrueOrderByAvailables(true));
+        model.addAttribute("topos", topoSvc.findAllByAvailableIsTrueOrderByAvailables(available));
         return "topo/reservetopo";
     }
 
