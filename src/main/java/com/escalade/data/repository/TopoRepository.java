@@ -6,8 +6,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 public interface TopoRepository extends CrudRepository<Topo, Integer> {
 
@@ -22,8 +24,14 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
     Iterable<Topo> findAllByUser (String user);
 
 
+    @Query(value="SELECT t FROM Topo t WHERE " +
+            "       t.available LIKE :x")
+    Page<Topo> findAllByAvailableIsTrue(@Param("x") Boolean available, Pageable pageable);
 
-    Page<Topo> findAllByAvailableIsTrue(Pageable pageable);
+
+    @Query(value="SELECT * FROM Topo " +
+            " WHERE available = ?1", nativeQuery = true)
+    List<Topo> blabla(Boolean available);
 
 
     @Modifying

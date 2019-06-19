@@ -29,13 +29,13 @@ public class Topo {
 	private int nbSector;
 
 	@Column(name = "AVAILABLE")
-	private boolean available;
+	private Boolean available;
 
 
 
 	public Topo() {super();}
 
-	public Topo(Utilisateur utilisateur, String name, int nbSite, int nbSector, boolean available) {
+	public Topo(Utilisateur utilisateur, String name, int nbSite, int nbSector, Boolean available) {
 		this.utilisateur = utilisateur;
 		this.name = name;
 		this.nbSite = nbSite;
@@ -73,11 +73,11 @@ public class Topo {
 		this.nbSector = nbSector;
 	}
 
-	public boolean isAvailable() {
+	public Boolean isAvailable() {
 		return this.available;
 	}
 
-	public void setAvailable(boolean available) {
+	public void setAvailable(Boolean available) {
 		this.available = available;
 	}
 

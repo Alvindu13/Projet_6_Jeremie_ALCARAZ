@@ -1,6 +1,8 @@
 package com.escalade.controller;
 
 import com.escalade.data.model.Topo;
+import com.escalade.data.repository.SiteRepository;
+import com.escalade.data.repository.TopoRepository;
 import com.escalade.svc.contracts.CommentaireService;
 import com.escalade.svc.contracts.TopoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class TopoController {
 
     @Autowired
     TopoService topoSvc;
+
+    @Autowired
+    private TopoRepository topoRepo;
 
 
     @RequestMapping("/cmt1")
@@ -85,13 +90,13 @@ public class TopoController {
      * @return
      */
     @RequestMapping(value = "/reservetopo", method = RequestMethod.GET)
-    public String displayTopoReservation(@RequestParam("user") String user,
-                                         @RequestParam(name="page", defaultValue = "0") int page,
-                                         Model model) {
-        Page<Topo> pagesTopo = topoSvc.findAllTopoByAvailable(PageRequest.of(page, 5));
-        model.addAttribute("topos",pagesTopo.getContent());
-        model.addAttribute("pages", new int[pagesTopo.getTotalPages()]);
-        model.addAttribute("currentPage", page);
+    public String displayTopoReservation(Model model) {
+        //Page<Topo> pagesTopo = topoRepo.findAllByAvailableIsTrue(available,  PageRequest.of(page, 5));
+        //model.addAttribute("topos",pagesTopo.getContent());
+        //model.addAttribute("pages", new int[pagesTopo.getTotalPages()]);
+        //model.addAttribute("currentPage", page);
+
+        model.addAttribute("topos", topoSvc.findAllByAvailableIsTrueOrderByAvailables(true));
         return "topo/reservetopo";
     }
 

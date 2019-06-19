@@ -43,9 +43,11 @@ public class TopoServiceImpl implements TopoService {
     }
 
     @Override
-    public Page<Topo> findAllTopoByAvailable(Pageable pageable) {
-         return repo.findAllByAvailableIsTrue(pageable);
+    public List<Topo> findAllByAvailableIsTrueOrderByAvailables(Boolean available) {
+        return repo.blabla(available);
     }
+
+
 
 
 

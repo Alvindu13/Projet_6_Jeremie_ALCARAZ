@@ -1,7 +1,8 @@
-%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <!DOCTYPE HTML>
 <html>
@@ -48,9 +49,9 @@
             <table class="table">
                 <thead class="thead-dark">
                 <tr>
-                    <th> Nom du Site </th>
-                    <th> Localisation </th>
-                    <th> nb de Secteur</th>
+                    <th> Nom du Topo </th>
+                    <th> Nom du propriétaire </th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -58,7 +59,7 @@
                 <c:forEach items="${topos}" var="t">
                     <tr>
                         <td>${t.name}</td>
-                        <td>${t.userName}</td>
+                        <td>${t.utilisateur.userName}</td>
                     </tr>
                     <c:set var="i" value="${i+1}" />
                 </c:forEach>

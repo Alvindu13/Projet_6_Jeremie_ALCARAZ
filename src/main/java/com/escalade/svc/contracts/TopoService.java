@@ -14,6 +14,6 @@ public interface TopoService {
     Iterable<Topo> listTopo();
     Iterable<Topo> listTopoByUser(String user);
     void updateTopo(Boolean avalaible, String user, String name);
-    Page<Topo> findAllTopoByAvailable(Pageable pageable);
+    List<Topo> findAllByAvailableIsTrueOrderByAvailables(Boolean available);
 
 }
