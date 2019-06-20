@@ -17,11 +17,11 @@
 
 
     <style type="text/css">
-        div{
-            border: 1Px dotted gray;
-            padding: 10px 10px 10px 100px;
-            margin: 10px;
-        }
+
+        [class*="col"] { margin: 10px; }
+
+        img { width: 100%; }
+
 
         #t1{
             border: 1Px dotted gray;
@@ -41,44 +41,52 @@
             text-align: center;
         }
 
-        #d{
-            ;
+        #t3{
+            border: 1Px dotted darkred;
+            padding: 10px;
+            margin: 10px;
+            align-content: center;
+            text-align: center;
         }
     </style>
 
 </head>
 
 <body>
+
 <jsp:include page="../_menu.jsp" />
 
+<div class="container">
+    <div id="tt">
+        <img class="img-responsive" src="resources/img/topo/aside.jpg" alt="AsideEscalade">
+    </div>
 
-<div class="row">
-    <div class="col"><img class="img-responsive center-block" src="resources/img/topo/aside.jpg" alt="AsideEscalade"></div>
-</div>
-<header class="page-header text-center">
+    <header class="page-header text-center">
         <h1>Voici les résultats de votre recherche</h1>
-</header>
+    </header>
 
 
-<div class="row">
+    <div class="row">
 
-    <div id = "t1" class = "col-12 col-lg-3"> Nom du Topo </div>
-    <div id = "t1" class = "col-12 col-lg-3"> Nom du propriétaire </div>
+        <div id = "t1" class = "col-12 col-lg-3"> Nom du Topo </div>
+        <div id = "t1" class = "col-12 col-lg-3"> Nom du propriétaire </div>
 
-    <c:set var = "userName" scope ="session" value = "${pageContext.request.userPrincipal.name}"/>
+        <c:set var = "userName" scope ="session" value = "${pageContext.request.userPrincipal.name}"/>
 
-    <span class="w-100"></span>
+        <span class="w-100"></span>
 
-    <c:forEach items="${topos}" var="t">
-        <div id = "t2" class = "col-12 col-lg-3">${t.name}</div>
-        <div id = "t2" class = "col-12 col-lg-3">${t.utilisateur.userName}</div>
-        <div id = "t2" class = "col-12 col-lg-3" >
-            <form class="login-form" name ="f" action="${pageContext.request.contextPath}/reservetopo?userId=${currentUser.utilisateurId}&topoId=${t.topoId}" method='POST'>
-                <input type='submit' value='submit' />
-            </form>
-        </div>
-    </c:forEach>
+        <c:forEach items="${topos}" var="t">
+            <div id = "t2" class = "col-12 col-lg-3">${t.name}</div>
+            <div id = "t2" class = "col-12 col-lg-3">${t.utilisateur.userName}</div>
+            <div id = "t3" class = "col-12 col-lg-3" >
+                <form class="login-form" name ="f" action="${pageContext.request.contextPath}/reservetopo?userId=${currentUser.utilisateurId}&topoId=${t.topoId}" method='POST'>
+                    <button type="button" class="btn btn-outline-primary">RÉSERVER</button>
+                </form>
+            </div>
+        </c:forEach>
+    </div>
 </div>
+
 
 
 </body>
