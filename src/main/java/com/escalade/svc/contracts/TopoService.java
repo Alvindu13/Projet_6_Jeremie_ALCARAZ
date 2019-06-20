@@ -14,6 +14,7 @@ public interface TopoService {
     Iterable<Topo> listTopo();
     Iterable<Topo> listTopoByUser(String user);
     void updateTopo(Boolean avalaible, String user, String name);
+    void updateTopoUnvailable(Boolean available, String user, int topoId);
     List<Topo> findAllByAvailableIsTrueOrderByAvailables(Boolean available);
 
 }

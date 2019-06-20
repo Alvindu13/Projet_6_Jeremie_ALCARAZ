@@ -45,6 +45,18 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
             "WHERE u.username=?2 AND t.name=?3 "+ ")",nativeQuery=true)
     void setAvalaibleTopo(Boolean avalaible, String user, String name);
 
+
+    @Modifying
+    @Transactional
+    @Query(value="UPDATE topo "+
+            "SET available = ?1, u.username = ?1 "+
+            "WHERE "+
+            " ctid IN ( "+
+            "   SELECT t.ctid FROM topo t "+
+            "   LEFT JOIN utilisateur u ON t.utilisateur_id = u.utilisateur_id "+
+            "WHERE u.username = ?1 AND t.topo_id = ?2 "+ ")",nativeQuery=true)
+    void setUnvailableTopo(Boolean available, String user, int topoId);
+
     /*@Modifying
     @Transactional
     @Query(value = "Update topo t \n" +

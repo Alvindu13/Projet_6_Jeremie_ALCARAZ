@@ -43,6 +43,11 @@ public class TopoServiceImpl implements TopoService {
     }
 
     @Override
+    public void updateTopoUnvailable(Boolean available, String user, int topoId) {
+        repo.setUnvailableTopo(available, user, topoId);
+    }
+
+    @Override
     public List<Topo> findAllByAvailableIsTrueOrderByAvailables(Boolean available) {
         return repo.blabla(available);
     }

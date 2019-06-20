@@ -16,8 +16,7 @@ public class Topo {
 	private int topoId;
 
 
-	/*@Column(nullable=false)
-	private int utilisateurId;*/
+
 
 	@Column(name = "NAME")
 	private String name;

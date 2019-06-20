@@ -70,7 +70,11 @@
     <c:forEach items="${topos}" var="t">
         <div id = "t2" class = "col-12 col-lg-3">${t.name}</div>
         <div id = "t2" class = "col-12 col-lg-3">${t.utilisateur.userName}</div>
-        <div id = "t2" class = "col-12 col-lg-3" ><a href="${pageContext.request.contextPath}/reserveTopo?user=${pageContext.request.userPrincipal.name}&topoId=${t.topoId}">Réserver</a></div>
+        <div id = "t2" class = "col-12 col-lg-3" >
+            <form class="login-form" name ="f" action="${pageContext.request.contextPath}/reservetopo?action=update&user=${pageContext.request.userPrincipal.name}&topoId=${t.topoId}" method='POST'>
+                <input type='submit' value='submit' />
+            </form>
+        </div>
     </c:forEach>
 </div>
 

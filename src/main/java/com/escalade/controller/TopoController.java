@@ -101,16 +101,21 @@ public class TopoController {
 
     /**
      * Affiche la page de réservation des topo
-     * @param model
      * @return
      */
-    @RequestMapping(value = "/reservetopo", method = RequestMethod.GET)
+    @RequestMapping(value = "/reservetopo", method = RequestMethod.POST)
     public String reserveTopo(@RequestParam("user") String user,
                               @RequestParam("topoId") int topoId,
-                              Model model) {
+                              @RequestParam("action") String action) {
 
+        if(action != null){
+            if(action.equals("update")){
+                topoSvc.updateTopoUnvailable(false, user, topoId);
+            }
 
-        return "topo/reservetopo";
+        }
+
+        return "topo/mytopo";
     }
 
 
