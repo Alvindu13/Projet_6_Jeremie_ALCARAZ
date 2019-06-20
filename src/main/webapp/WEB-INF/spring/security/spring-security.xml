@@ -25,6 +25,8 @@
         <intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')" />
 
         <intercept-url pattern="/topo" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"  />
+        <intercept-url pattern="/displaytopoavailable" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"  />
+
         <intercept-url pattern="/reservetopo" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"  />
 
 

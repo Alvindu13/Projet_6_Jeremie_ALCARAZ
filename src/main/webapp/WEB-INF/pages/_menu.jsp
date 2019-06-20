@@ -54,7 +54,7 @@
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/topo?user=${pageContext.request.userPrincipal.name}"> Liste de tous les topos </a>
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/reservetopo?user=${pageContext.request.userPrincipal.name}">Réserver un topo</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/displaytopoavailable?user=${pageContext.request.userPrincipal.name}">Réserver un topo</a>
                 </div>
             </li>
 
