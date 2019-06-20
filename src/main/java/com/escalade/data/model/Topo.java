@@ -6,6 +6,8 @@ import javax.persistence.*;
 @Table(name = "TOPO")
 public class Topo {
 
+
+
 	@ManyToOne(optional=false)
 	@JoinColumn(name="UTILISATEUR_ID")
 	private Utilisateur utilisateur;
@@ -14,8 +16,6 @@ public class Topo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "TOPO_ID")
 	private int topoId;
-
-
 
 
 	@Column(name = "NAME")
@@ -34,7 +34,7 @@ public class Topo {
 
 	public Topo() {super();}
 
-	public Topo(Utilisateur utilisateur, String name, int nbSite, int nbSector, Boolean available) {
+	public Topo(String userName, Utilisateur utilisateur, String name, int nbSite, int nbSector, Boolean available) {
 		this.utilisateur = utilisateur;
 		this.name = name;
 		this.nbSite = nbSite;
@@ -94,6 +94,10 @@ public class Topo {
 
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
+	}
+
+	public Boolean getAvailable() {
+		return available;
 	}
 
 	@Override

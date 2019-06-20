@@ -2,9 +2,11 @@ package com.escalade.controller;
 
 import com.escalade.data.model.Topo;
 import com.escalade.data.repository.TopoRepository;
+import com.escalade.data.repository.UtilisateurRepository;
 import com.escalade.svc.contracts.CommentaireService;
 import com.escalade.svc.contracts.TopoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +24,9 @@ public class TopoController {
 
     @Autowired
     private TopoRepository topoRepo;
+
+    @Autowired
+    private UtilisateurRepository userRepo;
 
 
     @RequestMapping("/cmt1")
@@ -88,13 +93,14 @@ public class TopoController {
      */
     @RequestMapping(value = "/displaytopoavailable", method = RequestMethod.GET)
     public String displayTopoReservation(@RequestParam(name="page", defaultValue = "0") int page,
+                                         @RequestParam("user") String user,
                                          @RequestParam(name="available", defaultValue = "true") Boolean available,
                                          Model model) {
         //Page<Topo> pagesTopo = topoRepo.findAllByAvailableIsTrue(available,  PageRequest.of(page, 5));
         //model.addAttribute("topos",pagesTopo.getContent());
         //model.addAttribute("pages", new int[pagesTopo.getTotalPages()]);
         //model.addAttribute("currentPage", page);
-
+        model.addAttribute("currentUser", userRepo.findByUserName(user));
         model.addAttribute("topos", topoSvc.findAllByAvailableIsTrueOrderByAvailables(available));
         return "topo/displaytopoavailable";
     }
@@ -104,16 +110,11 @@ public class TopoController {
      * @return
      */
     @RequestMapping(value = "/reservetopo", method = RequestMethod.POST)
-    public String reserveTopo(@RequestParam("user") String user,
-                              @RequestParam("topoId") int topoId,
-                              @RequestParam("action") String action) {
+    public String reserveTopo(@RequestParam("userId") int userId,
+                              @RequestParam("topoId") int topoId) {
 
-        if(action != null){
-            if(action.equals("update")){
-                topoSvc.updateTopoUnvailable(false, user, topoId);
-            }
-
-        }
+       topoRepo.setTopoUserNameByUserId(userId, topoId);
+       topoRepo.setTopoUnvailableById(false, topoId);
 
         return "topo/mytopo";
     }

@@ -65,13 +65,15 @@
     <div id = "t1" class = "col-12 col-lg-3"> Nom du Topo </div>
     <div id = "t1" class = "col-12 col-lg-3"> Nom du propriétaire </div>
 
+    <c:set var = "userName" scope ="session" value = "${pageContext.request.userPrincipal.name}"/>
+
     <span class="w-100"></span>
 
     <c:forEach items="${topos}" var="t">
         <div id = "t2" class = "col-12 col-lg-3">${t.name}</div>
         <div id = "t2" class = "col-12 col-lg-3">${t.utilisateur.userName}</div>
         <div id = "t2" class = "col-12 col-lg-3" >
-            <form class="login-form" name ="f" action="${pageContext.request.contextPath}/reservetopo?action=update&user=${pageContext.request.userPrincipal.name}&topoId=${t.topoId}" method='POST'>
+            <form class="login-form" name ="f" action="${pageContext.request.contextPath}/reservetopo?userId=${currentUser.utilisateurId}&topoId=${t.topoId}" method='POST'>
                 <input type='submit' value='submit' />
             </form>
         </div>
