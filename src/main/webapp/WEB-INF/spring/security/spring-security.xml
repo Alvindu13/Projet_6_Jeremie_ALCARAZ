@@ -60,10 +60,10 @@
         <!-- authentication from database -->
         <authentication-provider>
             <jdbc-user-service data-source-ref="DataSource"
-                               users-by-username-query="select username,password, enabled from utilisateur where username=?"
-                               authorities-by-username-query="SELECT u.utilisateur_id, concat('ROLE_',rolename) rolenam, username
+                               users-by-username-query="select username, password, enabled from utilisateur where username = ?"
+                               authorities-by-username-query="SELECT u.utilisateur_id, concat('ROLE_',rolename) rolename, username
                                                               FROM user_role r
-                                                              INNER JOIN Utilisateur u ON u.utilisateur_id = r.utilisateur_id
+                                                              INNER JOIN Utilisateur u ON u.utilisateur_id = r.role_utilisateur_id
                                                               WHERE username = ?"
             />
         </authentication-provider>

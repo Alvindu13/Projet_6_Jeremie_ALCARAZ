@@ -1,6 +1,9 @@
 package com.escalade.controller;
 
+import com.escalade.data.model.UserRole;
 import com.escalade.data.model.Utilisateur;
+import com.escalade.data.repository.UserRoleRepository;
+import com.escalade.svc.contracts.UserRoleService;
 import com.escalade.svc.contracts.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +21,9 @@ public class LoginController {
     @Autowired
     UtilisateurService userSvc;
 
+    @Autowired
+    UserRoleRepository userRoleService;
+
 
     @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
     public String welcomePage(Model model) {
@@ -34,6 +40,9 @@ public class LoginController {
     @RequestMapping(value = {"/saveUser"}, method = RequestMethod.POST)
     public String saveUser(@ModelAttribute("user") Utilisateur user) {
         userSvc.createUser(user);
+        userRoleService.save(new UserRole("USER"));
+
+        //userSvc.roleUserSave(user.getUtilisateurId());
         return "redirect:/welcome";
     }
 

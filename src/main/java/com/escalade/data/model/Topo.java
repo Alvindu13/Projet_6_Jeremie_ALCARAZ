@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "TOPO")
-public class Topo {
+public class Topo  {
 
 
 
@@ -32,7 +32,7 @@ public class Topo {
 
 
 
-	public Topo() {super();}
+	public Topo() {}
 
 	public Topo(String userName, Utilisateur utilisateur, String name, int nbSite, int nbSector, Boolean available) {
 		this.utilisateur = utilisateur;

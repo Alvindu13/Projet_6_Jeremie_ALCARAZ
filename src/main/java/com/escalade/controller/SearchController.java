@@ -46,7 +46,6 @@ public class SearchController {
     @PostMapping("/multisearch")
     public String recupDataSearch(
             @ModelAttribute("searcher") Search search) {
-        System.out.println(search.getCotationMaximum());
         return "redirect:searchresult?location=" + search.getLocation() + "&cotation_minimum=" + search.getCotationMinimum() + "&cotation_maximum=" + search.getCotationMaximum() + "&nbsecteur=" +search.getNbSecteur();
     }
 
@@ -58,11 +57,24 @@ public class SearchController {
                                Model model) {
 
 
+        /*String paramLocation = "";
+        cotationMaxi = null;
+        cotationMini = null;
+        nbSecteur = null;
+
+
+        if(!location.equals(null) && nbSecteur.equals(null) && cotationMaxi.equals(null) && cotationMini.equals(null)){
+           paramLocation = "WHERE location = " + location;
+        }
+
+
+        String requestSQL = "SELECT * FROM SITE" + paramLocation ;
+        model.addAttribute("sites", svcSite.testSQL(requestSQL));*/
+
 
         model.addAttribute("sites", svcSite.test2(location, cotationMini, cotationMaxi, nbSecteur));
         model.addAttribute("voies", svcVoie.findAllByFilterSite(location, cotationMini, cotationMaxi, nbSecteur));
 
-        //model.addAttribute("objects", collection.getBoth(svcSite.test2(location, cotationMini, cotationMaxi, nbSecteur), svcVoie.findAllByFilterSite(location, cotationMini, cotationMaxi, nbSecteur)));
 
         return "search/searchresult";
     }

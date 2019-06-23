@@ -114,5 +114,16 @@ public class Utilisateur {
 		this.utilisateurId = utilisateurId;
 	}
 
-
+	@Override
+	public String toString() {
+		return "Utilisateur{" +
+				"utilisateurId=" + utilisateurId +
+				", userName='" + userName + '\'' +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", nbTopo=" + nbTopo +
+				", password='" + password + '\'' +
+				", enabled=" + enabled +
+				'}';
+	}
 }
