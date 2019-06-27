@@ -93,7 +93,7 @@
             <form class = "well">
                 <h4>Souhaitez-vous ajouter votre propre Topo ?</h4>
                 <fieldset>
-                    <a href="${pageContext.request.contextPath}/atopo" class="btn btn-primary js-scroll-trigger">Afficher le formulaire</a>
+                    <a href="${pageContext.request.contextPath}/atopo?user=${pageContext.request.userPrincipal.name}" class="btn btn-primary js-scroll-trigger">Afficher le formulaire</a>
                 </fieldset>
             </form>
         </section>

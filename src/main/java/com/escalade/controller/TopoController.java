@@ -46,9 +46,6 @@ public class TopoController {
      */
     @RequestMapping(value = "/topo", method = RequestMethod.GET)
     public String displayTopo(@RequestParam("user") String user, Model model) {
-        //List<Topo> topos = topoDao.listTopo();
-        //System.out.println(topos.size());
-        //model.addAttribute("topos", topos);
         model.addAttribute("topos", topoSvc.listTopo());
         return "topo/galeryTopo";
     }
@@ -59,7 +56,8 @@ public class TopoController {
      * @return
      */
     @RequestMapping(value = "/atopo", method = RequestMethod.GET)
-    public ModelAndView showFormTopo() {
+    public ModelAndView showFormTopo(@RequestParam("user") String user, Model model) {
+        model.addAttribute("currentUser", userSvc.getUserbyUserName(user));
         return new ModelAndView("topo/addtopo", "atopo", new Topo());
     }
 

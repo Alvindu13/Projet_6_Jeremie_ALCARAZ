@@ -26,13 +26,16 @@
     <div class="login-page">
         <div class="form">
             <h4>Veuillez créer votre TOPO : </h4>
-            <form class="login-form" name ="f" action="addtopo" method='POST' modelAttribute="topo">
-                <input type='text' placeholder='Nom du Propriétaire' name='utilisateurId'/>
-                <input type='text' placeholder='Nom du Topo' name='name'/>
-                <input type='text' placeholder='Nombre de Secteur' name='nbSector' value=''/>
-                <input type='text' placeholder='Nombre de Site' name='nbSite'  value=''/>
+            <form class="login-form" name ="f" action="addtopo" method='POST' modelAttribute="topo" />
 
-                <button>Créer Topo</button>
+                <input type="text" readonly class="form-control-plaintext" id="staticUser" value="${pageContext.request.userPrincipal.name}"/>
+                <input type='text' placeholder='Nom du Topo' name='name'/>
+                <input type='hidden' name = 'available' value = "${false}">
+                <input type='hidden' name = 'reserve' value = "${false}">
+                <input type='hidden' name = 'utilisateur.utilisateurId' value = "${currentUser.utilisateurId}">
+
+            <button  name = "submit" type="submit" class="btn btn-danger">CREER TOPO</button>
+
             </form>
         </div>
     </div>
