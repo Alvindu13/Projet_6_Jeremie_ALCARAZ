@@ -13,7 +13,7 @@ public interface TopoService {
     Topo getTopoById(int topo_id);
     Iterable<Topo> listTopo();
     Iterable<Topo> listTopoByUser(String user);
-    void updateTopo(String action,Boolean reserve, Boolean avalaible, String user, int topoId);
+    void updateTopo(String action,Boolean reserve, String user, int topoId);
     void updateTopoUnvailable(Boolean available, String user, int topoId);
     List<Topo> findAllByAvailableIsTrueOrderByAvailables(Boolean available);
     List<Topo> findAllByCurrentlyUser(int currentUser);

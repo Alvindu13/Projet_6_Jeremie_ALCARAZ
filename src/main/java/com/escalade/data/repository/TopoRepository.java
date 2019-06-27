@@ -45,7 +45,7 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
             "   SELECT t.ctid FROM topo t "+
             "   LEFT JOIN utilisateur u ON t.utilisateur_id = u.utilisateur_id "+
             "WHERE u.username=?2 AND t.topo_id=?3 "+ ")",nativeQuery=true)
-    void setAvalaibleTopo(Boolean avalaible, String user, int topoId);
+    void setAvalaibleTopo(Boolean avalaible, String user, Integer topoId);
 
 
     @Modifying
@@ -57,14 +57,14 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
             "   SELECT t.ctid FROM topo t "+
             "   LEFT JOIN utilisateur u ON t.utilisateur_id = u.utilisateur_id "+
             "WHERE u.username = ?1 AND t.topo_id = ?2 "+ ")",nativeQuery=true)
-    void setUnvailableTopo(Boolean available, String user, int topoId);
+    void setUnvailableTopo(Boolean available, String user, Integer topoId);
 
     @Modifying
     @Transactional
     @Query(value="UPDATE topo "+
             "SET currently_user_id = ?1 "+
             "WHERE topo_id = ?2", nativeQuery = true)
-    void setTopoUserNameByUserId(int userId, int topoId);
+    void setTopoUserNameByUserId(Integer userId, Integer topoId);
 
 
 
@@ -73,7 +73,7 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
     @Query(value="UPDATE topo "+
             "SET available = ?1 "+
             "WHERE topo_id = ?2", nativeQuery = true)
-    void setTopoUnvailableById(Boolean unvailable, int topoId);
+    void setTopoUnvailableById(Boolean unvailable, Integer topoId);
 
 
 
@@ -82,7 +82,9 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
     @Query(value="UPDATE topo "+
             "SET reserve = ?1 "+
             "WHERE topo_id = ?2", nativeQuery = true)
-    void setTopoReserveUserIdByTopoId(Boolean reserve, int topoId);
+    void setTopoReserveUserIdByTopoId(Boolean reserve, Integer topoId);
+
+
 
 
 

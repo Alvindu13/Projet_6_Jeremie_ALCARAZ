@@ -94,7 +94,7 @@
                 <thead class="thead-dark">
                 <tr>
                     <th> Nom du topo</th>
-                    <th> Propriétaire </th>
+                    <th> Propriétaire actuel </th>
                     <th> Action </th>
                 </tr>
                 </thead>

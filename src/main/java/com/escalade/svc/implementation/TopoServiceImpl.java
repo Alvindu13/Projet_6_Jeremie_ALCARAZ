@@ -38,19 +38,20 @@ public class TopoServiceImpl implements TopoService {
         return repo.findAllByUser(user);
     }
 
-    public void updateTopo(String action, Boolean reserve, Boolean avalaible, String user, int topoId) {
-        System.out.println(topoId);
+    public void updateTopo(String action, Boolean reserve, String user, int topoId) {
+
+        final Integer emptyUser = 0;
+        final Boolean available = true;
 
         if(action.equals(",partager"))
         {
             System.out.println(topoId);
-            avalaible = true;
-            repo.setAvalaibleTopo(avalaible, user, topoId);
+            repo.setAvalaibleTopo(available, user, topoId);
         }
         else if(action.equals(",liberer")){
-            reserve = false;
-            System.out.println(topoId);
+            repo.setAvalaibleTopo(available, user, topoId);
             repo.setTopoReserveUserIdByTopoId(false, topoId);
+            repo.setTopoUserNameByUserId(emptyUser, topoId);
         }
 
     }

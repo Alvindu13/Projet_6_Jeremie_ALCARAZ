@@ -83,16 +83,14 @@ public class TopoController {
                                   Model model) {
 
 
-        currentlyUser = userSvc.getUserbyUserName(user);
-        System.out.println(currentlyUser.getUtilisateurId());
+        currentlyUser = userRepo.findByUserName(user);
 
         model.addAttribute("user", userRepo.findByUserName(user));
         model.addAttribute("topos",topoSvc.listTopoByUser(user));
         model.addAttribute("tShare",topoSvc.findAllByCurrentlyUser(currentlyUser.getUtilisateurId()));
 
 
-        System.out.println(currentlyUser.toString());
-        System.out.println(topoSvc.findAllByCurrentlyUser(currentlyUser.getUtilisateurId()).get(0).toString());
+
 
 
 
@@ -104,8 +102,8 @@ public class TopoController {
                             @RequestParam("action") String action,
                             @ModelAttribute("topo") Topo topo) {
 
-        System.out.println(action);
-        topoSvc.updateTopo(action, topo.getReserve(), topo.isAvailable(), user, topo.getTopoId());
+        //System.out.println(action);
+        topoSvc.updateTopo(action, topo.getReserve(), user, topo.getTopoId());
 
 
         //topoSvc.updateTopo(topo.isAvailable(), user, topo.getTopoId());
