@@ -75,7 +75,7 @@
 
                                     <form class="login-form" name ="f" action="mytopo?user=${pageContext.request.userPrincipal.name}" method="POST" modelAttribue="topo" >
                                         <c:if test="${!t.available}">
-                                            <td><button  name = "submit" type="submit" class="btn btn-warning">PARTAGER</button></td>
+                                            <td><button  name = "submit" type="submit" class="btn btn-success">PARTAGER</button></td>
                                         </c:if>
                                         <c:if test="${t.available eq true}">
                                             <td><button type="button" class="btn btn-secondary btn-lg" disabled>PARTAGER</button></td>
@@ -88,7 +88,7 @@
 
                                 <c:if test="${t.reserve eq true}">
                                     <td>Topo emprunté</td>
-                                    <td><button  name = "submit" type="submit" class="btn btn-warning">LIBERER</button></td>
+                                    <td><button  name = "submit" type="submit" class="btn btn-danger">LIBERER</button></td>
                                 </c:if>
 
                             </tr>
