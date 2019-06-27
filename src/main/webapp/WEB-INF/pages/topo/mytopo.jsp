@@ -43,33 +43,52 @@
         <h1>${pageContext.request.userPrincipal.name}</h1>
     </header>
 
-    <h2>Mes topos</h2>
 
     <div class = "row">
         <div class = col-lg-10>
-            <table class="table">
-                <thead class="thead-dark">
-                <tr>
-                    <th> Nom du topo</th>
-                    <th> Propriétaire </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <c:forEach items="${topos}" var="t" varStatus="status">
+
+
+
+
+
+
+                <table class="table">
+                    <thead class="thead-dark">
                     <tr>
-                        <td>${t.name}</td>
-                        <td>${pageContext.request.userPrincipal.name}</td>
+                        <th> Nom du topo</th>
+                        <th> Propriétaire </th>
+                        <th> Nature </th>
+                        <th> Action </th>
 
-                </tr>
-                    </c:forEach>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <c:forEach items="${topos}" var="t" varStatus="status">
+
+                            <tr>
+                                <td>${t.name}</td>
+                                <td>${pageContext.request.userPrincipal.name}</td>
+                                <c:if test="${t.reserve eq false}">
+                                    <td>Topo publié</td>
+                                    <td><button  name = "submit" type="submit" class="btn btn-warning">PARTAGER</button></td>
+                                </c:if>
+
+                                <c:if test="${t.reserve eq true}">
+                                    <td>Topo emprunté</td>
+                                    <td><button  name = "submit" type="submit" class="btn btn-warning">LIBERER</button></td>
+                                </c:if>
+
+                            </tr>
+
+                        </c:forEach>
+                    </tr>
+                    </tbody>
+                </table>
 
 
-                </tr>
-                </tbody>
-            </table>
 
-            <h2>Les topos que j'aies réservés</h2>
 
 
 
