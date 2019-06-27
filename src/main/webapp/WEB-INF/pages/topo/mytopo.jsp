@@ -45,6 +45,9 @@
 
 
     <div class = "row">
+
+
+
         <div class = col-lg-10>
 
 
@@ -70,17 +73,25 @@
                             <tr>
                                 <td>${t.name}</td>
                                 <td>${pageContext.request.userPrincipal.name}</td>
+
                                 <c:if test="${t.reserve eq false}">
+
                                     <td>Topo publié</td>
 
-                                    <form class="login-form" name ="f" action="mytopo?user=${pageContext.request.userPrincipal.name}" method="POST" modelAttribue="topo" >
+                                    <form class="login-form" name ="f" action="mytopo?user=${pageContext.request.userPrincipal.name}&action=${action}" method="POST" modelAttribue="topo" >
                                         <c:if test="${!t.available}">
+                                            <input type="hidden" name="topoId" value="${t.topoId}"/>
+                                            <input type="hidden" name="action" value="partager"/>
                                             <td><button  name = "submit" type="submit" class="btn btn-success">PARTAGER</button></td>
-                                            <input type="hidden" name="topoId" value="${t.topoId}">
+
                                         </c:if>
+
+
                                         <c:if test="${t.available eq true}">
                                             <td><button type="button" class="btn btn-secondary btn-lg" disabled>PARTAGER</button></td>
                                         </c:if>
+
+
                                     </form>
 
                                 </c:if>
@@ -88,8 +99,17 @@
 
 
                                 <c:if test="${t.reserve eq true}">
+
+
                                     <td>Topo emprunté</td>
-                                    <td><button  name = "submit" type="submit" class="btn btn-danger">LIBERER</button></td>
+
+                                    <form class="login-form" name ="f" action="mytopo?user=${pageContext.request.userPrincipal.name}&action=${action}" method="POST" modelAttribue="topo" >
+                                        <input type="hidden" name="action" value="liberer"/>
+                                        <input type="hidden" name="topoId" value="${t.topoId}"/>
+                                        <td><button  name = "submit" type="submit" class="btn btn-danger">LIBERER</button></td>
+                                    </form>
+
+
                                 </c:if>
 
                             </tr>

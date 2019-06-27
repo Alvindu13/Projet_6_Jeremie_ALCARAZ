@@ -21,6 +21,8 @@ public class Topo  {
 	@Column(name = "NAME")
 	private String name;
 
+	@Column(name = "CURRENT_USER_ID")
+	private Integer userCurrentProprio;
 
 	@Column(name = "AVAILABLE")
 	private Boolean available;
@@ -30,9 +32,10 @@ public class Topo  {
 
 	public Topo() {}
 
-	public Topo(Utilisateur utilisateur, String name, Boolean available, Boolean reserve) {
+	public Topo(Utilisateur utilisateur, String name, Integer userCurrentProprio, Boolean available, Boolean reserve) {
 		this.utilisateur = utilisateur;
 		this.name = name;
+		this.userCurrentProprio = userCurrentProprio;
 		this.available = available;
 		this.reserve = reserve;
 	}
@@ -81,12 +84,23 @@ public class Topo  {
 		this.reserve = reserve;
 	}
 
+	public Integer getUserCurrentProprio() {
+		return userCurrentProprio;
+	}
+
+	public void setUserCurrentProprio(Integer userCurrentProprio) {
+		this.userCurrentProprio = userCurrentProprio;
+	}
+
 	@Override
 	public String toString() {
 		return "Topo{" +
-				"topoId=" + topoId +
+				"utilisateur=" + utilisateur +
+				", topoId=" + topoId +
 				", name='" + name + '\'' +
+				", userCurrentProprio=" + userCurrentProprio +
 				", available=" + available +
+				", reserve=" + reserve +
 				'}';
 	}
 }
