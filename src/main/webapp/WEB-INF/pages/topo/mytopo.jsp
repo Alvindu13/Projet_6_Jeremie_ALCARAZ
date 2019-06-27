@@ -45,107 +45,99 @@
 
 
     <div class = "row">
-
-
-
         <div class = col-lg-10>
 
-
-
-
-
-
+                <h2> Mes Topos publiés : </h2>
                 <table class="table">
                     <thead class="thead-dark">
                     <tr>
                         <th> Nom du topo</th>
                         <th> Propriétaire </th>
-                        <th> Nature </th>
                         <th> Action </th>
-
-
                     </tr>
                     </thead>
+
                     <tbody>
+                    <c:forEach items="${topos}" var="t" varStatus="status">
                     <tr>
-                        <c:forEach items="${topos}" var="t" varStatus="status">
+                        <td>${t.name}</td>
+                        <td>${pageContext.request.userPrincipal.name}</td>
 
-                            <tr>
-                                <td>${t.name}</td>
-                                <td>${pageContext.request.userPrincipal.name}</td>
-
-                                <c:if test="${t.reserve eq false}">
-
-                                    <td>Topo publié</td>
-
-                                    <form class="login-form" name ="f" action="mytopo?user=${pageContext.request.userPrincipal.name}&action=${action}" method="POST" modelAttribue="topo" >
-                                        <c:if test="${!t.available}">
-                                            <input type="hidden" name="topoId" value="${t.topoId}"/>
-                                            <input type="hidden" name="action" value="partager"/>
-                                            <td><button  name = "submit" type="submit" class="btn btn-success">PARTAGER</button></td>
-
-                                        </c:if>
-
-
-                                        <c:if test="${t.available eq true}">
-                                            <td><button type="button" class="btn btn-secondary btn-lg" disabled>PARTAGER</button></td>
-                                        </c:if>
-
-
-                                    </form>
+                        <c:if test="${t.reserve eq false}">
+                            <form class="login-form" name ="f" action="mytopo?user=${pageContext.request.userPrincipal.name}&action=${action}" method="POST" modelAttribue="topo" >
+                                <c:if test="${!t.available}">
+                                    <input type="hidden" name="topoId" value="${t.topoId}"/>
+                                    <input type="hidden" name="action" value="partager"/>
+                                    <td><button  name = "submit" type="submit" class="btn btn-success">PARTAGER</button></td>
 
                                 </c:if>
 
-
-
-                                <c:if test="${t.reserve eq true}">
-
-
-                                    <td>Topo emprunté</td>
-
-                                    <form class="login-form" name ="f" action="mytopo?user=${pageContext.request.userPrincipal.name}&action=${action}" method="POST" modelAttribue="topo" >
-                                        <input type="hidden" name="action" value="liberer"/>
-                                        <input type="hidden" name="topoId" value="${t.topoId}"/>
-                                        <td><button  name = "submit" type="submit" class="btn btn-danger">LIBERER</button></td>
-                                    </form>
-
-
+                                <c:if test="${t.available eq true}">
+                                    <td><button type="button" class="btn btn-secondary btn-lg" disabled>PARTAGER</button></td>
                                 </c:if>
 
-                            </tr>
-
-                        </c:forEach>
+                            </form>
+                        </c:if>
                     </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
-
-
-
-
-
-
-
-
-            <div>
-                <section class = share>
-
-                    <h2>Souhaitez-vous partagez un topo avec d'autres utilisateurs ? </h2>
-
-                    <form class="login-form" name ="f" action="mytopo?user=${pageContext.request.userPrincipal.name}" method="POST" modelAttribue="topo" >
-                        <input type="text" name='name' placeholder="nom du Topo"/>
-                        <input type="submit" value="Partager"  />
-                    </form>
-
-                </section>
-
             </div>
-
-        </div>
-
     </div>
 
 
+    <div class = "row">
+        <div class = col-lg-10>
 
+            <h2> Mes Topos empruntés : </h2>
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th> Nom du topo</th>
+                    <th> Propriétaire </th>
+                    <th> Action </th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <c:forEach items="${tShare}" var="share" varStatus="status">
+                <tr>
+                    <td>${share.name}</td>
+                    <td>${pageContext.request.userPrincipal.name}</td>
+                        <form class="login-form" name ="f" action="mytopo?user=${pageContext.request.userPrincipal.name}&action=${action}" method="POST" >
+                            <input type="hidden" name="action" value="liberer"/>
+                            <input type="hidden" name="topoId" value="${share.topoId}"/>
+                            <td><button  name = "submit" type="submit" class="btn btn-danger">LIBERER</button></td>
+                        </form>
+                </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

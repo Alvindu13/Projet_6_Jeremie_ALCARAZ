@@ -16,6 +16,7 @@ public interface TopoService {
     void updateTopo(String action,Boolean reserve, Boolean avalaible, String user, int topoId);
     void updateTopoUnvailable(Boolean available, String user, int topoId);
     List<Topo> findAllByAvailableIsTrueOrderByAvailables(Boolean available);
+    List<Topo> findAllByCurrentlyUser(int currentUser);
     Long countAllTopo();
 
 }

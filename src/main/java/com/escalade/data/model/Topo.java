@@ -21,7 +21,7 @@ public class Topo  {
 	@Column(name = "NAME")
 	private String name;
 
-	@Column(name = "CURRENT_USER_ID")
+	@Column(name = "CURRENTLY_USER_ID")
 	private Integer userCurrentProprio;
 
 	@Column(name = "AVAILABLE")

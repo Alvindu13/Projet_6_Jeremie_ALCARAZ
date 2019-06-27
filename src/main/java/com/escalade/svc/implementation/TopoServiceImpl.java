@@ -66,6 +66,11 @@ public class TopoServiceImpl implements TopoService {
     }
 
     @Override
+    public List<Topo> findAllByCurrentlyUser(int currentUser) {
+        return repo.findAllByUserCurrentProprio(currentUser);
+    }
+
+    @Override
     public Long countAllTopo() {
        return repo.count();
     }

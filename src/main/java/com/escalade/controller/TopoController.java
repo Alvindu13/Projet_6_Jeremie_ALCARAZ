@@ -1,12 +1,13 @@
 package com.escalade.controller;
 
 import com.escalade.data.model.Topo;
+import com.escalade.data.model.Utilisateur;
 import com.escalade.data.repository.TopoRepository;
 import com.escalade.data.repository.UtilisateurRepository;
 import com.escalade.svc.contracts.CommentaireService;
 import com.escalade.svc.contracts.TopoService;
+import com.escalade.svc.contracts.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,9 @@ public class TopoController {
 
     @Autowired
     private UtilisateurRepository userRepo;
+
+    @Autowired
+    private UtilisateurService userSvc;
 
 
     @RequestMapping("/cmt1")
@@ -74,8 +78,24 @@ public class TopoController {
 
 
     @RequestMapping(value = "/mytopo", method = RequestMethod.GET)
-    public String displayUserTopo(@RequestParam("user") String user, Model model) {
+    public String displayUserTopo(@RequestParam("user") String user,
+                                  @ModelAttribute("currentUser") Utilisateur currentlyUser,
+                                  Model model) {
+
+
+        currentlyUser = userSvc.getUserbyUserName(user);
+        System.out.println(currentlyUser.getUtilisateurId());
+
+        model.addAttribute("user", userRepo.findByUserName(user));
         model.addAttribute("topos",topoSvc.listTopoByUser(user));
+        model.addAttribute("tShare",topoSvc.findAllByCurrentlyUser(currentlyUser.getUtilisateurId()));
+
+
+        System.out.println(currentlyUser.toString());
+        System.out.println(topoSvc.findAllByCurrentlyUser(currentlyUser.getUtilisateurId()).get(0).toString());
+
+
+
         return "topo/mytopo";
     }
 
@@ -107,8 +127,12 @@ public class TopoController {
         //model.addAttribute("topos",pagesTopo.getContent());
         //model.addAttribute("pages", new int[pagesTopo.getTotalPages()]);
         //model.addAttribute("currentPage", page);
+
+
         model.addAttribute("currentUser", userRepo.findByUserName(user));
         model.addAttribute("topos", topoSvc.findAllByAvailableIsTrueOrderByAvailables(available));
+
+
         return "topo/displaytopoavailable";
     }
 
@@ -123,6 +147,7 @@ public class TopoController {
        topoRepo.setTopoUserNameByUserId(userId, topoId);
        topoRepo.setTopoUnvailableById(false, topoId);
        topoRepo.setTopoReserveUserIdByTopoId(true, topoId);
+
 
         return "topo/mytopo";
     }

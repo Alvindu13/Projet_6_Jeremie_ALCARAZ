@@ -16,6 +16,8 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
 
     Topo findByTopoId (int topoId);
 
+    List<Topo> findAllByUserCurrentProprio(Integer currentUser);
+
 
     @Query(value="SELECT  t.*" +
             "FROM Topo t " +
@@ -60,7 +62,7 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
     @Modifying
     @Transactional
     @Query(value="UPDATE topo "+
-            "SET utilisateur_id = ?1 "+
+            "SET currently_user_id = ?1 "+
             "WHERE topo_id = ?2", nativeQuery = true)
     void setTopoUserNameByUserId(int userId, int topoId);
 
