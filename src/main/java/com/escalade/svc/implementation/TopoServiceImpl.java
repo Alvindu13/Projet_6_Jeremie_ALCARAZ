@@ -46,13 +46,14 @@ public class TopoServiceImpl implements TopoService {
         if(action.equals(",partager"))
         {
             System.out.println(topoId);
-            repo.setAvalaibleTopo(available, user, topoId);
         }
         else if(action.equals(",liberer")){
-            repo.setAvalaibleTopo(available, user, topoId);
             repo.setTopoReserveUserIdByTopoId(false, topoId);
             repo.setTopoUserNameByUserId(emptyUser, topoId);
         }
+
+        repo.setTopoUnvailableById(true, topoId);
+
 
     }
 
