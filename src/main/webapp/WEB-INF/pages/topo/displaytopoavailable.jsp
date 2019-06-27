@@ -79,7 +79,9 @@
             <div id = "t2" class = "col-12 col-lg-3">${t.name}</div>
             <div id = "t2" class = "col-12 col-lg-3">${t.utilisateur.userName}</div>
             <div id = "t3" class = "col-12 col-lg-3" >
+
                 <form class="login-form" name ="f" action="${pageContext.request.contextPath}/reservetopo?userId=${currentUser.utilisateurId}&topoId=${t.topoId}" method='POST'>
+                    <input type="date" />
                     <button type="button" class="btn btn-outline-primary">RÉSERVER</button>
                 </form>
             </div>

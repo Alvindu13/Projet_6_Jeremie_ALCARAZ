@@ -17,7 +17,7 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
     Topo findByTopoId (int topoId);
 
 
-    @Query(value="SELECT  t.name, u.username, t.topo_id " +
+    @Query(value="SELECT  t.*" +
             "FROM Topo t " +
             "INNER JOIN Utilisateur u ON u.utilisateur_id = t.utilisateur_id" +
                 " WHERE username = ?1 ", nativeQuery = true)

@@ -57,20 +57,6 @@ public class SearchController {
                                Model model) {
 
 
-        /*String paramLocation = "";
-        cotationMaxi = null;
-        cotationMini = null;
-        nbSecteur = null;
-
-
-        if(!location.equals(null) && nbSecteur.equals(null) && cotationMaxi.equals(null) && cotationMini.equals(null)){
-           paramLocation = "WHERE location = " + location;
-        }
-
-
-        String requestSQL = "SELECT * FROM SITE" + paramLocation ;
-        model.addAttribute("sites", svcSite.testSQL(requestSQL));*/
-
 
         model.addAttribute("sites", svcSite.test2(location, cotationMini, cotationMaxi, nbSecteur));
         model.addAttribute("voies", svcVoie.findAllByFilterSite(location, cotationMini, cotationMaxi, nbSecteur));

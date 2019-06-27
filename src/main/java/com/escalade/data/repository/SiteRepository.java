@@ -9,7 +9,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 
-import java.lang.reflect.Parameter;
 import java.util.List;
 
 public interface SiteRepository extends CrudRepository<Site, Integer>, JpaSpecificationExecutor {
@@ -48,8 +47,6 @@ public interface SiteRepository extends CrudRepository<Site, Integer>, JpaSpecif
             "WHERE s.location = ?1 AND (v.cotation BETWEEN ?2 AND ?3)  AND s.nbSector <= ?4 \n", nativeQuery = true)
     List<Site> test2(String location, String cotationMini, String cotationMaxi, Integer nbSector);
 
-    /*@Query (value = "?1", nativeQuery = true)
-    List<Site> testSQL(String requestSQL);*/
 
 
 

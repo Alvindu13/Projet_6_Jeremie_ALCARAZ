@@ -12,4 +12,5 @@ public interface SiteService {
     public List<Site> listSiteByTopoId(int topoId);
     public Site getSiteBySiteId(int siteId);
     public Site getSiteByResearch(String location, String cotation, int nbSecteur);
+
 }
