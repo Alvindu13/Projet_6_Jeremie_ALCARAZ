@@ -76,6 +76,7 @@
                                     <form class="login-form" name ="f" action="mytopo?user=${pageContext.request.userPrincipal.name}" method="POST" modelAttribue="topo" >
                                         <c:if test="${!t.available}">
                                             <td><button  name = "submit" type="submit" class="btn btn-success">PARTAGER</button></td>
+                                            <input type="hidden" name="topoId" value="${t.topoId}">
                                         </c:if>
                                         <c:if test="${t.available eq true}">
                                             <td><button type="button" class="btn btn-secondary btn-lg" disabled>PARTAGER</button></td>

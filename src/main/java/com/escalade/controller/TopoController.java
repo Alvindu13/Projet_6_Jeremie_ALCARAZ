@@ -82,7 +82,7 @@ public class TopoController {
     @RequestMapping(value = "/mytopo", method = RequestMethod.POST)
     public String shareTopo(@RequestParam("user") String user, @ModelAttribute("topo") Topo topo) {
         topo.setAvailable(true);
-        topoSvc.updateTopo(topo.isAvailable(), user, "BALIDARINA");
+        topoSvc.updateTopo(topo.isAvailable(), user, topo.getTopoId());
         return "topo/mytopo";
     }
 

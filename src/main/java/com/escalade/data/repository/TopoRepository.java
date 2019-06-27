@@ -42,8 +42,8 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
             " ctid IN ( "+
             "   SELECT t.ctid FROM topo t "+
             "   LEFT JOIN utilisateur u ON t.utilisateur_id = u.utilisateur_id "+
-            "WHERE u.username=?2 AND t.name=?3 "+ ")",nativeQuery=true)
-    void setAvalaibleTopo(Boolean avalaible, String user, String name);
+            "WHERE u.username=?2 AND t.topo_id=?3 "+ ")",nativeQuery=true)
+    void setAvalaibleTopo(Boolean avalaible, String user, int topoId);
 
 
     @Modifying

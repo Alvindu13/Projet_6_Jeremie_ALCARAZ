@@ -38,8 +38,8 @@ public class TopoServiceImpl implements TopoService {
         return repo.findAllByUser(user);
     }
 
-    public void updateTopo(Boolean avalaible, String user, String name) {
-        repo.setAvalaibleTopo(avalaible, user, name);
+    public void updateTopo(Boolean avalaible, String user, int topoId) {
+        repo.setAvalaibleTopo(avalaible, user, topoId);
     }
 
     @Override
