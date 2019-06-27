@@ -21,25 +21,20 @@ public class Topo  {
 	@Column(name = "NAME")
 	private String name;
 
-	@Column(name = "NBSITE")
-	private int nbSite;
-
-	@Column(name = "NBSECTOR")
-	private int nbSector;
 
 	@Column(name = "AVAILABLE")
 	private Boolean available;
 
-
+	@Column(name = "RESERVE")
+	private Boolean reserve;
 
 	public Topo() {}
 
-	public Topo(String userName, Utilisateur utilisateur, String name, int nbSite, int nbSector, Boolean available) {
+	public Topo(Utilisateur utilisateur, String name, Boolean available, Boolean reserve) {
 		this.utilisateur = utilisateur;
 		this.name = name;
-		this.nbSite = nbSite;
-		this.nbSector = nbSector;
 		this.available = available;
+		this.reserve = reserve;
 	}
 
 	public String getName() {
@@ -48,28 +43,6 @@ public class Topo  {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	/*public int getUtilisateurId() {
-		return utilisateurId;
-	}
-
-	public void setUtilisateurId(int utilisateurId) {
-		this.utilisateurId = utilisateurId;}*/
-	public int getNbSite() {
-		return nbSite;
-	}
-
-	public void setNbSite(int nbSite) {
-		this.nbSite = nbSite;
-	}
-
-	public int getNbSector() {
-		return nbSector;
-	}
-
-	public void setNbSector(int nbSector) {
-		this.nbSector = nbSector;
 	}
 
 	public Boolean isAvailable() {
@@ -100,13 +73,19 @@ public class Topo  {
 		return available;
 	}
 
+	public Boolean getReserve() {
+		return reserve;
+	}
+
+	public void setReserve(Boolean reserve) {
+		this.reserve = reserve;
+	}
+
 	@Override
 	public String toString() {
 		return "Topo{" +
 				"topoId=" + topoId +
 				", name='" + name + '\'' +
-				", nbSite=" + nbSite +
-				", nbSector=" + nbSector +
 				", available=" + available +
 				'}';
 	}

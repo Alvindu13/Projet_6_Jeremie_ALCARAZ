@@ -18,16 +18,12 @@ public class Secteur {
     @Column(name = "NAME")
     private String name;
 
-    @Column(name = "NBWAY")
-    private int nbWay;
-
     public Secteur() {super(); }
 
 
-    public Secteur(String siteId, String name, int nbWay) {
+    public Secteur(String siteId, String name) {
         this.siteId = siteId;
         this.name = name;
-        this.nbWay = nbWay;
     }
 
     public String getSecteurId() {
@@ -54,11 +50,4 @@ public class Secteur {
         this.name = name;
     }
 
-    public int getNbWay() {
-        return nbWay;
-    }
-
-    public void setNbWay(int nbWay) {
-        this.nbWay = nbWay;
-    }
 }

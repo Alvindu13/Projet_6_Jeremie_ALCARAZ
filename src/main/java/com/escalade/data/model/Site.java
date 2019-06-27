@@ -24,12 +24,6 @@ public class Site {
     @Column(name = "TOPO_ID")
     private int topoId;
 
-    @Column(name = "NBSECTOR")
-    private int nbSector;
-
-    @Column(name = "NBWAY")
-    private int nbWay;
-
     @Column(name = "COTATION_MINIMUM")
     private String cotationMinimum;
 
@@ -43,13 +37,11 @@ public class Site {
 
     public Site() {super(); }
 
-    public Site(String name, String location, String comment, int topoId, int nbSector, int nbWay, String cotationMinimum, String cotationMaximum, Double waySize) {
+    public Site(String name, String location, String comment, int topoId, String cotationMinimum, String cotationMaximum, Double waySize) {
         this.name = name;
         this.location = location;
         this.comment = comment;
         this.topoId = topoId;
-        this.nbSector = nbSector;
-        this.nbWay = nbWay;
         this.cotationMinimum = cotationMinimum;
         this.cotationMaximum = cotationMaximum;
         this.waySize = waySize;
@@ -93,22 +85,6 @@ public class Site {
 
     public void setTopoId(int topoId) {
         this.topoId = topoId;
-    }
-
-    public int getNbSector() {
-        return nbSector;
-    }
-
-    public void setNbSector(int nbSector) {
-        this.nbSector = nbSector;
-    }
-
-    public int getNbWay() {
-        return nbWay;
-    }
-
-    public void setNbWay(int nbWay) {
-        this.nbWay = nbWay;
     }
 
     public String getCotationMinimum() {

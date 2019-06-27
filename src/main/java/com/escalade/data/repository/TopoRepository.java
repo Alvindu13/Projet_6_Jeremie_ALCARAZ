@@ -73,4 +73,13 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
             "WHERE topo_id = ?2", nativeQuery = true)
     void setTopoUnvailableById(Boolean unvailable, int topoId);
 
+
+
+    @Modifying
+    @Transactional
+    @Query(value="UPDATE topo "+
+            "SET reserve = ?1 "+
+            "WHERE topo_id = ?2", nativeQuery = true)
+    void setTopoReserveUserIdByTopoId(Boolean reserve, int topoId);
+
 }

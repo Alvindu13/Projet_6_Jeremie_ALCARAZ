@@ -52,6 +52,11 @@ public class TopoServiceImpl implements TopoService {
         return repo.blabla(available);
     }
 
+    @Override
+    public Long countAllTopo() {
+       return repo.count();
+    }
+
 
 
 

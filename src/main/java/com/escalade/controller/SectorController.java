@@ -26,6 +26,7 @@ public class SectorController {
     @RequestMapping(value = "/secteur", method = RequestMethod.GET)
     public String displaySector(@RequestParam("siteId") int siteId, Model model) {
         model.addAttribute("secteurs", svcSecteur.listSecteur(siteId));
+
         return "secteur/secteur";
     }
 

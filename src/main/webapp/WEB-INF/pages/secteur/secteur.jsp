@@ -52,22 +52,20 @@
 <jsp:include page="../_menu.jsp" />
 
 <div class ="container">
+    <h2>Voici tous les secteurs disponibles pour le site sélectionné</h2>
     <div class="row">
         <section class="col-sm-12">
             <table class="table table-bordered table-striped table-condensed">
                 <thead>
                 <tr>
                     <th>name</th>
-                    <th>nbWay</th>
-
                 </tr>
                 </thead>
                 <tbody>
                 <c:set var="i" value="1" />
                 <c:forEach items="${secteurs}" var="sect">
                     <tr>
-                        <td><a class="nav-link" href="${pageContext.request.contextPath}/voie?secteurId=${sect.secteurId}">${sect.name}</td>
-                        <td>${sect.nbWay}</td>
+                        <td><a class="nav-link" href="${pageContext.request.contextPath}/voie?secteurId=${sect.secteurId}"/>${sect.name}</td>
                     </tr>
                     <c:set var="i" value="${i+1}" />
                 </c:forEach>

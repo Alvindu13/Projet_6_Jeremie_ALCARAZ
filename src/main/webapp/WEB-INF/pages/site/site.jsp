@@ -24,15 +24,6 @@
                 <a class="nav-link" href="${pageContext.request.contextPath}/secteur?siteId=${site.siteId}">
                     <strong> ${countSect} </strong> secteurs
                 </a>
-
-                    comprenant
-                    <strong>${site.nbWay} </strong>
-                    voies sur une longueur de
-                    <strong> ${site.waySize} </strong>
-                    mètres </p>
-
-
-            <p>La difficulté des voies est comprise entre les cotations suivantes : <strong> ${site.cotationMinimum} </strong> </p>
         </section>
     </div>
 

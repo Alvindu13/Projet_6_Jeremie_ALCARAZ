@@ -115,6 +115,7 @@ public class TopoController {
 
        topoRepo.setTopoUserNameByUserId(userId, topoId);
        topoRepo.setTopoUnvailableById(false, topoId);
+       topoRepo.setTopoReserveUserIdByTopoId(true, topoId);
 
         return "topo/mytopo";
     }

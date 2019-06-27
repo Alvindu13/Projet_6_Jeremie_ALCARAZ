@@ -57,7 +57,6 @@
             <table class="table table-bordered table-striped table-condensed">
                 <thead>
                 <tr>
-                    <th>secteurId</th>
                     <th>size</th>
                     <th>name</th>
                     <th>nbPoints</th>
@@ -69,7 +68,6 @@
                 <c:set var="i" value="1" />
                 <c:forEach items="${voies}" var="v">
                     <tr>
-                        <td>${v.secteurId}</td>
                         <td>${v.size}</td>
                         <td>${v.name}</td>
                         <td>${v.nbPoints}</td>

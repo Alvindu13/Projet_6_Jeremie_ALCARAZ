@@ -50,7 +50,6 @@
                 <tr>
                     <th> Nom du Site </th>
                     <th> Localisation </th>
-                    <th>nb de Secteur</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -59,7 +58,6 @@
                 <tr>
                     <td>${s.name}</td>
                     <td>${s.location}</td>
-                    <td>${s.nbSector}</td>
                 </tr>
                 </c:forEach>
                 </tr>

@@ -119,7 +119,7 @@
                                     <option>7D</option>
                                 </select>
                             </div>
-
+                            <!--
                             <div class="form-group col-md-3">
                                 <label for="inputState">Quantité secteur</label>
                                 <select id="inputState3" class="form-control" name = 'nbSecteur'>
@@ -136,7 +136,7 @@
                                     <option>10</option>
 
                                 </select>
-                            </div>
+                            </div>-->
 
                             <button type="submit" class="btn btn-primary">Submit</button>
 

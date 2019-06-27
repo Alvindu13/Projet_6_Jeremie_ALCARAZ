@@ -26,9 +26,6 @@ public class Utilisateur {
 	@Column(name = "LASTNAME")
 	private String lastName;
 
-	@Column(name = "NBTOPO")
-	private int nbTopo;
-
 	@Column(name = "PASSWORD")
 	private String password;
 
@@ -39,21 +36,11 @@ public class Utilisateur {
 		super();
 	}
 
-	/*public Utilisateur(List<Topo> topos, String userName, String firstName, String lastName, int nbTopo, String password, Integer enabled) {
-		this.topos = topos;
-		this.userName = userName;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.nbTopo = nbTopo;
-		this.password = password;
-		this.enabled = enabled;
-	}*/
 
-	public Utilisateur(String userName, String firstName, String lastName, int nbTopo, String password, Integer enabled) {
+	public Utilisateur(String userName, String firstName, String lastName, String password, Integer enabled) {
 		this.userName = userName;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.nbTopo = nbTopo;
 		this.password = password;
 		this.enabled = enabled;
 	}
@@ -72,14 +59,6 @@ public class Utilisateur {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	public int getNbTopo() {
-		return nbTopo;
-	}
-
-	public void setNbTopo(int nbTopo) {
-		this.nbTopo = nbTopo;
 	}
 
 	public String getUserName() {
@@ -121,7 +100,6 @@ public class Utilisateur {
 				", userName='" + userName + '\'' +
 				", firstName='" + firstName + '\'' +
 				", lastName='" + lastName + '\'' +
-				", nbTopo=" + nbTopo +
 				", password='" + password + '\'' +
 				", enabled=" + enabled +
 				'}';

@@ -53,13 +53,12 @@ public class SearchController {
     public String resultSearch(@RequestParam(name="location") String location,
                                @RequestParam(name="cotation_minimum") String cotationMini,
                                @RequestParam(name="cotation_maximum") String cotationMaxi,
-                               @RequestParam(name="nbsecteur") Integer nbSecteur,
                                Model model) {
 
 
 
-        model.addAttribute("sites", svcSite.test2(location, cotationMini, cotationMaxi, nbSecteur));
-        model.addAttribute("voies", svcVoie.findAllByFilterSite(location, cotationMini, cotationMaxi, nbSecteur));
+        model.addAttribute("sites", svcSite.findSiteByMultiCriterias(location, cotationMini, cotationMaxi));
+        model.addAttribute("voies", svcVoie.findAllByFilterSite(location, cotationMini, cotationMaxi));
 
 
         return "search/searchresult";

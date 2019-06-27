@@ -61,12 +61,8 @@
         <img class="img-responsive" src="resources/img/topo/aside.jpg" alt="AsideEscalade">
     </div>
 
-    <header class="page-header text-center">
-        <h1>Voici les résultats de votre recherche</h1>
-    </header>
-
-
     <div class="row">
+
 
         <div id = "t1" class = "col-12 col-lg-3"> Nom du Topo </div>
         <div id = "t1" class = "col-12 col-lg-3"> Nom du propriétaire </div>
@@ -80,12 +76,20 @@
             <div id = "t2" class = "col-12 col-lg-3">${t.utilisateur.userName}</div>
             <div id = "t3" class = "col-12 col-lg-3" >
 
+
                 <form class="login-form" name ="f" action="${pageContext.request.contextPath}/reservetopo?userId=${currentUser.utilisateurId}&topoId=${t.topoId}" method='POST'>
-                    <input type="date" />
-                    <button type="button" class="btn btn-outline-primary">RÉSERVER</button>
+                    <c:if test="${t.utilisateur.userName != pageContext.request.userPrincipal.name}">
+                        <button  name = "submit" type="submit" class="btn btn-warning">RESERVER</button>
+                    </c:if>
+                    <c:if test="${t.utilisateur.userName eq pageContext.request.userPrincipal.name}">
+                        <button type="button" class="btn btn-secondary btn-lg" disabled>INDISPONIBLE</button>
+                    </c:if>
                 </form>
             </div>
         </c:forEach>
+
+
+
     </div>
 </div>
 

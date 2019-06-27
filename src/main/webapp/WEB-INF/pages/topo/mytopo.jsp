@@ -43,6 +43,8 @@
         <h1>${pageContext.request.userPrincipal.name}</h1>
     </header>
 
+    <h2>Mes topos</h2>
+
     <div class = "row">
         <div class = col-lg-10>
             <table class="table">
@@ -66,6 +68,12 @@
                 </tr>
                 </tbody>
             </table>
+
+            <h2>Les topos que j'aies réservés</h2>
+
+
+
+
 
             <div>
                 <section class = share>
