@@ -4,8 +4,11 @@ import com.escalade.data.model.Commentaire;
 import com.escalade.data.model.Image;
 import com.escalade.data.model.Site;
 import com.escalade.data.model.Topo;
+import com.escalade.data.repository.CommentaireRepository;
 import com.escalade.svc.contracts.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +34,10 @@ public class SiteController {
 
     @Autowired
     CommentaireService svcCmt;
+
+
+    @Autowired
+    CommentaireRepository repoCmt;
 
     @Autowired
     SecteurService svcSect;
@@ -68,12 +75,22 @@ public class SiteController {
      * @return la page site
      */
     @RequestMapping(value = "site", method = RequestMethod.GET)
-    public String displaySiteAlone(@RequestParam("siteId") int siteId,
-                                   @RequestParam("user") String user,
+    public String displaySiteAlone(@RequestParam(name="page", defaultValue = "0") int page,
+                                   @RequestParam("siteId") int siteId,
+                                   @RequestParam(name = "user", defaultValue = "") String user,
                                    Model model) {
+        Page<Commentaire> pageCmt = repoCmt.comment(user, siteId, PageRequest.of(page, 5));
+
         model.addAttribute("site", svcSite.getSiteBySiteId(siteId));
         model.addAttribute("cmtTest", svcCmt.getAllCommentaireBySiteId(siteId));
         model.addAttribute("countSect", svcSect.getCountSecteur(siteId));
+
+        model.addAttribute("cmtest",pageCmt.getContent());
+        model.addAttribute("pages", new int[pageCmt.getTotalPages()]);
+        model.addAttribute("currentPage", page);
+
+
+
 
 
         model.addAttribute("user", svcUser.getUserbyUserName(user));
@@ -111,7 +128,7 @@ public class SiteController {
      * @return ModelAndView with view addcmt and commentaire model
      */
     @RequestMapping(value = "/cmt", method = RequestMethod.GET)
-    public ModelAndView showFormComment() {
+    public ModelAndView showFormComment(Model model) {
         return new ModelAndView("cmt/addcmtT", "commentaire", new Commentaire());
     }
 

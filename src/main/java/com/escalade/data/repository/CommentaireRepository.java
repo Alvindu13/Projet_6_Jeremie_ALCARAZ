@@ -2,6 +2,8 @@ package com.escalade.data.repository;
 
 import com.escalade.data.model.Commentaire;
 import com.escalade.data.model.Site;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -22,5 +24,19 @@ public interface CommentaireRepository extends CrudRepository<Commentaire, Integ
             "INNER JOIN Site s ON s.site_id = c.site_id \n" +
             "WHERE u.username = ?1 AND s.site_id = ?2", nativeQuery = true)
     List<Commentaire> findTest ( String user, int siteId);
+
+
+    @Query(value="SELECT * \n" +
+            "FROM commentaire c \n" +
+            "INNER JOIN Utilisateur u ON u.utilisateur_id = c.utilisateur_id \n" +
+            "INNER JOIN Site s ON s.site_id = c.site_id \n" +
+            "WHERE u.username = ?1 AND s.site_id = ?2 ORDER BY ?#{#pageable}",
+            countQuery = "SELECT count(*) \n" +
+            "FROM commentaire c \n" +
+            "INNER JOIN Utilisateur u ON u.utilisateur_id = c.utilisateur_id \n" +
+            "INNER JOIN Site s ON s.site_id = c.site_id \n" +
+            "WHERE u.username = ?1 AND s.site_id = ?2",
+            nativeQuery = true)
+    Page<Commentaire> comment (String user, int siteId, Pageable pageable);
 
 }

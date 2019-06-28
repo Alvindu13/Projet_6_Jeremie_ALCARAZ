@@ -6,8 +6,8 @@
     <title>Sites D'escalade</title>
 
     <meta charset="utf-8">
-    <spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
-    <link href="${bootstrap}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
 
 </head>
 
@@ -27,16 +27,56 @@
         </section>
     </div>
 
+
+
+
+
     <div class="row">
         <jsp:include page="../cmt/addcmtT.jsp" />
     </div>
 
-    <div class="row">
-        <section class="col-lg-12">
-            <h2>Derniers commentaires : </h2>
-            <jsp:include page="../cmt/cmtList.jsp" />
 
-        </section>
+    <div class="panel-body">
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+            <tr>
+                <th>Commentaires</th>
+                <th>Auteur</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:set var="i" value="1" />
+            <c:forEach items="${cmtest}" var="c">
+                <tr>
+                    <td>${c.content}</td>
+                    <td>${pageContext.request.userPrincipal.name}</td>
+                </tr>
+                <c:set var="i" value="${i+1}" />
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div>
+            <section>
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+
+                        <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/site?siteId=${site.siteId}&user=${pageContext.request.userPrincipal.name}&page=${currentPage+1}">Next</a></li>
+
+                    </ul>
+            </section>
+
+        </div>
+
+
+    </div>
+
 </div>
 
 </body>
