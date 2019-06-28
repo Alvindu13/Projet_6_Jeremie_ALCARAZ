@@ -11,6 +11,7 @@ public interface UtilisateurService {
     void createUser(Utilisateur user);
     Utilisateur getUser(String username);
     List<Utilisateur> listUser();
+    Utilisateur findByUtilisateurId(int utilisateurId);
     //void roleUserSave(int userId);
 
 }

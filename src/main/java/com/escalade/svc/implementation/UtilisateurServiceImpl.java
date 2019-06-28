@@ -16,27 +16,31 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     @Autowired
     private UtilisateurRepository repo;
 
-    private Utilisateur utilisateur;
-
-
+    @Override
     public Utilisateur getUserbyUserName(String userName) {
         //utilisateur = utilisateurDao.getUserbyUserName((userName));
         return repo.findByUserName(userName);
     }
 
+    @Override
     public void createUser(Utilisateur user) {
         repo.save(user);
     }
 
+    @Override
     public Utilisateur getUser(String username) {
         return repo.findByUserName(username);
     }
 
+    @Override
     public List<Utilisateur> listUser() {
         return null;
     }
 
-
+    @Override
+    public Utilisateur findByUtilisateurId(int utilisateurId) {
+        return repo.findByUtilisateurId(utilisateurId);
+    }
 
 
 }

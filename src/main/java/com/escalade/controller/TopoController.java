@@ -87,7 +87,6 @@ public class TopoController {
         Page<Topo> pagesTopo = topoSvc.findAllByUserName(user, PageRequest.of(pageTopo, 5));
         Page<Topo> pagesTopoShare = topoSvc.findAllByCurrentlyUser(currentlyUser.getUtilisateurId(), PageRequest.of(pageTopoShare, 5));
 
-        System.out.println("currentPage : " + pageTopo);
 
         model.addAttribute("user", userSvc.getUser(user));
         model.addAttribute("topos", pagesTopo.getContent());
@@ -113,6 +112,7 @@ public class TopoController {
                             @ModelAttribute("topo") Topo topo) {
 
         topoSvc.updateTopo(action, topo.getReserve(), user, topo.getTopoId());
+
         return new ModelAndView( "redirect:/mytopo?user=" + user);
     }
 
@@ -126,15 +126,13 @@ public class TopoController {
                                          @RequestParam("user") String user,
                                          @RequestParam(name="available", defaultValue = "true") Boolean available,
                                          Model model) {
-        //Page<Topo> pagesTopo = topoRepo.findAllByAvailableIsTrue(available,  PageRequest.of(page, 5));
-        //model.addAttribute("topos",pagesTopo.getContent());
-        //model.addAttribute("pages", new int[pagesTopo.getTotalPages()]);
-        //model.addAttribute("currentPage", page);
 
-
+        Page<Topo> pagesTopo = topoRepo.findAllByAvailableIsTrue(available,  PageRequest.of(page, 5));
+        model.addAttribute("topos",pagesTopo.getContent());
+        model.addAttribute("arrayNbPagesTopo", new int[pagesTopo.getTotalPages()]);
+        model.addAttribute("currentPageTopo", page);
         model.addAttribute("currentUser", userSvc.getUser(user));
-        model.addAttribute("topos", topoSvc.findAllByAvailableIsTrueOrderByAvailables(available));
-
+        model.addAttribute("nbPagesTopo", pagesTopo.getTotalPages());
 
         return "topo/displaytopoavailable";
     }
@@ -144,15 +142,14 @@ public class TopoController {
      * @return
      */
     @RequestMapping(value = "/reservetopo", method = RequestMethod.POST)
-    public String reserveTopo(@RequestParam("userId") int userId,
-                              @RequestParam("topoId") int topoId) {
+    public ModelAndView reserveTopo(@RequestParam("userId") int userId,
+                                    @RequestParam("topoId") int topoId) {
 
-       topoRepo.setTopoUserNameByUserId(userId, topoId);
-       topoRepo.setTopoUnvailableById(false, topoId);
-       topoRepo.setTopoReserveUserIdByTopoId(true, topoId);
+            topoRepo.setTopoUserNameByUserId(userId, topoId);
+            topoRepo.setTopoUnvailableById(false, topoId);
+            topoRepo.setTopoReserveUserIdByTopoId(true, topoId);
 
-
-        return "topo/mytopo";
+            return new ModelAndView( "redirect:/displaytopoavailable?user=" +  userSvc.findByUtilisateurId(userId));
     }
 
 

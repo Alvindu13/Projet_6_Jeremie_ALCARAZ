@@ -33,14 +33,14 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
     Page<Topo> findAllByUser (String user, Pageable pageable);
 
 
-    @Query(value="SELECT t FROM Topo t WHERE " +
+    /*@Query(value="SELECT t FROM Topo t WHERE " +
             "       t.available LIKE :x")
-    Page<Topo> findAllByAvailableIsTrue(@Param("x") Boolean available, Pageable pageable);
+    Page<Topo> findAllByAvailableIsTrue(@Param("x") Boolean available, Pageable pageable);*/
 
 
-    @Query(value="SELECT * FROM Topo " +
-            " WHERE available = ?1", nativeQuery = true)
-    List<Topo> blabla(Boolean available);
+    @Query(value="SELECT t FROM Topo t " +
+            " WHERE t.available = ?1")
+    Page<Topo> findAllByAvailableIsTrue(Boolean available, Pageable pageable);
 
 
     @Modifying

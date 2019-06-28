@@ -15,7 +15,7 @@ public interface TopoService {
     Page<Topo> findAllByUserName(String user, Pageable pageable);
     void updateTopo(String action,Boolean reserve, String user, int topoId);
     void updateTopoUnvailable(Boolean available, String user, int topoId);
-    List<Topo> findAllByAvailableIsTrueOrderByAvailables(Boolean available);
+    Page<Topo> findAllByAvailableIsTrueOrderByAvailables(Boolean available, Pageable pageable);
     Page<Topo> findAllByCurrentlyUser(Integer currentUser, Pageable pageable);
     Long countAllTopo();
 
