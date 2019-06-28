@@ -6,7 +6,8 @@
 
 <head>
     <title>Nos Topos</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     <meta charset="utf-8">
     <spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
 
@@ -70,7 +71,14 @@
                         <tr>
                             <td><a class="nav-link" href="${pageContext.request.contextPath}/sites?topoId=${t.topoId}&user=${pageContext.request.userPrincipal.name}">${t.name}</td>
                             <td>${t.utilisateur.userName}</td>
-                            <td><a class="nav-link" href="${pageContext.request.contextPath}/download">télécharger le fichier pdf</td>
+
+                            <td>
+                                <a class="btn btn-primary" href="${pageContext.request.contextPath}/download" role="button">Télécharger
+                                    <i class="fa fa-file" style="font-size:48px;color:red"></i>
+                                </a>
+                            </td>
+
+
                         </tr>
                     <c:set var="i" value="${i+1}" />
                     </c:forEach>
