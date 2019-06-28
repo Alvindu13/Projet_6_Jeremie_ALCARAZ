@@ -77,12 +77,10 @@
                                     <td><button type="button" class="btn btn-secondary btn-lg" disabled>PARTAGER</button></td>
                                 </c:if>
                             </form>
-
-                            <form class="login-form" enctype="multipart/form-data" name ="f" action="mytopo?user=${pageContext.request.userPrincipal.name}&action=${action}" method="POST" modelAttribue="topo" >
-                                <td>
-                                    <input type="file" name="file" />
-                                    <input type="submit" value="Submit" />
-                                </td>
+                            <form method="post" action="doUpload" enctype="multipart/form-data">
+                                            <td><form:label path="file">Select a file to upload</form:label></td>
+                                <td><input type="file" name="fileUpload" size="50" /></td>
+                                <td colspan="2" align="center"><input type="submit" value="Upload" /></td>
                             </form>
                         </c:if>
                     </tr>
