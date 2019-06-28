@@ -77,24 +77,29 @@ public class TopoController {
 
     @RequestMapping(value = "/mytopo", method = RequestMethod.GET)
     public String displayUserTopo(@RequestParam("user") String user,
-                                  @RequestParam(name = "page", defaultValue = "0") int page,
+                                  @RequestParam(name = "pageTopo", defaultValue = "0") int pageTopo,
+                                  @RequestParam(name = "pageTopoShare", defaultValue = "0") int pageTopoShare,
                                   @ModelAttribute("currentUser") Utilisateur currentlyUser,
                                   Model model) {
 
         currentlyUser = userSvc.getUser(user);
 
-        Page<Topo> pagesTopo = topoSvc.findAllByUserName(user, PageRequest.of(page, 5));
-        Page<Topo> pagesTopoShare = topoSvc.findAllByCurrentlyUser(currentlyUser.getUtilisateurId(), PageRequest.of(page, 5));
+        Page<Topo> pagesTopo = topoSvc.findAllByUserName(user, PageRequest.of(pageTopo, 5));
+        Page<Topo> pagesTopoShare = topoSvc.findAllByCurrentlyUser(currentlyUser.getUtilisateurId(), PageRequest.of(pageTopoShare, 5));
 
+        System.out.println("currentPage : " + pageTopo);
 
         model.addAttribute("user", userSvc.getUser(user));
         model.addAttribute("topos", pagesTopo.getContent());
         model.addAttribute("tShare",pagesTopoShare.getContent());
-        model.addAttribute("nbPagesTopo", new int[pagesTopo.getTotalPages()]);
-        model.addAttribute("nbPagesTopoShare", new int[pagesTopoShare.getTotalPages()]);
-        model.addAttribute("currentPage", page);
+        model.addAttribute("arrayNbPagesTopo", new int[pagesTopo.getTotalPages()]);
+        model.addAttribute("arrayNbPagesTopoShare", new int[pagesTopoShare.getTotalPages()]);
+        model.addAttribute("currentPageTopo", pageTopo);
+        model.addAttribute("currentPageTopoShare", pageTopoShare);
 
 
+        model.addAttribute("nbPagesTopo", pagesTopo.getTotalPages());
+        model.addAttribute("nbPagesTopoShare", pagesTopoShare.getTotalPages());
 
 
 
