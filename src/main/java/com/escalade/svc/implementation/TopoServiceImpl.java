@@ -33,9 +33,9 @@ public class TopoServiceImpl implements TopoService {
         return repo.findAll();
     }
 
-    public Iterable<Topo> listTopoByUser(String user) {
+    public Page<Topo> findAllByUserName(String user, Pageable pageable) {
 
-        return repo.findAllByUser(user);
+        return repo.findAllByUser(user, pageable);
     }
 
     public void updateTopo(String action, Boolean reserve, String user, int topoId) {
@@ -68,8 +68,8 @@ public class TopoServiceImpl implements TopoService {
     }
 
     @Override
-    public List<Topo> findAllByCurrentlyUser(int currentUser) {
-        return repo.findAllByUserCurrentProprio(currentUser);
+    public Page<Topo> findAllByCurrentlyUser(Integer currentUser, Pageable pageable) {
+        return repo.findAllByUserCurrentProprio(currentUser, pageable);
     }
 
     @Override

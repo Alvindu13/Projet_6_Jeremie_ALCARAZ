@@ -12,11 +12,11 @@ public interface TopoService {
     Topo getTopoByName(String name);
     Topo getTopoById(int topo_id);
     Iterable<Topo> listTopo();
-    Iterable<Topo> listTopoByUser(String user);
+    Page<Topo> findAllByUserName(String user, Pageable pageable);
     void updateTopo(String action,Boolean reserve, String user, int topoId);
     void updateTopoUnvailable(Boolean available, String user, int topoId);
     List<Topo> findAllByAvailableIsTrueOrderByAvailables(Boolean available);
-    List<Topo> findAllByCurrentlyUser(int currentUser);
+    Page<Topo> findAllByCurrentlyUser(Integer currentUser, Pageable pageable);
     Long countAllTopo();
 
 }

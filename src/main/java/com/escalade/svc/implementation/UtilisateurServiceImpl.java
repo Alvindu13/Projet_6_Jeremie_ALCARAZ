@@ -29,7 +29,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     }
 
     public Utilisateur getUser(String username) {
-        return null;
+        return repo.findByUserName(username);
     }
 
     public List<Utilisateur> listUser() {

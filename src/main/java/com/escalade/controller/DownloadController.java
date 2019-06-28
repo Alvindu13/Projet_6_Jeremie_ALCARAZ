@@ -19,7 +19,11 @@ public class DownloadController {
     @Autowired
     private FilesService fSvc;
 
-    // Using ResponseEntity<ByteArrayResource>
+    /**
+     * Permet de télécharger un fichier depuis la base de données
+     * @return
+     * @throws IOException
+     */
     @GetMapping("/download")
     public ResponseEntity<ByteArrayResource> downloadFile2() throws IOException {
         Files files = fSvc.getFilesById(5);

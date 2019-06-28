@@ -41,6 +41,9 @@
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="${pageContext.request.contextPath}/topo?user=${pageContext.request.userPrincipal.name}"> Liste de tous les topos </a>
                         <a class="dropdown-item" href="${pageContext.request.contextPath}/displaytopoavailable?user=${pageContext.request.userPrincipal.name}">Réserver un topo</a>
+                        <c:if test="${pageContext.request.userPrincipal.name != null}">
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/mytopo?user=${pageContext.request.userPrincipal.name}"> Mes topos</a
+                        </c:if>
                     </div>
                 </li>
 
@@ -56,18 +59,6 @@
                     </a>
                 </li>
 
-
-
-                <li class="nav-item">
-                    <c:if test="${pageContext.request.userPrincipal.name != null}">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/mytopo?user=${pageContext.request.userPrincipal.name}">
-                            <!--<i class="fa fa-envelope-o">
-                                <span class="badge badge-warning">11</span>
-                            </i>-->
-                            Mes topos
-                        </a>
-                    </c:if>
-                </li>
 
                 <li class="nav-item">
                     <c:if test="${pageContext.request.userPrincipal.name != null}">

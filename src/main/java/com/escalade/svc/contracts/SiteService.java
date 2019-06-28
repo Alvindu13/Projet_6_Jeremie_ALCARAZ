@@ -11,6 +11,6 @@ public interface SiteService {
     public Iterable<Site> listSite();
     public List<Site> listSiteByTopoId(int topoId);
     public Site getSiteBySiteId(int siteId);
-    public Site getSiteByResearch(String location, String cotation, int nbSecteur);
+    public List<Site> getSiteByResearch(String location, String cotationMini, String cotationMaxi);
 
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Handles requests for the file upload page.
@@ -20,14 +21,15 @@ public class UploadController {
     @Autowired
     private FilesService fSvc;
 
-    @RequestMapping(value = "/up1", method = RequestMethod.GET)
+    @RequestMapping(value = "/up1oad", method = RequestMethod.GET)
     public String showUploadForm(HttpServletRequest request) {
         return "upload/upload";
     }
 
     @RequestMapping(value = "/doUpload", method = RequestMethod.POST)
-    public String handleFileUpload(HttpServletRequest request,
-                                   @RequestParam CommonsMultipartFile[] fileUpload) throws Exception {
+    public ModelAndView handleFileUpload(HttpServletRequest request,
+                                         @RequestParam("user") String user,
+                                         @RequestParam CommonsMultipartFile[] fileUpload) throws Exception {
 
         if (fileUpload != null && fileUpload.length > 0) {
             for (CommonsMultipartFile aFile : fileUpload){
@@ -41,6 +43,6 @@ public class UploadController {
             }
         }
 
-        return "upload/success";
+        return new ModelAndView("redirect:/mytopo?user=" + user);
     }
 }

@@ -4,6 +4,7 @@ import com.escalade.data.util.Search;
 import com.escalade.data.model.Site;
 import com.escalade.data.repository.SiteRepository;
 import com.escalade.data.repository.VoieRepository;
+import com.escalade.svc.implementation.SiteServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,6 +18,9 @@ public class SearchController {
 
     @Autowired
     private SiteRepository svcSite;
+
+    @Autowired
+    private SiteServiceImpl svcSite2;
 
     @Autowired
     private VoieRepository svcVoie;
@@ -57,7 +61,7 @@ public class SearchController {
 
 
 
-        model.addAttribute("sites", svcSite.findSiteByMultiCriterias(location, cotationMini, cotationMaxi));
+        model.addAttribute("sites", svcSite2.getSiteByResearch(location, cotationMini, cotationMaxi));
         model.addAttribute("voies", svcVoie.findAllByFilterSite(location, cotationMini, cotationMaxi));
 
 

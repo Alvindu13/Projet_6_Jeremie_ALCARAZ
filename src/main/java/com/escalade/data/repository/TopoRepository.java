@@ -16,14 +16,21 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
 
     Topo findByTopoId (int topoId);
 
-    List<Topo> findAllByUserCurrentProprio(Integer currentUser);
+    Page<Topo> findAllByUserCurrentProprio(Integer currentUser, Pageable pageable);
 
 
     @Query(value="SELECT  t.*" +
             "FROM Topo t " +
             "INNER JOIN Utilisateur u ON u.utilisateur_id = t.utilisateur_id" +
-                " WHERE username = ?1 ", nativeQuery = true)
-    Iterable<Topo> findAllByUser (String user);
+                " WHERE username = ?1 ORDER BY ?#{#pageable}",
+
+            countQuery = "SELECT count(*) \n" +
+                    "FROM Topo t " +
+                    "INNER JOIN Utilisateur u ON u.utilisateur_id = t.utilisateur_id" +
+                    " WHERE username = ?1 ",
+
+            nativeQuery = true)
+    Page<Topo> findAllByUser (String user, Pageable pageable);
 
 
     @Query(value="SELECT t FROM Topo t WHERE " +

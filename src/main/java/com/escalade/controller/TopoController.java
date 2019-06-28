@@ -8,6 +8,8 @@ import com.escalade.svc.contracts.CommentaireService;
 import com.escalade.svc.contracts.TopoService;
 import com.escalade.svc.contracts.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,16 +20,14 @@ public class TopoController {
 
 
     @Autowired
-    CommentaireService cmt;
+    private CommentaireService cmt;
 
     @Autowired
-    TopoService topoSvc;
+    private TopoService topoSvc;
 
     @Autowired
     private TopoRepository topoRepo;
 
-    @Autowired
-    private UtilisateurRepository userRepo;
 
     @Autowired
     private UtilisateurService userSvc;
@@ -77,15 +77,22 @@ public class TopoController {
 
     @RequestMapping(value = "/mytopo", method = RequestMethod.GET)
     public String displayUserTopo(@RequestParam("user") String user,
+                                  @RequestParam(name = "page", defaultValue = "0") int page,
                                   @ModelAttribute("currentUser") Utilisateur currentlyUser,
                                   Model model) {
 
+        currentlyUser = userSvc.getUser(user);
 
-        currentlyUser = userRepo.findByUserName(user);
+        Page<Topo> pagesTopo = topoSvc.findAllByUserName(user, PageRequest.of(page, 5));
+        Page<Topo> pagesTopoShare = topoSvc.findAllByCurrentlyUser(currentlyUser.getUtilisateurId(), PageRequest.of(page, 5));
 
-        model.addAttribute("user", userRepo.findByUserName(user));
-        model.addAttribute("topos",topoSvc.listTopoByUser(user));
-        model.addAttribute("tShare",topoSvc.findAllByCurrentlyUser(currentlyUser.getUtilisateurId()));
+
+        model.addAttribute("user", userSvc.getUser(user));
+        model.addAttribute("topos", pagesTopo.getContent());
+        model.addAttribute("tShare",pagesTopoShare.getContent());
+        model.addAttribute("nbPagesTopo", new int[pagesTopo.getTotalPages()]);
+        model.addAttribute("nbPagesTopoShare", new int[pagesTopoShare.getTotalPages()]);
+        model.addAttribute("currentPage", page);
 
 
 
@@ -96,17 +103,12 @@ public class TopoController {
     }
 
     @RequestMapping(value = "/mytopo", method = RequestMethod.POST)
-    public String shareTopo(@RequestParam("user") String user,
-                            @RequestParam("action") String action,
+    public ModelAndView shareTopo(@RequestParam("user") String user,
+                            @RequestParam(name = "action", defaultValue = "") String action,
                             @ModelAttribute("topo") Topo topo) {
 
-        //System.out.println(action);
         topoSvc.updateTopo(action, topo.getReserve(), user, topo.getTopoId());
-
-
-        //topoSvc.updateTopo(topo.isAvailable(), user, topo.getTopoId());
-
-        return "topo/mytopo";
+        return new ModelAndView( "redirect:/mytopo?user=" + user);
     }
 
     /**
@@ -125,7 +127,7 @@ public class TopoController {
         //model.addAttribute("currentPage", page);
 
 
-        model.addAttribute("currentUser", userRepo.findByUserName(user));
+        model.addAttribute("currentUser", userSvc.getUser(user));
         model.addAttribute("topos", topoSvc.findAllByAvailableIsTrueOrderByAvailables(available));
 
 

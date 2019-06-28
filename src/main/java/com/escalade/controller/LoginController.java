@@ -25,6 +25,11 @@ public class LoginController {
     UserRoleRepository userRoleService;
 
 
+    /**
+     * Page d'accueil du website
+     * @param model
+     * @return
+     */
     @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
     public String welcomePage(Model model) {
         model.addAttribute("title", "Welcome");
@@ -32,11 +37,21 @@ public class LoginController {
         return "welcomePage";
     }
 
+    /**
+     * Affiche la page pour enregistrer un nouvel utilisateur
+     * @param model
+     * @return
+     */
     @RequestMapping(value = {"/displayRegisterForm"}, method = RequestMethod.GET)
     public ModelAndView registerForm(Model model) {
         return new ModelAndView("login/registerForm", "user", new Utilisateur());
     }
 
+    /**
+     * Sauvegarde l'utilisateur dans la database
+     * @param user
+     * @return
+     */
     @RequestMapping(value = {"/saveUser"}, method = RequestMethod.POST)
     public String saveUser(@ModelAttribute("user") Utilisateur user) {
         userSvc.createUser(user);
