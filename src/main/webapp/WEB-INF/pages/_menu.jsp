@@ -31,22 +31,6 @@
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/userInfo">
-                        <!--<i class="fa fa-user">
-                            <span class="badge badge-danger">11</span
-                        </i>-->
-                        User Info
-                    </a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/admin">
-                        <!--<i class="fa fa-envelope-o">
-                          <span class="badge badge-warning">11</span>
-                        </i>-->
-                        Admin
-                    </a>
-                </li>
 
 
                 <!-- Dropdown -->
@@ -100,6 +84,14 @@
                     <c:if test="${pageContext.request.userPrincipal.name == null}">
                         <a class="nav-link" href="${pageContext.request.contextPath}/displayRegisterForm">
                             S'inscrire
+                        </a>
+                    </c:if>
+                </li>
+
+                <li class="nav-item active">
+                    <c:if test="${pageContext.request.userPrincipal.name == null}">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/login">
+                            Se connecter
                         </a>
                     </c:if>
 

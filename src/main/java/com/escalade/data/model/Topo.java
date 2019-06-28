@@ -17,7 +17,6 @@ public class Topo  {
 	@Column(name = "TOPO_ID")
 	private int topoId;
 
-
 	@Column(name = "NAME")
 	private String name;
 
@@ -29,6 +28,7 @@ public class Topo  {
 
 	@Column(name = "RESERVE")
 	private Boolean reserve;
+
 
 	public Topo() {}
 
@@ -91,6 +91,7 @@ public class Topo  {
 	public void setUserCurrentProprio(Integer userCurrentProprio) {
 		this.userCurrentProprio = userCurrentProprio;
 	}
+
 
 	@Override
 	public String toString() {

@@ -2,7 +2,9 @@ package com.escalade.data.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "UTILISATEUR")
@@ -31,6 +33,9 @@ public class Utilisateur {
 
 	@Column(name = "ENABLED")
 	private Integer enabled;
+
+	/*@OneToMany(mappedBy = "UTILISATEUR", cascade = CascadeType.ALL)
+	private Set<TopoDocument> userDocuments = new HashSet<TopoDocument>();*/
 
 	public Utilisateur() {
 		super();
@@ -92,6 +97,8 @@ public class Utilisateur {
 	public void setUtilisateurId(int utilisateurId) {
 		this.utilisateurId = utilisateurId;
 	}
+
+
 
 	@Override
 	public String toString() {

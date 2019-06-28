@@ -54,6 +54,7 @@
                         <th> Nom du topo</th>
                         <th> Propriétaire </th>
                         <th> Action </th>
+                        <th> Upload votre TOPO PDF </th>
                     </tr>
                     </thead>
 
@@ -75,7 +76,13 @@
                                 <c:if test="${t.available eq true}">
                                     <td><button type="button" class="btn btn-secondary btn-lg" disabled>PARTAGER</button></td>
                                 </c:if>
+                            </form>
 
+                            <form class="login-form" enctype="multipart/form-data" name ="f" action="mytopo?user=${pageContext.request.userPrincipal.name}&action=${action}" method="POST" modelAttribue="topo" >
+                                <td>
+                                    <input type="file" name="file" />
+                                    <input type="submit" value="Submit" />
+                                </td>
                             </form>
                         </c:if>
                     </tr>

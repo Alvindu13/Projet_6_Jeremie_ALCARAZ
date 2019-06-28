@@ -74,7 +74,11 @@
                         <tr>
                             <td><a class="nav-link" href="${pageContext.request.contextPath}/sites?topoId=${t.topoId}&user=${pageContext.request.userPrincipal.name}">${t.name}</td>
                             <td>${t.utilisateur.userName}</td>
-
+                            <form method="post" action="doUpload" enctype="multipart/form-data">
+                                        <td><form:label path="file">Select a file to upload</form:label></td>
+                                        <td><input type="file" name="fileUpload" size="50" /></td>
+                                        <td colspan="2" align="center"><input type="submit" value="Upload" /></td>
+                            </form>
                         </tr>
                     <c:set var="i" value="${i+1}" />
                     </c:forEach>
