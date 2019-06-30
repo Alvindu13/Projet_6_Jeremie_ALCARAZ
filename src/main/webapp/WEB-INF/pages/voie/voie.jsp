@@ -54,11 +54,13 @@
 <div class ="container">
     <div class="row">
         <section class="col-sm-12">
+            <h2>Voici toutes les voies disponibles et leurs informations pour ce secteur</h2>
             <table class="table table-bordered table-striped table-condensed">
                 <thead>
                 <tr>
-                    <th>size</th>
                     <th>name</th>
+                    <th>size</th>
+
                     <th>nbPoints</th>
                     <th>cotation</th>
                     <th>nbPart</th>
@@ -68,8 +70,8 @@
                 <c:set var="i" value="1" />
                 <c:forEach items="${voies}" var="v">
                     <tr>
-                        <td>${v.size}</td>
                         <td>${v.name}</td>
+                        <td>${v.size}</td>
                         <td>${v.nbPoints}</td>
                         <td>${v.cotation}</td>
                         <td>${v.nbPart}</td>

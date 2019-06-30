@@ -10,35 +10,36 @@ public class Secteur {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "SECTEUR_ID")
-    private String secteurId;
+    private int secteurId;
 
     @Column(name = "SITE_ID")
-    private String siteId;
+    private int siteId;
 
     @Column(name = "NAME")
     private String name;
 
-    public Secteur() {super(); }
+    public Secteur() {}
 
 
-    public Secteur(String siteId, String name) {
+    public Secteur(int siteId, String name) {
         this.siteId = siteId;
         this.name = name;
     }
 
-    public String getSecteurId() {
+
+    public int getSecteurId() {
         return secteurId;
     }
 
-    public void setSecteurId(String secteurId) {
+    public void setSecteurId(int secteurId) {
         this.secteurId = secteurId;
     }
 
-    public String getSiteId() {
+    public int getSiteId() {
         return siteId;
     }
 
-    public void setSiteID(String siteID) {
+    public void setSiteId(int siteId) {
         this.siteId = siteId;
     }
 
@@ -49,5 +50,4 @@ public class Secteur {
     public void setName(String name) {
         this.name = name;
     }
-
 }

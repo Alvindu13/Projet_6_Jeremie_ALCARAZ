@@ -51,27 +51,48 @@
 <body>
 <jsp:include page="../_menu.jsp" />
 
-<div class ="container">
-    <h2>Voici tous les secteurs disponibles pour le site sélectionné</h2>
-    <div class="row">
-        <section class="col-sm-12">
-            <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                <tr>
-                    <th>name</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:set var="i" value="1" />
-                <c:forEach items="${secteurs}" var="sect">
+<section>
+    <div>
+        <img class="img-responsive" src="resources/img/topo/aside.jpg" alt="AsideEscalade">
+    </div>
+</section>
+
+<div class="container rounded border border-dark">
+    <div class="text-center">
+        <div class ="row justify-content-center align-content-center">
+            <div class = "col-sm-8">
+                <form class = "well">
+                    <h4>Souhaitez-vous ajouter votre propre secteur ?</h4>
+
+                    <fieldset>
+                        <a href="${pageContext.request.contextPath}/addsector?siteId=${siteId}" class="btn btn-primary js-scroll-trigger">Ajouter votre secteur</a>
+                    </fieldset>
+
+                </form>
+            </div>
+        </div>
+
+        <h2>Voici tous les secteurs disponibles pour le site sélectionné</h2>
+        <div class="row">
+            <section class="col-sm-12">
+                <table class="table table-bordered table-striped table-condensed">
+                    <thead>
                     <tr>
-                        <td><a class="nav-link" href="${pageContext.request.contextPath}/voie?secteurId=${sect.secteurId}"/>${sect.name}</td>
+                        <th>name</th>
                     </tr>
-                    <c:set var="i" value="${i+1}" />
-                </c:forEach>
-                </tbody>
-            </table>
-        </section>
+                    </thead>
+                    <tbody>
+                    <c:set var="i" value="1" />
+                    <c:forEach items="${secteurs}" var="sect">
+                        <tr>
+                            <td> <a class="nav-link" href="${pageContext.request.contextPath}/voie?secteurId=${sect.secteurId}" />${sect.name} </td>
+                        </tr>
+                        <c:set var="i" value="${i+1}" />
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </section>
+        </div>
     </div>
 </div>
 
