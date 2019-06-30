@@ -26,7 +26,7 @@ public class DownloadController {
      */
     @GetMapping("/download")
     public ResponseEntity<ByteArrayResource> downloadFile2() throws IOException {
-        Files files = fSvc.getFilesById(5);
+        Files files = fSvc.getFilesById(2);
         byte[] data = files.getData();
         ByteArrayResource resource = new ByteArrayResource(data);
 

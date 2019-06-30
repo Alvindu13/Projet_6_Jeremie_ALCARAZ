@@ -137,6 +137,8 @@ public class TopoController {
                                          Model model) {
 
         Page<Topo> pagesTopo = topoRepo.findAllByAvailableIsTrue(available,  PageRequest.of(page, 5));
+
+
         model.addAttribute("topos",pagesTopo.getContent());
         model.addAttribute("arrayNbPagesTopo", new int[pagesTopo.getTotalPages()]);
         model.addAttribute("currentPageTopo", page);
@@ -152,13 +154,13 @@ public class TopoController {
      */
     @RequestMapping(value = "/reservetopo", method = RequestMethod.POST)
     public ModelAndView reserveTopo(@RequestParam("userId") int userId,
-                                    @RequestParam("topoId") int topoId) {
+                              @RequestParam("topoId") int topoId) {
 
             topoRepo.setTopoUserNameByUserId(userId, topoId);
             topoRepo.setTopoUnvailableById(false, topoId);
             topoRepo.setTopoReserveUserIdByTopoId(true, topoId);
 
-            return new ModelAndView( "redirect:/displaytopoavailable?user=" +  userSvc.findByUtilisateurId(userId));
+            return new ModelAndView( "redirect:/displaytopoavailable?user=" +  userSvc.findByUtilisateurId(userId).getUtilisateurId());
     }
 
 

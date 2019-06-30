@@ -47,13 +47,12 @@
 <div class="container rounded border border-dark">
     <div class="text-center">
         <header class="page-header">
-            <h1>Bonjour ${pageContext.request.userPrincipal.name}, vous trouverez sur cette page l'ensemble de vos topos</h1>
+            <h1>Bonjour ${pageContext.request.userPrincipal.name}, vous trouverez sur cette les topos disponibles pour la réservation</h1>
         </header>
 
         <div class = "row">
             <div class = col-lg-10>
 
-                <h2> Mes Topos publiés : </h2>
                 <div class="panel-body">
                     <table class="table table-bordered table-striped table-condensed align-content-center">
                         <thead class="thead-dark">
