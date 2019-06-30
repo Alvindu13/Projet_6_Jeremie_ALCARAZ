@@ -6,9 +6,8 @@
         <title>Sites D'escalade</title>
 
         <meta charset="utf-8">
-        <spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-        <link href="${bootstrap}" rel="stylesheet" />
 
 
         <style type="text/css">

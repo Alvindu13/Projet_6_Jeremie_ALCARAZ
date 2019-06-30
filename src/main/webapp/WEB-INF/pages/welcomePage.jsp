@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-    <title>Grayscale - Start Bootstrap Theme</title>
+    <title>HomePage</title>
 
     <!-- Bootstrap core CSS
     <link href="${bootstrap}" rel="stylesheet" />-->
