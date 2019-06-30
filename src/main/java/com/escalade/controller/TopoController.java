@@ -49,16 +49,12 @@ public class TopoController {
                               @RequestParam(name = "page", defaultValue = "0") int page,
                               Model model) {
 
-
-
         Page<Topo> pagesTopo = topoSvc.findAllTopo(PageRequest.of(page, 10));
-
         model.addAttribute("topos",pagesTopo.getContent());
         model.addAttribute("arrayNbPagesTopo", new int[pagesTopo.getTotalPages()]);
         model.addAttribute("currentPageTopo", page);
         model.addAttribute("currentUser", userSvc.getUser(user));
         model.addAttribute("nbPagesTopo", pagesTopo.getTotalPages());
-
 
         return "topo/galeryTopo";
     }

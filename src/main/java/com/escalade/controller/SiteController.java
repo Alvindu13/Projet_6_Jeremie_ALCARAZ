@@ -98,6 +98,8 @@ public class SiteController {
         model.addAttribute("cmtest",pageCmt.getContent());
         model.addAttribute("pages", new int[pageCmt.getTotalPages()]);
         model.addAttribute("currentPage", page);
+        model.addAttribute("nbPagesCmt", pageCmt.getTotalPages());
+
 
 
 
