@@ -11,7 +11,7 @@ public interface TopoService {
     void createTopo(Topo t);
     Topo getTopoByName(String name);
     Topo getTopoById(int topo_id);
-    Iterable<Topo> listTopo();
+    Page<Topo> findAllTopo(Pageable pageable);
     Page<Topo> findAllByUserName(String user, Pageable pageable);
     void updateTopo(String action,Boolean reserve, String user, int topoId);
     void updateTopoUnvailable(Boolean available, String user, int topoId);

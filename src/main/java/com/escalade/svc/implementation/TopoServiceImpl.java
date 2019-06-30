@@ -28,9 +28,9 @@ public class TopoServiceImpl implements TopoService {
         return repo.findByTopoId(topo_id);
     }
 
-    public Iterable<Topo> listTopo() {
+    public Page<Topo> findAllTopo(Pageable pageable) {
 
-        return repo.findAll();
+        return repo.findAll(pageable);
     }
 
     public Page<Topo> findAllByUserName(String user, Pageable pageable) {

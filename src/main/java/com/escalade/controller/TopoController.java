@@ -45,8 +45,23 @@ public class TopoController {
      * @return
      */
     @RequestMapping(value = "/topo", method = RequestMethod.GET)
-    public String displayTopo(@RequestParam("user") String user, Model model) {
-        model.addAttribute("topos", topoSvc.listTopo());
+    public String displayTopo(@RequestParam("user") String user,
+                              @RequestParam(name = "page", defaultValue = "0") int page,
+                              Model model) {
+
+
+
+        Page<Topo> pagesTopo = topoSvc.findAllTopo(PageRequest.of(page, 10));
+
+        model.addAttribute("topos",pagesTopo.getContent());
+        model.addAttribute("arrayNbPagesTopo", new int[pagesTopo.getTotalPages()]);
+        model.addAttribute("currentPageTopo", page);
+        model.addAttribute("currentUser", userSvc.getUser(user));
+        model.addAttribute("nbPagesTopo", pagesTopo.getTotalPages());
+
+
+
+        //model.addAttribute("topos", topoSvc.listTopo());
         return "topo/galeryTopo";
     }
 

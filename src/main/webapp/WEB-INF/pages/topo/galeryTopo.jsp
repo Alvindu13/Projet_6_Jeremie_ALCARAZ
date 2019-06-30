@@ -25,82 +25,102 @@
             background-color:#CCC;
             padding: 20px;
         }
+        div {
+            margin: 2em;
+        }
+        .container{
+            background: whitesmoke;
+        }
+
     </style>
 
 </head>
 
 <body>
 <jsp:include page="../_menu.jsp" />
-<section id = "test" class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12"><img src="resources/img/topo/aside.jpg" alt="AsideEscalade"></div>
-</section>
-<div class="container">
-    <header class="page-header">
-        <h1>Les topos du coin</h1>
-    </header>
-    <section class="row">
-        <div class="col-xs-12">
-            <p>
-                Je suis passionné par <strong>l'escalade</strong> depuis très longtemps. Ce site a été construit <em>  pour les grimpeurs...</em><br>
-                Vous trouverez sur ce site des topos d'escalade pouvant être réservés par les membres enregistrés.<br>
-                Vous avez également un espace d'échange sur notre forum.<br>
-                Vous pouvez commenter les topos afin que chacun puisse améliorer ses topos et les rendre les plus qualitatifs possibles.
-            </p>
-        </div>
-    </section>
+<div>
+    <img class="img-responsive" src="resources/img/topo/aside.jpg" alt="AsideEscalade">
+</div>
 
-    <div class="row">
-        <section class="col-sm-12">
+<div class="container rounded border border-dark">
+    <div class="text-center">
 
+        <header class="page-header">
+            <h1>Les topos du coin</h1>
+        </header>
+        <section class="row">
+            <div class="col-xs-12 text-center">
+                <p>
+                    Je suis passionné par <strong>l'escalade</strong> depuis très longtemps. Ce site a été construit <em>  pour les grimpeurs...</em><br>
+                    Vous trouverez sur ce site des topos d'escalade pouvant être réservés par les membres enregistrés.<br>
+                </p>
+            </div>
+        </section>
 
-            <table class="table table-bordered table-striped table-condensed">
+        <div class="row">
+            <section class="col-sm-12">
 
-                <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Propriétaire</th>
-                    <th>Descriptif PDF du Topo</th>
-
-
-
-                </tr>
-                </thead>
-                <tbody>
-                    <c:set var="i" value="1" />
-                    <c:forEach items="${topos}" var="t">
+                <table class="table table-bordered table-striped table-condensed">
+                    <thead>
                         <tr>
-                            <td><a class="nav-link" href="${pageContext.request.contextPath}/sites?topoId=${t.topoId}&user=${pageContext.request.userPrincipal.name}">${t.name}</td>
-                            <td>${t.utilisateur.userName}</td>
-
-                            <td>
-                                <a class="btn btn-primary" href="${pageContext.request.contextPath}/download" role="button">Télécharger
-                                    <i class="fa fa-file" style="font-size:48px;color:red"></i>
-                                </a>
-                            </td>
-
-
+                            <th>Nom</th>
+                            <th>Propriétaire</th>
+                            <th>Descriptif PDF du Topo</th>
                         </tr>
-                    <c:set var="i" value="${i+1}" />
-                    </c:forEach>
-                </tbody>
+                    </thead>
 
-            </table>
+                    <tbody>
+                        <c:set var="i" value="1" />
+                        <c:forEach items="${topos}" var="t">
+                            <tr>
+                                <td><a class="nav-link" href="${pageContext.request.contextPath}/sites?topoId=${t.topoId}&user=${pageContext.request.userPrincipal.name}">${t.name}</td>
+                                <td>${t.utilisateur.userName}</td>
+                                <td>
+                                    <a class="btn btn-primary" href="${pageContext.request.contextPath}/download" role="button">Télécharger
+                                        <i class="fa fa-file" style="font-size:48px;color:red"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <c:set var="i" value="${i+1}" />
+                        </c:forEach>
+                    </tbody>
+
+                </table>
+
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="${currentPageTopo == 0 ? 'page-item disabled' : 'page-item'}">
+                            <a class="page-link" href="${pageContext.request.contextPath}/topo?user=${pageContext.request.userPrincipal.name}&page=${currentPageTopo-1}" tabindex="-1">Previous</a>
+                        </li>
+                        <c:set var="k" value="1" />
+                        <c:forEach items="${arrayNbPagesTopo}" var="pageTopo" varStatus="loop">
+                            <li class="${currentPageTopo==loop.index ? 'page-item active' : 'page-item'}">
+                                <a class="page-link" href="${pageContext.request.contextPath}/topo?user=${pageContext.request.userPrincipal.name}&page=${loop.index}">${loop.index}</a>
+                            </li>
+                            <c:set var="k" value="${k+1}" />
+                        </c:forEach>
+                        <li class="${currentPageTopo >= nbPagesTopo-1 ? 'page-item disabled' : 'page-item'}">
+                            <a class="page-link" href="${pageContext.request.contextPath}/topo?user=${pageContext.request.userPrincipal.name}&page=${currentPageTopo+1}">Next</a>
+                        </li>
+                    </ul>
+                </nav>
 
 
 
-        </section>
-    </div>
+            </section>
+        </div>
 
 
-    <div class ="row">
-        <section class = "col-sm-8">
-            <form class = "well">
-                <h4>Souhaitez-vous ajouter votre propre Topo ?</h4>
-                <fieldset>
-                    <a href="${pageContext.request.contextPath}/atopo?user=${pageContext.request.userPrincipal.name}" class="btn btn-primary js-scroll-trigger">Afficher le formulaire</a>
-                </fieldset>
-            </form>
-        </section>
+        <div class ="row justify-content-center align-content-center">
+            <section class = "col-sm-8">
+                <form class = "well">
+                    <h4>Souhaitez-vous ajouter votre propre Topo ?</h4>
+                    <fieldset>
+                        <a href="${pageContext.request.contextPath}/atopo?user=${pageContext.request.userPrincipal.name}" class="btn btn-primary js-scroll-trigger">Afficher le formulaire</a>
+                    </fieldset>
+                </form>
+            </section>
+        </div>
     </div>
 </div>
 </body>
