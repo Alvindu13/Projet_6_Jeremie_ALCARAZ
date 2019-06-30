@@ -4,6 +4,7 @@ import com.escalade.data.repository.SiteRepository;
 import com.escalade.data.model.Site;
 import com.escalade.svc.contracts.SiteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import org.springframework.data.domain.Pageable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,10 +37,11 @@ public class SiteServiceImpl implements SiteService {
         return site;
     }
 
-    public List<Site> listSiteByTopoId(int topoId){
-        return repo.findAllByTopoId(topoId);
-
+    @Override
+    public Page<Site> findAllByTopoId(int topoId, Pageable pageable) {
+        return repo.findAllByTopoId(topoId, pageable);
     }
+
 
     public Site getSiteBySiteId(int siteId){
         return repo.findBySiteId(siteId);

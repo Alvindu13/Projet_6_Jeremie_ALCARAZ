@@ -31,20 +31,15 @@ public class Site {
     private String cotationMaximum;
 
 
-    @Column(name = "WAY_SIZE")
-    private Double waySize;
-
-
     public Site() {super(); }
 
-    public Site(String name, String location, String comment, int topoId, String cotationMinimum, String cotationMaximum, Double waySize) {
+    public Site(String name, String location, String comment, int topoId, String cotationMinimum, String cotationMaximum) {
         this.name = name;
         this.location = location;
         this.comment = comment;
         this.topoId = topoId;
         this.cotationMinimum = cotationMinimum;
         this.cotationMaximum = cotationMaximum;
-        this.waySize = waySize;
     }
 
     public int getSiteId() {
@@ -103,11 +98,4 @@ public class Site {
         this.cotationMaximum = cotationMaximum;
     }
 
-    public Double getWaySize() {
-        return waySize;
-    }
-
-    public void setWaySize(Double waySize) {
-        this.waySize = waySize;
-    }
 }

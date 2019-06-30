@@ -48,7 +48,6 @@ public class SiteController {
     @RequestMapping("/request1")
     @ResponseBody
     public String handler(@RequestParam(name = "name") String name) {
-
         return "URL parameter <br> "
                 + "name =" + name;
     }
@@ -62,10 +61,21 @@ public class SiteController {
      * @return la page sites
      */
     @RequestMapping(value = "/sites", method = RequestMethod.GET)
-    public String displayAllSites(@ModelAttribute("site") Site site, @RequestParam("topoId") int topoId, Model model) {
-        model.addAttribute("sites", svcSite.listSiteByTopoId(topoId));
-        //model.addAttribute("images", daoImg.getAllImage());
-        return "site/sites";
+    public String displayAllSites(@ModelAttribute("site") Site site,
+                                  @RequestParam("topoId") int topoId,
+                                  @RequestParam(name = "page", defaultValue = "0") int page,
+                                  Model model) {
+
+            Page<Site> pagesSite = svcSite.findAllByTopoId(topoId, PageRequest.of(page, 5));
+
+            model.addAttribute("topoId", topoId);
+
+            model.addAttribute("sites",pagesSite.getContent());
+            model.addAttribute("arrayNbPagesSite", new int[pagesSite.getTotalPages()]);
+            model.addAttribute("currentPageSite", page);
+            model.addAttribute("nbPagesSite", pagesSite.getTotalPages());
+
+            return "site/sites";
     }
 
     /**

@@ -40,42 +40,5 @@
         </div>
     </div>
 
-
-<!--<div class="container">
-        <div class="row">
-
-            <div class="col-md-8">
-                <form name='f' action="addtopo" method='POST' modelAttribute="topo">
-                    <div id="contact-form" class="form-container" dataOLD-form-container style="color: rgb(46, 125, 50); background: rgb(200, 230, 201);">
-                        <div class="row">
-                            <div class="form-title">
-                                <span> Create Topo </span>
-                            </div>
-                        </div>
-                        <div class="input-container">
-                            <div class="row">
-                                <span class="req-input valid" >
-                                    <span class="input-status" dataOLD-toggle="tooltip" dataOLD-placement="top" title="Input your post title."> </span>
-                                    <input type="text" dataOLD-min-length="8" placeholder="Post Title" value="testing post">
-                                </span>
-                            </div>
-
-                            <div class="row">
-                                <span class="req-input message-box valid">
-                                    <span class="input-status" dataOLD-toggle="tooltip" dataOLD-placement="top" title="Post Contents."> </span>
-                                    <textarea type="textarea" dataOLD-min-length="10" placeholder="Post Contents">Valid contents </textarea>
-                                </span>
-                            </div>
-                            <div class="row submit-row">
-                                <button type="button" class="btn btn-block submit-form valid">Submit</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>-->
-
-
 </body>
 </html>

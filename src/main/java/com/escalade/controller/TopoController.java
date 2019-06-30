@@ -45,7 +45,7 @@ public class TopoController {
      * @return
      */
     @RequestMapping(value = "/topo", method = RequestMethod.GET)
-    public String displayTopo(@RequestParam("user") String user,
+    public String displayTopo(@RequestParam(name = "user", defaultValue = "") String user,
                               @RequestParam(name = "page", defaultValue = "0") int page,
                               Model model) {
 
@@ -60,8 +60,6 @@ public class TopoController {
         model.addAttribute("nbPagesTopo", pagesTopo.getTotalPages());
 
 
-
-        //model.addAttribute("topos", topoSvc.listTopo());
         return "topo/galeryTopo";
     }
 
@@ -84,9 +82,9 @@ public class TopoController {
      * @return la page en cours
      */
     @RequestMapping(value = "/addtopo", method = RequestMethod.POST)
-    public String saveTopo(@ModelAttribute("atopo") Topo topo) {
+    public ModelAndView saveTopo(@ModelAttribute("atopo") Topo topo) {
         topoSvc.createTopo(topo);
-        return "topo/addtopo";
+        return new ModelAndView("redirect:/topo");
     }
 
 

@@ -17,6 +17,9 @@ public interface SiteRepository extends CrudRepository<Site, Integer>, JpaSpecif
     List<Site> findAllByTopoId(int topo_id);
 
 
+    Page<Site> findAllByTopoId(int topo_id, Pageable pageable);
+
+
     @Query(value= "select * from site  where site_id = ?1", nativeQuery = true)
     List<Site> listSiteBySiteId(int siteId);
 
