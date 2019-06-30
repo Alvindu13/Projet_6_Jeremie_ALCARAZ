@@ -13,59 +13,50 @@
 
         <style type="text/css">
             body { background-color: #1c7430  ; }
-            [class*="col"] { margin-bottom: 20px; }
             img { width: 100%; }
             .well {
                 background-color:#CCC;
                 padding: 20px;
             }
 
-            #ok{
-                background: #b8daff;
-                padding-top: 20px;
-                padding-bottom: 15px;
-            }
-
-            #try{
-                display: block;
-                margin: auto;
-            }
-
-            .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-                background-color: #8064A2 !important;
-            }
-
-
-            div {
+            section {
                 margin: 2em;
             }
+
             .container{
                 background: whitesmoke;
             }
 
-
-
-
         </style>
-
 
     </head>
 
     <body>
     <jsp:include page="../_menu.jsp" />
-    <div>
-        <img class="img-responsive" src="resources/img/topo/aside.jpg" alt="AsideEscalade">
-    </div>
+
+    <section>
+        <div>
+            <img class="img-responsive" src="resources/img/topo/aside.jpg" alt="AsideEscalade">
+        </div>
+    </section>
 
     <div class="container rounded border border-dark">
         <div class="text-center">
             <h2> Voici tous les sites correspondant au topo sélectionné</h2>
             <h3 style = color:red >Pour plus d'informations sur un site, veuillez cliquer sur son nom</h3>
-            <div id = "ok" class = "row">
-                <div id = "try" class="col-ls-8">
-                    <a class="btn btn-primary" href="${pageContext.request.contextPath}/addsite?topoId=${site.topoId}" role="button">Ajouter votre Site</a>
+
+
+            <div class ="row justify-content-center align-content-center">
+                <div class = "col-sm-8">
+                    <form class = "well">
+                        <h4>Souhaitez-vous ajouter votre propre Site ?</h4>
+                        <fieldset>
+                            <a href="${pageContext.request.contextPath}/addsite?topoId=${site.topoId}" class="btn btn-primary js-scroll-trigger">Ajouter votre Site</a>
+                        </fieldset>
+                    </form>
                 </div>
             </div>
+
 
             <div class="row">
                 <section class="col-sm-12">

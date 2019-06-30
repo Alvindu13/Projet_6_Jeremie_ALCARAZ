@@ -40,6 +40,8 @@
 
 <div class="container rounded border border-dark">
     <div class="text-center">
+        <br>
+        <h1 style = color:red >Fiche descriptive du site <c:out value = "${site.name}" /></h1>
         <div>
             <div class="row text-left">
                 <section class="col-sm-12">

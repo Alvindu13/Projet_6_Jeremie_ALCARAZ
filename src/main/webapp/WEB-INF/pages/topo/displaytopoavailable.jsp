@@ -36,9 +36,13 @@
 <body>
 
 <jsp:include page="../_menu.jsp" />
-<div>
-    <img class="img-responsive" src="resources/img/topo/aside.jpg" alt="AsideEscalade">
-</div>
+
+<section>
+    <div>
+        <img class="img-responsive" src="resources/img/topo/aside.jpg" alt="AsideEscalade">
+    </div>
+</section>
+
 
 <div class="container rounded border border-dark">
     <div class="text-center">

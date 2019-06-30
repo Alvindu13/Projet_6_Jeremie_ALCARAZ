@@ -7,7 +7,7 @@
 <head>
     <title>Nos Topos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="utf-8">
     <spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
 
@@ -19,15 +19,16 @@
 
     <style type="text/css">
         body { background-color: #1c7430  ; }
-        [class*="col"] { margin-bottom: 20px; }
         img { width: 100%; }
         .well {
             background-color:#CCC;
             padding: 20px;
         }
-        div {
+
+        section {
             margin: 2em;
         }
+
         .container{
             background: whitesmoke;
         }
@@ -38,9 +39,13 @@
 
 <body>
 <jsp:include page="../_menu.jsp" />
-<div>
-    <img class="img-responsive" src="resources/img/topo/aside.jpg" alt="AsideEscalade">
-</div>
+
+<section>
+    <div>
+        <img class="img-responsive" src="resources/img/topo/aside.jpg" alt="AsideEscalade">
+    </div>
+</section>
+
 
 <div class="container rounded border border-dark">
     <div class="text-center">
@@ -48,17 +53,26 @@
         <header class="page-header">
             <h1>Les topos du coin</h1>
         </header>
-        <section class="row">
-            <div class="col-xs-12 text-center">
-                <p>
-                    Je suis passionné par <strong>l'escalade</strong> depuis très longtemps. Ce site a été construit <em>  pour les grimpeurs...</em><br>
-                    Vous trouverez sur ce site des topos d'escalade pouvant être réservés par les membres enregistrés.<br>
-                </p>
-            </div>
-        </section>
+
+        <div>
+            <p class="text-justify text-center"> Je suis passionné par <strong>l'escalade</strong> depuis très longtemps. Ce site a été construit <em>  pour les grimpeurs...</em><br>
+                Vous trouverez sur ce site des topos d'escalade pouvant être réservés par les membres enregistrés.
+            </p>
+        </div>
+
 
         <div class="row">
-            <section class="col-sm-12">
+            <div class="col-sm-12">
+                <div class ="row justify-content-center align-content-center">
+                    <section class = "col-sm-8">
+                        <form class = "well">
+                            <h4>Souhaitez-vous ajouter votre propre Topo ?</h4>
+                            <fieldset>
+                                <a href="${pageContext.request.contextPath}/atopo?user=${pageContext.request.userPrincipal.name}" class="btn btn-primary js-scroll-trigger">Afficher le formulaire</a>
+                            </fieldset>
+                        </form>
+                    </section>
+                </div>
 
                 <table class="table table-bordered table-striped table-condensed">
                     <thead>
@@ -107,20 +121,11 @@
 
 
 
-            </section>
+            </div>
         </div>
 
 
-        <div class ="row justify-content-center align-content-center">
-            <section class = "col-sm-8">
-                <form class = "well">
-                    <h4>Souhaitez-vous ajouter votre propre Topo ?</h4>
-                    <fieldset>
-                        <a href="${pageContext.request.contextPath}/atopo?user=${pageContext.request.userPrincipal.name}" class="btn btn-primary js-scroll-trigger">Afficher le formulaire</a>
-                    </fieldset>
-                </form>
-            </section>
-        </div>
+
     </div>
 </div>
 </body>
