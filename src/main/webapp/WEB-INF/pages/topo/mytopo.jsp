@@ -16,22 +16,18 @@
 
 
     <style type="text/css">
-        body { background-color: #1c7430  ; }
-        .container{
-            background: #b8daff;
-        }
-        [class*="col"] { margin-bottom: 20px; }
+
+        [class*="col"] { margin: 10px; }
+
         img { width: 100%; }
-        .table {
-            border-radius: 5px;
-            width: 50%;
-            margin: 0px auto;
-            float: none;
-        }
-        .pagination {
-            justify-content: center;
+
+        .container{
+            background: whitesmoke;
         }
 
+        div {
+            margin: 2em;
+        }
     </style>
 
 </head>
@@ -40,10 +36,13 @@
 <jsp:include page="../_menu.jsp" />
 
 
-<section id = "test" class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12"><img src="resources/img/topo/aside.jpg" alt="AsideEscalade"></div>
+<section>
+    <div>
+        <img class="img-responsive" src="resources/img/topo/aside.jpg" alt="AsideEscalade">
+    </div>
 </section>
-<div class="container">
+
+<div class="container rounded border border-dark">
     <div class="text-center">
         <header class="page-header">
             <h1>Bonjour ${pageContext.request.userPrincipal.name}, vous trouverez sur cette page l'ensemble de vos topos</h1>
@@ -54,7 +53,7 @@
 
                 <h2> Mes Topos publiés : </h2>
                 <div class="panel-body">
-                    <table class="table table-bordered table-striped table-condensed align-content-center">
+                    <table class="table table-bordered table-striped table-condensed">
                         <thead class="thead-dark">
                         <tr>
                             <th> Nom du topo</th>
@@ -64,7 +63,7 @@
                         </tr>
                         </thead>
 
-                        <tbody>
+                        <tbody class="">
                         <c:forEach items="${topos}" var="t" varStatus="status">
                             <tr>
                                 <td>${t.name}</td>
@@ -83,8 +82,11 @@
                                             <td><button type="button" class="btn btn-secondary btn-lg" disabled>PARTAGER</button></td>
                                         </c:if>
                                     </form>
-                                    <form method="post" action="doUpload?user=${pageContext.request.userPrincipal.name}" enctype="multipart/form-data">
+                                    <form class="login-form" name ="f" method="post" action="doUpload?user=${pageContext.request.userPrincipal.name}" enctype="multipart/form-data" modelAttribue="files">
                                         <td><input type="file" name="fileUpload" size="50" /></td>
+                                        <td><input type="hidden" name="utilisateurId" value="${t.utilisateur.utilisateurId}" /></td>
+                                        <td><input type="hidden" name="topoId" value="${t.topoId}" /></td>
+
                                         <td colspan="2" align="center"><input type="submit" value="Upload" /></td>
                                     </form>
                                 </c:if>

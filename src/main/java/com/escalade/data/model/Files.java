@@ -11,18 +11,27 @@ public class Files {
     @Column(name = "FILE_ID")
     private int id;
 
+
     @Column(name = "FILE_NAME")
     private String fileName;
 
     @Column(name = "FILE_DATA")
     private byte[] data;
 
+    @Column(name = "UTILISATEUR_ID")
+    private Integer utilisateurId;
+
+    @Column(name = "TOPO_ID")
+    private Integer topoId;
+
     public Files() {
     }
 
-    public Files(String fileName, byte[] data) {
+    public Files(String fileName, byte[] data, Integer utilisateurId, Integer topoId) {
         this.fileName = fileName;
         this.data = data;
+        this.utilisateurId = utilisateurId;
+        this.topoId = topoId;
     }
 
     public int getId() {
@@ -47,6 +56,22 @@ public class Files {
 
     public void setData(byte[] data) {
         this.data = data;
+    }
+
+    public Integer getUtilisateurId() {
+        return utilisateurId;
+    }
+
+    public void setUtilisateurId(Integer utilisateurId) {
+        this.utilisateurId = utilisateurId;
+    }
+
+    public Integer getTopoId() {
+        return topoId;
+    }
+
+    public void setTopoId(Integer topoId) {
+        this.topoId = topoId;
     }
 
     @Override

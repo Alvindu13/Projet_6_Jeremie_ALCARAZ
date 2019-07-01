@@ -89,11 +89,25 @@
                             <tr>
                                 <td><a class="nav-link" href="${pageContext.request.contextPath}/sites?topoId=${t.topoId}&user=${pageContext.request.userPrincipal.name}">${t.name}</td>
                                 <td>${t.utilisateur.userName}</td>
+
+
+                            <c:forEach items="${defineDownload}" var="test" varStatus="loop">
+                                <c:if test="${defineDownload[loop.index] == t.topoId }">
                                 <td>
-                                    <a class="btn btn-primary" href="${pageContext.request.contextPath}/download" role="button">Télécharger
-                                        <i class="fa fa-file" style="font-size:48px;color:red"></i>
+                                    <a class="btn btn-primary" href="${pageContext.request.contextPath}/download?topoId=${t.topoId}" role="button">Télécharger
+                                        <i class="fa fa-file" style="font-size:25px;color:red"></i>
                                     </a>
                                 </td>
+                                </c:if>
+                            </c:forEach>
+
+
+                            <td>
+
+                            </td>
+
+
+
                             </tr>
                         <c:set var="i" value="${i+1}" />
                         </c:forEach>

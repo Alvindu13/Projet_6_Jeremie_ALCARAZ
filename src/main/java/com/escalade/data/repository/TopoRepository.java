@@ -38,7 +38,7 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
 
     @Query(value="SELECT t FROM Topo t " +
             " WHERE t.available = ?1")
-    Page<Topo> findAllByAvailableIsTrue(Boolean available, Pageable pageable);
+    Page<Topo> getAllByAvailableIsTrue(Boolean available, Pageable pageable);
 
 
     @Modifying

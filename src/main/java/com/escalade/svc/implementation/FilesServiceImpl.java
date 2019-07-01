@@ -20,8 +20,8 @@ public class FilesServiceImpl implements FilesService {
     }
 
     @Override
-    public Files getFilesById(int fileId) {
-        return repo.getFilesById(fileId);
+    public Files getFilesByTopoId(int topoId) {
+        return repo.getFilesByTopoId(topoId);
 
     }
 }

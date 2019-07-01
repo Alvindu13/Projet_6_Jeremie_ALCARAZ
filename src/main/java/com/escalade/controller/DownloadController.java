@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
 
@@ -25,8 +26,8 @@ public class DownloadController {
      * @throws IOException
      */
     @GetMapping("/download")
-    public ResponseEntity<ByteArrayResource> downloadFile2() throws IOException {
-        Files files = fSvc.getFilesById(2);
+    public ResponseEntity<ByteArrayResource> downloadFile2(@RequestParam("topoId") int topoId) throws IOException {
+        Files files = fSvc.getFilesByTopoId(topoId);
         byte[] data = files.getData();
         ByteArrayResource resource = new ByteArrayResource(data);
 

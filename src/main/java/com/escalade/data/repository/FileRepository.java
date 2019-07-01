@@ -9,5 +9,9 @@ public interface FileRepository extends CrudRepository<Files, Integer > {
 
     Files getFilesById(int fileId);
 
+    Boolean existsAllByTopoId(int topoId);
+
+    Files getFilesByTopoId(int topoId);
+
 
 }

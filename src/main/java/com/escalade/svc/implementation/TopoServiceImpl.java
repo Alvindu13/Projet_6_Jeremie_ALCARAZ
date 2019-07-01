@@ -28,12 +28,17 @@ public class TopoServiceImpl implements TopoService {
         return repo.findByTopoId(topo_id);
     }
 
-    public Page<Topo> findAllTopo(Pageable pageable) {
+    @Override
+    public Iterable<Topo> getAllTopo() {
+        return repo.findAll();
+    }
+
+    public Page<Topo> getAllTopo(Pageable pageable) {
 
         return repo.findAll(pageable);
     }
 
-    public Page<Topo> findAllByUserName(String user, Pageable pageable) {
+    public Page<Topo> getAllByUserName(String user, Pageable pageable) {
 
         return repo.findAllByUser(user, pageable);
     }
@@ -62,32 +67,40 @@ public class TopoServiceImpl implements TopoService {
         repo.setUnvailableTopo(available, user, topoId);
     }
 
-    @Override
+   /* @Override
     public Page<Topo> findAllByAvailableIsTrueOrderByAvailables(Boolean available, Pageable pageable) {
         return repo.findAllByAvailableIsTrue(available, pageable);
+    }*/
+
+    @Override
+    public Page<Topo> getAllByCurrentlyUser(Integer currentUser, Pageable pageable) {
+        return repo.findAllByUserCurrentProprio(currentUser, pageable);
     }
 
     @Override
-    public Page<Topo> findAllByCurrentlyUser(Integer currentUser, Pageable pageable) {
-        return repo.findAllByUserCurrentProprio(currentUser, pageable);
+    public Page<Topo> getAllByAvailableIsTrue(Boolean available, Pageable pageable) {
+        return repo.getAllByAvailableIsTrue(available, pageable);
+    }
+
+    @Override
+    public void setTopoUserNameByUserId(Integer userId, Integer topoId) {
+        repo.setTopoUserNameByUserId(userId, topoId);
+    }
+
+    @Override
+    public void setTopoUnvailableById(Boolean unvailable, Integer topoId) {
+        repo.setTopoUnvailableById(unvailable, topoId);
+
+    }
+
+    @Override
+    public void setTopoReserveUserIdByTopoId(Boolean reserve, Integer topoId) {
+        repo.setTopoReserveUserIdByTopoId(reserve,topoId);
     }
 
     @Override
     public Long countAllTopo() {
        return repo.count();
     }
-
-
-
-
-
-    /*public List<Topo> listTopo() {
-
-
-
-        //List<Topo> topos = dao.listTopo();
-
-        return null;
-    }*/
 }
 

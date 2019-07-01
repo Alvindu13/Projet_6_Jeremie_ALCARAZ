@@ -1,10 +1,14 @@
 package com.escalade.controller;
 
+import com.escalade.data.model.Files;
 import com.escalade.data.model.Topo;
 import com.escalade.data.model.Utilisateur;
+import com.escalade.data.repository.FileRepository;
 import com.escalade.data.repository.TopoRepository;
 import com.escalade.data.repository.UtilisateurRepository;
+import com.escalade.data.util.DefineAttributes;
 import com.escalade.svc.contracts.CommentaireService;
+import com.escalade.svc.contracts.FilesService;
 import com.escalade.svc.contracts.TopoService;
 import com.escalade.svc.contracts.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +18,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class TopoController {
@@ -25,12 +33,12 @@ public class TopoController {
     @Autowired
     private TopoService topoSvc;
 
-    @Autowired
-    private TopoRepository topoRepo;
-
 
     @Autowired
     private UtilisateurService userSvc;
+
+    @Autowired
+    private FileRepository fSvc;
 
 
     @RequestMapping("/cmt1")
@@ -49,7 +57,14 @@ public class TopoController {
                               @RequestParam(name = "page", defaultValue = "0") int page,
                               Model model) {
 
-        Page<Topo> pagesTopo = topoSvc.findAllTopo(PageRequest.of(page, 10));
+
+        DefineAttributes defineAttributes = new DefineAttributes();
+
+        model.addAttribute("defineDownload", defineAttributes.defineDownload(topoSvc, fSvc));
+
+
+
+        Page<Topo> pagesTopo = topoSvc.getAllTopo(PageRequest.of(page, 10));
         model.addAttribute("topos",pagesTopo.getContent());
         model.addAttribute("arrayNbPagesTopo", new int[pagesTopo.getTotalPages()]);
         model.addAttribute("currentPageTopo", page);
@@ -91,10 +106,11 @@ public class TopoController {
                                   @ModelAttribute("currentUser") Utilisateur currentlyUser,
                                   Model model) {
 
+
         currentlyUser = userSvc.getUser(user);
 
-        Page<Topo> pagesTopo = topoSvc.findAllByUserName(user, PageRequest.of(pageTopo, 5));
-        Page<Topo> pagesTopoShare = topoSvc.findAllByCurrentlyUser(currentlyUser.getUtilisateurId(), PageRequest.of(pageTopoShare, 5));
+        Page<Topo> pagesTopo = topoSvc.getAllByUserName(user, PageRequest.of(pageTopo, 5));
+        Page<Topo> pagesTopoShare = topoSvc.getAllByCurrentlyUser(currentlyUser.getUtilisateurId(), PageRequest.of(pageTopoShare, 5));
 
 
         model.addAttribute("user", userSvc.getUser(user));
@@ -117,8 +133,9 @@ public class TopoController {
 
     @RequestMapping(value = "/mytopo", method = RequestMethod.POST)
     public ModelAndView shareTopo(@RequestParam("user") String user,
-                            @RequestParam(name = "action", defaultValue = "") String action,
-                            @ModelAttribute("topo") Topo topo) {
+                                  @RequestParam(name = "action", defaultValue = "") String action,
+                                  @ModelAttribute("topo") Topo topo) {
+
 
         topoSvc.updateTopo(action, topo.getReserve(), user, topo.getTopoId());
 
@@ -136,7 +153,7 @@ public class TopoController {
                                          @RequestParam(name="available", defaultValue = "true") Boolean available,
                                          Model model) {
 
-        Page<Topo> pagesTopo = topoRepo.findAllByAvailableIsTrue(available,  PageRequest.of(page, 5));
+        Page<Topo> pagesTopo = topoSvc.getAllByAvailableIsTrue(available,  PageRequest.of(page, 5));
 
 
         model.addAttribute("topos",pagesTopo.getContent());
@@ -154,13 +171,13 @@ public class TopoController {
      */
     @RequestMapping(value = "/reservetopo", method = RequestMethod.POST)
     public ModelAndView reserveTopo(@RequestParam("userId") int userId,
-                              @RequestParam("topoId") int topoId) {
+                                    @RequestParam("topoId") int topoId) {
 
-            topoRepo.setTopoUserNameByUserId(userId, topoId);
-            topoRepo.setTopoUnvailableById(false, topoId);
-            topoRepo.setTopoReserveUserIdByTopoId(true, topoId);
+        topoSvc.setTopoUserNameByUserId(userId, topoId);
+        topoSvc.setTopoUnvailableById(false, topoId);
+        topoSvc.setTopoReserveUserIdByTopoId(true, topoId);
 
-            return new ModelAndView( "redirect:/displaytopoavailable?user=" +  userSvc.findByUtilisateurId(userId).getUtilisateurId());
+        return new ModelAndView( "redirect:/displaytopoavailable?user=" +  userSvc.findByUtilisateurId(userId).getUtilisateurId());
     }
 
 
