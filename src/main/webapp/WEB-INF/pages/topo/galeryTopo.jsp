@@ -86,6 +86,7 @@
                     <tbody>
                         <c:set var="i" value="1" />
                         <c:forEach items="${topos}" var="t">
+                            <c:set var="maVariable1" value="0" scope="page" />
                             <tr>
                                 <td><a class="nav-link" href="${pageContext.request.contextPath}/sites?topoId=${t.topoId}&user=${pageContext.request.userPrincipal.name}">${t.name}</td>
                                 <td>${t.utilisateur.userName}</td>
@@ -98,18 +99,15 @@
                                         <i class="fa fa-file" style="font-size:25px;color:red"></i>
                                     </a>
                                 </td>
+                                    <c:set var="maVariable1" value="${maVariable1+1}" scope="page" />
                                 </c:if>
                             </c:forEach>
 
-
-                            <td>
-
-                            </td>
-
-
-
+                                <c:if test="${maVariable1 != 1}">
+                                    <td></td>
+                                </c:if>
                             </tr>
-                        <c:set var="i" value="${i+1}" />
+                            <c:set var="i" value="${i+1}" />
                         </c:forEach>
                     </tbody>
 

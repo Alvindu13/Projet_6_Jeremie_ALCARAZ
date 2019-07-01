@@ -22,11 +22,6 @@ public class UploadController {
     @Autowired
     private FilesService fSvc;
 
-    @RequestMapping(value = "/up1oad", method = RequestMethod.GET)
-    public String showUploadForm(HttpServletRequest request) {
-        return "upload/upload";
-    }
-
     @RequestMapping(value = "/doUpload", method = RequestMethod.POST)
     public ModelAndView handleFileUpload(HttpServletRequest request,
                                          @RequestParam("user") String user,
