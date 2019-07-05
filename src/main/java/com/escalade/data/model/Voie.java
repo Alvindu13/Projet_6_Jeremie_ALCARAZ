@@ -11,8 +11,12 @@ public class Voie {
 	@Column(name = "VOIE_ID")
 	private int voieId;
 
-	@Column(name = "SECTEUR_ID")
-	private int secteurId;
+	/*@Column(name = "SECTEUR_ID")
+	private int secteurId;*/
+
+	@ManyToOne
+	@JoinColumn(name = "SECTEUR_ID")
+	private Secteur secteur;
 
 	@Column(name = "SIZE")
 	private double size;
@@ -32,22 +36,21 @@ public class Voie {
 
 	public Voie() { super();};
 
-	public Voie(int secteurId, double size, String level, int nbPoints, int nbPart, String name) {
-		this.secteurId = secteurId;
+	public Voie(Secteur secteur, double size, String name, String cotation, int nbPoints, int nbPart) {
+		this.secteur = secteur;
 		this.size = size;
-		this.cotation = level;
+		this.name = name;
+		this.cotation = cotation;
 		this.nbPoints = nbPoints;
 		this.nbPart = nbPart;
-		this.name = name;
 	}
 
-
-	public int getSecteurId() {
-		return secteurId;
+	public Secteur getSecteur() {
+		return secteur;
 	}
 
-	public void setSecteurId(int secteurId) {
-		this.secteurId = secteurId;
+	public void setSecteur(Secteur secteur) {
+		this.secteur = secteur;
 	}
 
 	public int getVoieId() {

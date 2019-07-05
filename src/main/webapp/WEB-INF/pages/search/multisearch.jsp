@@ -74,7 +74,7 @@
 
                             <div class="form-group col-md-3">
                                 <label for="inputState">Lieu</label>
-                                <select id="inputState" class="form-control" name = 'location'>
+                                <select id="inputState" class="form-control" name = 'location' required = 'true'>
                                     <option selected>Choose...</option>
                                     <option>Marseille</option>
                                     <option>Paris</option>
@@ -85,7 +85,7 @@
 
                             <div class="form-group col-md-2">
                                 <label for="inputState">Cotation Minimum</label>
-                                <select id="inputState2" class="form-control" name = 'cotationMinimum'>
+                                <select id="inputState2" class="form-control" name = 'cotationMinimum' required = 'true'>
                                     <option selected>Choose...</option>
                                     <option>4A</option>
                                     <option>4B</option>
@@ -100,7 +100,7 @@
 
                             <div class="form-group col-md-2">
                                 <label for="inputState">Cotation Maximum</label>
-                                <select id="inputState5" class="form-control" name = 'cotationMaximum'>
+                                <select id="inputState5" class="form-control" name = 'cotationMaximum' required = 'true'>
                                     <option selected>Choose...</option>
                                     <option>4A</option>
                                     <option>4B</option>

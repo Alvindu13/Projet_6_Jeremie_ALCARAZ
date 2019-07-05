@@ -61,22 +61,34 @@ public class LoginController {
         return "redirect:/welcome";
     }
 
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public String adminPage(Model model) {
-        return "login/adminPage";
-    }
 
+    /**
+     * Affiche le formulaire de connexion
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Model model) {
         return "login/loginPage";
     }
 
+    /**
+     * Affiche un message si la déconnexion de l'utilisateur s'est correctement déroulée
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
     public String logoutSuccessfulPage(Model model) {
         model.addAttribute("title", "Logout");
         return "login/logoutSuccessfulPage";
     }
 
+    /**
+     *
+     * @param model
+     * @param principal
+     * @return
+     */
     @RequestMapping(value = "/userInfo", method = RequestMethod.GET)
     public String userInfo(Model model, Principal principal) {
 

@@ -13,6 +13,6 @@ public interface SiteService {
     Iterable<Site> listSite();
     Page<Site> findAllByTopoId(int topoId, Pageable pageable);
     Site getSiteBySiteId(int siteId);
-    List<Site> getSiteByResearch(String location, String cotationMini, String cotationMaxi);
+    List getSiteByResearch(String location, String cotationMini, String cotationMaxi);
 
 }

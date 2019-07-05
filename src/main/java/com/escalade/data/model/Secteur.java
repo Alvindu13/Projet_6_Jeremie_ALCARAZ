@@ -12,8 +12,13 @@ public class Secteur {
     @Column(name = "SECTEUR_ID")
     private int secteurId;
 
-    @Column(name = "SITE_ID")
-    private int siteId;
+    /*@Column(name = "SITE_ID")
+    private int siteId;*/
+
+    @ManyToOne
+    @JoinColumn(name = "SITE_ID")
+    private Site site;
+
 
     @Column(name = "NAME")
     private String name;
@@ -21,11 +26,10 @@ public class Secteur {
     public Secteur() {}
 
 
-    public Secteur(int siteId, String name) {
-        this.siteId = siteId;
+    public Secteur(Site site, String name) {
+        this.site = site;
         this.name = name;
     }
-
 
     public int getSecteurId() {
         return secteurId;
@@ -35,12 +39,12 @@ public class Secteur {
         this.secteurId = secteurId;
     }
 
-    public int getSiteId() {
-        return siteId;
+    public Site getSite() {
+        return site;
     }
 
-    public void setSiteId(int siteId) {
-        this.siteId = siteId;
+    public void setSite(Site site) {
+        this.site = site;
     }
 
     public String getName() {

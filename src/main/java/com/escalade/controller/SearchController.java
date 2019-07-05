@@ -4,6 +4,7 @@ import com.escalade.data.util.Search;
 import com.escalade.data.model.Site;
 import com.escalade.data.repository.SiteRepository;
 import com.escalade.data.repository.VoieRepository;
+import com.escalade.svc.contracts.SiteService;
 import com.escalade.svc.implementation.SiteServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,11 +21,19 @@ public class SearchController {
     private SiteRepository svcSite;
 
     @Autowired
-    private SiteServiceImpl svcSite2;
+    private SiteService svcSite2;
 
     @Autowired
     private VoieRepository svcVoie;
 
+
+    /**
+     * Permet de faire une recherche mono-critère
+     * @param mc
+     * @param page
+     * @param model
+     * @return
+     */
     @GetMapping("/search")
     public String chercher(@RequestParam(name="motCle", defaultValue = "") String mc,
                            @RequestParam(name="page", defaultValue = "0") int page,
