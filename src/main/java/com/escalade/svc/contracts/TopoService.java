@@ -9,20 +9,21 @@ import java.util.List;
 public interface TopoService {
 
     void createTopo(Topo t);
-    Topo getTopoByName(String name);
     Topo getTopoById(int topo_id);
     Iterable<Topo> getAllTopo();
     Page<Topo> getAllTopo(Pageable pageable);
-    Page<Topo> getAllByUserName(String user, Pageable pageable);
-    void updateTopo(String action,Boolean reserve, String user, int topoId);
-    void updateTopoUnvailable(Boolean available, String user, int topoId);
-   // Page<Topo> findAllByAvailableIsTrueOrderByAvailables(Boolean available, Pageable pageable);
-    Page<Topo> getAllByCurrentlyUser(Integer currentUser, Pageable pageable);
+    Page<Topo> getAllByUserEscaladName(String userEscalad, Pageable pageable);
+    void updateTopo(String action,Boolean reserve, String userEscalad, int topoId);
+    Page<Topo> getAllByCurrentlyUserEscalad(Integer currentUserEscalad, Pageable pageable);
     Page<Topo> getAllByAvailableIsTrue(Boolean available, Pageable pageable);
-    void setTopoUserNameByUserId(Integer userId, Integer topoId);
+    void setTopoUserNameByUserEscaladId(Integer userEscaladId, Integer topoId);
     void setTopoUnvailableById(Boolean unvailable, Integer topoId);
-    void setTopoReserveUserIdByTopoId(Boolean reserve, Integer topoId);
+    void setTopoReserveUserEscaladIdByTopoId(Boolean reserve, Integer topoId);
 
-    Long countAllTopo();
+    /*Long countAllTopo();
+    void updateTopoUnvailable(Boolean available, String userEscalad, int topoId);
+    Topo getTopoByName(String name);*/
+
+
 
 }

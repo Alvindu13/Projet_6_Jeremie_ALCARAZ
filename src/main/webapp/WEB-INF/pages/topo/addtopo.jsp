@@ -32,7 +32,7 @@
                 <input type='text' placeholder='Nom du Topo' name='name'/>
                 <input type='hidden' name = 'available' value = "${false}">
                 <input type='hidden' name = 'reserve' value = "${false}">
-                <input type='hidden' name = 'utilisateur.utilisateurId' value = "${currentUser.utilisateurId}">
+                <input type='hidden' name = 'userEscalad.userEscaladId' value = "${currentUser.userEscaladId}">
 
             <button  name = "submit" type="submit" class="btn btn-danger">CREER TOPO</button>
 

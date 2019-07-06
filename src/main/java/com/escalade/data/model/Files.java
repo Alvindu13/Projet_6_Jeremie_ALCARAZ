@@ -8,9 +8,8 @@ import java.util.Arrays;
 public class Files {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name = "FILE_ID")
+    @Column(name = "file_id")
     private int id;
-
 
     @Column(name = "FILE_NAME")
     private String fileName;
@@ -18,19 +17,19 @@ public class Files {
     @Column(name = "FILE_DATA")
     private byte[] data;
 
-    @Column(name = "UTILISATEUR_ID")
-    private Integer utilisateurId;
+    @Column(name = "USER_ESCALAD_ID")
+    private Integer userEscaladId;
 
-    @Column(name = "TOPO_ID")
+    @Column(name = "topo_id")
     private Integer topoId;
 
     public Files() {
     }
 
-    public Files(String fileName, byte[] data, Integer utilisateurId, Integer topoId) {
+    public Files(String fileName, byte[] data, Integer userEscaladId, Integer topoId) {
         this.fileName = fileName;
         this.data = data;
-        this.utilisateurId = utilisateurId;
+        this.userEscaladId = userEscaladId;
         this.topoId = topoId;
     }
 
@@ -58,12 +57,12 @@ public class Files {
         this.data = data;
     }
 
-    public Integer getUtilisateurId() {
-        return utilisateurId;
+    public Integer getUserEscaladId() {
+        return userEscaladId;
     }
 
-    public void setUtilisateurId(Integer utilisateurId) {
-        this.utilisateurId = utilisateurId;
+    public void setUserEscaladId(Integer userEscaladId) {
+        this.userEscaladId = userEscaladId;
     }
 
     public Integer getTopoId() {
@@ -76,10 +75,12 @@ public class Files {
 
     @Override
     public String toString() {
-        return "File{" +
+        return "Files{" +
                 "id=" + id +
                 ", fileName='" + fileName + '\'' +
                 ", data=" + Arrays.toString(data) +
+                ", userEscaladId=" + userEscaladId +
+                ", topoId=" + topoId +
                 '}';
     }
 }

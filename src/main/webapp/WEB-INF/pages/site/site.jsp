@@ -42,7 +42,7 @@
                             <p> Ce site se situe au location suivant : <strong> ${site.location} </strong> </p>
                             <p>Descriptif du site :<strong> ${site.comment} </strong> </p>
                             <p>Le site dispose de :
-                                <a class="nav-link" href="${pageContext.request.contextPath}/secteur?siteId=${site.siteId}">
+                                <a class="nav-link" href="${pageContext.request.contextPath}/sector?siteId=${site.siteId}">
                                     <strong> ${countSect} </strong> secteurs
                                 </a>
                         </section>
@@ -55,13 +55,15 @@
                         <div class="commentaire">
                             <div class="form">
                                 <h4>Écrivez votre commentaire : </h4>
+                                <c:set var="name" value="${pageContext.request.userPrincipal.name}" scope="request" />
+
                                 <form class="login-form" name ="f" action="addcmt" method='POST' modelAttribute="commentaire">
                                     <div class="form-group">
                                         <label for="comment">Description:</label>
                                         <textarea class="form-control" rows="5" id="comment" placeholder='' name='content' ></textarea>
                                     </div>
                                     <input type='hidden' placeholder='' name='userName' class="form-control" id="username" value="${pageContext.request.userPrincipal.name}"/>
-                                    <input type='hidden' placeholder='' name='utilisateurId' class="form-control" id="user" value="${user.utilisateurId}"/>
+                                    <input type='hidden' placeholder='' name='userEscaladId' class="form-control" id="user" value="${user.userEscaladId}"/>
                                     <input type="hidden" id="siteId" name="siteId" value="${site.siteId}"/>
                                     <button type="submit" class="btn btn-primary">Ajouter votre commentaire</button>
                                 </form>
@@ -81,10 +83,10 @@
                         </thead>
                         <tbody>
                         <c:set var="i" value="1" />
-                        <c:forEach items="${cmtest}" var="c">
+                        <c:forEach items="${cmt}" var="c">
                             <tr>
                                 <td>${c.content}</td>
-                                <td>${pageContext.request.userPrincipal.name}</td>
+                                <td>${c.userName}</td>
                             </tr>
                             <c:set var="i" value="${i+1}" />
                         </c:forEach>

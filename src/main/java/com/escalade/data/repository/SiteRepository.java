@@ -13,8 +13,10 @@ import java.util.List;
 
 public interface SiteRepository extends CrudRepository<Site, Integer>, JpaSpecificationExecutor {
 
-    @Query(value= "select * from site  where topo_id = ?1", nativeQuery = true)
-    List<Site> findAllByTopoId(int topo_id);
+
+
+    @Query(value= "SELECT DISTINCT s.location FROM Site s")
+    List<String> findDistinct();
 
 
     Page<Site> findAllByTopoId(int topo_id, Pageable pageable);
@@ -40,13 +42,13 @@ public interface SiteRepository extends CrudRepository<Site, Integer>, JpaSpecif
 
 
     /*@Query (value = "select s from Site s where s.location = ?1 AND (s.cotationMinimum >= ?2 AND s.cotationMaximum <= ?3) AND s.nbSector < ?4 ")
-    List<Site> test(String location, String cotationMini, String cotationMaxi, Integer nbSecteur);*/
+    List<Site> test(String location, String cotationMini, String cotationMaxi, Integer nbsector);*/
 
 
     @Query (value ="SELECT  * " +
             "FROM Site s \n" +
-            "INNER JOIN Secteur sec ON sec.site_id = s.site_id \n" +
-                "INNER JOIN voie v ON v.secteur_id = sec.secteur_id \n" +
+            "INNER JOIN sector sec ON sec.site_id = s.site_id \n" +
+                "INNER JOIN way v ON v.sector_id = sec.sector_id \n" +
             "WHERE s.location = ?1 AND (v.cotation BETWEEN ?2 AND ?3)", nativeQuery = true)
     List<Site> findSiteByMultiCriterias(String location, String cotationMini, String cotationMaxi);
 

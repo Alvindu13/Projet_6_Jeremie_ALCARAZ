@@ -69,18 +69,20 @@
                 </div>
                 <div class="card-body">
                     <form class="login-form" name ="f" action="multisearch" method='POST' modelAttribute="searcher">
-
                         <div class = row >
-
                             <div class="form-group col-md-3">
                                 <label for="inputState">Lieu</label>
                                 <select id="inputState" class="form-control" name = 'location' required = 'true'>
                                     <option selected>Choose...</option>
-                                    <option>Marseille</option>
-                                    <option>Paris</option>
-                                    <option>Grenoble</option>
+
+                                    <c:forEach items="${sites}" var="site" varStatus="status">
+                                        <option>${sites[status.index]}</option>
+                                    </c:forEach>
+
+
                                 </select>
                             </div>
+
 
 
                             <div class="form-group col-md-2">

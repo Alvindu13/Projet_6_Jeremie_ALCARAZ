@@ -24,18 +24,9 @@ public class SiteServiceImpl implements SiteService {
     @Autowired
     private SiteRepository repo;
 
+    @Override
     public void createSite(Site s) {
         Site site = repo.save(s);
-    }
-
-    public Site getSite(String name) {
-        return null;
-    }
-
-    public Iterable<Site> listSite() {
-
-         Iterable<Site> site = repo.findAll();
-        return site;
     }
 
     @Override
@@ -43,14 +34,25 @@ public class SiteServiceImpl implements SiteService {
         return repo.findAllByTopoId(topoId, pageable);
     }
 
-
+    @Override
     public Site getSiteBySiteId(int siteId){
         return repo.findBySiteId(siteId);
-
     }
 
     @Override
     public List<Site> getSiteByResearch(String location, String cotationMin, String cotationMax) {
         return repo.findSiteByMultiCriterias(location, cotationMin, cotationMax);
     }
+
+    @Override
+    public Iterable<String> getDisctinctLocation() {
+        return repo.findDistinct();
+    }
+
+    @Override
+    public Page<Site> findAllSiteByCritera(String mc, Pageable pageable) {
+        return repo.findAllSiteByCritera(mc, pageable);
+    }
+
+
 }

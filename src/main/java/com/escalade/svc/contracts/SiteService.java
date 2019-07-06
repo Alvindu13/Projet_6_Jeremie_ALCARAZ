@@ -9,10 +9,14 @@ import java.util.List;
 public interface SiteService {
 
     void createSite(Site s);
-    Site getSite(String name);
-    Iterable<Site> listSite();
     Page<Site> findAllByTopoId(int topoId, Pageable pageable);
     Site getSiteBySiteId(int siteId);
     List getSiteByResearch(String location, String cotationMini, String cotationMaxi);
+    Iterable<String> getDisctinctLocation();
+    Page<Site> findAllSiteByCritera(String mc, Pageable pageable);
+
+
+    /*Site getSite(String name);
+    Iterable<Site> listSite();*/
 
 }

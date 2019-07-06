@@ -51,7 +51,7 @@
         <div class = "row">
             <div class = col-lg-10>
 
-                <h2> Mes Topos publiés : </h2>
+                <h2> Mes Topos publiées : </h2>
                 <div class="panel-body">
                     <table class="table table-bordered table-striped table-condensed">
                         <thead class="thead-dark">
@@ -60,11 +60,14 @@
                             <th> Propriétaire </th>
                             <th> Action </th>
                             <th> Upload votre TOPO PDF </th>
+                            <th> Action </th>
+
                         </tr>
                         </thead>
 
                         <tbody class="">
                         <c:forEach items="${topos}" var="t" varStatus="status">
+
                             <tr>
                                 <td>${t.name}</td>
                                 <td>${pageContext.request.userPrincipal.name}</td>
@@ -82,13 +85,16 @@
                                             <td><button type="button" class="btn btn-secondary btn-lg" disabled>PARTAGER</button></td>
                                         </c:if>
                                     </form>
-                                    <form class="login-form" name ="f" method="post" action="doUpload?user=${pageContext.request.userPrincipal.name}" enctype="multipart/form-data" modelAttribue="files">
+                                    <form class="login-form" name ="f" method="post" action="doUpload?user=${pageContext.request.userPrincipal.name}&action=${action}&topoId=${t.topoId}" enctype="multipart/form-data" modelAttribue="files">
                                         <td><input type="file" name="fileUpload" size="50" /></td>
-                                        <td><input type="hidden" name="utilisateurId" value="${t.utilisateur.utilisateurId}" /></td>
-                                        <td><input type="hidden" name="topoId" value="${t.topoId}" /></td>
+                                        <input type="hidden" name="userEscaladId" value="${t.userEscalad.userEscaladId}" />
+                                        <input type="hidden" name="topoId" value="${t.topoId}" />
+                                        <input type="hidden" name="action" value="update"/>
+                                        <td colspan="2" align="center"><input type="submit" value="modifier" /></td>
 
-                                        <td colspan="2" align="center"><input type="submit" value="Upload" /></td>
                                     </form>
+
+
                                 </c:if>
                             </tr>
                         </c:forEach>

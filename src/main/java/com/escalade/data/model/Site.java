@@ -15,7 +15,7 @@ public class Site {
     @Column(name = "NAME")
     private String name;
 
-    @Column(name = "LOCATION")
+    @Column(name = "location")
     private String location;
 
     @Column(name = "COMMENT")
@@ -31,7 +31,7 @@ public class Site {
     private String cotationMaximum;
 
 
-    public Site() {super(); }
+    public Site() { }
 
     public Site(String name, String location, String comment, int topoId, String cotationMinimum, String cotationMaximum) {
         this.name = name;

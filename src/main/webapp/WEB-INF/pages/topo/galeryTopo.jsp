@@ -89,7 +89,7 @@
                             <c:set var="maVariable1" value="0" scope="page" />
                             <tr>
                                 <td><a class="nav-link" href="${pageContext.request.contextPath}/sites?topoId=${t.topoId}&user=${pageContext.request.userPrincipal.name}">${t.name}</td>
-                                <td>${t.utilisateur.userName}</td>
+                                <td>${t.userEscalad.userName}</td>
 
 
                             <c:forEach items="${defineDownload}" var="test" varStatus="loop">

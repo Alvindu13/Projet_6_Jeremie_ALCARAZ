@@ -16,24 +16,23 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
 
     Topo findByTopoId (int topoId);
 
-    Page<Topo> findAllByUserCurrentProprio(Integer currentUser, Pageable pageable);
+    Page<Topo> findAllByUserEscaladCurrentProprio(Integer currentUserEscalad, Pageable pageable);
 
     Page<Topo> findAll(Pageable pageable);
 
 
-
-    @Query(value="SELECT  t.*" +
-            "FROM Topo t " +
-            "INNER JOIN Utilisateur u ON u.utilisateur_id = t.utilisateur_id" +
-                " WHERE username = ?1 ORDER BY ?#{#pageable}",
+    @Query (value ="SELECT  * " +
+            "FROM topo t \n" +
+            "INNER JOIN user_escalad u ON u.user_escalad_id = t.user_escalad_id \n" +
+            "WHERE username = ?1 ORDER BY ?#{#pageable}",
 
             countQuery = "SELECT count(*) \n" +
-                    "FROM Topo t " +
-                    "INNER JOIN Utilisateur u ON u.utilisateur_id = t.utilisateur_id" +
-                    " WHERE username = ?1 ",
+                    "FROM topo t \n" +
+                    "INNER JOIN user_escalad u ON u.user_escalad_id = t.user_escalad_id \n" +
+                    "WHERE username = ?1",
 
             nativeQuery = true)
-    Page<Topo> findAllByUser (String user, Pageable pageable);
+    Page<Topo> findAllByUserEscaladName (String userName, Pageable pageable);
 
 
     @Query(value="SELECT t FROM Topo t " +
@@ -48,9 +47,9 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
             "WHERE "+
             " ctid IN ( "+
             "   SELECT t.ctid FROM topo t "+
-            "   LEFT JOIN utilisateur u ON t.utilisateur_id = u.utilisateur_id "+
+            "   LEFT JOIN user_escalad u ON t.user_escalad_id = u.user_escalad_id "+
             "WHERE u.username=?2 AND t.topo_id=?3 "+ ")",nativeQuery=true)
-    void setAvalaibleTopo(Boolean avalaible, String user, Integer topoId);
+    void setAvalaibleTopo(Boolean avalaible, String userEscalad, Integer topoId);
 
 
     @Modifying
@@ -60,16 +59,16 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
             "WHERE "+
             " ctid IN ( "+
             "   SELECT t.ctid FROM topo t "+
-            "   LEFT JOIN utilisateur u ON t.utilisateur_id = u.utilisateur_id "+
+            "   LEFT JOIN user_escalad u ON t.user_escalad_id = u.user_escalad_id "+
             "WHERE u.username = ?1 AND t.topo_id = ?2 "+ ")",nativeQuery=true)
-    void setUnvailableTopo(Boolean available, String user, Integer topoId);
+    void setUnvailableTopo(Boolean available, String userEscalad, Integer topoId);
 
     @Modifying
     @Transactional
     @Query(value="UPDATE topo "+
-            "SET currently_user_id = ?1 "+
+            "SET currently_user_escalad_id = ?1 "+
             "WHERE topo_id = ?2", nativeQuery = true)
-    void setTopoUserNameByUserId(Integer userId, Integer topoId);
+    void setTopoUserNameByUserEscaladId(Integer userEscaladId, Integer topoId);
 
 
 

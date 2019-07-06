@@ -69,14 +69,14 @@
                         <c:forEach items="${topos}" var="t" varStatus="status">
                             <tr>
                                 <td>${t.name}</td>
-                                <td>${t.utilisateur.userName}</td>
+                                <td>${t.userEscalad.userName}</td>
 
                                 <td>
-                                    <form class="login-form" name ="f" action="${pageContext.request.contextPath}/reservetopo?userId=${currentUser.utilisateurId}&topoId=${t.topoId}" method='POST'>
-                                        <c:if test="${t.utilisateur.userName != pageContext.request.userPrincipal.name}">
+                                    <form class="login-form" name ="f" action="${pageContext.request.contextPath}/reservetopo?userId=${currentUser.userEscaladId}&topoId=${t.topoId}" method='POST'>
+                                        <c:if test="${t.userEscalad.userName != pageContext.request.userPrincipal.name}">
                                             <button  name = "submit" type="submit" class="btn btn-warning">RESERVER</button>
                                         </c:if>
-                                        <c:if test="${t.utilisateur.userName eq pageContext.request.userPrincipal.name}">
+                                        <c:if test="${t.userEscalad.userName eq pageContext.request.userPrincipal.name}">
                                             <button type="button" class="btn btn-secondary btn-lg" disabled>INDISPONIBLE</button>
                                         </c:if>
                                     </form>

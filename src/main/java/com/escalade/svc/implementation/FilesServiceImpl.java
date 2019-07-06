@@ -7,6 +7,8 @@ import com.escalade.svc.contracts.FilesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("filesService")
 public class FilesServiceImpl implements FilesService {
 
@@ -22,6 +24,10 @@ public class FilesServiceImpl implements FilesService {
     @Override
     public Files getFilesByTopoId(int topoId) {
         return repo.getFilesByTopoId(topoId);
-
     }
+
+    /*@Override
+    public Iterable<Files> getAllFiles() {
+        return repo.findAll();
+    }*/
 }

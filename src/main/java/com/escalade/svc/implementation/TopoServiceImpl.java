@@ -38,10 +38,11 @@ public class TopoServiceImpl implements TopoService {
         return repo.findAll(pageable);
     }
 
-    public Page<Topo> getAllByUserName(String user, Pageable pageable) {
-
-        return repo.findAllByUser(user, pageable);
+    @Override
+    public Page<Topo> getAllByUserEscaladName(String userEscalad, Pageable pageable) {
+        return repo.findAllByUserEscaladName(userEscalad, pageable);
     }
+
 
     public void updateTopo(String action, Boolean reserve, String user, int topoId) {
 
@@ -54,7 +55,7 @@ public class TopoServiceImpl implements TopoService {
         }
         else if(action.equals(",liberer")){
             repo.setTopoReserveUserIdByTopoId(false, topoId);
-            repo.setTopoUserNameByUserId(emptyUser, topoId);
+            repo.setTopoUserNameByUserEscaladId(emptyUser, topoId);
         }
 
         repo.setTopoUnvailableById(true, topoId);
@@ -62,19 +63,14 @@ public class TopoServiceImpl implements TopoService {
 
     }
 
-    @Override
-    public void updateTopoUnvailable(Boolean available, String user, int topoId) {
-        repo.setUnvailableTopo(available, user, topoId);
-    }
-
-   /* @Override
-    public Page<Topo> findAllByAvailableIsTrueOrderByAvailables(Boolean available, Pageable pageable) {
-        return repo.findAllByAvailableIsTrue(available, pageable);
+    /*@Override
+    public void updateTopoUnvailable(Boolean available, String userEscalad, int topoId) {
+        repo.setUnvailableTopo(available, userEscalad, topoId);
     }*/
 
     @Override
-    public Page<Topo> getAllByCurrentlyUser(Integer currentUser, Pageable pageable) {
-        return repo.findAllByUserCurrentProprio(currentUser, pageable);
+    public Page<Topo> getAllByCurrentlyUserEscalad(Integer currentUserEscalad, Pageable pageable) {
+        return repo.findAllByUserEscaladCurrentProprio(currentUserEscalad, pageable);
     }
 
     @Override
@@ -83,8 +79,9 @@ public class TopoServiceImpl implements TopoService {
     }
 
     @Override
-    public void setTopoUserNameByUserId(Integer userId, Integer topoId) {
-        repo.setTopoUserNameByUserId(userId, topoId);
+    public void setTopoUserNameByUserEscaladId(Integer userEscaladId, Integer topoId) {
+        repo.setTopoUserNameByUserEscaladId(userEscaladId, topoId);
+
     }
 
     @Override
@@ -94,13 +91,14 @@ public class TopoServiceImpl implements TopoService {
     }
 
     @Override
-    public void setTopoReserveUserIdByTopoId(Boolean reserve, Integer topoId) {
+    public void setTopoReserveUserEscaladIdByTopoId(Boolean reserve, Integer topoId) {
         repo.setTopoReserveUserIdByTopoId(reserve,topoId);
+
     }
 
-    @Override
+    /*@Override
     public Long countAllTopo() {
        return repo.count();
-    }
+    }*/
 }
 
