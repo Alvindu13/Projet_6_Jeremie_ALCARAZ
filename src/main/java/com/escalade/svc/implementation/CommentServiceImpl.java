@@ -17,26 +17,25 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     private CommentRepository repo;
 
+    /**
+     * Créer un commentaire
+     * @param c
+     */
     @Override
     public void saveComment(Comment c) {
         repo.save(c);
     }
 
-    /*@Override
-    public Comment getCommentById(int CommentId) {
-        return repo.findByCommentId(CommentId);
-    }*/
-
+    /**
+     * Récupère tous les commentaires
+     * @param siteId filtre
+     * @param pageable
+     * @return
+     */
     @Override
     public Page<Comment> getAllCommentBySiteId(int siteId, Pageable pageable) {
         return repo.findAllBySiteId(siteId, pageable);
     }
-
-
-   /* @Override
-    public List<Comment> teste(String user, int siteId) {
-        return repo.findTest(user, siteId);
-    }*/
 
 
 }

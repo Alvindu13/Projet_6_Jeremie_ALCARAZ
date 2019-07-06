@@ -89,8 +89,8 @@
                                         <td><input type="file" name="fileUpload" size="50" /></td>
                                         <input type="hidden" name="userEscaladId" value="${t.userEscalad.userEscaladId}" />
                                         <input type="hidden" name="topoId" value="${t.topoId}" />
-                                        <input type="hidden" name="action" value="update"/>
-                                        <td colspan="2" align="center"><input type="submit" value="modifier" /></td>
+                                        <input type="hidden" name="action" value="upload"/>
+                                        <td colspan="2" align="center"><input type="submit" value="upload" /></td>
 
                                     </form>
 

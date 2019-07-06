@@ -34,9 +34,6 @@ public class SiteController {
     @Autowired
     SectorService svcSect;
 
-    @Autowired
-    WayService svcVoie;
-
     /*@RequestMapping("/request1")
     @ResponseBody
     public String handler(@RequestParam(name = "name") String name) {
@@ -56,7 +53,7 @@ public class SiteController {
                                   @RequestParam(name = "page", defaultValue = "0") int page,
                                   Model model) {
 
-            Page<Site> pagesSite = svcSite.findAllByTopoId(topoId, PageRequest.of(page, 5));
+            Page<Site> pagesSite = svcSite.getAllByTopoId(topoId, PageRequest.of(page, 5));
             model.addAttribute("topoId", topoId);
             model.addAttribute("sites",pagesSite.getContent());
             model.addAttribute("arrayNbPagesSite", new int[pagesSite.getTotalPages()]);

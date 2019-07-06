@@ -8,6 +8,4 @@ public interface SectorService {
     long getCountSector(int siteId);
     Iterable<Sector> listSector(int siteId);
 
-    //Sector getSector(String name);
-
 }

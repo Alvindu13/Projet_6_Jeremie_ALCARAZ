@@ -23,25 +23,28 @@ public class UploadController {
     @Autowired
     private FilesService fSvc;
 
-    @Autowired
-    private FileRepository fSvc2;
 
+    /**
+     * Permet d'upload un fichier
+     * @param user
+     * @param action
+     * @param topoId
+     * @param fileUpload
+     * @param files
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "/doUpload", method = RequestMethod.POST)
-    public ModelAndView handleFileUpload(HttpServletRequest request,
-                                         @RequestParam("user") String user,
+    public ModelAndView handleFileUpload(@RequestParam("user") String user,
                                          @RequestParam("action") String action,
                                          @RequestParam("topoId") Integer topoId,
                                          @RequestParam CommonsMultipartFile[] fileUpload,
                                          @ModelAttribute("files") Files files) throws Exception {
 
-        System.out.println(action);
-        System.out.println(topoId);
-
-
         if (action.equals("update,")) {
             if (fileUpload != null && fileUpload.length > 0) {
                 for (CommonsMultipartFile aFile : fileUpload) {
-                    fSvc2.updateFiles(aFile.getBytes(), aFile.getOriginalFilename(), topoId);
+                    fSvc.updateFiles(aFile.getBytes(), aFile.getOriginalFilename(), topoId);
                 }
             }
         }
@@ -57,11 +60,6 @@ public class UploadController {
                 }
             }
         }
-
-
-
-
-
         return new ModelAndView("redirect:/mytopo?user=" + user);
     }
 }

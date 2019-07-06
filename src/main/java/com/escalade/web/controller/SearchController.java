@@ -37,7 +37,7 @@ public class SearchController {
     public String chercher(@RequestParam(name="motCle", defaultValue = "") String mc,
                            @RequestParam(name="page", defaultValue = "0") int page,
                            Model model) {
-        Page<Site> pageSites = svcSite.findAllSiteByCritera(mc, PageRequest.of(page, 5));
+        Page<Site> pageSites = svcSite.getAllSiteByCritera(mc, PageRequest.of(page, 5));
         model.addAttribute("sites",pageSites.getContent());
         model.addAttribute("pages", new int[pageSites.getTotalPages()]);
         model.addAttribute("motCle", mc);
@@ -81,7 +81,7 @@ public class SearchController {
                                @RequestParam(name="cotation_minimum") String cotationMini,
                                @RequestParam(name="cotation_maximum") String cotationMaxi,
                                Model model) {
-        model.addAttribute("sites", svcSite.getSiteByResearch(location, cotationMini, cotationMaxi));
+        model.addAttribute("sites", svcSite.getAllSiteByResearch(location, cotationMini, cotationMaxi));
         model.addAttribute("voies", svcVoie.findAllByFilterSite(location, cotationMini, cotationMaxi));
 
 

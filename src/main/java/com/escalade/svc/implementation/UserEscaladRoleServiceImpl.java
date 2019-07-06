@@ -13,6 +13,11 @@ public class UserEscaladRoleServiceImpl implements UserEscaladRoleService {
     @Autowired
     private UserEscaladRoleRepository repo;
 
+    /**
+     * Créer un rôle pour l'utilisateur qui s'enregistre
+     * @param userEscaladRole
+     * @return
+     */
     @Override
     public UserEscaladRole saveRoleUser(UserEscaladRole userEscaladRole) {
         return repo.save(userEscaladRole);

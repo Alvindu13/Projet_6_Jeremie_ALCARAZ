@@ -13,15 +13,26 @@ public class SectorServiceImpl implements SectorService {
     @Autowired
     private SectorRepository repo;
 
+    /**
+     * Permet de créer un secteur
+     * @param s
+     */
     public void createSector(Sector s) {repo.save(s);}
 
-    public Sector getSector(String name) {
-        return null;
-    }
-
+    /**
+     * Permet de compter le nb total de secteurs existants
+     * @param siteId
+     * @return
+     */
     public long getCountSector(int siteId) { return repo.getCountBySiteId(siteId); }
 
+    /**
+     * Permet de récupér une liste de tous les secteurs
+     * @param siteId
+     * @return
+     */
     public Iterable<Sector> listSector(int siteId) {
         return repo.findAllBySiteId(siteId);
     }
+
 }

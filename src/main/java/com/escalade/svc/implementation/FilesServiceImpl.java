@@ -15,24 +15,43 @@ public class FilesServiceImpl implements FilesService {
     @Autowired
     FileRepository repo;
 
-
+    /**
+     * Créer un fichier
+     * @param f
+     */
     @Override
     public void createFiles(Files f) {
         repo.save(f);
     }
 
+    /**
+     * Permet de récupérer tous les fichiers
+     * @param topoId filtre
+     * @return
+     */
     @Override
     public Files getFilesByTopoId(int topoId) {
         return repo.getFilesByTopoId(topoId);
     }
 
+    /**
+     * Contrôle s'il existe des fichiers pour le paramètre défini
+     * @param topoId filtre
+     * @return
+     */
     @Override
     public Boolean existsAllByTopoId(int topoId) {
         return repo.existsAllByTopoId(topoId);
     }
 
-    /*@Override
-    public Iterable<Files> getAllFiles() {
-        return repo.findAll();
-    }*/
+    /**
+     * Permet d'update le fichier
+     * @param data
+     * @param name
+     * @param topoId
+     */
+    @Override
+    public void updateFiles(byte[] data, String name, Integer topoId) {
+    }
+
 }
