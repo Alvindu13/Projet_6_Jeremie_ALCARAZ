@@ -11,7 +11,5 @@ public interface UserEscaladService {
     UserEscalad getUser(String username);
     UserEscalad findByUserEscaladId(int userEscaladId);
 
-    //List<UserEscalad> listUser();
-
 
 }

@@ -26,6 +26,11 @@ public class FilesServiceImpl implements FilesService {
         return repo.getFilesByTopoId(topoId);
     }
 
+    @Override
+    public Boolean existsAllByTopoId(int topoId) {
+        return repo.existsAllByTopoId(topoId);
+    }
+
     /*@Override
     public Iterable<Files> getAllFiles() {
         return repo.findAll();

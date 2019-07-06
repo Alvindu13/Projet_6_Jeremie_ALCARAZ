@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class DefineAttributes {
 
-    public Iterable<Integer> defineDownload(TopoService topoService, FileRepository filesService) {
+    public Iterable<Integer> defineDownload(TopoService topoService, FilesService filesService) {
 
         Iterable<Integer> h = new ArrayList<Integer>();
 

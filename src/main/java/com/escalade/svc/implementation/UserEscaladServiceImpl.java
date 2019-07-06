@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("UserService")
+@Service("UserEscaladService")
 public class UserEscaladServiceImpl implements UserEscaladService {
 
 
@@ -29,11 +29,6 @@ public class UserEscaladServiceImpl implements UserEscaladService {
     public UserEscalad getUser(String username) {
         return repo.findByUserName(username);
     }
-
-    /*@Override
-    public List<UserEscalad> listUser() {
-        return null;
-    }*/
 
     @Override
     public UserEscalad findByUserEscaladId(int userEscaladId) {

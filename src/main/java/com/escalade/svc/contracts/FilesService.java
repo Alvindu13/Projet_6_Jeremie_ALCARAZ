@@ -8,6 +8,7 @@ public interface FilesService {
 
     void createFiles(Files f);
     Files getFilesByTopoId(int fileId);
+    Boolean existsAllByTopoId(int topoId);
 
 
     //Iterable<Files> getAllFiles();

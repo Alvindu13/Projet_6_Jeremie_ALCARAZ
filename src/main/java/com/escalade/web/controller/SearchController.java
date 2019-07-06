@@ -52,26 +52,35 @@ public class SearchController {
      */
     @GetMapping("/multisearch")
     public String chercherMultiple(Model model) {
-
         model.addAttribute("sites", svcSite.getDisctinctLocation());
         return "search/multisearch";
     }
 
-
+    /**
+     * Récupère les informations rentrées par l'utilisateur
+     * @param search
+     * @return
+     */
     @PostMapping("/multisearch")
     public String recupDataSearch(
             @ModelAttribute("searcher") Search search) {
         return "redirect:searchresult?location=" + search.getLocation() + "&cotation_minimum=" + search.getCotationMinimum() + "&cotation_maximum=" + search.getCotationMaximum();
     }
 
+
+    /**
+     * Affiche le résultat de la recherche multicritères
+     * @param location
+     * @param cotationMini
+     * @param cotationMaxi
+     * @param model
+     * @return
+     */
     @GetMapping("/searchresult")
     public String resultSearch(@RequestParam(name="location") String location,
                                @RequestParam(name="cotation_minimum") String cotationMini,
                                @RequestParam(name="cotation_maximum") String cotationMaxi,
                                Model model) {
-
-
-
         model.addAttribute("sites", svcSite.getSiteByResearch(location, cotationMini, cotationMaxi));
         model.addAttribute("voies", svcVoie.findAllByFilterSite(location, cotationMini, cotationMaxi));
 

@@ -21,9 +21,6 @@ public class TopoController {
 
 
     @Autowired
-    private CommentService cmt;
-
-    @Autowired
     private TopoService topoSvc;
 
 
@@ -31,10 +28,8 @@ public class TopoController {
     private UserEscaladService userSvc;
 
     @Autowired
-    private FilesService fSvc2;
+    private FilesService fSvc;
 
-    @Autowired
-    private FileRepository fSvc;
 
     
     /**
@@ -51,8 +46,6 @@ public class TopoController {
         DefineAttributes defineAttributes = new DefineAttributes();
 
         model.addAttribute("defineDownload", defineAttributes.defineDownload(topoSvc, fSvc));
-
-
 
         Page<Topo> pagesTopo = topoSvc.getAllTopo(PageRequest.of(page, 10));
         model.addAttribute("topos",pagesTopo.getContent());
@@ -115,8 +108,6 @@ public class TopoController {
         model.addAttribute("nbPagesTopo", pagesTopo.getTotalPages());
         model.addAttribute("nbPagesTopoShare", pagesTopoShare.getTotalPages());
 
-        //model.addAttribute("testFiles", fSvc.existsAllByTopoId())
-
         return "topo/mytopo";
     }
 
@@ -124,11 +115,7 @@ public class TopoController {
     public ModelAndView shareTopo(@RequestParam("user") String user,
                                   @RequestParam(name = "action", defaultValue = "") String action,
                                   @ModelAttribute("topo") Topo topo) {
-
-
         topoSvc.updateTopo(action, topo.getReserve(), user, topo.getTopoId());
-
-
         return new ModelAndView( "redirect:/mytopo?user=" + user);
     }
 

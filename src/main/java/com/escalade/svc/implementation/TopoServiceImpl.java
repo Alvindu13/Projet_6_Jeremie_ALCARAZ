@@ -16,14 +16,12 @@ public class TopoServiceImpl implements TopoService {
     @Autowired
     private TopoRepository repo;
 
+    @Override
     public void createTopo(Topo t) {
         repo.save(t);
      }
 
-    public Topo getTopoByName(String name) {//Topo topo = dao.getTopoByName(name);
-        return null;
-    }
-
+    @Override
     public Topo getTopoById(int topo_id) {//Topo topo = dao.getTopoById(topo_id);
         return repo.findByTopoId(topo_id);
     }
@@ -33,6 +31,7 @@ public class TopoServiceImpl implements TopoService {
         return repo.findAll();
     }
 
+    @Override
     public Page<Topo> getAllTopo(Pageable pageable) {
 
         return repo.findAll(pageable);
@@ -43,7 +42,7 @@ public class TopoServiceImpl implements TopoService {
         return repo.findAllByUserEscaladName(userEscalad, pageable);
     }
 
-
+    @Override
     public void updateTopo(String action, Boolean reserve, String user, int topoId) {
 
         final Integer emptyUser = 0;
@@ -67,6 +66,7 @@ public class TopoServiceImpl implements TopoService {
     public void updateTopoUnvailable(Boolean available, String userEscalad, int topoId) {
         repo.setUnvailableTopo(available, userEscalad, topoId);
     }*/
+
 
     @Override
     public Page<Topo> getAllByCurrentlyUserEscalad(Integer currentUserEscalad, Pageable pageable) {
@@ -96,9 +96,5 @@ public class TopoServiceImpl implements TopoService {
 
     }
 
-    /*@Override
-    public Long countAllTopo() {
-       return repo.count();
-    }*/
 }
 

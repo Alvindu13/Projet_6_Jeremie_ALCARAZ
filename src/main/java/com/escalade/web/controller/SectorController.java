@@ -31,7 +31,6 @@ public class SectorController {
 
         model.addAttribute("siteId", siteId);
         model.addAttribute("sectors", svcSector.listSector(siteId));
-
         return "sector/sector";
     }
 

@@ -3,6 +3,7 @@ package com.escalade.web.controller;
 import com.escalade.data.model.UserEscalad;
 import com.escalade.data.model.UserEscaladRole;
 import com.escalade.data.repository.UserEscaladRoleRepository;
+import com.escalade.svc.contracts.UserEscaladRoleService;
 import com.escalade.svc.contracts.UserEscaladService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,7 @@ public class LoginController {
     UserEscaladService userSvc;
 
     @Autowired
-    UserEscaladRoleRepository userRoleService;
+    UserEscaladRoleService userRoleService;
 
 
     /**
@@ -54,18 +55,17 @@ public class LoginController {
     @RequestMapping(value = {"/saveUser"}, method = RequestMethod.POST)
     public String saveUser(@ModelAttribute("user") UserEscalad user) {
         userSvc.createUser(user);
-        userRoleService.save(new UserEscaladRole("USER"));
+        userRoleService.saveRoleUser(new UserEscaladRole("USER"));
         return "redirect:/welcome";
     }
 
 
     /**
      * Affiche le formulaire de connexion
-     * @param model
      * @return
      */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginPage(Model model) {
+    public String loginPage() {
         return "login/loginPage";
     }
 
@@ -78,36 +78,6 @@ public class LoginController {
     public String logoutSuccessfulPage(Model model) {
         model.addAttribute("title", "Logout");
         return "login/logoutSuccessfulPage";
-    }
-
-    /**
-     *
-     * @param model
-     * @param principal
-     * @return
-     */
-    @RequestMapping(value = "/userInfo", method = RequestMethod.GET)
-    public String userInfo(Model model, Principal principal) {
-
-        // After user login successfully.
-        String userName = principal.getName();
-
-        System.out.println("UserEscalad Name: " + userName);
-
-        return "login/userInfoPage";
-    }
-
-    @RequestMapping(value = "/403", method = RequestMethod.GET)
-    public String accessDenied(Model model, Principal principal) {
-
-        if (principal != null) {
-            model.addAttribute("message", "Hi " + principal.getName()
-                    + "<br> You do not have permission to access this page!");
-        } else {
-            model.addAttribute("msg",
-                    "You do not have permission to access this page!");
-        }
-        return "autres/403Page";
     }
 
 }

@@ -2,17 +2,19 @@ package com.escalade.svc.implementation;
 
 import com.escalade.data.model.UserEscaladRole;
 import com.escalade.data.repository.UserEscaladRoleRepository;
+import com.escalade.svc.contracts.UserEscaladRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-@Service("userRoleService")
-public class UserEscaladRoleServiceImpl {
+@Service("userEscaladRoleService")
+public class UserEscaladRoleServiceImpl implements UserEscaladRoleService {
 
     @Autowired
     private UserEscaladRoleRepository repo;
 
-    public void saveUser(UserEscaladRole userEscaladRole){
-        repo.save(userEscaladRole);
+    @Override
+    public UserEscaladRole saveRoleUser(UserEscaladRole userEscaladRole) {
+        return repo.save(userEscaladRole);
     }
 }
