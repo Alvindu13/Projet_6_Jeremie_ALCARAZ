@@ -15,7 +15,7 @@ public class Sector {
     @Column(name = "site_id")
     private Integer siteId;
 
-    @Column(name = "NAME")
+    @Column(name = "name")
     private String name;
 
     public Sector() {}
