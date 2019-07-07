@@ -7,8 +7,6 @@ import com.escalade.svc.contracts.FilesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service("filesService")
 public class FilesServiceImpl implements FilesService {
 

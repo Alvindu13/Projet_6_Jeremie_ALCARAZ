@@ -42,7 +42,7 @@
     <div class="container d-flex h-100 align-items-center">
         <div class="mx-auto text-center">
             <h1 class="mx-auto my-0 text-uppercase">GRAYSCALAD</h1>
-            <h2 class="text-white-50 mx-auto mt-2 mb-5">Le site des grimpeeurs chevronnés.</h2>
+            <h2 class="text-white-50 mx-auto mt-2 mb-5">Le site des grimpeurs chevronnés.</h2>
             <a href="${pageContext.request.contextPath}/topo?user=${pageContext.request.userPrincipal.name}" class="btn btn-primary js-scroll-trigger">Découvrir les TOPOS</a>
         </div>
     </div>
@@ -50,7 +50,7 @@
 
 <footer class="bg-black small text-center text-white-50">
     <div class="container">
-        Copyright &copy; Your Website 2019
+    Copyright &copy; GRAYSCALAD 2019
     </div>
 </footer>
 

@@ -6,8 +6,6 @@ import com.escalade.svc.contracts.UserEscaladService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service("UserEscaladService")
 public class UserEscaladServiceImpl implements UserEscaladService {
 

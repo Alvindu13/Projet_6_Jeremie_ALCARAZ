@@ -20,10 +20,4 @@ public interface TopoService {
     void setTopoUnvailableById(Boolean unvailable, Integer topoId);
     void setTopoReserveUserEscaladIdByTopoId(Boolean reserve, Integer topoId);
 
-    /*Long countAllTopo();
-    void updateTopoUnvailable(Boolean available, String userEscalad, int topoId);
-    Topo getTopoByName(String name);*/
-
-
-
 }

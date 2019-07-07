@@ -6,15 +6,8 @@ import com.escalade.data.repository.SiteRepository;
 import com.escalade.svc.contracts.SiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.*;
-
 import org.springframework.data.domain.Pageable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service("siteService")

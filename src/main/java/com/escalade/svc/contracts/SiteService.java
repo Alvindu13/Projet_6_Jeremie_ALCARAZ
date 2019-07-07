@@ -15,8 +15,4 @@ public interface SiteService {
     Iterable<String> getDisctinctLocation();
     Page<Site> getAllSiteByCritera(String mc, Pageable pageable);
 
-
-    /*Site getSite(String name);
-    Iterable<Site> listSite();*/
-
 }
