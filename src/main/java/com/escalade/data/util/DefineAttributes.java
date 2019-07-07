@@ -1,8 +1,6 @@
 package com.escalade.data.util;
 
 import com.escalade.data.model.Topo;
-import com.escalade.data.repository.FileRepository;
-import com.escalade.data.repository.TopoRepository;
 import com.escalade.svc.contracts.FilesService;
 import com.escalade.svc.contracts.TopoService;
 

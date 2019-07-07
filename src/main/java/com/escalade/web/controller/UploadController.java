@@ -1,9 +1,6 @@
 package com.escalade.web.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.escalade.data.model.Files;
-import com.escalade.data.repository.FileRepository;
 import com.escalade.svc.contracts.FilesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

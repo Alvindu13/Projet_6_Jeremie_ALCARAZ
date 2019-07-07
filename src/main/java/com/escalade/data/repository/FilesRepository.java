@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import javax.transaction.Transactional;
 
-public interface FileRepository extends CrudRepository<Files, Integer > {
+public interface FilesRepository extends CrudRepository<Files, Integer > {
 
 
     Boolean existsAllByTopoId(int topoId);

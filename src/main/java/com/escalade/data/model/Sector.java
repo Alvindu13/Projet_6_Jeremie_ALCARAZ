@@ -12,10 +12,6 @@ public class Sector {
     @Column(name = "sector_id")
     private int sectorId;
 
-    /*@ManyToOne
-    @JoinColumn(name = "SITE_ID")
-    private Site site;*/
-
     @Column(name = "site_id")
     private Integer siteId;
 

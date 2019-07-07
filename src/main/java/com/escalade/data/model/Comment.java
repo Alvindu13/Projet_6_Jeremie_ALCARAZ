@@ -3,15 +3,15 @@ package com.escalade.data.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "COMMENT")
+@Table(name = "comment")
 public class Comment {
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	@Column(name = "COMMENT_ID")
+	@Column(name = "comment_id")
 	private int commentId;
 
-	@Column(name = "CONTENT")
+	@Column(name = "content")
 	private String content;
 
 	@Column(name = "username")
@@ -20,11 +20,11 @@ public class Comment {
 	@Column(name = "user_escalad_id")
 	private Integer userEscaladId;
 
-	@Column(name = "SITE_ID")
+	@Column(name = "site_id")
 	private int siteId;
 
 
-	public Comment() { super(); }
+	public Comment() {}
 
 	public Comment(String content, String userName, Integer userEscaladId, int siteId) {
 		this.content = content;

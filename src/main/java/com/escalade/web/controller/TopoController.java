@@ -2,9 +2,7 @@ package com.escalade.web.controller;
 
 import com.escalade.data.model.Topo;
 import com.escalade.data.model.UserEscalad;
-import com.escalade.data.repository.FileRepository;
 import com.escalade.data.util.DefineAttributes;
-import com.escalade.svc.contracts.CommentService;
 import com.escalade.svc.contracts.FilesService;
 import com.escalade.svc.contracts.TopoService;
 import com.escalade.svc.contracts.UserEscaladService;

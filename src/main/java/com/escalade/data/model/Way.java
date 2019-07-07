@@ -8,7 +8,7 @@ public class Way {
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	@Column(name = "way_ID")
+	@Column(name = "way_id")
 	private int wayId;
 
 	/*@Column(name = "sector_ID")

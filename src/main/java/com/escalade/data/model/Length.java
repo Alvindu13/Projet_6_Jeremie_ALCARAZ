@@ -3,39 +3,42 @@ package com.escalade.data.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "LENGTH")
+@Table(name = "length")
 public class Length {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name = "LENGTH_ID")
-    private int lengthID;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name = "length_id")
+    private int lengthId;
 
-    @Column(name = "SIZE")
-    private double size;
+    @Column(name = "way_id")
+    private int wayId;
 
-    @Column(name = "RELAYNAME")
+    @Column(name = "relay_name")
     private String relayName;
 
-    public Length(double size, String relayName) {
-        this.size = size;
+    public Length() {
+    }
+
+    public Length(int wayId, String relayName) {
+        this.wayId = wayId;
         this.relayName = relayName;
     }
 
-    public int getLengthID() {
-        return lengthID;
+    public int getLengthId() {
+        return lengthId;
     }
 
-    public void setLengthID(int lengthID) {
-        this.lengthID = lengthID;
+    public void setLengthID(int lengthId) {
+        this.lengthId = lengthId;
     }
 
-    public double getSize() {
-        return size;
+    public int getWayId() {
+        return wayId;
     }
 
-    public void setSize(double size) {
-        this.size = size;
+    public void setWayId(int wayId) {
+        this.wayId = wayId;
     }
 
     public String getRelayName() {

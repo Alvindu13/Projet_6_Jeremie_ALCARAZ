@@ -4,20 +4,20 @@ import javax.persistence.*;
 import java.util.Arrays;
 
 @Entity
-@Table(name = "FILES")
+@Table(name = "files")
 public class Files {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "file_id")
     private int id;
 
-    @Column(name = "FILE_NAME")
+    @Column(name = "file_name")
     private String fileName;
 
-    @Column(name = "FILE_DATA")
+    @Column(name = "file_data")
     private byte[] data;
 
-    @Column(name = "USER_ESCALAD_ID")
+    @Column(name = "user_escalad_id")
     private Integer userEscaladId;
 
     @Column(name = "topo_id")

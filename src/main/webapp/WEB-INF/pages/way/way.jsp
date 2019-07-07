@@ -70,7 +70,7 @@
                 <c:set var="i" value="1" />
                 <c:forEach items="${way}" var="w">
                     <tr>
-                        <td>${w.name}</td>
+                        <td> <a class="nav-link" href="${pageContext.request.contextPath}/length?wayId=${w.getwayId()}"> ${w.name} </td>
                         <td>${w.size}</td>
                         <td>${w.nbPoints}</td>
                         <td>${w.cotation}</td>
