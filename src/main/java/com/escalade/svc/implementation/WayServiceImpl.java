@@ -4,6 +4,8 @@ import com.escalade.data.model.Way;
 import com.escalade.data.repository.WayRepository;
 import com.escalade.svc.contracts.WayService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,6 +44,11 @@ public class WayServiceImpl implements WayService {
     @Override
     public Way getCountWay(int sectorId) {
         return getCountWay(sectorId);
+    }
+
+    @Override
+    public Page<Way> findAllBySectorId(Integer sectorId, Pageable pageable) {
+        return repo.findAllBySectorId(sectorId, pageable);
     }
 
 }

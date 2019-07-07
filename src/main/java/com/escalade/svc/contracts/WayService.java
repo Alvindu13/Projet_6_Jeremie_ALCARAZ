@@ -1,6 +1,8 @@
 package com.escalade.svc.contracts;
 
 import com.escalade.data.model.Way;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -9,5 +11,7 @@ public interface WayService {
     Iterable<Way> listWay();
     List<Way> listWayBySecId(int sectorId);
     Way getCountWay(int sectorId);
+    Page<Way> findAllBySectorId(Integer sectorId, Pageable pageable);
+
 
 }

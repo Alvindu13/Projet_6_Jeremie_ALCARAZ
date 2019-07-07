@@ -11,21 +11,17 @@ public class Way {
 	@Column(name = "way_id")
 	private int wayId;
 
-	/*@Column(name = "sector_ID")
-	private int sectorId;*/
+	@Column(name = "sector_id")
+	private int sectorId;
 
-	@ManyToOne
-	@JoinColumn(name = "sector_ID")
-	private Sector sector;
-
-	@Column(name = "SIZE")
+	@Column(name = "size")
 	private double size;
 
-	@Column(name = "NAME")
+	@Column(name = "name")
 	private String name;
 
-	//cotation, difficulté de la way
-	@Column(name = "COTATION")
+	//cotation, difficulté de la voie
+	@Column(name = "cotation")
 	private String cotation;
 
 	@Column(name = "nb_points")
@@ -34,10 +30,10 @@ public class Way {
 	@Column(name = "nb_part")
 	private int nbPart;
 
-	public Way() { super();};
+	public Way() {}
 
-	public Way(Sector sector, double size, String name, String cotation, int nbPoints, int nbPart) {
-		this.sector = sector;
+	public Way(int sectorId, double size, String name, String cotation, int nbPoints, int nbPart) {
+		this.sectorId = sectorId;
 		this.size = size;
 		this.name = name;
 		this.cotation = cotation;
@@ -45,22 +41,21 @@ public class Way {
 		this.nbPart = nbPart;
 	}
 
-	public Sector getsector() {
-		return sector;
-	}
-
-	public void setsector(Sector sector) {
-		this.sector = sector;
-	}
-
-	public int getwayId() {
+	public int getWayId() {
 		return wayId;
 	}
 
-	public void setwayId(int wayId) {
+	public void setWayId(int wayId) {
 		this.wayId = wayId;
 	}
 
+	public int getSectorId() {
+		return sectorId;
+	}
+
+	public void setSectorId(int sectorId) {
+		this.sectorId = sectorId;
+	}
 
 	public double getSize() {
 		return size;
@@ -68,6 +63,14 @@ public class Way {
 
 	public void setSize(double size) {
 		this.size = size;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getCotation() {
@@ -92,13 +95,5 @@ public class Way {
 
 	public void setNbPart(int nbPart) {
 		this.nbPart = nbPart;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 }
