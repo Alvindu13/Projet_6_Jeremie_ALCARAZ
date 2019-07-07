@@ -27,10 +27,15 @@
     <div class="form">
         <h4>Veuillez créer votre longueur : </h4>
 
-        <form class="login-form" name ="f" action="addlength?wayId=${wayId}" method='POST' modelAttribute="length" />
+        <form class="login-form" name ="f" action="addway?sectorId=${sectorId}" method='POST' modelAttribute="way" />
 
-        <input type='text' placeholder='Nom du relai' name='relayName'/>
-        <input type='hidden' name = 'wayId' value = "${wayId}">
+
+        <input type='hidden' name = 'sectorId' value = "${sectorId}">
+
+        <input type='text' placeholder='Nom de la voie' name='name'/>
+        <input type='text' placeholder='Longueur totale de la voie en mètres' name='totalSize'/>
+        <input type='text' placeholder='Nombre de partie/longueur de la voie' name='nbPart'/>
+        <input type='text' placeholder='Niveau de la voie (EX : 4A)' name='cotation'/>
 
         <button  name = "submit" type="submit" class="btn btn-danger">CREER LENGTH</button>
 

@@ -85,7 +85,7 @@
                     <c:set var="i" value="1" />
                     <c:forEach items="${sectors}" var="sect">
                         <tr>
-                            <td> <a class="nav-link" href="${pageContext.request.contextPath}/way?secteurId=${sect.sectorId}"> ${sect.name} </td>
+                            <td> <a class="nav-link" href="${pageContext.request.contextPath}/way?sectorId=${sect.sectorId}"> ${sect.name} </td>
                         </tr>
                         <c:set var="i" value="${i+1}" />
                     </c:forEach>

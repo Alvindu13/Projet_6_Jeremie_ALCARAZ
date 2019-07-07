@@ -29,7 +29,11 @@
 
         <form class="login-form" name ="f" action="addlength?wayId=${wayId}" method='POST' modelAttribute="length" />
 
-        <input type='text' placeholder='Nom du relai' name='relayName'/>
+        <input type='text' placeholder='Nom du relais' name='relayName'/>
+        <input type='text' placeholder='Taille de la longueur' name='size'/>
+        <input type='text' placeholder='Nombre de points d ancrage' name='nbAnchor'/>
+
+
         <input type='hidden' name = 'wayId' value = "${wayId}">
 
         <button  name = "submit" type="submit" class="btn btn-danger">CREER LENGTH</button>

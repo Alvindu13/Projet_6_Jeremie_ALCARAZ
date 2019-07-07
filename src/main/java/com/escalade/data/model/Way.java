@@ -11,11 +11,9 @@ public class Way {
 	@Column(name = "way_id")
 	private int wayId;
 
+
 	@Column(name = "sector_id")
 	private int sectorId;
-
-	@Column(name = "size")
-	private double size;
 
 	@Column(name = "name")
 	private String name;
@@ -24,20 +22,19 @@ public class Way {
 	@Column(name = "cotation")
 	private String cotation;
 
-	@Column(name = "nb_points")
-	private int nbPoints;
+	@Column(name = "total_size")
+	private Double totalSize;
 
 	@Column(name = "nb_part")
-	private int nbPart;
+	private Integer nbPart;
 
 	public Way() {}
 
-	public Way(int sectorId, double size, String name, String cotation, int nbPoints, int nbPart) {
+	public Way(int sectorId, String name, String cotation, Double totalSize, Integer nbPart) {
 		this.sectorId = sectorId;
-		this.size = size;
 		this.name = name;
 		this.cotation = cotation;
-		this.nbPoints = nbPoints;
+		this.totalSize = totalSize;
 		this.nbPart = nbPart;
 	}
 
@@ -57,14 +54,6 @@ public class Way {
 		this.sectorId = sectorId;
 	}
 
-	public double getSize() {
-		return size;
-	}
-
-	public void setSize(double size) {
-		this.size = size;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -81,19 +70,19 @@ public class Way {
 		this.cotation = cotation;
 	}
 
-	public int getNbPoints() {
-		return nbPoints;
+	public Double getTotalSize() {
+		return totalSize;
 	}
 
-	public void setNbPoints(int nbPoints) {
-		this.nbPoints = nbPoints;
+	public void setTotalSize(Double totalSize) {
+		this.totalSize = totalSize;
 	}
 
-	public int getNbPart() {
+	public Integer getNbPart() {
 		return nbPart;
 	}
 
-	public void setNbPart(int nbPart) {
+	public void setNbPart(Integer nbPart) {
 		this.nbPart = nbPart;
 	}
 }

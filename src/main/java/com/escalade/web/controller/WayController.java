@@ -1,8 +1,12 @@
 package com.escalade.web.controller;
 
 import com.escalade.data.model.Length;
+import com.escalade.data.model.Way;
+import com.escalade.svc.contracts.LengthService;
 import com.escalade.svc.contracts.WayService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,15 +21,28 @@ public class WayController {
     @Autowired
     private WayService svcW;
 
+    @Autowired
+    private LengthService svcL;
+
+
     /**
-     * Affiche toutes les voies
+     * Affiche la page des voies
      * @param model
-     * @param secteurId filtre
      * @return
      */
     @RequestMapping(value = "/way", method = RequestMethod.GET)
-    public String displayWay(Model model, @RequestParam("secteurId") int secteurId) {
-        model.addAttribute("way", svcW.listWayBySecId(secteurId));
+    public String displayTopo(@RequestParam(name = "sectorId", defaultValue = "") int sectorId,
+                              @RequestParam(name = "page", defaultValue = "0") int page,
+                              Model model) {
+
+
+        model.addAttribute("sectorId", sectorId);
+        Page<Way> pagesWay = svcW.findAllBySectorId(sectorId,PageRequest.of(page, 5));
+        model.addAttribute("ways",pagesWay.getContent());
+        model.addAttribute("arrayNbPagesW", new int[pagesWay.getTotalPages()]);
+        model.addAttribute("currentPageW", page);
+        model.addAttribute("nbPagesW", pagesWay.getTotalPages());
+
         return "way/way";
     }
 
@@ -35,25 +52,25 @@ public class WayController {
      *
      * @return
      */
-    @RequestMapping(value = "/addlength", method = RequestMethod.GET)
-    public String formSector(@RequestParam("wayId") int wayId,
-                             @ModelAttribute("length") Length length,
+    @RequestMapping(value = "/addway", method = RequestMethod.GET)
+    public String formSector(@RequestParam("sectorId") int sectorId,
+                             @ModelAttribute("way") Way way,
                              Model model) {
-        model.addAttribute("wayId", wayId);
-        return "length/addlength";
+        model.addAttribute("sectorId", sectorId);
+        return "way/addway";
     }
 
     /**
      * Créer une nouvelle voie
      *
-     * @param wayId
+     * @param sectorId
      * @return
      */
-    @RequestMapping(value = "/addlength", method = RequestMethod.POST)
-    public ModelAndView createSector(@RequestParam("wayId") int wayId,
-                                     @ModelAttribute("length") Length length) {
-        lengthSvc.saveLength(length);
-        return new ModelAndView("redirect:/length?wayId=" + wayId);
+    @RequestMapping(value = "/addway", method = RequestMethod.POST)
+    public ModelAndView createSector(@RequestParam("sectorId") int sectorId,
+                                     @ModelAttribute("way") Way way) {
+        svcW.createWay(way);
+        return new ModelAndView("redirect:/way?sectorId=" + sectorId);
     }
 
 }

@@ -71,6 +71,7 @@
                     <thead>
                     <tr>
                         <th>Nom du relais</th>
+                        <th>Nombre de pts ancrage</th>
                         <th>Longueur</th>
                     </tr>
                     </thead>
@@ -79,7 +80,8 @@
                     <c:forEach items="${lengths}" var="l">
                         <tr>
                             <td>${l.relayName}</td>
-                            <td>${l.lengthId}</td>
+                            <td>${l.size}</td>
+                            <td>${l.nbAnchor}</td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -89,17 +91,17 @@
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
                         <li class="${currentPageLength == 0 ? 'page-item disabled' : 'page-item'}">
-                            <a class="page-link" href="${pageContext.request.contextPath}/length?wayId=${1}&page=${currentPageLength-1}" tabindex="-1">Previous</a>
+                            <a class="page-link" href="${pageContext.request.contextPath}/length?wayId=${wayId}&page=${currentPageLength-1}" tabindex="-1">Previous</a>
                         </li>
                         <c:set var="k" value="1" />
                         <c:forEach items="${arrayNbPagesLength}" var="pageTopo" varStatus="loop">
                             <li class="${currentPageLength==loop.index ? 'page-item active' : 'page-item'}">
-                                <a class="page-link" href="${pageContext.request.contextPath}/topo?wayId=${1}&page=${loop.index}">${loop.index}</a>
+                                <a class="page-link" href="${pageContext.request.contextPath}/length?wayId=${wayId}&page=${loop.index}">${loop.index}</a>
                             </li>
                             <c:set var="k" value="${k+1}" />
                         </c:forEach>
                         <li class="${currentPageLength >= nbPagesLength-1 ? 'page-item disabled' : 'page-item'}">
-                            <a class="page-link" href="${pageContext.request.contextPath}/topo?wayId=${1}&page=${currentPageLength+1}">Next</a>
+                            <a class="page-link" href="${pageContext.request.contextPath}/length?wayId=${wayIdc}&page=${currentPageLength+1}">Next</a>
                         </li>
                     </ul>
                 </nav>

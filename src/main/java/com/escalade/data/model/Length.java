@@ -14,14 +14,22 @@ public class Length {
     @Column(name = "way_id")
     private int wayId;
 
+    @Column(name = "size")
+    private Double size;
+
+    @Column(name = "nb_anchor")
+    private int nbAnchor;
+
     @Column(name = "relay_name")
     private String relayName;
 
     public Length() {
     }
 
-    public Length(int wayId, String relayName) {
+    public Length(int wayId, Double size, int nbAnchor, String relayName) {
         this.wayId = wayId;
+        this.size = size;
+        this.nbAnchor = nbAnchor;
         this.relayName = relayName;
     }
 
@@ -29,7 +37,7 @@ public class Length {
         return lengthId;
     }
 
-    public void setLengthID(int lengthId) {
+    public void setLengthId(int lengthId) {
         this.lengthId = lengthId;
     }
 
@@ -39,6 +47,22 @@ public class Length {
 
     public void setWayId(int wayId) {
         this.wayId = wayId;
+    }
+
+    public Double getSize() {
+        return size;
+    }
+
+    public void setSize(Double size) {
+        this.size = size;
+    }
+
+    public int getNbAnchor() {
+        return nbAnchor;
+    }
+
+    public void setNbAnchor(int nbAnchor) {
+        this.nbAnchor = nbAnchor;
     }
 
     public String getRelayName() {

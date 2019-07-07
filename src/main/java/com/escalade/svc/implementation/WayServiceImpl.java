@@ -51,4 +51,13 @@ public class WayServiceImpl implements WayService {
         return repo.findAllBySectorId(sectorId, pageable);
     }
 
+    /**
+     * Créer une voie
+     * @param way
+     */
+    @Override
+    public void createWay(Way way) {
+        repo.save(way);
+    }
+
 }
