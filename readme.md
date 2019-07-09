@@ -23,9 +23,9 @@ période)
 Si votre IDE vous le permet, vous pouvez exporter votre projet en .war directement. 
 Sinon, il vous suffit de convertir votre projet en projet maven et d'utiliser la commande suivante dans votre terminal (en vous plaçant dans le répertoire) ou votre IDE :
 
->> `mvn package` 
+> `mvn package` 
 
-Cette commande terminée, vous verrez apparaître un fichier target dans lequel se trouvera le fichier .war de l'application.
+Cette commande terminée, vous verrez apparaître un dossier target dans lequel se trouvera une archive .war de l'application.
 
 2. Lancement du war avec TOMCAT
 
@@ -34,6 +34,20 @@ Vous pouvez intégrez TOMCAT à votre IDE (via maven) ou directement dans la con
 Sinon, vous pouvez utiliser une méthode plus manuelle qui consiste à :
 * vous positionner dans le bin de votre fichier tomcat 
 * démarrer le serveur TOMCART en lançant le fichier startup.bat sur windows et startup.sh sur MacOS. Pour MacOS il faudra utiliser la commande suivante dans le terminal en se positionnant dans le bin : 
->> `sh startup.sh` 
+> `sh startup.sh` 
+* copier l'archive .war qui se trouve dans le dossier target de votre application dans le dossier webapps de votre serveur tomcat.
+
+Vous devez alors constater que votre application fonctionne. Pour cela vous pouvez vous rendre sur le lien suivant pour tester l'application :
+
+http://localhost:8080/Project6_war/
+
+## Accès à la base de données
+
+Par défaut, l'application fonctionne sous drivers postgreSQL. La base de données et les informations mentionées dans le fichier properties sont fonctionnelles et accessible à tous.
+
+Vous pouvez modifier l'accès à la base de données et intégrez la votre directement en modifiant le fichier db.properties.
+
+Vous pouvez charger vos propres drivers et les dépendances nécessaires à votre application avec maven et modifier le fichier db.properties en fonction du SGBD utilisé.
+
 
 
