@@ -37,6 +37,8 @@ Sinon, vous pouvez utiliser une méthode plus manuelle qui consiste à :
 > `sh startup.sh` 
 * copier l'archive .war qui se trouve dans le dossier target de votre application dans le dossier webapps de votre serveur tomcat.
 
+3. Test de l'application
+
 Vous devez alors constater que votre application fonctionne. Pour cela vous pouvez vous rendre sur le lien suivant pour tester l'application :
 
 http://localhost:8080/Project6_war/
