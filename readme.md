@@ -47,7 +47,7 @@ http://localhost:8080/Project6_war/
 
 Par défaut, l'application fonctionne sous drivers postgreSQL. La base de données et les informations mentionées dans le fichier properties sont fonctionnelles et accessible à tous.
 
-Vous pouvez modifier l'accès à la base de données et intégrez la votre directement en modifiant le fichier db.properties.
+Vous pouvez modifier l'accès à la base de données et intégrer la votre directement en modifiant le fichier db.properties.
 
 Vous pouvez charger vos propres drivers et les dépendances nécessaires à votre application avec maven et modifier le fichier db.properties en fonction du SGBD utilisé.
 
