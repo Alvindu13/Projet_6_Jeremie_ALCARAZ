@@ -25,8 +25,4 @@ public class LengthServiceImpl implements LengthService {
         repo.save(length);
     }
 
-    @Override
-    public Integer countAllByWayId(Integer wayId) {
-        return repo.countAllByWayId(wayId);
-    }
 }

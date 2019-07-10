@@ -1,48 +1,38 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
-
 <!DOCTYPE HTML>
 <html>
 
 <head>
-    <title>Nos Topos</title>
-
+    <title>Résultats</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="utf-8">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-
-
+    <spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
+    <link href="${bootstrap}" rel="stylesheet" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style type="text/css">
         body { background-color: #1c7430  ; }
-        [class*="col"] { margin-bottom: 20px; }
         img { width: 100%; }
-        .well {
-            background-color:#CCC;
-            padding: 20px;
+        section {
+            margin: 2em;
         }
-        .tableaux{
-            display:inline-block;
-            vertical-align:top;
+        .container{
+            background: whitesmoke;
         }
     </style>
-
 </head>
 
 <body>
 <jsp:include page="../_menu.jsp" />
-
-
 <section id = "test" class="row">
     <div class="col-xs-12 col-sm-12 col-md-12"><img src="resources/img/topo/aside.jpg" alt="AsideEscalade"></div>
 </section>
-<div id ="containeur">
+<div class ="container">
     <header class="page-header">
         <h1>Voici les résultats de votre recherche</h1>
     </header>
-
     <div class = "row">
         <div class = col-lg-5>
             <table class="table">
@@ -83,10 +73,7 @@
                 </tbody>
             </table>
         </div>
-
     </div>
-
-
 </div>
 </body>
 </html>

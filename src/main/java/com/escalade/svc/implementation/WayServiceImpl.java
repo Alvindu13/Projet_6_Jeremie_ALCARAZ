@@ -17,28 +17,10 @@ public class WayServiceImpl implements WayService {
     private WayRepository repo;
 
 
-    /**
-     * Permeet de récupérer toutes les voies
-     * @return une liste
-     */
-    @Override
-    public Iterable<Way> listWay() {
-        return repo.findAll();
-    }
-
-    /**
-     * Permet de récupérer toutes les voies selon le secteur sélectionné
-     * @param sectorId filtre
-     * @return
-     */
-    @Override
-    public List<Way> listWayBySecId(int sectorId) {
-        return repo.findAllWayBySectorId(sectorId);
-    }
 
     /**
      * Counter du total des voies
-     * @param sectorId
+     * @param sectorId filtre
      * @return
      */
     @Override
@@ -46,6 +28,12 @@ public class WayServiceImpl implements WayService {
         return getCountWay(sectorId);
     }
 
+    /**
+     * Page de toutes les voies
+     * @param sectorId filtre
+     * @param pageable
+     * @return
+     */
     @Override
     public Page<Way> findAllBySectorId(Integer sectorId, Pageable pageable) {
         return repo.findAllBySectorId(sectorId, pageable);

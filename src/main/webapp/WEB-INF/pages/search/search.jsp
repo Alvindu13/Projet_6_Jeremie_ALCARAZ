@@ -5,28 +5,19 @@
 <html>
 
 <head>
-    <title>Nos Topos</title>
-
+    <title>Recherche</title>
     <meta charset="utf-8">
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
     <style type="text/css">
         body { background-color: #1c7430  ; }
         [class*="col"] { margin-bottom: 20px; }
         img { width: 100%; }
-        .well {
-            background-color:#CCC;
-            padding: 20px;
-        }
         #link-test{
             color:white;
         }
-
         #section1{
             background: #9b9b9b;
         }
-
     </style>
 
 </head>
@@ -70,8 +61,6 @@
                     </ul>
                 </section>
             </div>
-
-
         </div>
     </div>
 </div>

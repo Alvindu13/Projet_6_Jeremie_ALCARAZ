@@ -3,20 +3,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE HTML>
 <html>
-
 <head>
-    <title>Nos Topos</title>
+    <title>Topos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="utf-8">
     <spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
-
     <link href="${bootstrap}" rel="stylesheet" />
-
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
-
     <style type="text/css">
         body { background-color: #1c7430  ; }
         img { width: 100%; }
@@ -24,43 +18,31 @@
             background-color:#CCC;
             padding: 20px;
         }
-
         section {
             margin: 2em;
         }
-
         .container{
             background: whitesmoke;
         }
-
     </style>
-
 </head>
-
 <body>
 <jsp:include page="../_menu.jsp" />
-
 <section>
     <div>
         <img class="img-responsive" src="resources/img/topo/aside.jpg" alt="AsideEscalade">
     </div>
 </section>
-
-
 <div class="container rounded border border-dark">
     <div class="text-center">
-
         <header class="page-header">
             <h1>Les topos du coin</h1>
         </header>
-
         <div>
             <p class="text-justify text-center"> Je suis passionné par <strong>l'escalade</strong> depuis très longtemps. Ce site a été construit <em>  pour les grimpeurs...</em><br>
                 Vous trouverez sur ce site des topos d'escalade pouvant être réservés par les membres enregistrés.
             </p>
         </div>
-
-
         <div class="row">
             <div class="col-sm-12">
                 <div class ="row justify-content-center align-content-center">
@@ -82,16 +64,13 @@
                             <th>Descriptif PDF du Topo</th>
                         </tr>
                     </thead>
-
                     <tbody>
                         <c:set var="i" value="1" />
                         <c:forEach items="${topos}" var="t">
                             <c:set var="maVariable1" value="0" scope="page" />
                             <tr>
-                                <td><a class="nav-link" href="${pageContext.request.contextPath}/sites?topoId=${t.topoId}&user=${pageContext.request.userPrincipal.name}">${t.name}</td>
+                                <td><a class="nav-link" href="${pageContext.request.contextPath}/sites?topoId=${t.topoId}&user=${pageContext.request.userPrincipal.name}">${t.name}</a></td>
                                 <td>${t.userEscalad.userName}</td>
-
-
                             <c:forEach items="${defineDownload}" var="test" varStatus="loop">
                                 <c:if test="${defineDownload[loop.index] == t.topoId }">
                                 <td>
@@ -102,7 +81,6 @@
                                     <c:set var="maVariable1" value="${maVariable1+1}" scope="page" />
                                 </c:if>
                             </c:forEach>
-
                                 <c:if test="${maVariable1 != 1}">
                                     <td></td>
                                 </c:if>
@@ -110,7 +88,6 @@
                             <c:set var="i" value="${i+1}" />
                         </c:forEach>
                     </tbody>
-
                 </table>
 
                 <nav aria-label="Page navigation example">
@@ -130,14 +107,8 @@
                         </li>
                     </ul>
                 </nav>
-
-
-
             </div>
         </div>
-
-
-
     </div>
 </div>
 </body>

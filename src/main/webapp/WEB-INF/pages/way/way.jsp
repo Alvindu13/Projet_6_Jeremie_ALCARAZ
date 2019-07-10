@@ -9,18 +9,13 @@
 <html>
 
 <head>
-    <title>Les longueurs</title>
+    <title>Les voies</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="utf-8">
     <spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
-
     <link href="${bootstrap}" rel="stylesheet" />
-
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
-
     <style type="text/css">
         body { background-color: #1c7430  ; }
         img { width: 100%; }
@@ -28,11 +23,9 @@
             background-color:#CCC;
             padding: 20px;
         }
-
         section {
             margin: 2em;
         }
-
         .container{
             background: whitesmoke;
         }
@@ -43,21 +36,16 @@
 
 <body>
 <jsp:include page="../_menu.jsp" />
-
 <section>
     <div>
         <img class="img-responsive" src="resources/img/topo/aside.jpg" alt="AsideEscalade">
     </div>
 </section>
-
-
 <div class="container rounded border border-dark">
     <div class="text-center">
-
         <header class="page-header">
             <h2>Voici toutes les voies disponibles et leurs informations pour ce secteur</h2>
         </header>
-
         <div class="row">
             <div class="col-sm-12">
                 <div class ="row justify-content-center align-content-center">
@@ -70,7 +58,6 @@
                         </form>
                     </section>
                 </div>
-
                 <table class="table table-bordered table-striped table-condensed">
                     <thead>
                     <tr>
@@ -78,10 +65,8 @@
                         <th>cotation</th>
                         <th>nb de partie</th>
                         <th>longueur de la voie</th>
-
                     </tr>
                     </thead>
-
                     <tbody>
                     <c:set var="i" value="1" />
                     <c:forEach items="${ways}" var="w">
@@ -94,7 +79,6 @@
                         <c:set var="i" value="${i+1}" />
                     </c:forEach>
                     </tbody>
-
                 </table>
 
                 <nav aria-label="Page navigation example">
@@ -114,14 +98,8 @@
                         </li>
                     </ul>
                 </nav>
-
-
-
             </div>
         </div>
-
-
-
     </div>
 </div>
 </body>

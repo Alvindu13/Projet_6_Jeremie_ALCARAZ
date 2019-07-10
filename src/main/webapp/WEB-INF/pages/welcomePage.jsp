@@ -9,16 +9,10 @@
     <spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
     <spring:url value="resources/css/all.min.css" var="all" />
     <spring:url value="resources/css/grayscale.min.css" var="grayscale" />
-
-
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-
     <title>HomePage</title>
-
     <!-- Bootstrap core CSS
     <link href="${bootstrap}" rel="stylesheet" />-->
-
     <!-- Custom fonts for this template -->
     <link href="${all}" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
@@ -26,7 +20,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
     <!-- Custom styles for this template -->
     <link href="${grayscale}" rel="stylesheet" />
 
@@ -34,9 +27,6 @@
 
 <body id="page-top">
 <jsp:include page="_menu.jsp" />
-
-
-
 <!-- Header -->
 <header class="masthead">
     <div class="container d-flex h-100 align-items-center">
@@ -47,13 +37,7 @@
         </div>
     </div>
 </header>
-
-<footer class="bg-black small text-center text-white-50">
-    <div class="container">
-    Copyright &copy; GRAYSCALAD 2019
-    </div>
-</footer>
-
+<jsp:include page="_footer.jsp" />
 <!-- Bootstrap core JavaScript -->
 <script src="resources/js/jquery.min.js"></script>
 <script src="resources/js/bootstrap.bundle.min.js"></script>
@@ -63,7 +47,7 @@
 
 <!-- Custom scripts for this template -->
 <script src="resources/js/grayscale.min.js"></script>
-
 </body>
+
 
 </html>

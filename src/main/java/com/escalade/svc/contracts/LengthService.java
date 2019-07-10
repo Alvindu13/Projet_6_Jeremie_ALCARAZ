@@ -8,7 +8,5 @@ public interface LengthService {
 
     Page<Length> findAllByWayId(Integer wayId, Pageable pageable);
     void saveLength(Length length);
-    Integer countAllByWayId(Integer wayId);
-
 
 }

@@ -43,29 +43,6 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
     @Modifying
     @Transactional
     @Query(value="UPDATE topo "+
-            "SET available = ?1 "+
-            "WHERE "+
-            " ctid IN ( "+
-            "   SELECT t.ctid FROM topo t "+
-            "   LEFT JOIN user_escalad u ON t.user_escalad_id = u.user_escalad_id "+
-            "WHERE u.username=?2 AND t.topo_id=?3 "+ ")",nativeQuery=true)
-    void setAvalaibleTopo(Boolean avalaible, String userEscalad, Integer topoId);
-
-
-    @Modifying
-    @Transactional
-    @Query(value="UPDATE topo "+
-            "SET available = ?1, u.username = ?1 "+
-            "WHERE "+
-            " ctid IN ( "+
-            "   SELECT t.ctid FROM topo t "+
-            "   LEFT JOIN user_escalad u ON t.user_escalad_id = u.user_escalad_id "+
-            "WHERE u.username = ?1 AND t.topo_id = ?2 "+ ")",nativeQuery=true)
-    void setUnvailableTopo(Boolean available, String userEscalad, Integer topoId);
-
-    @Modifying
-    @Transactional
-    @Query(value="UPDATE topo "+
             "SET currently_user_escalad_id = ?1 "+
             "WHERE topo_id = ?2", nativeQuery = true)
     void setTopoUserNameByUserEscaladId(Integer userEscaladId, Integer topoId);
@@ -87,18 +64,5 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
             "SET reserve = ?1 "+
             "WHERE topo_id = ?2", nativeQuery = true)
     void setTopoReserveUserIdByTopoId(Boolean reserve, Integer topoId);
-
-
-
-
-
-
-    //void saveFile(UploadFile uploadFile);
-
-
-
-
-
-
 
 }

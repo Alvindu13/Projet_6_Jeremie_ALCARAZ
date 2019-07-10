@@ -8,23 +8,14 @@
 
 <head>
     <title>Mes topos</title>
-
     <meta charset="utf-8">
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-
-
     <style type="text/css">
-
-        [class*="col"] { margin: 10px; }
-
+        [class*="col"] { margin: 10px;}
         img { width: 100%; }
-
         .container{
             background: whitesmoke;
         }
-
         div {
             margin: 2em;
         }
@@ -126,8 +117,6 @@
                 </div>
             </div>
         </div>
-
-
         <div class = "row">
             <div class = col-lg-10>
                 <h2> Mes Topos empruntés : </h2>
@@ -157,8 +146,6 @@
                     </table>
 
                     <div>
-
-
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-center">
                                 <li class="${currentPageTopoShare == 0 ? 'page-item disabled' : 'page-item'}">
@@ -171,22 +158,17 @@
                                     </li>
                                     <c:set var="k" value="${k+1}" />
                                 </c:forEach>
-
-
                                 <li class="${currentPageTopoShare >= nbPagesTopoShare-1 ? 'page-item disabled' : 'page-item'}">
                                     <a class="page-link" href="${pageContext.request.contextPath}/mytopo?user=${pageContext.request.userPrincipal.name}&pageTopoShare=${currentPageTopoShare+1}">Next</a>
                                 </li>
                             </ul>
                         </nav>
-
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
     </div>
-
 </body>
 </html>
 

@@ -16,8 +16,6 @@ public interface WayRepository extends CrudRepository<Way, Integer> {
     Page<Way> findAllBySectorId(Integer sectorId, Pageable pageable);
 
 
-
-
     @Query (value = "SELECT *" +
             "FROM way v " +
             "INNER JOIN sector sec ON sec.sector_id = v.sector_id \n" +

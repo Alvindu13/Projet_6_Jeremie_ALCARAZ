@@ -22,28 +22,12 @@ public interface SiteRepository extends CrudRepository<Site, Integer>, JpaSpecif
     Page<Site> findAllByTopoId(int topo_id, Pageable pageable);
 
 
-    @Query(value= "select * from site  where site_id = ?1", nativeQuery = true)
-    List<Site> listSiteBySiteId(int siteId);
-
-    Iterable<Site> findByLocation(String location);
-
     @Query(value="SELECT s FROM Site s WHERE \n" +
             "       s.location LIKE :x OR \n" +
             "               s.name LIKE :x")
     Page<Site> findAllSiteByCritera(@Param("x") String mc, Pageable pageable);
 
     Site findBySiteId(int siteId);
-
-    //List<Site> findAllByLocationAndCotationAndNbSectorIsLessThanEqual(String location, String cotation, int nbSector);
-    //List<Site> findAllByLocationAndCotationMinimumAfterAndCotationMaximumBeforeAndNbSectorIsLessThanEqual(String location, String cotationMinimum, String cotationMaxi, Integer nbSector);
-
-    //@Query (value="select * from site where cotation_minimum AND cotation_maximum between ?1 and ?2", nativeQuery = true)
-    //List<Site> findAllByCotationBetween(String cotation1, String cotation2);
-
-
-    /*@Query (value = "select s from Site s where s.location = ?1 AND (s.cotationMinimum >= ?2 AND s.cotationMaximum <= ?3) AND s.nbSector < ?4 ")
-    List<Site> test(String location, String cotationMini, String cotationMaxi, Integer nbsector);*/
-
 
     @Query (value ="SELECT  * " +
             "FROM Site s \n" +

@@ -10,9 +10,4 @@ public interface UserEscaladRepository extends CrudRepository<UserEscalad, Strin
 
     UserEscalad findByUserEscaladId(int userId);
 
-    /*
-    @Query(value=" INSERT INTO user_role VALUES ('USER', ?1) ", nativeQuery = true)
-    void saveUserRole(int userId);*/
-
-
 }

@@ -8,8 +8,6 @@ import java.util.List;
 
 public interface WayService {
 
-    Iterable<Way> listWay();
-    List<Way> listWayBySecId(int sectorId);
     Way getCountWay(int sectorId);
     Page<Way> findAllBySectorId(Integer sectorId, Pageable pageable);
     void createWay(Way way);

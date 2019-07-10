@@ -3,14 +3,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Sites D'escalade</title>
+    <title>Secteurs</title>
 
     <meta charset="utf-8">
     <spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
-
     <link href="${bootstrap}" rel="stylesheet" />
-
-
     <style type="text/css">
         body { background-color: #1c7430  ; }
         [class*="col"] { margin-bottom: 20px; }
@@ -20,17 +17,6 @@
             padding: 20px;
         }
 
-        #ok{
-            background: #b8daff;
-            padding-top: 20px;
-            padding-bottom: 15px;
-        }
-
-        #try{
-            display: block;
-            margin: auto;
-        }
-
         .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
             background-color: #8064A2 !important;
         }
@@ -38,14 +24,7 @@
         .container{
             margin-top: 50px;
         }
-
-
-
-
-
     </style>
-
-
 </head>
 
 <body>
@@ -77,18 +56,18 @@
             <section class="col-sm-12">
                 <table class="table table-bordered table-striped table-condensed">
                     <thead>
-                    <tr>
-                        <th>name</th>
-                    </tr>
+                        <tr>
+                            <th>name</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <c:set var="i" value="1" />
-                    <c:forEach items="${sectors}" var="sect">
-                        <tr>
-                            <td> <a class="nav-link" href="${pageContext.request.contextPath}/way?sectorId=${sect.sectorId}"> ${sect.name} </td>
-                        </tr>
-                        <c:set var="i" value="${i+1}" />
-                    </c:forEach>
+                        <c:set var="i" value="1" />
+                        <c:forEach items="${sectors}" var="sect">
+                            <tr>
+                                <td> <a class="nav-link" href="${pageContext.request.contextPath}/way?sectorId=${sect.sectorId}"> ${sect.name} </td>
+                            </tr>
+                            <c:set var="i" value="${i+1}" />
+                        </c:forEach>
                     </tbody>
                 </table>
             </section>
