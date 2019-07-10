@@ -42,15 +42,12 @@
             <div class = "col-sm-8">
                 <form class = "well">
                     <h4>Souhaitez-vous ajouter votre propre secteur ?</h4>
-
                     <fieldset>
                         <a href="${pageContext.request.contextPath}/addsector?siteId=${siteId}" class="btn btn-primary js-scroll-trigger">Ajouter votre secteur</a>
                     </fieldset>
-
                 </form>
             </div>
         </div>
-
         <h2>Voici tous les secteurs disponibles pour le site sélectionné</h2>
         <div class="row">
             <section class="col-sm-12">

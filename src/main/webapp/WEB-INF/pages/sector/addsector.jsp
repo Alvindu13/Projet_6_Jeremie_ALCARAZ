@@ -4,29 +4,20 @@
 <html>
 <head>
     <title>Ajout de secteur </title>
-
     <meta charset="utf-8">
     <spring:url value="resources/css/addTopo.css" var="topoStyle" />
     <link href="${topoStyle}" rel="stylesheet" />
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-
     <style type="text/css">
-
-        div {
-            margin: 2em;
-        }
-
+        div {margin: 2em;}
     </style>
 
 </head>
 <body>
 <jsp:include page="../_menu.jsp" />
-
 <div class="login-page">
     <div class="form">
         <h4>Veuillez renseigner votre Site : </h4>
@@ -36,10 +27,8 @@
             </div>
             <input type='hidden' name = 'siteId' value = "${siteId}">
             <button  name = "submit" type="submit" class="btn btn-danger">CREER secteur</button>
-
         </form>
     </div>
 </div>
-
 </body>
 </html>
