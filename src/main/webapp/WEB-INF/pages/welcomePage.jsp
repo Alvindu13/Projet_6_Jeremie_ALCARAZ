@@ -48,6 +48,4 @@
 <!-- Custom scripts for this template -->
 <script src="resources/js/grayscale.min.js"></script>
 </body>
-
-
 </html>

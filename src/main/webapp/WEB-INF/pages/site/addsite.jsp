@@ -4,7 +4,6 @@
 <html>
 <head>
     <title>Ajout d'un site</title>
-
     <meta charset="utf-8">
     <spring:url value="resources/css/addTopo.css" var="topoStyle" />
     <link href="${topoStyle}" rel="stylesheet" />
@@ -12,10 +11,6 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <style type="text/css">
-        div {margin: 2em;}
-    </style>
-
 </head>
 <body>
 <jsp:include page="../_menu.jsp" />
@@ -39,9 +34,13 @@
                 <textarea class="form-control" rows="3" id="comment" placeholder='Description du site' name='comment' required='true' ></textarea>
             </div>
             <input type='hidden' name = 'topoId' value = "${topo.topoId}">
+            <br>
             <button  name = "submit" type="submit" class="btn btn-danger">CREER Site</button>
         </form>
     </div>
+</div>
+<div>
+    <jsp:include page="../_footer.jsp" />
 </div>
 </body>
 </html>

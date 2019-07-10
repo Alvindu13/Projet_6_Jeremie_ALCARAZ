@@ -7,20 +7,22 @@
 <head>
     <title>Résultats</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="utf-8">
-    <spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
-    <link href="${bootstrap}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <style type="text/css">
         body { background-color: #1c7430  ; }
         img { width: 100%; }
-        section {
-            margin: 2em;
+        .marge{
+            margin-top: 2em;
+            margin-bottom: 2em;
         }
         .container{
             background: whitesmoke;
         }
+        [class*="col-"]{ text-align: center}
     </style>
 </head>
 
@@ -29,51 +31,55 @@
 <section id = "test" class="row">
     <div class="col-xs-12 col-sm-12 col-md-12"><img src="resources/img/topo/aside.jpg" alt="AsideEscalade"></div>
 </section>
-<div class ="container">
-    <header class="page-header">
-        <h1>Voici les résultats de votre recherche</h1>
-    </header>
-    <div class = "row">
-        <div class = col-lg-5>
-            <table class="table">
-                <thead class="thead-dark">
-                <tr>
-                    <th> Nom du Site </th>
-                    <th> Localisation </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <c:forEach items="${sites}" var="s" varStatus="status">
-                <tr>
-                    <td>${s.name}</td>
-                    <td>${s.location}</td>
-                </tr>
-                </c:forEach>
-                </tr>
-                </tbody>
-            </table>
-        </div>
 
-        <div class = col-lg-2>
-
-            <table class="table">
-                <thead class="thead-dark">
-                <tr>
-                    <th scope="col">#</th>
-                    <th>Cotation</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${voies}" var="v" varStatus="loop">
+<section class="marge">
+    <div class ="container">
+        <header class="page-header">
+            <h1>Voici les résultats de votre recherche</h1>
+        </header>
+        <div class = "row">
+            <div class = col-lg-5>
+                <table class="table">
+                    <thead class="thead-dark">
                     <tr>
-                        <td>${v.cotation}</td>
+                        <th> Nom du Site </th>
+                        <th> Localisation </th>
                     </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <c:forEach items="${sites}" var="s" varStatus="status">
+                    <tr>
+                        <td>${s.name}</td>
+                        <td>${s.location}</td>
+                    </tr>
+                    </c:forEach>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class = col-lg-2>
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th>Cotation</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${voies}" var="v" varStatus="loop">
+                        <tr>
+                            <td>${v.cotation}</td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+</section>
+<div>
+    <jsp:include page="../_footer.jsp" />
 </div>
 </body>
 </html>

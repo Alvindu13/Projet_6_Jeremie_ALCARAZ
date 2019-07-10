@@ -10,9 +10,6 @@ import java.util.List;
 
 public interface WayRepository extends CrudRepository<Way, Integer> {
 
-    @Query(value= "select * from way  where sector_id = ?1", nativeQuery = true)
-    List<Way> findAllWayBySectorId(int sectorId);
-
     Page<Way> findAllBySectorId(Integer sectorId, Pageable pageable);
 
 

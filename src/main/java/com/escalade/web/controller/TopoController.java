@@ -21,7 +21,6 @@ public class TopoController {
     @Autowired
     private TopoService topoSvc;
 
-
     @Autowired
     private UserEscaladService userSvc;
 
@@ -80,8 +79,17 @@ public class TopoController {
     }
 
 
+    /**
+     * Affiche les topos de l'utilisateur connecté
+     * @param user
+     * @param pageTopo
+     * @param pageTopoShare
+     * @param currentlyUser
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/mytopo", method = RequestMethod.GET)
-    public String displayUserTopo(@RequestParam("user") String user,
+    public String displayUserTopos(@RequestParam("user") String user,
                                   @RequestParam(name = "pageTopo", defaultValue = "0") int pageTopo,
                                   @RequestParam(name = "pageTopoShare", defaultValue = "0") int pageTopoShare,
                                   @ModelAttribute("currentUser") UserEscalad currentlyUser,
@@ -89,11 +97,8 @@ public class TopoController {
 
 
         currentlyUser = userSvc.getUser(user);
-
         Page<Topo> pagesTopo = topoSvc.getAllByUserEscaladName(user, PageRequest.of(pageTopo, 5));
         Page<Topo> pagesTopoShare = topoSvc.getAllByCurrentlyUserEscalad(currentlyUser.getUserEscaladId(), PageRequest.of(pageTopoShare, 5));
-
-
         model.addAttribute("user", userSvc.getUser(user));
         model.addAttribute("topos", pagesTopo.getContent());
         model.addAttribute("tShare",pagesTopoShare.getContent());
@@ -101,8 +106,6 @@ public class TopoController {
         model.addAttribute("arrayNbPagesTopoShare", new int[pagesTopoShare.getTotalPages()]);
         model.addAttribute("currentPageTopo", pageTopo);
         model.addAttribute("currentPageTopoShare", pageTopoShare);
-
-
         model.addAttribute("nbPagesTopo", pagesTopo.getTotalPages());
         model.addAttribute("nbPagesTopoShare", pagesTopoShare.getTotalPages());
 
@@ -129,8 +132,6 @@ public class TopoController {
                                          Model model) {
 
         Page<Topo> pagesTopo = topoSvc.getAllByAvailableIsTrue(available,  PageRequest.of(page, 5));
-
-
         model.addAttribute("topos",pagesTopo.getContent());
         model.addAttribute("arrayNbPagesTopo", new int[pagesTopo.getTotalPages()]);
         model.addAttribute("currentPageTopo", page);

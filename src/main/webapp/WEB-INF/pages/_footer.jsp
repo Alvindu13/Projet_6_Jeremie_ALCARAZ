@@ -22,7 +22,7 @@
     </style>
 </head>
 <body class="d-flex flex-column">
-<div class="footer">
-    <div class="enfant" > <p>Copyrigth &copy 2019 </p></div>
-</div>
+<section class="footer">
+    <section class="enfant" > <p>Copyrigth &copy 2019 </p></section>
+</section>
 </body>

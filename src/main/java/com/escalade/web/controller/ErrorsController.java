@@ -14,9 +14,6 @@ public class ErrorsController {
      */
     @ExceptionHandler(Exception.class)
     public ModelAndView handleAllException(Exception ex) {
-
-        ModelAndView model = new ModelAndView("error/exception_error");
-        return model;
-
+        return new ModelAndView("error/exception_error");
     }
 }

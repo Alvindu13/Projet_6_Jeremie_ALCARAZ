@@ -9,6 +9,4 @@ import org.springframework.data.repository.CrudRepository;
 public interface LengthRepository extends CrudRepository<Length, Integer> {
 
     Page<Length> findAllByWayId(Integer wayId, Pageable pageable);
-    Integer countAllByWayId(Integer wayId);
-
 }
