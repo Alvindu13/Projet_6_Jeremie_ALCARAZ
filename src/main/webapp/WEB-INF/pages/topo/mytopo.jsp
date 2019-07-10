@@ -91,9 +91,6 @@
                         </c:forEach>
                         </tbody>
                     </table>
-
-
-
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
                             <li class="${currentPageTopo == 0 ? 'page-item disabled' : 'page-item'}">
