@@ -1,8 +1,6 @@
 package com.escalade.web.controller;
 
-import com.escalade.data.model.Length;
 import com.escalade.data.model.Way;
-import com.escalade.svc.contracts.LengthService;
 import com.escalade.svc.contracts.WayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,10 +18,6 @@ public class WayController {
 
     @Autowired
     private WayService svcW;
-
-    @Autowired
-    private LengthService svcL;
-
 
     /**
      * Affiche la page des voies

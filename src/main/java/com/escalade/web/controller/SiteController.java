@@ -34,13 +34,6 @@ public class SiteController {
     @Autowired
     SectorService svcSect;
 
-    /*@RequestMapping("/request1")
-    @ResponseBody
-    public String handler(@RequestParam(name = "name") String name) {
-        return "URL parameter <br> "
-                + "name =" + name;
-    }*/
-
     /**
      * afficher tous les sites d'escalades
      *

@@ -72,8 +72,6 @@
         </c:if>
     </div>
 </section>
-
-
 <div>
     <footer>
         <jsp:include page="../_footer.jsp" />
