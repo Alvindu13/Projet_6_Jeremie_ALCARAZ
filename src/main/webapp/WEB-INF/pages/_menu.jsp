@@ -40,7 +40,7 @@
                 </li>
                 <li class="nav-item">
                     <c:if test="${pageContext.request.userPrincipal.name != null}">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/logout">Déconnexion</a>
                     </c:if>
                 </li>
                 <li class="nav-item active">
@@ -55,9 +55,8 @@
                 </li>
             </ul>
             <form action = "search" method = "get" class="form-inline my-2 my-lg-0 align-content-end">
-                <label Mot clé : ></label>
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" name="motCle" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" type="text" placeholder="Rechercher" name="motCle" aria-label="Rechercher" required="true">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
             </form>
         </div>
     </nav>

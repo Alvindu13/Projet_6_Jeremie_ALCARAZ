@@ -37,13 +37,21 @@
         <header class="page-header">
             <h1>Voici les résultats de votre recherche</h1>
         </header>
-        <div class = "row">
+
+        <c:if test="${empty sites}">
+            <h2>Oups.. rien à afficher pour cette recherche</h2>
+        </c:if>
+
+        <c:if test="${!empty sites}">
+        <div class = "row justify-content-center align-content-center">
             <div class = col-lg-5>
                 <table class="table">
                     <thead class="thead-dark">
                     <tr>
                         <th> Nom du Site </th>
                         <th> Localisation </th>
+                        <th> Cotation mini </th>
+                        <th> Cotation maxi </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -52,34 +60,24 @@
                     <tr>
                         <td>${s.name}</td>
                         <td>${s.location}</td>
+                        <td>${s.cotationMinimum}</td>
+                        <td>${s.cotationMaximum}</td>
                     </tr>
                     </c:forEach>
                     </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class = col-lg-2>
-                <table class="table">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th>Cotation</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${voies}" var="v" varStatus="loop">
-                        <tr>
-                            <td>${v.cotation}</td>
-                        </tr>
-                    </c:forEach>
                     </tbody>
                 </table>
             </div>
         </div>
+        </c:if>
     </div>
 </section>
+
+
 <div>
-    <jsp:include page="../_footer.jsp" />
+    <footer>
+        <jsp:include page="../_footer.jsp" />
+    </footer>
 </div>
 </body>
 </html>

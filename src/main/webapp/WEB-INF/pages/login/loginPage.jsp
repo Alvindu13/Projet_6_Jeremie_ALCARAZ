@@ -34,8 +34,8 @@
                 <section class="col-xs-12">
                     <!-- Login Form -->
                     <form name='f' action="${pageContext.request.contextPath}/j_spring_security_check" method='POST'>
-                        <input type="text" id="login" class="fadeIn second" name="username" placeholder="username" value =''/>
-                        <input type="password" id="password" class="fadeIn third" name="password" placeholder="password"/>
+                        <input type="text" id="login" class="fadeIn second" name="username" placeholder="username" value ='' required="true"/>
+                        <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" required="true"/>
                         <input type="submit" class="fadeIn fourth"  name="submit" value="submit">
                     </form>
                 </section>

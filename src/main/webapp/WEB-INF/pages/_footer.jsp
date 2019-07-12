@@ -21,8 +21,15 @@
         }
     </style>
 </head>
-<body class="d-flex flex-column">
-<section class="footer">
-    <section class="enfant" > <p>Copyrigth &copy 2019 </p></section>
-</section>
+<!-- Footer -->
+<footer class="page-footer font-small dark">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+        <a href="https://mdbootstrap.com/education/bootstrap/"> grayscalad.com</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 </body>

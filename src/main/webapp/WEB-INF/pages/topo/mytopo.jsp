@@ -112,7 +112,7 @@
             </div>
             <div class = "row align-items-center row justify-content-center">
                 <div class = col-lg-10>
-                    <h2> Mes Topos empruntés : </h2>
+                    <h2> Mes Topos empruntées : </h2>
                     <div class="panel-body">
                         <table class="table table-bordered table-striped table-condensed">
                             <thead class="thead-dark">

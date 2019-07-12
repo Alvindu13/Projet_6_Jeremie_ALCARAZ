@@ -22,10 +22,6 @@ public class SearchController {
     @Autowired
     private SiteService svcSite;
 
-    @Autowired
-    private WayRepository svcVoie;
-
-
     /**
      * Permet de faire une recherche mono-critère
      * @param mc
@@ -82,9 +78,6 @@ public class SearchController {
                                @RequestParam(name="cotation_maximum") String cotationMaxi,
                                Model model) {
         model.addAttribute("sites", svcSite.getAllSiteByResearch(location, cotationMini, cotationMaxi));
-        model.addAttribute("voies", svcVoie.findAllByFilterSite(location, cotationMini, cotationMaxi));
-
-
         return "search/searchresult";
     }
 

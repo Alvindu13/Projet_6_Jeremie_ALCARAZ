@@ -29,7 +29,7 @@ public interface SiteRepository extends CrudRepository<Site, Integer>, JpaSpecif
 
     Site findBySiteId(int siteId);
 
-    @Query (value ="SELECT  * " +
+    @Query (value ="SELECT distinct s.* " +
             "FROM Site s \n" +
             "INNER JOIN sector sec ON sec.site_id = s.site_id \n" +
                 "INNER JOIN way v ON v.sector_id = sec.sector_id \n" +

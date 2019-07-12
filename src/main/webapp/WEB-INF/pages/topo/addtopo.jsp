@@ -19,11 +19,11 @@
             <h4>Veuillez créer votre TOPO : </h4>
             <form class="login-form" name ="f" action="addtopo" method='POST' modelAttribute="topo" />
                 <input type="text" readonly class="form-control-plaintext" id="staticUser" value="${pageContext.request.userPrincipal.name}"/>
-                <input type='text' placeholder='Nom du Topo' name='name'/>
+                <input type='text' placeholder='Nom du Topo' name='name' required="true"/>
                 <input type='hidden' name = 'available' value = "${false}">
                 <input type='hidden' name = 'reserve' value = "${false}">
-                <input type='hidden' name = 'userEscalad.userEscaladId' value = "${currentUser.userEscaladId}"
-            <button  name = "submit" type="submit" class="btn btn-danger">CREER TOPO</button>
+                <input type='hidden' name = 'userEscalad.userEscaladId' value = "${currentUser.userEscaladId}">
+                <button  name = "submit" type="submit" class="btn btn-danger">CREER TOPO</button>
             </form>
         </div>
     </div>
