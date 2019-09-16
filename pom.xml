@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>groupId</groupId>
-    <artifactId>SecurityV2</artifactId>
+    <artifactId>MyProjectEscaladP6</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
@@ -18,13 +18,9 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-
         <spring.version>5.1.0.RELEASE</spring.version>
         <spring.security.version>4.0.4.RELEASE</spring.security.version>
         <org.springframework.data-version>1.9.0.RELEASE</org.springframework.data-version>
-
-
         <jstl.version>1.2</jstl.version>
         <org.hibernate-em-version>4.3.8.Final</org.hibernate-em-version>
         <hibernate.validator>5.4.1.Final</hibernate.validator>
@@ -120,9 +116,9 @@
         </dependency>
 
 
-        <!--===========================-->
-        <!-- Drivers JDBC PostgreSQL -->
-        <!--===========================-->
+                <!--===========================-->
+                <!-- Drivers JDBC PostgreSQL   -->
+                <!--===========================-->
 
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -131,9 +127,9 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!--===========================-->
-        <!-- jstl for jsp page -->
-        <!--===========================-->
+                <!--===========================-->
+                <!--     jstl for jsp page     -->
+                <!--===========================-->
 
         <dependency>
             <groupId>jstl</groupId>
@@ -143,9 +139,9 @@
 
 
 
-        <!--===========================-->
-        <!-- Commons bibliotheques,... -->
-        <!--===========================-->
+                <!--===========================-->
+                <!--   Commons bibliotheques   -->
+                <!--===========================-->
 
         <dependency>
             <groupId>commons-validator</groupId>
@@ -160,9 +156,17 @@
         </dependency>
 
 
+        <!-- Commons FileUpload-->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+
+
         <!--===========================-->
-        <!--Javax-->
-        <!--===========================-->
+                <!--          Javax            -->
+                <!--===========================-->
 
         <dependency>
             <groupId>javax.validation</groupId>
@@ -217,64 +221,6 @@
 
 
         <!--===========================-->
-        <!-- Thymleaf bibliothèques... -->
-        <!--===========================-->
-
-
-        <dependency>
-            <groupId>org.thymeleaf</groupId>
-            <artifactId>thymeleaf</artifactId>
-            <version>3.0.9.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.thymeleaf</groupId>
-            <artifactId>thymeleaf-spring4</artifactId>
-            <version>3.0.9.RELEASE</version>
-        </dependency>
-
-
-        <!--===========================-->
-        <!-- C3P0 bibliothèques-->
-        <!--===========================-->
-
-        <dependency>
-            <groupId>c3p0</groupId>
-            <artifactId>c3p0</artifactId>
-            <version>0.9.1.2</version>
-        </dependency>
-
-        <!--===========================-->
-        <!-- QUERYDSL-->
-        <!--===========================-->
-
-        <dependency>
-            <groupId>com.querydsl</groupId>
-            <artifactId>querydsl-apt</artifactId>
-            <version>4.1.3</version>
-        </dependency>
-        <dependency>
-            <groupId>com.querydsl</groupId>
-            <artifactId>querydsl-jpa</artifactId>
-            <version>4.1.3</version>
-        </dependency>
-
-
-        <!--===========================-->
-        <!-- JAXB-->
-        <!--===========================-->
-
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-core</artifactId>
-            <version>2.2.11</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <version>2.2.11</version>
-        </dependency>
-
-        <!--===========================-->
         <!-- JAVASSIST-->
         <!--===========================-->
 
@@ -284,49 +230,11 @@
             <version>3.23.1-GA</version>
         </dependency>
 
-        <!--===========================-->
-
-        <!-- Commons FileUpload-->
-
-        <!--===========================-->
-
-        <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-            <version>1.3.1</version>
-        </dependency>
-
-
 
     </dependencies>
 
     <build>
 
-        <plugins>
-
-            <!--===========================-->
-            <!-- QUERYDSL-->
-            <!--===========================-->
-            <plugin>
-                <groupId>com.mysema.maven</groupId>
-                <artifactId>apt-maven-plugin</artifactId>
-                <version>1.1.3</version>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>process</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>target/generated-sources</outputDirectory>
-                            <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-
-        </plugins>
     </build>
 
 </project>

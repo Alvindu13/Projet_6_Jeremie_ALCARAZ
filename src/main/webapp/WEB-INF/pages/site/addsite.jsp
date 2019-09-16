@@ -3,87 +3,44 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
-
+    <title>Ajout d'un site</title>
     <meta charset="utf-8">
-
-
-    <spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
-
-    <link href="${bootstrap}" rel="stylesheet" />
-
-    <style type="text/css">
-        [class*="col"] { padding-bottom: 20px; }
-        h4{
-        }
-    </style>
-
+    <spring:url value="resources/css/addTopo.css" var="topoStyle" />
+    <link href="${topoStyle}" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
 <jsp:include page="../_menu.jsp" />
-
-
-
-<div class = "container-fluid">
-    <h1>Vous allez ajouter un site dans la topo suivante : ${topo.name}</h1>
-    <div class = "row">
-        <div class = "col-lg-5 align-self-center">
-                <form class="login-form" name ="f" action="addsite?topoId=${topo.topoId}" method='POST' modelAttribute="site" enctype="multipart/form-data">
-                    <h3>Créer Site : </h3>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Le nom de votre Site : </label>
-                        <input type='text' placeholder='Nom du Site' name='name' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required="true"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">La ville où se trouve votre site : </label>
-                        <input type='text' placeholder='Ville où se trouve le Site' name='location' class="form-control" id="exampleInputPassword1" required="true"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Nombre de secteurs : </label>
-                        <input type='text' placeholder='nb de secteurs' name='nbSector' class="form-control" required="true"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Nombre de voies: </label>
-                        <input type='text' name='nbWay' class="form-control" required="true"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Cotations : </label>
-                        <input type='text'name='cotationMinimum' class="form-control" required="true"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Longueur des voies en mètres : </label>
-                        <input type='text' name='waySize' class="form-control"  required="true"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="comment">Description:</label>
-                        <textarea class="form-control" rows="5" id="comment" placeholder='Description du site' name='comment' required='true' ></textarea>
-                    </div>
-
-
-
-
-
-                    <!--<h4>Veuillez choisir une image de présentation (dimension de 200x300px) :</h4>
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="hFichier" name="image" lang="fr" accept=".jpg,.jpeg,.gif,.png" required="true" />
-                        <label class="custom-file-label" for="hFichier">Sélectionner un fichier</label>
-                    </div>-->
-
-
-                    <p>Vous voulez changer de Topo ? : <a href="${pageContext.request.contextPath}/topo">Voir ou créer un Topo</a> <br />
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
-
-                </form>
-        </div>
+<div class="login-page">
+    <div class="form">
+        <h4>Veuillez renseigner votre Site : </h4>
+        <form class="login-form" name ="f" action="addsite?topoId=${topo.topoId}" method='POST' modelAttribute="site" enctype="multipart/form-data">
+            <div>
+                <input type='text' placeholder='Nom du Site' name='name' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required="true"/>
+            </div>
+            <div>
+                <input type='text' placeholder='Ville où se trouve le Site' name='location' class="form-control" id="exampleInputPassword1" required="true"/>
+            </div>
+            <div>
+                <input type='text' placeholder='Difficulté minimum (ex : 4A)' name='cotationMinimum' class="form-control" required="true"/>
+            </div>
+            <div>
+                <input type='text' placeholder='Difficulté maximum (ex : 7B)' name='cotationMaximum' class="form-control" required="true"/>
+            </div>
+            <div>
+                <textarea class="form-control" rows="3" id="comment" placeholder='Description du site' name='comment' required='true' ></textarea>
+            </div>
+            <input type='hidden' name = 'topoId' value = "${topo.topoId}">
+            <br>
+            <button  name = "submit" type="submit" class="btn btn-danger">CREER Site</button>
+        </form>
     </div>
 </div>
-
-
+<div>
+    <jsp:include page="../_footer.jsp" />
+</div>
 </body>
 </html>

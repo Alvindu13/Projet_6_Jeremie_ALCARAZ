@@ -9,12 +9,15 @@ import java.util.List;
 public interface TopoService {
 
     void createTopo(Topo t);
-    Topo getTopoByName(String name);
     Topo getTopoById(int topo_id);
-    Iterable<Topo> listTopo();
-    Iterable<Topo> listTopoByUser(String user);
-    void updateTopo(Boolean avalaible, String user, String name);
-    void updateTopoUnvailable(Boolean available, String user, int topoId);
-    List<Topo> findAllByAvailableIsTrueOrderByAvailables(Boolean available);
+    Iterable<Topo> getAllTopo();
+    Page<Topo> getAllTopo(Pageable pageable);
+    Page<Topo> getAllByUserEscaladName(String userEscalad, Pageable pageable);
+    void updateTopo(String action,Boolean reserve, String userEscalad, int topoId);
+    Page<Topo> getAllByCurrentlyUserEscalad(Integer currentUserEscalad, Pageable pageable);
+    Page<Topo> getAllByAvailableIsTrue(Boolean available, Pageable pageable);
+    void setTopoUserNameByUserEscaladId(Integer userEscaladId, Integer topoId);
+    void setTopoUnvailableById(Boolean unvailable, Integer topoId);
+    void setTopoReserveUserEscaladIdByTopoId(Boolean reserve, Integer topoId);
 
 }

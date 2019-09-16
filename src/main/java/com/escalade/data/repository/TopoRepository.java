@@ -16,53 +16,36 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
 
     Topo findByTopoId (int topoId);
 
+    Page<Topo> findAllByUserEscaladCurrentProprio(Integer currentUserEscalad, Pageable pageable);
 
-    @Query(value="SELECT  * " +
-            "FROM Topo t " +
-            "INNER JOIN Utilisateur u ON u.utilisateur_id = t.utilisateur_id" +
-                " WHERE username = ?1 ", nativeQuery = true)
-    Iterable<Topo> findAllByUser (String user);
+    Page<Topo> findAll(Pageable pageable);
 
 
-    @Query(value="SELECT t FROM Topo t WHERE " +
-            "       t.available LIKE :x")
-    Page<Topo> findAllByAvailableIsTrue(@Param("x") Boolean available, Pageable pageable);
+    @Query (value ="SELECT  * " +
+            "FROM topo t \n" +
+            "INNER JOIN user_escalad u ON u.user_escalad_id = t.user_escalad_id \n" +
+            "WHERE username = ?1 ORDER BY ?#{#pageable}",
+
+            countQuery = "SELECT count(*) \n" +
+                    "FROM topo t \n" +
+                    "INNER JOIN user_escalad u ON u.user_escalad_id = t.user_escalad_id \n" +
+                    "WHERE username = ?1",
+
+            nativeQuery = true)
+    Page<Topo> findAllByUserEscaladName (String userName, Pageable pageable);
 
 
-    @Query(value="SELECT * FROM Topo " +
-            " WHERE available = ?1", nativeQuery = true)
-    List<Topo> blabla(Boolean available);
-
-
-    @Modifying
-    @Transactional
-    @Query(value="UPDATE topo "+
-            "SET available = ?1 "+
-            "WHERE "+
-            " ctid IN ( "+
-            "   SELECT t.ctid FROM topo t "+
-            "   LEFT JOIN utilisateur u ON t.utilisateur_id = u.utilisateur_id "+
-            "WHERE u.username=?2 AND t.name=?3 "+ ")",nativeQuery=true)
-    void setAvalaibleTopo(Boolean avalaible, String user, String name);
+    @Query(value="SELECT t FROM Topo t " +
+            " WHERE t.available = ?1")
+    Page<Topo> getAllByAvailableIsTrue(Boolean available, Pageable pageable);
 
 
     @Modifying
     @Transactional
     @Query(value="UPDATE topo "+
-            "SET available = ?1, u.username = ?1 "+
-            "WHERE "+
-            " ctid IN ( "+
-            "   SELECT t.ctid FROM topo t "+
-            "   LEFT JOIN utilisateur u ON t.utilisateur_id = u.utilisateur_id "+
-            "WHERE u.username = ?1 AND t.topo_id = ?2 "+ ")",nativeQuery=true)
-    void setUnvailableTopo(Boolean available, String user, int topoId);
-
-    @Modifying
-    @Transactional
-    @Query(value="UPDATE topo "+
-            "SET utilisateur_id = ?1 "+
+            "SET currently_user_escalad_id = ?1 "+
             "WHERE topo_id = ?2", nativeQuery = true)
-    void setTopoUserNameByUserId(int userId, int topoId);
+    void setTopoUserNameByUserEscaladId(Integer userEscaladId, Integer topoId);
 
 
 
@@ -71,6 +54,15 @@ public interface TopoRepository extends CrudRepository<Topo, Integer> {
     @Query(value="UPDATE topo "+
             "SET available = ?1 "+
             "WHERE topo_id = ?2", nativeQuery = true)
-    void setTopoUnvailableById(Boolean unvailable, int topoId);
+    void setTopoUnvailableById(Boolean unvailable, Integer topoId);
+
+
+
+    @Modifying
+    @Transactional
+    @Query(value="UPDATE topo "+
+            "SET reserve = ?1 "+
+            "WHERE topo_id = ?2", nativeQuery = true)
+    void setTopoReserveUserIdByTopoId(Boolean reserve, Integer topoId);
 
 }

@@ -9,19 +9,18 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 
-import java.lang.reflect.Parameter;
 import java.util.List;
 
 public interface SiteRepository extends CrudRepository<Site, Integer>, JpaSpecificationExecutor {
 
-    @Query(value= "select * from site  where topo_id = ?1", nativeQuery = true)
-    List<Site> findAllByTopoId(int topo_id);
 
 
-    @Query(value= "select * from site  where site_id = ?1", nativeQuery = true)
-    List<Site> listSiteBySiteId(int siteId);
+    @Query(value= "SELECT DISTINCT s.location FROM Site s")
+    List<String> findDistinct();
 
-    Iterable<Site> findByLocation(String location);
+
+    Page<Site> findAllByTopoId(int topo_id, Pageable pageable);
+
 
     @Query(value="SELECT s FROM Site s WHERE \n" +
             "       s.location LIKE :x OR \n" +
@@ -30,23 +29,14 @@ public interface SiteRepository extends CrudRepository<Site, Integer>, JpaSpecif
 
     Site findBySiteId(int siteId);
 
-    //List<Site> findAllByLocationAndCotationAndNbSectorIsLessThanEqual(String location, String cotation, int nbSector);
-    //List<Site> findAllByLocationAndCotationMinimumAfterAndCotationMaximumBeforeAndNbSectorIsLessThanEqual(String location, String cotationMinimum, String cotationMaxi, Integer nbSector);
-
-    //@Query (value="select * from site where cotation_minimum AND cotation_maximum between ?1 and ?2", nativeQuery = true)
-    //List<Site> findAllByCotationBetween(String cotation1, String cotation2);
-
-
-    @Query (value = "select s from Site s where s.location = ?1 AND (s.cotationMinimum >= ?2 AND s.cotationMaximum <= ?3) AND s.nbSector < ?4 ")
-    List<Site> test(String location, String cotationMini, String cotationMaxi, Integer nbSecteur);
-
-
-    @Query (value ="SELECT  * " +
+    @Query (value ="SELECT distinct s.* " +
             "FROM Site s \n" +
-            "INNER JOIN Secteur sec ON sec.site_id = s.site_id \n" +
-                "INNER JOIN voie v ON v.secteur_id = sec.secteur_id \n" +
-            "WHERE s.location = ?1 AND (v.cotation BETWEEN ?2 AND ?3)  AND s.nbSector <= ?4 \n", nativeQuery = true)
-    List<Site> test2(String location, String cotationMini, String cotationMaxi, Integer nbSector);
+            "INNER JOIN sector sec ON sec.site_id = s.site_id \n" +
+                "INNER JOIN way v ON v.sector_id = sec.sector_id \n" +
+            "WHERE s.location = ?1 AND (v.cotation BETWEEN ?2 AND ?3)", nativeQuery = true)
+    List<Site> findSiteByMultiCriterias(String location, String cotationMini, String cotationMaxi);
+
+
 
 
 

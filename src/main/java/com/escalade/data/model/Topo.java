@@ -1,83 +1,54 @@
 package com.escalade.data.model;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "TOPO")
-public class Topo {
+public class Topo  {
 
 
 
 	@ManyToOne(optional=false)
-	@JoinColumn(name="UTILISATEUR_ID")
-	private Utilisateur utilisateur;
+	@JoinColumn(name="user_escalad_id")
+	private UserEscalad userEscalad;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "TOPO_ID")
 	private int topoId;
 
-
 	@Column(name = "NAME")
 	private String name;
 
-	@Column(name = "NBSITE")
-	private int nbSite;
-
-	@Column(name = "NBSECTOR")
-	private int nbSector;
+	@Column(name = "CURRENTLY_USER_ESCALAD_ID")
+	private Integer userEscaladCurrentProprio;
 
 	@Column(name = "AVAILABLE")
 	private Boolean available;
 
+	@Column(name = "RESERVE")
+	private Boolean reserve;
 
 
-	public Topo() {super();}
+	public Topo() {}
 
-	public Topo(String userName, Utilisateur utilisateur, String name, int nbSite, int nbSector, Boolean available) {
-		this.utilisateur = utilisateur;
+	public Topo(UserEscalad userEscalad, String name, Integer userEscaladCurrentProprio, Boolean available, Boolean reserve) {
+		this.userEscalad = userEscalad;
 		this.name = name;
-		this.nbSite = nbSite;
-		this.nbSector = nbSector;
+		this.userEscaladCurrentProprio = userEscaladCurrentProprio;
 		this.available = available;
+		this.reserve = reserve;
 	}
 
-	public String getName() {
-		return this.name;
+	public UserEscalad getUserEscalad() {
+		return userEscalad;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	/*public int getUtilisateurId() {
-		return utilisateurId;
-	}
-
-	public void setUtilisateurId(int utilisateurId) {
-		this.utilisateurId = utilisateurId;}*/
-	public int getNbSite() {
-		return nbSite;
-	}
-
-	public void setNbSite(int nbSite) {
-		this.nbSite = nbSite;
-	}
-
-	public int getNbSector() {
-		return nbSector;
-	}
-
-	public void setNbSector(int nbSector) {
-		this.nbSector = nbSector;
-	}
-
-	public Boolean isAvailable() {
-		return this.available;
-	}
-
-	public void setAvailable(Boolean available) {
-		this.available = available;
+	public void setUserEscalad(UserEscalad userEscalad) {
+		this.userEscalad = userEscalad;
 	}
 
 	public int getTopoId() {
@@ -88,26 +59,49 @@ public class Topo {
 		this.topoId = topoId;
 	}
 
-	public Utilisateur getUtilisateur() {
-		return utilisateur;
+	public String getName() {
+		return name;
 	}
 
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getUserEscaladCurrentProprio() {
+		return userEscaladCurrentProprio;
+	}
+
+	public void setUserEscaladCurrentProprio(Integer userEscaladCurrentProprio) {
+		this.userEscaladCurrentProprio = userEscaladCurrentProprio;
 	}
 
 	public Boolean getAvailable() {
 		return available;
 	}
 
+	public void setAvailable(Boolean available) {
+		this.available = available;
+	}
+
+	public Boolean getReserve() {
+		return reserve;
+	}
+
+	public void setReserve(Boolean reserve) {
+		this.reserve = reserve;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Topo{" +
-				"topoId=" + topoId +
+				"userEscalad=" + userEscalad +
+				", topoId=" + topoId +
 				", name='" + name + '\'' +
-				", nbSite=" + nbSite +
-				", nbSector=" + nbSector +
+				", userEscaladCurrentProprio=" + userEscaladCurrentProprio +
 				", available=" + available +
+				", reserve=" + reserve +
 				'}';
 	}
 }

@@ -22,12 +22,11 @@
         <intercept-url pattern="/logout" access="permitAll()" />
 
         <intercept-url pattern="/userInfo" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
-        <intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')" />
-
         <intercept-url pattern="/topo" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"  />
         <intercept-url pattern="/displaytopoavailable" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"  />
-
         <intercept-url pattern="/reservetopo" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"  />
+        <intercept-url pattern="/multisearch" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"  />
+
 
 
         <intercept-url pattern="/other/**" access="isAuthenticated()" />
@@ -60,10 +59,10 @@
         <!-- authentication from database -->
         <authentication-provider>
             <jdbc-user-service data-source-ref="DataSource"
-                               users-by-username-query="select username,password, enabled from utilisateur where username=?"
-                               authorities-by-username-query="SELECT u.utilisateur_id, concat('ROLE_',rolename) rolenam, username
-                                                              FROM user_role r
-                                                              INNER JOIN Utilisateur u ON u.utilisateur_id = r.utilisateur_id
+                               users-by-username-query="select username, password, enabled from user_escalad where username = ?"
+                               authorities-by-username-query="SELECT u.user_escalad_id, concat('ROLE_',role_name) role_name, username
+                                                              FROM user_escalad_role r
+                                                              INNER JOIN user_escalad u ON u.user_escalad_id = r.role_user_escalad_id
                                                               WHERE username = ?"
             />
         </authentication-provider>

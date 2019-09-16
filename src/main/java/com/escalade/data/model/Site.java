@@ -15,7 +15,7 @@ public class Site {
     @Column(name = "NAME")
     private String name;
 
-    @Column(name = "LOCATION")
+    @Column(name = "location")
     private String location;
 
     @Column(name = "COMMENT")
@@ -24,12 +24,6 @@ public class Site {
     @Column(name = "TOPO_ID")
     private int topoId;
 
-    @Column(name = "NBSECTOR")
-    private int nbSector;
-
-    @Column(name = "NBWAY")
-    private int nbWay;
-
     @Column(name = "COTATION_MINIMUM")
     private String cotationMinimum;
 
@@ -37,22 +31,15 @@ public class Site {
     private String cotationMaximum;
 
 
-    @Column(name = "WAY_SIZE")
-    private Double waySize;
+    public Site() { }
 
-
-    public Site() {super(); }
-
-    public Site(String name, String location, String comment, int topoId, int nbSector, int nbWay, String cotationMinimum, String cotationMaximum, Double waySize) {
+    public Site(String name, String location, String comment, int topoId, String cotationMinimum, String cotationMaximum) {
         this.name = name;
         this.location = location;
         this.comment = comment;
         this.topoId = topoId;
-        this.nbSector = nbSector;
-        this.nbWay = nbWay;
         this.cotationMinimum = cotationMinimum;
         this.cotationMaximum = cotationMaximum;
-        this.waySize = waySize;
     }
 
     public int getSiteId() {
@@ -95,22 +82,6 @@ public class Site {
         this.topoId = topoId;
     }
 
-    public int getNbSector() {
-        return nbSector;
-    }
-
-    public void setNbSector(int nbSector) {
-        this.nbSector = nbSector;
-    }
-
-    public int getNbWay() {
-        return nbWay;
-    }
-
-    public void setNbWay(int nbWay) {
-        this.nbWay = nbWay;
-    }
-
     public String getCotationMinimum() {
         return cotationMinimum;
     }
@@ -127,11 +98,4 @@ public class Site {
         this.cotationMaximum = cotationMaximum;
     }
 
-    public Double getWaySize() {
-        return waySize;
-    }
-
-    public void setWaySize(Double waySize) {
-        this.waySize = waySize;
-    }
 }

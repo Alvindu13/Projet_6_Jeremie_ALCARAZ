@@ -1,15 +1,18 @@
 package com.escalade.svc.contracts;
 
 import com.escalade.data.model.Site;
+import org.springframework.data.domain.Page;
 
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface SiteService {
 
-    public void createSite(Site s);
-    public Site getSite(String name);
-    public Iterable<Site> listSite();
-    public List<Site> listSiteByTopoId(int topoId);
-    public Site getSiteBySiteId(int siteId);
-    public Site getSiteByResearch(String location, String cotation, int nbSecteur);
+    void createSite(Site s);
+    Page<Site> getAllByTopoId(int topoId, Pageable pageable);
+    Site getSiteBySiteId(int siteId);
+    List<Site> getAllSiteByResearch(String location, String cotationMini, String cotationMaxi);
+    Iterable<String> getDisctinctLocation();
+    Page<Site> getAllSiteByCritera(String mc, Pageable pageable);
+
 }
